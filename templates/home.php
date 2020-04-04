@@ -1,8 +1,9 @@
 
 <?php
 //Pour nos deux fichiers
-require '../src/DAO/DAO.php';
-require '../src/DAO/EstateDAO.php';
+require '../vendor/autoload.php';
+
+use Projet5\src\DAO\EstateDAO;
 
 ?>
 
@@ -13,25 +14,38 @@ require 'header.php';
         <!-- Slider area Start -->   
         <section class="slider-section ">
             <div class="item">
-              <div class="item">
+
+            <?php
+            $estate = new EstateDAO();
+            $estates = $estate->getEstates();
+            while($estate = $estates->fetch())
+            {
+            ?>
+                <div class="item">
                     <img src="../public/img/slider/1.jpg" alt="">
                     <div class="slide-content carousel-caption hidden-xs">
                         <div class="slide-content-top">
-                            <h1>Titre</h1>
-                            <h2>06300, Nice</h2>
-                            <p>Belle appartement refait à neuf dans une résidence de luxe.</p>
+                            <h1><?= htmlspecialchars($estate->title);?></h1>
+                            <h2><?= htmlspecialchars($estate->zip_code);?></h2>
+                            <p><?= htmlspecialchars($estate->excerpt);?></p>
                         </div>
                         <div class="slide-property-detail">
                             <ul>
-                                <li>4 Pièces</li>
-                                <li>3 Chambres</li>
-                                <li> 120 m2</li>
-                                <li> 1 230 000 €</li>
-                                <li class="slider-btn"><a href="single-property.php">A Vendre</a></li> 
+                                <li><?= htmlspecialchars($estate->rooms);?> Pièces</li>
+                                <li><?= htmlspecialchars($estate->bedrooms);?> Chambres</li>
+                                <li><?= htmlspecialchars($estate->area);?> m2</li>
+                                <li><?= htmlspecialchars($estate->price);?> €</li>
+                                <li class="slider-btn"><a href="single.php?estateId=<?= htmlspecialchars($estate->id);?>">A Vendre</a></li> 
                             </ul>
                         </div>
                     </div>
                 </div>
+
+            <?php
+            }
+            $articles->closeCursor();
+            ?>
+
             </div>
             <div class="item">
                 <img src="../public/img/slider/2.jpg" alt="">

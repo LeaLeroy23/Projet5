@@ -18,5 +18,27 @@ class EstateDAO extends DAO
         return $article;
     }
 
+    public function getEstates()
+    {
+        $sql = 'SELECT * FROM estate ORDER BY id DESC';
+        $result = $this->createQuery($sql);
+        $estates = [];
+        foreach ($result as $row){
+            $estateId = $row['id'];
+            $articles[$articleId] = $this->buildObject($row);
+        }
+        $result->closeCursor();
+        return $estates;
+    }
+
+    public function getEstate($estateId)
+    {
+        $sql = 'SELECT * FROM estate WHERE id = ?';
+        $result = $this->createQuery($sql, [$estateId]);
+        $estate = $result->fetch();
+        $result->closeCursor();
+        return $this->buildObject($estate);
+    }
+
 
 }

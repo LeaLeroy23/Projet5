@@ -1,7 +1,7 @@
 <?php
 
 const HOST='localhost';
-const DB_NAME='Projet5';
+const DB_NAME='mydb';
 const CHARSET='utf8';
 const DB_HOST='mysql:host='.HOST.';dbname='.DB_NAME.';charset='.CHARSET;
 const DB_USER = 'root';

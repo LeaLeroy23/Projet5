@@ -1,4 +1,10 @@
 <?php
+
+//Pour nos deux fichiers
+require '../vendor/autoload.php';
+
+use Projet5\src\DAO\EstateDAO;
+
 include 'header.php';
 ?>
 
