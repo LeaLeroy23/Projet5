@@ -1,0 +1,16 @@
+Créer le repository pour le projet
+Créer le projet vide
+Créer le routeur
+Créer le premier contrôleur (front)
+Créer la page d'accueil
+Ajouter le template de base
+Créer le deuxième contrôleur (back)
+Créer le tableau de bord
+Créer l'ajout de compte
+Créer la connexion
+Sécuriser le tableau de bord
+Faire la modification de profil
+Faire l'ajout de type
+Faire l'ajout de catégorie
+Faire l'ajout de fréquence des charges
+Faire l'ajout d'énergie
