@@ -1,6 +1,7 @@
 
 <?php
 require "..\Database.php";
+require "..\Estate.php";
 require "..\src\DAO\EstateDAO.php";
 use Projet5\src\DAO\EstateDAO;
 
@@ -13,15 +14,9 @@ require 'header.php';
         <!-- Slider area Start -->   
         <section class="slider-section ">
             <div class="item">
-            <?php
-            //On crée un nouvel objet $db, qui est une instance de la classe Database
-            $db = new Database();
-            //On fait appel à notre méthode getConnection()
-            echo $db->getConnection();
-            ?>
 
             <?php
-            $estate = new EstateDAO();
+            $estate = new Estate();
             $estates = $estate->getEstates();
             while($estate = $estates->fetch())
             {
@@ -136,6 +131,14 @@ require 'header.php';
                     </div>
                 </div>
                 <div class="row">
+
+                <?php
+                $estate = new Estate();
+                $estates = $estate->getEstates();
+                while($estate = $estates->fetch())
+                {
+                ?>
+
                     <div class="col-md-4 col-sm-6">
                         <div class="single-featured-properties">
                             <div class="properties-image">
@@ -162,6 +165,12 @@ require 'header.php';
                             </div>
                         </div>
                     </div> 
+                    
+                <?php
+                }
+                $estates->closeCursor();
+                ?>
+
                     <!-- End of Single properties -->
                     <div class="col-md-4 col-sm-6">
                         <div class="single-featured-properties">

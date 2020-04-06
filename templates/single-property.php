@@ -1,6 +1,9 @@
 <?php
 
-use src\DAO\EstateDAO;
+//On inclut le fichier dont on a besoin (ici à la racine de notre site)
+require '..\Database.php';
+//Ne pas oublier d'ajouter le fichier Article.php
+require '..\Estate.php';
 
 include 'header.php';
 ?>
@@ -15,7 +18,9 @@ include 'header.php';
                     </div>
 
                     <?php
-                    $estate = $estates->fetch()
+                    $estate = new Estate();
+                    $estates = $estate->getEstate();
+                    $estate = $estate->fetch()
                     ?>
 
                     <!-- Single Property Post Start -->
