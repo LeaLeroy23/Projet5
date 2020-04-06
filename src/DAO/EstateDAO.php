@@ -10,7 +10,7 @@ use Projet5\src\model\Estate;
 use PDO;
 use Exception;
 
-class EstateDAO extends DAO
+class EstateDAO
 {
     private function buildObject($row)
     {

@@ -2,15 +2,26 @@
 
 namespace Projet5\src\controller;
 
-use Projet5\config\Parameter;
+use Projet5\src\DAO\EstateDAO;
 
-class FrontController extends Controller 
+
+class FrontController
 {
+    private $estateDAO;
+
+    public function __construct(){
+        $this->estateDAO = new EstateDAO;
+    }
+
     public function home(){
-        $estates = $this->estateDAO->getEstates();
-        return $this->view->render('home', [
-            'articles' => $articles
-        ]);
+        
+        $estates = $estate->getEstates();
+        require '../templates/home.php';
+    }
+
+    public function estate($estateId){
+        $estates = $estate->getEstate($estateId);
+        require '../templates/single-property.php';
     }
 
 }

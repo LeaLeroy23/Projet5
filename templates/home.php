@@ -1,8 +1,6 @@
 
 <?php
-//Pour nos deux fichiers
-require '../vendor/autoload.php';
-
+require "..\src\DAO\EstateDAO.php";
 use Projet5\src\DAO\EstateDAO;
 
 ?>
@@ -16,7 +14,6 @@ require 'header.php';
             <div class="item">
 
             <?php
-            $estate = new EstateDAO();
             $estates = $estate->getEstates();
             while($estate = $estates->fetch())
             {

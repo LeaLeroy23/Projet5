@@ -1,9 +1,6 @@
 <?php
 
-//Pour nos deux fichiers
-require '../vendor/autoload.php';
-
-use Projet5\src\DAO\EstateDAO;
+use src\DAO\EstateDAO;
 
 include 'header.php';
 ?>
@@ -16,6 +13,11 @@ include 'header.php';
                     <div class="property-page-title">
                         <h2>Titre</h2>
                     </div>
+
+                    <?php
+                    $estate = $estates->fetch()
+                    ?>
+
                     <!-- Single Property Post Start -->
                     <div class="single-property-post">
                         <div class="single-property-slider">
@@ -77,6 +79,7 @@ include 'header.php';
                                 <div class="tab-pane fade" id="details">
                                     <div class="details-content tab-content-padding fix">
                                         <div class="col-md-6 col-sm-6">
+
                                             <div class="single-pt-list">
                                                 <ul>        
                                                     <li><strong>Type:</strong>a louer</li>
@@ -218,6 +221,10 @@ include 'header.php';
                         <!-- End of Similar Category Post -->
                     </div>
                     <!-- Single Property Post End -->
+                    <?php
+                    $estates->closeCursor();
+                    ?>
+
                 </div>
                 <div class="col-md-4 padding-left-65">
                     <div class="column-widget">

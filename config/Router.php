@@ -1,42 +1,36 @@
 <?php
 
 namespace Projet5\config;
-
-use Projet5\src\controller\FrontController;
-use Projet5\src\controller\ErrorController;
 use Exception;
 
 class Router
 {
     private $frontController;
-    private $errorController;
-    private $request;
 
-    public function __construct()
-    {
-        $this->request = new Request();
+    public function __construct(){
         $this->frontController = new FrontController();
-        $this->errorController = new ErrorController();
     }
 
     public function run()
     {
-        $route=$this->request->getGet()->get('route');
-
         try{
-            if(isset($route))
+            if(isset($_GET['route']))
             {
-                if($route === 'login'){
-                    $this->frontController->login($this->request->getPost());
-                } else { 
-                    $this->errorController->errorNotFound();
-                }   
-            } else {
-                $this->frontController->home();
+                if($_GET['route'] === 'estate'){
+                    $frontController->estate($_GET['estateId']);
+                }
+                else{
+                    echo 'page inconnue';
+                }
             }
-        
-    }
-    catch (Exception $e){
-        $this->errorController->errorServer();
+            else{
+               
+                $frontController->home();
+            }
+        }
+        catch (Exception $e)
+        {
+            echo 'Erreur';
+        }
     }
 }
