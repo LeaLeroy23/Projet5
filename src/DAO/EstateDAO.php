@@ -14,14 +14,14 @@ class EstateDAO
 {
     private function buildObject($row)
     {
-        $article = new Estate();
-        return $article;
+        $estate = new Estate();
+        return $estate;
     }
 
     public function getEstates()
     {
-        $sql = 'SELECT * FROM estate ORDER BY id DESC';
-        $result = $this->createQuery($sql);
+        $sql = '';
+        $result = $this->query($sql);
         $estates = [];
         foreach ($result as $row){
             $estateId = $row['id'];

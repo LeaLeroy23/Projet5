@@ -1,8 +1,8 @@
 {
   "autoload": {
     "psr-4": {
-        "App\\config\\":"config/",
-        "App\\src\\": "src/"
+        "Projet5\\config\\":"config/",
+        "Projet5\\src\\": "src/"
     }
   }
 }

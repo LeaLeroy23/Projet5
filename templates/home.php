@@ -1,5 +1,6 @@
 
 <?php
+require "..\Database.php";
 require "..\src\DAO\EstateDAO.php";
 use Projet5\src\DAO\EstateDAO;
 
@@ -12,8 +13,15 @@ require 'header.php';
         <!-- Slider area Start -->   
         <section class="slider-section ">
             <div class="item">
+            <?php
+            //On crée un nouvel objet $db, qui est une instance de la classe Database
+            $db = new Database();
+            //On fait appel à notre méthode getConnection()
+            echo $db->getConnection();
+            ?>
 
             <?php
+            $estate = new EstateDAO();
             $estates = $estate->getEstates();
             while($estate = $estates->fetch())
             {
@@ -40,7 +48,7 @@ require 'header.php';
 
             <?php
             }
-            $articles->closeCursor();
+            $estates->closeCursor();
             ?>
 
             </div>
