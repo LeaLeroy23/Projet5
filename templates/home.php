@@ -1,9 +1,7 @@
 
 <?php
-require "..\Database.php";
-require "..\Estate.php";
+require "..\src\DAO\DAO.php";
 require "..\src\DAO\EstateDAO.php";
-use Projet5\src\DAO\EstateDAO;
 
 ?>
 
@@ -165,7 +163,7 @@ require 'header.php';
                             </div>
                         </div>
                     </div> 
-                    
+
                 <?php
                 }
                 $estates->closeCursor();
