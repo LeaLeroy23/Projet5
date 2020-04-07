@@ -1,6 +1,7 @@
 <?php
 
-namespace Projet5\config;
+namespace App\config;
+use App\src\controller\FrontController;
 use Exception;
 
 class Router
@@ -17,15 +18,14 @@ class Router
             if(isset($_GET['route']))
             {
                 if($_GET['route'] === 'estate'){
-                    $frontController->estate($_GET['estateId']);
+                    $this->frontController->estate($_GET['estateId']);
                 }
                 else{
                     echo 'page inconnue';
                 }
             }
             else{
-               
-                $frontController->home();
+                $this->frontController->home();
             }
         }
         catch (Exception $e)

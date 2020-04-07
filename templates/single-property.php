@@ -1,8 +1,5 @@
 <?php
 
-require "..\src\DAO\DAO.php";
-require "..\src\DAO\EstateDAO.php";
-
 include 'header.php';
 ?>
 
@@ -16,9 +13,7 @@ include 'header.php';
                     </div>
 
                     <?php
-                    $estate = new Estate();
-                    $estates = $estate->getEstate();
-                    $estate = $estate->fetch()
+                    $estate = $estates->fetch()
                     ?>
 
                     <!-- Single Property Post Start -->
@@ -85,7 +80,7 @@ include 'header.php';
 
                                             <div class="single-pt-list">
                                                 <ul>        
-                                                    <li><strong>Type:</strong>a louer</li>
+                                                    <li><strong>Type:</strong><?= htmlspecialchars($estate->type);?></li>
                                                     <li><strong>Catégorie:  </strong>Appartement</li>
                                                     <li><strong>Surface carrez</strong>125 m2</li>
                                                     <li><strong>Pièces :</strong>05</li>

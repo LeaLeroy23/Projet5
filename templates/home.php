@@ -1,7 +1,8 @@
 
 <?php
 require "..\src\DAO\DAO.php";
-require "..\src\DAO\EstateDAO.php";
+
+use App\src\DAO\EstateDAO;
 
 ?>
 
@@ -11,59 +12,57 @@ require 'header.php';
 
         <!-- Slider area Start -->   
         <section class="slider-section ">
-            <div class="item">
+                <?php
+                $estate = new EstateDAO();
+                while($estate = $estates->fetch())
+                {
+                ?>
 
-            <?php
-            $estate = new Estate();
-            $estates = $estate->getEstates();
-            while($estate = $estates->fetch())
-            {
-            ?>
                 <div class="item">
                     <img src="../public/img/slider/1.jpg" alt="">
                     <div class="slide-content carousel-caption hidden-xs">
                         <div class="slide-content-top">
-                            <h1><?= htmlspecialchars($estate->title);?></h1>
-                            <h2><?= htmlspecialchars($estate->zip_code);?></h2>
-                            <p><?= htmlspecialchars($estate->excerpt);?></p>
+                            <h1></h1>
+                            <h2></h2>
+                            <p></p>
                         </div>
                         <div class="slide-property-detail">
                             <ul>
-                                <li><?= htmlspecialchars($estate->rooms);?> Pièces</li>
-                                <li><?= htmlspecialchars($estate->bedrooms);?> Chambres</li>
-                                <li><?= htmlspecialchars($estate->area);?> m2</li>
-                                <li><?= htmlspecialchars($estate->price);?> €</li>
-                                <li class="slider-btn"><a href="single.php?estateId=<?= htmlspecialchars($estate->id);?>">A Vendre</a></li> 
+                                <li> Pièces</li>
+                                <li> Chambres</li>
+                                <li> m2</li>
+                                <li> €</li>
+                                <li class="slider-btn"><a href="single-property.php">A Vendre</a></li> 
                             </ul>
                         </div>
                     </div>
                 </div>
 
-            <?php
-            }
-            $estates->closeCursor();
-            ?>
+                <?php
+                }
+                $estates->closeCursor();
+                ?>
 
-            </div>
-            <div class="item">
-                <img src="../public/img/slider/2.jpg" alt="">
-                <div class="slide-content carousel-caption hidden-xs">
-                    <div class="slide-content-top">
-                        <h1>Titre</h1>
-                        <h2>06800, Cagnes sur mer</h2>
-                        <p></p>
-                    </div>
-                    <div class="slide-property-detail">
-                        <ul>
-                            <li>3 Pièces</li>
-                            <li>2 Chambres</li>
-                            <li> 75 M2</li>
-                            <li> 1050 €</li>
-                            <li class="slider-btn"><a href="single-property.php">A Louer</a></li> 
-                        </ul>
+                <div class="item">
+                    <img src="../public/img/slider/1.jpg" alt="">
+                    <div class="slide-content carousel-caption hidden-xs">
+                        <div class="slide-content-top">
+                            <h1></h1>
+                            <h2></h2>
+                            <p></p>
+                        </div>
+                        <div class="slide-property-detail">
+                            <ul>
+                                <li> Pièces</li>
+                                <li> Chambres</li>
+                                <li> m2</li>
+                                <li> €</li>
+                                <li class="slider-btn"><a href="single-property.php">A Vendre</a></li> 
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
+            
         </section>
         <!-- Slider Area End -->
         
@@ -131,7 +130,7 @@ require 'header.php';
                 <div class="row">
 
                 <?php
-                $estate = new Estate();
+                $estate = new EstateDAO();
                 $estates = $estate->getEstates();
                 while($estate = $estates->fetch())
                 {

@@ -1,27 +1,26 @@
 <?php
 
-namespace Projet5\src\controller;
-
-use Projet5\src\DAO\EstateDAO;
-
+namespace App\src\controller;
+use App\src\DAO\EstateDAO;
 
 class FrontController
 {
     private $estateDAO;
 
     public function __construct(){
-        $this->estateDAO = new EstateDAO;
+        $this->estateDAO = new EstateDAO();
     }
 
-    public function home(){
-        
-        $estates = $estate->getEstates();
+    public function home()
+    {
+        $estates = $this->estateDAO->getEstates();
         require '../templates/home.php';
     }
 
-    public function estate($estateId){
-        $estates = $estate->getEstate($estateId);
+    public function estate($estateId)
+    {
+        $estates = $this->estateDAO->getEstate($estateId);
         require '../templates/single-property.php';
     }
-
+    
 }
