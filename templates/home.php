@@ -1,38 +1,29 @@
-
 <?php
-require "..\src\DAO\DAO.php";
-
-use App\src\DAO\EstateDAO;
-
-?>
-
-<?php
-require 'header.php';
+$this->title = "Accueil";
 ?>
 
         <!-- Slider area Start -->   
         <section class="slider-section ">
-                <?php
-                $estate = new EstateDAO();
-                while($estate = $estates->fetch())
-                {
-                ?>
+        <?php
+        foreach ($estates as $estate)
+        {
+            ?>
 
                 <div class="item">
                     <img src="../public/img/slider/1.jpg" alt="">
                     <div class="slide-content carousel-caption hidden-xs">
                         <div class="slide-content-top">
-                            <h1></h1>
+                            <h1><?= htmlspecialchars($estate->getTitle());?></h1>
                             <h2></h2>
                             <p></p>
                         </div>
                         <div class="slide-property-detail">
                             <ul>
-                                <li> Pièces</li>
-                                <li> Chambres</li>
+                                <li><?= htmlspecialchars($estate->getRooms());?> Pièces</li>
+                                <li><?= htmlspecialchars($estate->getBedrooms());?> Chambres</li>
                                 <li> m2</li>
-                                <li> €</li>
-                                <li class="slider-btn"><a href="single-property.php">A Vendre</a></li> 
+                                <li><?= htmlspecialchars($estate->getPrice());?> €</li>
+                                <li class="slider-btn"><a href="../public/index.php?route=estate&estateId=<?= htmlspecialchars($estate->getId());?>"><?= htmlspecialchars($estate->getTitle());?></a>A vendre</li> 
                             </ul>
                         </div>
                     </div>
@@ -40,7 +31,6 @@ require 'header.php';
 
                 <?php
                 }
-                $estates->closeCursor();
                 ?>
 
                 <div class="item">
@@ -540,7 +530,3 @@ require 'header.php';
             </div>
         </section>
         <!-- Partners Area End Hear-->
-
-<?php
-require 'footer.php';
-?>

@@ -3,20 +3,39 @@
 //Pour toutes les classes dans DAO
 namespace App\src\DAO;
 
-//Uniquement pour la classe DAO
-use PDO;
-use Exception;
+use App\src\model\Estate;
 
 class EstateDAO extends DAO
 {
+    private function buildObject($row){
+        $estate = new Estate;
+        $estate->setId($row['id']);
+        $estate->setTtitle($row['title']);
+        $estate->setRooms($row['rooms']);
+        $estate->setBedRooms($row['bedrooms']);
+        $estate->setBathrooms($row['bathrooms']);
+        $estate->setPrice($row['price']);
+        return $estate;
+    }
+
     public function getEstates(){
         $sql ='SELECT * FROM estate ORDER BY id DESC';
-        return $this->createQuery($sql);
+        $result = $this->createQuery($sql);
+        $estates = [];
+        foreach ($result as $row){
+            $estateId = $row['id'];
+            $estates[$estateId] = $this->buidObject($row);
+        }
+        $result->closeCursor();
+        return $estates;
     }
 
     public function getEstate($estateId)
     {
         $sql= 'SELECT * FROM estate WHERE id = ?';
-        return $this->createQuery($sql, [$estateId]);
+        $result = $this->createQuery($sql, [$estateId]);
+        $estate = $result->fetch();
+        $result->closeCursor();
+        return $this->buildObject($estate);
     }
 }

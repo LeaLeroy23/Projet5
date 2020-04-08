@@ -1,26 +1,34 @@
 <?php
 
 namespace App\src\controller;
+
 use App\src\DAO\EstateDAO;
+use App\src\model\View;
 
 class FrontController
 {
     private $estateDAO;
+    private $view;
 
     public function __construct(){
         $this->estateDAO = new EstateDAO();
+        $this->view = new View();
     }
 
     public function home()
     {
         $estates = $this->estateDAO->getEstates();
-        require '../templates/home.php';
+        return $this->view->render('home', [
+            'estates' => $estates
+        ]);
     }
 
     public function estate($estateId)
     {
-        $estates = $this->estateDAO->getEstate($estateId);
-        require '../templates/single-property.php';
+        $estate = $this->estateDAO->getEstate($estateId);
+        return $this->view->render('single', [
+            'estate' => $estate
+        ]);
     }
     
 }

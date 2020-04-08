@@ -9,12 +9,8 @@ include 'header.php';
             <div class="row">
                 <div class="col-md-12 padding-right-zero">
                     <div class="property-page-title">
-                        <h2>Titre</h2>
+                        <h2><?= htmlspecialchars($estate->getTitle());?></h2>
                     </div>
-
-                    <?php
-                    $estate = $estates->fetch()
-                    ?>
 
                     <!-- Single Property Post Start -->
                     <div class="single-property-post">
@@ -66,9 +62,7 @@ include 'header.php';
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="description">
                                     <div class="description-tab-content tab-content-padding">
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                                        <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-                                        <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut</p>
+                                        <p>Description</p>
                                         <h4>Property Attachments</h4>
                                         
                                     </div>
@@ -83,9 +77,9 @@ include 'header.php';
                                                     <li><strong>Type:</strong><?= htmlspecialchars($estate->type);?></li>
                                                     <li><strong>Catégorie:  </strong>Appartement</li>
                                                     <li><strong>Surface carrez</strong>125 m2</li>
-                                                    <li><strong>Pièces :</strong>05</li>
-                                                    <li><strong>Chambres :</strong>04</li>
-                                                    <li><strong>Salle de bain :</strong>01</li>
+                                                    <li><strong>Pièces :</strong><?= htmlspecialchars($estate->getRooms());?></li>
+                                                    <li><strong>Chambres :</strong><?= htmlspecialchars($estate->getBedrooms());?></li>
+                                                    <li><strong>Salle de bain :</strong><?= htmlspecialchars($estate->getBathrooms());?></li>
                                                     <li><strong>Extérieur : terrasse</strong></li>
                                                     <li><strong>Garage / Parking :</strong>Garage</li>
                                                     <li><strong>Exposition:</strong>Sud Est</li>
@@ -219,9 +213,7 @@ include 'header.php';
                         <!-- End of Similar Category Post -->
                     </div>
                     <!-- Single Property Post End -->
-                    <?php
-                    $estates->closeCursor();
-                    ?>
+
 
                 </div>
                 <div class="col-md-4 padding-left-65">
