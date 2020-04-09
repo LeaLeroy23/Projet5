@@ -1,7 +1,5 @@
-<?php
 
-include 'header.php';
-?>
+<?php $this->title = "Bien"; ?>
 
     <!-- Single Property Area Start-->
     <div class="section property-page-content-area area-pading">
@@ -261,7 +259,3 @@ include 'header.php';
         </div>
     </div>
     <!--Single Post Main content end -->
-
-<?php
-include 'footer.php';
-?>

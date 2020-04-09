@@ -1,9 +1,8 @@
-<?php
-$this->title = "Accueil";
-?>
+<?php $this->title = "Accueil"; ?>
 
         <!-- Slider area Start -->   
         <section class="slider-section ">
+
         <?php
         foreach ($estates as $estate)
         {
@@ -47,7 +46,7 @@ $this->title = "Accueil";
                                 <li> Chambres</li>
                                 <li> m2</li>
                                 <li> €</li>
-                                <li class="slider-btn"><a href="single-property.php">A Vendre</a></li> 
+                                <li class="slider-btn">A Vendre</li> 
                             </ul>
                         </div>
                     </div>
@@ -120,10 +119,8 @@ $this->title = "Accueil";
                 <div class="row">
 
                 <?php
-                $estate = new EstateDAO();
-                $estates = $estate->getEstates();
-                while($estate = $estates->fetch())
-                {
+               foreach ($estates as $estate)
+               {
                 ?>
 
                     <div class="col-md-4 col-sm-6">
@@ -155,10 +152,10 @@ $this->title = "Accueil";
 
                 <?php
                 }
-                $estates->closeCursor();
                 ?>
 
                     <!-- End of Single properties -->
+
                     <div class="col-md-4 col-sm-6">
                         <div class="single-featured-properties">
                             <div class="properties-image">
@@ -185,6 +182,8 @@ $this->title = "Accueil";
                             </div>
                         </div>
                     </div>
+
+            
                     <!-- End of Single properties -->
                     <div class="col-md-4 col-sm-6">
                         <div class="single-featured-properties">
@@ -253,6 +252,11 @@ $this->title = "Accueil";
                 <!-- End of Recent Properties Title Area-->
                 <!--Start of Recent Single Recent Properties  Area -->
                 <div class="row">
+
+                <?php
+                foreach ($estates as $estate)
+                {
+                ?>
                     <div class="col-md-4 col-sm-6">
                         <div class="single-featured-properties">
                             <div class="properties-image">
@@ -279,6 +283,9 @@ $this->title = "Accueil";
                             </div>
                         </div>
                     </div>
+                <?php
+                }
+                ?>
                     <!-- End of Single properties -->
                     <div class="col-md-4 col-sm-6">
                         <div class="single-featured-properties">

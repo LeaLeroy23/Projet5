@@ -1,7 +1,6 @@
 <?php
 
 namespace App\src\controller;
-
 use App\src\DAO\EstateDAO;
 use App\src\model\View;
 
@@ -10,7 +9,8 @@ class FrontController
     private $estateDAO;
     private $view;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->estateDAO = new EstateDAO();
         $this->view = new View();
     }
@@ -30,5 +30,4 @@ class FrontController
             'estate' => $estate
         ]);
     }
-    
 }

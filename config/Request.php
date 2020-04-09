@@ -1,6 +1,6 @@
 <?php
 
-namespace Projet5\config;
+namespace App\config;
 
 class Request
 {

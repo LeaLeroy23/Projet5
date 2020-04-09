@@ -3,7 +3,7 @@
     <head>
         <!-- Basic page needs 
         ======================================-->
-        <title>Hestia <?= $title ?> </title>
+        <title><?= $title ?></title>
         <meta charset="utf-8">
         <meta name="author" content="">
         <meta name="description" content="">
@@ -66,10 +66,10 @@
 
          <!-- Theme dashboard CSS File 
         ==========================================================-->
-        <link rel="stylesheet" href="../public/dashboard.css">
-        <link rel="stylesheet" href="../public/dashboard.min.css">
-        <link rel="stylesheet" href="../public/mdb.min.css">
-        <link rel="stylesheet" href="../public/mdb.lite.min.css">
+        <link rel="stylesheet" href="../public/css/dashboard.css">
+        <link rel="stylesheet" href="../public/css/dashboard.min.css">
+        <link rel="stylesheet" href="../public/css/mdb.min.css">
+        <link rel="stylesheet" href="../public/css/mdb.lite.min.css">
 
         <!-- responsive CSS 
         ==========================================================-->
@@ -185,8 +185,9 @@
         <!-- mobile-menu-area end -->  
 
         <div id="content">
-            <?= $content ?>
+            <?= $content; ?>
         </div>
+        
 
         <!-- Footer Area Start Hear-->
         <footer class="footer-area">
