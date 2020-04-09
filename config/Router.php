@@ -35,6 +35,9 @@ class Router
                 elseif ($_GET['route'] === 'addArticle'){
                     $this->backController->addEstate($_POST);
                 }
+                elseif ($_GET['route'] === 'dashboard'){
+                    $this->frontController->dashboard();
+                }
                 else{
                     $this->errorController->errorNotFound();
                 }

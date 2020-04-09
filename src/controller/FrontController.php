@@ -29,6 +29,16 @@ class FrontController
         ]);
     }
 
+    public function dashboard()
+    {
+        $estates = $this->estateDAO->getEstates();
+        $agents = $this->agentDAO->getAgents();
+        return $this->view->render('dashboard', [
+            'estates' => $estates,
+            'agents' => $agents
+        ]);
+    }
+
     public function estate($estateId)
     {
         $estate = $this->estateDAO->getEstate($estateId);
