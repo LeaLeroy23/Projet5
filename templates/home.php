@@ -22,7 +22,7 @@
                                 <li><?= htmlspecialchars($estate->getBedrooms());?> Chambres</li>
                                 <li> m2</li>
                                 <li><?= htmlspecialchars($estate->getPrice());?> €</li>
-                                <li class="slider-btn"><a href="../public/index.php?route=estate&estateId=<?= htmlspecialchars($estate->getId());?>"><?= htmlspecialchars($estate->getTitle());?></a>A vendre</li> 
+                                <li class="slider-btn"><a href="../public/index.php?route=estate&estateId=<?= htmlspecialchars($estate->getId());?>">A vendre</a></li> 
                             </ul>
                         </div>
                     </div>
@@ -144,7 +144,7 @@
                                 <p class="detail-text">Description courte</p>
                                 <div class="price-detail">
                                     <p class="price-range pull-left">2350 000€</p>
-                                    <a href="single-property.php" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
+                                    <a href="../public/index.php?route=estate&estateId=<?= htmlspecialchars($estate->getId());?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -400,6 +400,12 @@
                     </div>
                 </div>
                 <div class="row">
+
+                <?php
+                    foreach ($agents as $agent)
+                    {
+                ?>
+
                     <div class="col-md-3 col-sm-6">
                         <div class="single-agent wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".3s">
                             <div class="agentimg-social">
@@ -414,11 +420,15 @@
                                 <div class="overlay"></div>
                             </div>
                             <div class="agent-detail text-center">
-                                <h3><a href="single-agent.html">Donovan Blumveast</a> </h3>
-                                <p>Gérant</p>
+                                <h3><a href="single-agent.html"><?= htmlspecialchars($agent->getFirstname());?><?= htmlspecialchars($agent->getLastname());?></a> </h3>
+                                <p><?= htmlspecialchars($agent->getFunction());?></p>
                             </div>
                         </div>
                     </div> 
+
+                <?php
+                    }
+                ?>
                     <!-- End of Single Agent-->
                     <div class="col-md-3 col-sm-6">
                         <div class="single-agent wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".5s">

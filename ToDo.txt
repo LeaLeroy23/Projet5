@@ -1,10 +1,10 @@
-Créer le repository pour le projet
-Créer le projet vide
-Créer le routeur
-Créer le premier contrôleur (front)
-Créer la page d'accueil
-Ajouter le template de base
-Créer le deuxième contrôleur (back)
+Créer le repository pour le projet [X]
+Créer le projet vide [X]
+Créer le routeur [X]
+Créer le premier contrôleur (front) [X]
+Créer la page d'accueil [X]
+Ajouter le template de base [X]
+Créer le deuxième contrôleur (back) [X]
 Créer le tableau de bord
 Créer l'ajout de compte
 Créer la connexion

@@ -26,8 +26,14 @@ class Router
                 if($_GET['route'] === 'estate'){
                     $this->frontController->estate($_GET['estateId']);
                 }
+                elseif($_GET['route'] === 'agent'){
+                    $this->frontController->agent($_GET['agentId']);
+                }
+                elseif($_GET['route'] === 'login'){
+                    $this->frontController->login($_POST);
+                }
                 elseif ($_GET['route'] === 'addArticle'){
-                    $this->backController->addArticle($_POST);
+                    $this->backController->addEstate($_POST);
                 }
                 else{
                     $this->errorController->errorNotFound();

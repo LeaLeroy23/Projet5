@@ -12,7 +12,7 @@ class EstateDAO extends DAO
         $estate->setId($row['id']);
         $estate->setTtitle($row['title']);
         $estate->setRooms($row['rooms']);
-        $estate->setBedRooms($row['bedrooms']);
+        $estate->setBedrooms($row['bedrooms']);
         $estate->setBathrooms($row['bathrooms']);
         $estate->setPrice($row['price']);
         return $estate;
