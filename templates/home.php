@@ -159,7 +159,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-featured-properties">
                             <div class="properties-image">
-                                <a href="single-property.php"><img src="../public/img/properties/2.jpg" alt=""></a>
+                                <a href="#"><img src="../public/img/properties/2.jpg" alt=""></a>
                             </div>
                             <div class="sale-tag">
                                 <p>A Vendre</p>
@@ -177,7 +177,7 @@
                                 <p class="detail-text">Description courte</p>
                                 <div class="price-detail">
                                     <p class="price-range pull-left">Prix €</p>
-                                    <a href="single-property.php" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
+                                    <a href="#" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -188,7 +188,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-featured-properties">
                             <div class="properties-image">
-                                <a href="single-property.php"><img src="../public/img/properties/3.jpg" alt=""></a>
+                                <a href="#"><img src="../public/img/properties/3.jpg" alt=""></a>
                             </div>
                             <div class="sale-tag">
                                 <p>A Vendre</p>
@@ -206,7 +206,7 @@
                                 <p class="detail-text">Description courte</p>
                                 <div class="price-detail">
                                     <p class="price-range pull-left"> 1 230 000 €</p>
-                                    <a href="single-property.php" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
+                                    <a href="#" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -215,7 +215,7 @@
                     <div class="col-md-4 col-sm-6 hidden-md hidden-lg">
                         <div class="single-featured-properties">
                             <div class="properties-image">
-                                <a href="single-property.php"><img src="../public/img/properties/3.jpg" alt=""></a>
+                                <a href="#"><img src="../public/img/properties/3.jpg" alt=""></a>
                             </div>
                             <div class="sale-tag">
                                 <p>A Vendre</p>
@@ -233,7 +233,7 @@
                                 <p class="detail-text">Description courte </p>
                                 <div class="price-detail">
                                     <p class="price-range pull-left"> 260 000 €</p>
-                                    <a href="single-property.php" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
+                                    <a href="#" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -245,7 +245,7 @@
                     <div class="col-md-12">
                         <div class="properties-title margintop100">
                             <h2>Les biens à la location</h2>
-                            <a href="properties_rent.php" class="view-more">Voir tout</a>
+                            <a href="#" class="view-more">Voir tout</a>
                         </div>
                     </div>
                 </div> 
@@ -260,7 +260,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-featured-properties">
                             <div class="properties-image">
-                                <a href="single-property.php"><img src="../public/img/properties/4.jpg" alt=""></a>
+                                <a href="../public/index.php?route=estate&estateId=<?= htmlspecialchars($estate->getId());?>"><img src="../public/img/properties/4.jpg" alt=""></a>
                             </div>
                             <div class="rent-tag">
                                 <p>A louer</p>
@@ -273,12 +273,12 @@
                                 </ul>
                             </div>
                             <div class="properties-content">
-                                <h3><a href="single-property.php">Titre</a></h3>
+                                <h3><a href="../public/index.php?route=estate&estateId=<?= htmlspecialchars($estate->getId());?>">Titre</a></h3>
                                 <p><i class="fa fa-map-marker"></i> ville,code postal</p>
                                 <p class="detail-text">Description courte</p>
                                 <div class="price-detail">
                                     <p class="price-range pull-left">995 €</p>
-                                    <a href="single-property.php" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
+                                    <a href="../public/index.php?route=estate&estateId=<?= htmlspecialchars($estate->getId());?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>

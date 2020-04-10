@@ -1,7 +1,3 @@
-<?php
-include 'template-dashboard.php';
-?>
-
 <section id="main-content">
     <section class="wrapper">
        

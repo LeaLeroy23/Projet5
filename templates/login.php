@@ -1,6 +1,4 @@
-<?php
-include 'header.php';
-?>
+<?php $this->title = "Connexion"; ?>
 
     <!--Start Contact page content hear-->
     <!--Contact page contact form area start-->
@@ -13,7 +11,7 @@ include 'header.php';
                             <h2 class="text-uppercase">Connectez-vous</h2>
                             <p>En cas de problème contactez contact@stratos-consulting.fr</p>
                         </div>
-                        <form action="dashboard.php" method="POST">
+                        <form action="../public/index.php?route=dashboard" method="POST">
                             <input type="text" name="username" placeholder="Identifiant">
                             <input type="text" name="password" placeholder="Mot de passe">
                             <a href="#">mot de passe oublié ?</a>
@@ -26,7 +24,3 @@ include 'header.php';
             </div>
         </div>
     </section>
-
-<?php
-include 'footer.php';
-?>
