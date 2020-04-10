@@ -10,6 +10,10 @@
                         <h2>Nombre de propriété</h2>
                     </div>
                     <!-- Start of Single Property -->
+                    <?php
+                        foreach ($estates as $estate)
+                        {
+                    ?>
                     <div class="column-single-property">
                         <div class="column-property-img-wrap">
                             <div class="column-property-img">
@@ -28,7 +32,7 @@
                         </div>
                         <div class="column-property-content-wrap">
                             <div class="column-property-content">
-                                <h2><a href="single-property.php">Titre - Prix €</a> </h2>
+                                <h2><a href="single-property.php"><?= htmlspecialchars($estate->getTitle());?> - Prix €</a> </h2>
                                 <h3>Ville, Code postal</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetuer adipising elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnisdis parturient montes, nascetur ridiculus mus.</p>
                             </div>
@@ -38,13 +42,16 @@
                         </div>
                     </div>
                     <!-- End of Single Property -->
+                    <?php
+                        }
+                    ?>
 
                     
                     <div class="scroll-for-btn">
                         <a href="single-property.php">Voir plus</a>
                     </div>
                 </div>
-                
+
                 <div class="col-md-4 col-sm-12 padding-left-65">
                     <div class="column-widget">
                         <div class="feature-property-widget">

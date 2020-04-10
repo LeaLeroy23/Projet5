@@ -39,14 +39,14 @@
             <header class="header black-bg">
                 
                 <!--logo start-->
-                <a href="../public/index.php" class="logo"><img src="../public/img/logo-min.png" alt=""></a>
+                <a href="index.php" class="logo"><img src="../public/img/logo-min.png" alt=""></a>
                 <!--logo end-->
                 <div class="nav notify-row" id="top_menu">
                     <!--  notification start -->
                     <ul class="nav top-menu">
                         <!-- settings start -->
                         <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="../public/index.php?route=all_estate">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="index.php?route=all_estate">
                             <i class="fa fa-home"></i>
                             <span class="badge bg-theme">0</span>
                             </a>
@@ -54,7 +54,7 @@
                         <!-- settings end -->
                     <!-- inbox dropdown start-->
                     <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="../public/index.php?route=all_users">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.php?route=all_users">
                         <i class="fa fa-users"></i>
                         <span class="badge bg-theme">0</span>
                         </a>
@@ -62,7 +62,7 @@
                     <!-- inbox dropdown end -->
                     <!-- notification dropdown start-->
                     <li id="header_notification_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="../public/index.php?route=all_estate">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="public/index.php?route=all_estate">
                         <i class="fa fa-edit"></i>
                         <span class="badge bg-warning">0</span>
                         </a>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="top-menu">
                     <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="../public/index.php?route=logout">Déconnexion</a></li>
+                    <li><a class="logout" href="index.php?route=logout">Déconnexion</a></li>
                     </ul>
                 </div>
                 </header>
@@ -87,38 +87,45 @@
                     <div id="sidebar" class="nav-collapse ">
                         <!-- sidebar menu start-->
                         <ul class="sidebar-menu" id="nav-accordion">
-                            <p class="centered"><a href="../public/index.php?route=profile"><img src="../public/img/agent/ui-sam.jpg" class="img-circle" width="80"></a></p>
+                            <p class="centered"><a href="index.php?route=profile"><img src="../public/img/agent/ui-sam.jpg" class="img-circle" width="80"></a></p>
                             <h5 class="centered">Donovan Blumveast</h5>
                             <li class="mt">
-                                <a href="../public/index.php?route=dashboard">
+                                <a href="index.php?route=dashboard">
                                 <i class="fa fa-dashboard"></i>
                                 <span>Tableau de bord</span>
                                 </a>
                             </li>
 
                             <li class="mt">
-                                <a href="../public/index.php?route=add_estate">
+                                <a href="index.php?route=add_estate">
                                 <i class="fa fa-plus"></i>
                                 <span>Nouvelle annonce</span>
                                 </a>
                             </li>
 
                             <li class="mt">
-                                <a href="../public/index.php?route=all_estate">
+                                <a href="index.php?route=all_estate">
                                 <i class="fa fa-copy"></i>
                                 <span>Les annonces</span>
                                 </a>
                             </li>
 
                             <li class="mt">
-                                <a href="../public/index.php?route=all_agents">
+                                <a href="index.php?route=all_agents">
                                 <i class="fa fa-users"></i>
                                 <span>Les agents</span>
                                 </a>
                             </li>
 
                             <li class="mt">
-                                <a href="../public/index.php?route=profile">
+                                <a href="index.php?route=add_agent">
+                                <i class="fa fa-plus"></i>
+                                <span>Nouvelle Agent</span>
+                                </a>
+                            </li>
+
+                            <li class="mt">
+                                <a href="index.php?route=profile">
                                 <i class="fa fa-user-circle"></i>
                                 <span>Mon Profil</span>
                                 </a>

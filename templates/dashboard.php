@@ -1,3 +1,4 @@
+<?php $this->title = "Tableau de bord"; ?>
 <section id="main-content">
     <section class="wrapper">
        

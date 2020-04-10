@@ -126,7 +126,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-featured-properties">
                             <div class="properties-image">
-                                <a href="single-property.php"><img src="../public/img/properties/1.jpg" alt=""></a>
+                                <a href="index.php?route=estate&estateId=<?= htmlspecialchars($estate->getId());?>"><img src="/img/properties/1.jpg" alt=""></a>
                             </div>
                             <div class="sale-tag">
                                 <p>A Vendre</p>
@@ -144,7 +144,7 @@
                                 <p class="detail-text">Description courte</p>
                                 <div class="price-detail">
                                     <p class="price-range pull-left">2350 000€</p>
-                                    <a href="../public/index.php?route=estate&estateId=<?= htmlspecialchars($estate->getId());?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
+                                    <a href="index.php?route=estate&estateId=<?= htmlspecialchars($estate->getId());?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -260,7 +260,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-featured-properties">
                             <div class="properties-image">
-                                <a href="../public/index.php?route=estate&estateId=<?= htmlspecialchars($estate->getId());?>"><img src="../public/img/properties/4.jpg" alt=""></a>
+                                <a href="index.php?route=estate&estateId=<?= htmlspecialchars($estate->getId());?>"><img src="../public/img/properties/4.jpg" alt=""></a>
                             </div>
                             <div class="rent-tag">
                                 <p>A louer</p>
@@ -273,12 +273,12 @@
                                 </ul>
                             </div>
                             <div class="properties-content">
-                                <h3><a href="../public/index.php?route=estate&estateId=<?= htmlspecialchars($estate->getId());?>">Titre</a></h3>
+                                <h3><a href="index.php?route=estate&estateId=<?= htmlspecialchars($estate->getId());?>">Titre</a></h3>
                                 <p><i class="fa fa-map-marker"></i> ville,code postal</p>
                                 <p class="detail-text">Description courte</p>
                                 <div class="price-detail">
                                     <p class="price-range pull-left">995 €</p>
-                                    <a href="../public/index.php?route=estate&estateId=<?= htmlspecialchars($estate->getId());?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
+                                    <a href="index.php?route=estate&estateId=<?= htmlspecialchars($estate->getId());?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -420,7 +420,7 @@
                                 <div class="overlay"></div>
                             </div>
                             <div class="agent-detail text-center">
-                                <h3><a href="single-agent.html"><?= htmlspecialchars($agent->getFirstname());?><?= htmlspecialchars($agent->getLastname());?></a> </h3>
+                                <h3><a href="index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>"><?= htmlspecialchars($agent->getFirstname());?><?= htmlspecialchars($agent->getLastname());?></a> </h3>
                                 <p><?= htmlspecialchars($agent->getFunction());?></p>
                             </div>
                         </div>

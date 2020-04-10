@@ -1,7 +1,3 @@
-<?php
-include 'header.php';
-?>
-
     <!--Start Contact page content hear-->
     <!--Contact page contact form area start-->
     <section class="contact-form-main area-pading">
@@ -31,7 +27,3 @@ include 'header.php';
         <div id="contactMap"></div>
     </div>
     <!--End of Contact page content heat-->
-
-<?php
-include 'footer.php';
-?>

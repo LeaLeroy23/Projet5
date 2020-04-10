@@ -105,7 +105,7 @@
                     <div class="col-md-7 col-sm-6">
                         <div class="login-bookmark-area">
                            <div class="register-login">
-                                <a href="../public/index.php?route=login"><i class="fa fa-user"></i>Connexion</a>
+                                <a href="index.php?route=login"><i class="fa fa-user"></i>Connexion</a>
                            </div>
                            <div class="top-bookmark">
                                <ul>
@@ -127,7 +127,7 @@
                     <div class="col-md-3">
                         <!-- Logo Start -->
                         <div class="logo-wrap">
-                            <a href="../public/index.php"><img src="../public/img/logo.png" alt=""></a>
+                            <a href="index.php"><img src="../public/img/logo.png" alt=""></a>
                         </div>
                         <!-- Logo End -->
                     </div>
@@ -136,15 +136,15 @@
                         <div class="main-menu">
                             <nav>
                                 <ul id="nav">
-                                    <li class="active"><a href="../public/index.php">Accueil</a></li>
+                                    <li class="active"><a href="index.php">Accueil</a></li>
                                     <li><a href="#">Biens</a>
                                         <ul class="sub-menu">
-                                            <li></li><a href="../public/index.php?route=properties">Biens à la Vente</a></li>
-                                            <li></li><a href="../public/index.php?route=properties">Biens à la location</a></li>
+                                            <li></li><a href="index.php?route=properties">Biens à la Vente</a></li>
+                                            <li></li><a href="index.php?route=properties">Biens à la location</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="../public/index.php?route=team">L'équipe</a></li>
-                                    <li><a href="../public/index.php?route=contact">Contact</a></li>
+                                    <li><a href="index.php?route=team">L'équipe</a></li>
+                                    <li><a href="index.php?route=contact">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -161,20 +161,20 @@
                     <div class="col-md-12">
                         <div class="mobile-menu">
                             <div class="logo">
-                                <a href="../public/index.php"><img src="../public/img/logo2.jpg" alt="" /></a>
+                                <a href="index.php"><img src="../public/img/logo2.jpg" alt="" /></a>
                             </div>
                             <nav id="mobile-menu">
                                 <ul>
                                     <li><a href="../public/index.php">Accueil</a></li>
                                     <li><a href="#">Biens</a>
                                         <ul>
-                                            <li><a href="../public/index.php?route=properties">Biens à la vente</a></li>
+                                            <li><a href="index.php?route=properties">Biens à la vente</a></li>
                                             <li><a href="../public/index.php?route=properties">Biens à la location</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="../public/index.php?route=team">L'équipe</a></li>
+                                    <li><a href="index.php?route=team">L'équipe</a></li>
                                    
-                                    <li><a href="../public/index.php?route=contact">Contact</a></li>
+                                    <li><a href="index.php?route=contact">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>                  
