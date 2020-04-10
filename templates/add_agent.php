@@ -2,6 +2,7 @@
 
 <section id="main-content">
     <section class="wrapper">
+    <?= $this->session->show('add_agent'); ?>
         <h3><i class="fa fa-angle-right"></i> Ajouter un agent</h3>        
         <form class="form-horizontal style-form" method='POST' action="../public/index.php?route=all_agents" enctype="multipart/form-data">
             <div class="row mt">
@@ -11,8 +12,16 @@
 
                         <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Fonction</label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-4">
                                 <input type="text" class="form-control" name="function" placeholder="Fonction">
+                            </div>
+                            <label class="col-sm-2 col-sm-2 control-label">Autorisation</label>
+                            <div class="col-sm-4">
+                                <select name="autorisation" class="form-control">
+                                    <option value="Superadministrateur">Superadministrateur</option>
+                                    <option value="administrateur">Administrateur</option>
+                                    <option value="contributeur">Contributeur</option>
+                                </select>
                             </div>
                         </div>
 
@@ -28,27 +37,22 @@
                             </div>
                         </div>
 
-                        
                         <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">Autorisation</label>
-                            <div class="col-sm-10">
-                                <select name="autorisation" class="form-control">
-                                    <option value="administrateur">Administrateur</option>
-                                    <option value="contributeur">Contributeur</option>
-                                    
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-2 col-sm-2 control-label">Téléphone</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" name="phone" placeholder="Téléphone">
-                            </div>
-
                             <label class="col-sm-2 col-sm-2 control-label">Email</label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" name="email" placeholder="Email">
+                            </div>
+                            <label class="col-sm-2 col-sm-2 control-label">Mot de passe</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="password" placeholder="password">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-sm-2 col-sm-2 control-label">Téléphone</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="phone" placeholder="Téléphone">
                             </div>
                         </div>
 
