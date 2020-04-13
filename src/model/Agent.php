@@ -7,27 +7,27 @@ class Agent
     
     private $id;
 
-    private $firstname;
+    private $function;
 
     private $lastname;
+
+    private $firstname;
 
     private $phone;
 
     private $email;
 
-    private $function;
+    //private $description;
 
-    private $description;
-
-    private $avatar;
+    //private $avatar;
 
     private $password;
 
-    private $token;
+    //private $token;
 
     private $status;
 
-    private $created_at;
+    //private $created_at;
 
     public function getId()
     {
@@ -37,6 +37,26 @@ class Agent
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    public function getFunction()
+    {
+        return $this->function;
+    }
+
+    public function setFunction($function)
+    {
+        $this->function = $function;
+    }
+
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
     }
 
     public function getFirstname()
@@ -49,15 +69,6 @@ class Agent
         $this->firstname = $firstname;
     }
 
-    public function getLastname()
-    {
-        return $this->lastname;
-    }
-
-    public function setLastname($lastname)
-    {
-        $this->lastname = $lastname;
-    }
 
     public function getPhone()
     {
@@ -79,17 +90,6 @@ class Agent
         $this->email = $email;
     }
 
-    public function getFunction()
-    {
-        return $this->function;
-    }
-
-    public function setFunction($function)
-    {
-        $this->function = $function;
-    }
-
-
     public function getAutorisation()
     {
         return $this->autorisation;
@@ -100,7 +100,7 @@ class Agent
         $this->autorisation = $autorisation;
     }
 
-    public function getDescription()
+    /*public function getDescription()
     {
         return $this->description;
     }
@@ -118,7 +118,7 @@ class Agent
     public function setAvatar($avatar)
     {
         $this->avatar = $avatar;
-    }
+    }*/
 
     public function getPassword()
     {
@@ -130,7 +130,7 @@ class Agent
         $this->password = $password;
     }
 
-    public function getToken()
+    /*public function getToken()
     {
         return $this->token;
     }
@@ -138,7 +138,7 @@ class Agent
     public function setToken($token)
     {
         $this->token = $token;
-    }
+    }*/
 
     public function getStatus()
     {
@@ -150,7 +150,7 @@ class Agent
         $this->status = $status;
     }
 
-    public function getCreated_at()
+    /*public function getCreated_at()
     {
         return $this->created_at;
     }
@@ -158,6 +158,6 @@ class Agent
     public function setCreated_at($created_at)
     {
         $this->created_at = $created_at;
-    }
+    }*/
 
 }

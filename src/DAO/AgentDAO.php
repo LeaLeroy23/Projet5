@@ -8,20 +8,19 @@ use App\src\model\Agent;
 
 class AgentDAO extends DAO
 {
-    private function buildObject($row){
+    /*private function buildObject($row){
         $agent = new Agent;
         $agent->setId($row['id']);
-        $agent->setFirstname($row['firstname']);
+        $agent->setFunction($row['function']);
         $agent->setLastname($row['lastname']);
+        $agent->setFirstname($row['firstname']);
         $agent->setAutorisation($row['autorisation']);
         $agent->setPhone($row['phone']);
         $agent->setEmail($row['email']);
-        $agent->setFunction($row['function']);
-        //$agent->setDescription($row['description']);
-        //$agent->setAvatar($row['Avatar']);
-        //$agent->setCreatedAt($row['createdAt']);
+        $agent->setFunction($row['password']);
+        $agent->setFunction($row['status']);
         return $agent;
-    }
+    }*/
 
     public function getAgents(){
         $sql ='SELECT * FROM agent';
@@ -47,17 +46,8 @@ class AgentDAO extends DAO
     public function addAgent(Parameter $post)
     {
         $this->checkEmail($post);
-        $sql = 'INSERT INTO agent (function, lastname, firstname, autorisation, phone, email, password) VALUES (?, ?, ?, ?, ?, ?, ?)';
-        $this->createQuery($sql, [
-            //$post->get('id'), 
-            $post->get('function'), 
-            $post->get('lastname'),
-            $post->get('firstname'), 
-            $post->get('autorisation'),
-            $post->get('phone'), 
-            $post->get('email'),
-            $post->get('password')
-            ]);
+        $sql = 'INSERT INTO agent (id, function, lastname, firstname, autorisation, phone, email, password, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+        $this->createQuery($sql, [$post->get('id'), $post->get('function'), $post->get('lastname'),$post->get('firstname'), $post->get('autorisation'), $post->get('phone'), $post->get('email'), $post->get('password'), $post->get('status') ]);
     }
 
     public function checkEmail(Parameter $post)

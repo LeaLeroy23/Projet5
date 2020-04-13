@@ -1,6 +1,7 @@
 <?php
 
 namespace App\src\constraint;
+
 use App\config\Parameter;
 
 class AgentValidation extends Validation
@@ -49,6 +50,10 @@ class AgentValidation extends Validation
         }
         elseif ($name === 'password') {
             $error = $this->checkPassword($name, $value);
+            $this->addError($name, $error);
+        }
+        elseif ($name === 'status') {
+            $error = $this->checkStatus($name, $value);
             $this->addError($name, $error);
         }
     }
@@ -149,6 +154,19 @@ class AgentValidation extends Validation
         }
         if($this->constraint->maxLength($name, $value, 255)) {
             return $this->constraint->maxLength('password', $value, 255);
+        }
+    }
+
+    private function checkStatus($name, $value)
+    {
+        if($this->constraint->notBlank($name, $value)) {
+            return $this->constraint->notBlank('password', $value);
+        }
+        if($this->constraint->minLength($name, $value, 2)) {
+            return $this->constraint->minLength('password', $value, 2);
+        }
+        if($this->constraint->maxLength($name, $value, 2)) {
+            return $this->constraint->maxLength('password', $value, 2);
         }
     }
 }

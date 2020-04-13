@@ -2,7 +2,9 @@
 
 <section id="main-content">
     <section class="wrapper">
+    
     <?= $this->session->show('add_agent'); ?>
+
         <h3><i class="fa fa-angle-right"></i> Ajouter un agent</h3>        
         <form class="form-horizontal style-form" method='POST' action="../public/index.php?route=addAgent">
             <div class="row mt">
@@ -55,9 +57,15 @@
 
                         <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Téléphone</label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-4">
                                 <input type="text" class="form-control" name="phone" placeholder="Téléphone">
                                 <?= isset($errors['phone']) ? $errors['phone'] : ''; ?>
+                            </div>
+
+                            <label class="col-sm-2 col-sm-2 control-label">Status</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="status" placeholder="Status">
+                                <?= isset($errors['status']) ? $errors['status'] : ''; ?>
                             </div>
                         </div>
 

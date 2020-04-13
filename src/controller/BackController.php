@@ -23,7 +23,6 @@ class BackController extends Controller
             }
             if (!$errors){
                 $this->agentDAO->addAgent($post);
-                echo "submit";
                 $this->session->set('addAgent', 'L\'inscription a bien été prise en compte');
                 header('Location: ../public/index.php?route=all_agents');
             }
