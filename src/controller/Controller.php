@@ -1,14 +1,16 @@
 <?php
 
-namespace Projet5\src\controller;
+namespace App\src\controller;
 
-use Projet5\config\Request;
-use Projet5\src\constraint\Validation;
-use Projet5\src\DAO\EsstateDAO;
-use Projet5\src\model\View;
+use App\config\Request;
+use App\src\constraint\Validation;
+use App\src\DAO\EstateDAO;
+use App\src\DAO\AgentDAO;
+use App\src\model\View;
 
 abstract class Controller{
     protected $estateDAO;
+    protected $agentDAO;
     protected $view;
     private $request;
     protected $get;
@@ -18,6 +20,7 @@ abstract class Controller{
 
     public function __construct(){
         $this->estateDAO = new EstateDAO();
+        $this->agentDAO = new AgentDAO();
         $this->view = new View();
         $this->validation = new Validation();
         $this->request = new Request();

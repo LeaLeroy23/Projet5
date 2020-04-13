@@ -1,6 +1,6 @@
 <?php
 
-namespace Projet5\src\constraint;
+namespace App\src\constraint;
 
 class Validation
 {
@@ -10,8 +10,10 @@ class Validation
             $estateValidation = new EstateValidation();
             $errors = $estateValidation->check($data);
             return $errors;
-        } else {
-            
+        } elseif ($name === "Agent"){
+            $agentValidation = new AgentValidation();
+            $errors = $agentValidation->check($data);
+            return $errors;
         }
         
     }

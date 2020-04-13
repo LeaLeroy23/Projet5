@@ -118,7 +118,7 @@
                             </li>
 
                             <li class="mt">
-                                <a href="index.php?route=add_agent">
+                                <a href="index.php?route=addAgent">
                                 <i class="fa fa-plus"></i>
                                 <span>Nouvelle Agent</span>
                                 </a>

@@ -4,7 +4,7 @@
     <section class="wrapper">
     <?= $this->session->show('add_agent'); ?>
         <h3><i class="fa fa-angle-right"></i> Ajouter un agent</h3>        
-        <form class="form-horizontal style-form" method='POST' action="../public/index.php?route=all_agents" enctype="multipart/form-data">
+        <form class="form-horizontal style-form" method='POST' action="../public/index.php?route=addAgent">
             <div class="row mt">
                 <div class="col-lg-12">
                     <div class="form-panel">
@@ -29,11 +29,13 @@
                             <label class="col-sm-2 col-sm-2 control-label">Nom</label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" name="lastname" placeholder="Nom">
+                                <?= isset($errors['lastname']) ? $errors['lastname'] : ''; ?>
                             </div>
 
                             <label class="col-sm-2 col-sm-2 control-label">Prénom</label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" name="firstname" placeholder="Prénom">
+                                <?= isset($errors['firstname']) ? $errors['firstname'] : ''; ?>
                             </div>
                         </div>
 
@@ -41,10 +43,12 @@
                             <label class="col-sm-2 col-sm-2 control-label">Email</label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" name="email" placeholder="Email">
+                                <?= isset($errors['email']) ? $errors['email'] : ''; ?>
                             </div>
                             <label class="col-sm-2 col-sm-2 control-label">Mot de passe</label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" name="password" placeholder="password">
+                                <?= isset($errors['password']) ? $errors['password'] : ''; ?>
                             </div>
                         </div>
 
@@ -53,6 +57,7 @@
                             <label class="col-sm-2 col-sm-2 control-label">Téléphone</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="phone" placeholder="Téléphone">
+                                <?= isset($errors['phone']) ? $errors['phone'] : ''; ?>
                             </div>
                         </div>
 
@@ -65,7 +70,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <input type="submit" name="submit" class="btn btn-theme05" value="Ajouté">
+                                <input type="submit" name="submit" id="submit"class="btn btn-theme05" value="Ajouté">
                             </div>
                         </div>
 

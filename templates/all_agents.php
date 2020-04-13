@@ -15,8 +15,8 @@
                         <thead>
                             <tr>
                                 <th class="hidden-phone"><i class="fa fa-user"></i> Fonction</th>
-                                <th class="hidden-phone">Nom</th>
-                                <th class="hidden-phone">Prénom</th>
+                                <th class="hidden-phone"> Nom</th>
+                                <th class="hidden-phone"> Prénom</th>
                                 <th class="hidden-phone"><i class="fa fa-lock"></i> Autorisation</th>
                                 <th class="hidden-phone"><i class="fa fa-phone"></i> Téléphone</th>
                                 <th class="hidden-phone"><i class="fa fa-enveloppe"></i> Email</th>
@@ -24,18 +24,25 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <?php
+                            foreach ($agents as $agent)
+                            {
+                        ?>
                             <tr>
-                                <td>Gérant</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>Administrateur</td>
-                                <td>06 XX XX XX XX</td>
-                                <td>@hestia.fr</td>
+                                <td><?= htmlspecialchars($agent->getFunction());?></td>
+                                <td><?= htmlspecialchars($agent->getFirstname());?></td>
+                                <td><?= htmlspecialchars($agent->getLastname());?></td>
+                                <td><?= htmlspecialchars($agent->getAutorisation());?></td>
+                                <td><?= htmlspecialchars($agent->getPhone());?></td>
+                                <td><?= htmlspecialchars($agent->getEmail());?></td>
                                 <td>
                                     <a href="agent.php" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                                     <a href="agent.php" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                 </td>
                             </tr>
+                        <?php
+                            }
+                        ?>
                             <tr>
                                 <td>Responsable transaction</td>
                                 <td>Mark</td>

@@ -11,8 +11,11 @@ class Router
     private $frontController;
     private $backController;
     private $errorController;
+    private $request;
 
-    public function __construct(){
+    public function __construct()
+    {
+        $this->request = new Request();
         $this->frontController = new FrontController();
         $this->backController = new BackController();
         $this->errorController = new ErrorController();
@@ -20,23 +23,36 @@ class Router
 
     public function run()
     {
+        $route = $this->request->getGet()->get('route');
         try{
             if(isset($_GET['route']))
             {
-                if($_GET['route'] === 'estate'){
-                    $this->frontController->estate($_GET['estateId']);
+                if($route === 'estate'){
+                    $this->frontController->estate($this->request->getGet()->get('estateId'));
                 }
-                elseif($_GET['route'] === 'agent'){
+                elseif($route === 'properties'){
+                    $this->frontController->all_estate();
+                }
+                elseif($route === 'agent'){
                     $this->frontController->agent($_GET['agentId']);
                 }
-                elseif($_GET['route'] === 'login'){
+                elseif ($route === 'team'){
+                    $this->frontController->team();
+                }
+                elseif($route === 'login'){
                     $this->frontController->login($_POST);
                 }
-                elseif ($_GET['route'] === 'addArticle'){
-                    $this->backController->addEstate($_POST);
+                elseif ($route === 'all_agents'){
+                    $this->backController->allAgents();
                 }
-                elseif ($_GET['route'] === 'dashboard'){
+                elseif ($route === 'addAgent'){
+                    $this->backController->addAgent($this->request->getPost());
+                }
+                elseif ($route === 'dashboard'){
                     $this->frontController->dashboard();
+                }
+                elseif ($route === 'contact'){
+                    $this->frontController->contact();
                 }
                 else{
                     $this->errorController->errorNotFound();

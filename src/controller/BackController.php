@@ -2,27 +2,36 @@
 
 namespace App\src\controller;
 
-use App\src\DAO\EstateDAO;
-use App\src\model\View;
+use App\config\Parameter;
 
-class BackController
+class BackController extends Controller
 {
-    private $view;
-
-    public function __construct()
+    public function allAgents()
     {
-        $this->view = new View();
+        $agents = $this->agentDAO->getAgents();
+        return $this->view->renderTemplate('all_agents', [
+            'agents' => $agents
+        ]);
     }
 
-    public function addEstate($post)
+    public function addAgent(Parameter $post)
     {
-        if(isset($post['submit'])) {
-            $estateDAO = new EstateDAO();
-            $estateDAO->addEstate($post);
-            header('Location: ../public/index.php');
-        }
-        return $this->view->render('add_estate', [
-            'post' => $post
-        ]);
+        if($post->get('submit')){
+            $errors = $this->validation->validate($post, 'Agent');
+            if($this->agentDAO->checkEmail($post)) {
+                $errors['email'] = $this->agentDAO->checkEmail($post);
+            }
+            if (!$errors){
+                $this->agentDAO->addAgent($post);
+                echo "submit";
+                $this->session->set('addAgent', 'L\'inscription a bien été prise en compte');
+                header('Location: ../public/index.php?route=all_agents');
+            }
+            return $this->view->renderTemplate('addAgent', [
+                'post' => $post,
+                'errors' => $errors
+            ]);
+        }      
+        return $this->view->renderTemplate('addAgent');
     }
 }

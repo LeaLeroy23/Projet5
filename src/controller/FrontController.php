@@ -2,23 +2,11 @@
 
 namespace App\src\controller;
 
-use App\src\DAO\EstateDAO;
-use App\src\DAO\AgentDAO;
-use App\src\model\View;
+use blog\config\Parameter;
 
-class FrontController
+class FrontController extends Controller
 {
-    private $estateDAO;
-    private $agentDAO;
-    private $view;
-
-    public function __construct()
-    {
-        $this->estateDAO = new EstateDAO();
-        $this->agentDAO = new AgentDAO();
-        $this->view = new View();
-    }
-
+    
     public function home()
     {
         $estates = $this->estateDAO->getEstates();
@@ -33,9 +21,23 @@ class FrontController
     {
         $estates = $this->estateDAO->getEstates();
         $agents = $this->agentDAO->getAgents();
-        return $this->view->render('dashboard', [
+        return $this->view->renderTemplate('dashboard', [
             'estates' => $estates,
             'agents' => $agents
+        ]);
+    }
+
+    public function contact()
+    {
+        return $this->view->render('contact', [
+        ]);
+    }
+
+    public function all_estate()
+    {
+        $estates = $this->estateDAO->getEstates();
+        return $this->view->render('properties', [
+            'estates' => $estates
         ]);
     }
 
@@ -47,11 +49,26 @@ class FrontController
         ]);
     }
 
+    public function team()
+    {
+        $agents = $this->agentDAO->getAgents();
+        return $this->view->render('team', [
+            'agents' => $agents
+        ]);
+    }
+
     public function agent($agentId)
     {
         $agent = $this->agentDAO->getAgent($agentId);
         return $this->view->render('single-agent', [
-            'estate' => $estate
+            'agent' => $agent
+        ]);
+    }
+
+    public function login()
+    {
+        return $this->view->render('login', [
+
         ]);
     }
 }

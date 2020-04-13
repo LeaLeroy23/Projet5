@@ -1,6 +1,6 @@
 <?php
 
-namespace Projet5\src\model;
+namespace App\src\model;
 
 class Agent
 {
@@ -87,6 +87,17 @@ class Agent
     public function setFunction($function)
     {
         $this->function = $function;
+    }
+
+
+    public function getAutorisation()
+    {
+        return $this->autorisation;
+    }
+
+    public function setAutorisation($autorisation)
+    {
+        $this->autorisation = $autorisation;
     }
 
     public function getDescription()

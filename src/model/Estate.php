@@ -1,6 +1,6 @@
 <?php
 
-namespace Projet5\src\model;
+namespace App\src\model;
 
 class Estate
 {

@@ -3,6 +3,7 @@
 //Pour toutes les classes dans DAO
 namespace App\src\DAO;
 
+use App\config\Parameter;
 use App\src\model\Agent;
 
 class AgentDAO extends DAO
@@ -12,11 +13,13 @@ class AgentDAO extends DAO
         $agent->setId($row['id']);
         $agent->setFirstname($row['firstname']);
         $agent->setLastname($row['lastname']);
+        $agent->setAutorisation($row['autorisation']);
         $agent->setPhone($row['phone']);
         $agent->setEmail($row['email']);
         $agent->setFunction($row['function']);
-        $agent->setDescription($row['description']);
-        $agent->setAvatar($row['Avatar']);
+        //$agent->setDescription($row['description']);
+        //$agent->setAvatar($row['Avatar']);
+        //$agent->setCreatedAt($row['createdAt']);
         return $agent;
     }
 
@@ -26,7 +29,7 @@ class AgentDAO extends DAO
         $agents = [];
         foreach ($result as $row){
             $agentId = $row['id'];
-            $agents[$agentId] = $this->buidObject($row);
+            $agents[$agentId] = $this->buildObject($row);
         }
         $result->closeCursor();
         return $agents;
@@ -40,4 +43,31 @@ class AgentDAO extends DAO
         $result->closeCursor();
         return $this->buildObject($agent);
     }
+
+    public function addAgent(Parameter $post)
+    {
+        $this->checkEmail($post);
+        $sql = 'INSERT INTO agent (function, lastname, firstname, autorisation, phone, email, password) VALUES (?, ?, ?, ?, ?, ?, ?)';
+        $this->createQuery($sql, [
+            //$post->get('id'), 
+            $post->get('function'), 
+            $post->get('lastname'),
+            $post->get('firstname'), 
+            $post->get('autorisation'),
+            $post->get('phone'), 
+            $post->get('email'),
+            $post->get('password')
+            ]);
+    }
+
+    public function checkEmail(Parameter $post)
+    {
+        $sql = 'SELECT COUNT(email) FROM agent WHERE email = ?';
+        $result = $this->createQuery($sql, [$post->get('email')]);
+        $isUnique = $result->fetchColumn();
+        if($isUnique) {
+            return '<p>Cette email existe déjà</p>';
+        }
+    }
+
 }
