@@ -69,7 +69,6 @@ class Agent
         $this->firstname = $firstname;
     }
 
-
     public function getPhone()
     {
         return $this->phone;

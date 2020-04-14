@@ -69,16 +69,16 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Description longue</label>
                             <div class="col-sm-10">
                                 <textarea class="form-control" name="description" placeholder="Longue description"></textarea>
                             </div>
-                        </div>
+                        </div>-->
 
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <input type="submit" name="submit" id="submit"class="btn btn-theme05" value="Ajouté">
+                                <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouté">
                             </div>
                         </div>
 
