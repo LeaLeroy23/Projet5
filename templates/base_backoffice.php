@@ -88,7 +88,7 @@
                         <!-- sidebar menu start-->
                         <ul class="sidebar-menu" id="nav-accordion">
                             <p class="centered"><a href="index.php?route=profile"><img src="../public/img/agent/ui-sam.jpg" class="img-circle" width="80"></a></p>
-                            <h5 class="centered">Donovan Blumveast</h5>
+                            <h5 class="centered"><?= $this->session->get('lname'); ?> <?= $this->session->get('fname'); ?></h5>
                             <li class="mt">
                                 <a href="index.php?route=dashboard">
                                 <i class="fa fa-dashboard"></i>

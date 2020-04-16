@@ -34,4 +34,19 @@ class BackController extends Controller
         }      
         return $this->view->renderTemplate('addAgent');
     }
+
+    public function profile()
+    {
+        return $this->view->renderTemplate('profile');
+    }
+
+    public function updatePassword(Parameter $post)
+    {
+        if($post->get('submit')){
+            $this->agentDAO->updatePassword($post, $this->session->get('email'));
+            $this->session->set('update_password', 'Votre mot de passe a été mis à jour');
+            header('Location: ../public/index.php?route=profile');
+        }
+        return $this->view->renderTemplate('update_password');
+    }
 }

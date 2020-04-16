@@ -1,7 +1,4 @@
-<?php
-include 'template-dashboard.php';
-?>
-
+<?php $this->title = 'Mon profil'; ?>
 <section id="main-content">
     <section class="wrapper site-min-height">
 
@@ -12,9 +9,9 @@ include 'template-dashboard.php';
                     <div class="col-sm-1"></div>
 
                     <div class="col-md-4 profile-text">
-                        <h3>Donovan Blumveast</h3>
-                        <h6>Administrateur</h6>
-                        <p>Spécialiste de la transaction de bien atypique dans les environs de Cagnes-sur-mer. Je vous accompagerais toute au long de votre processus de sélection et d'achat jusqu'à votre eménagement dans votre nouvelle acquisition.</p>
+                        <h3><?= $this->session->get('lname'); ?> <?= $this->session->get('fname'); ?></h3>
+                        <h6><?= $this->session->get('function'); ?></h6>
+                        <p><?= $this->session->get('description'); ?></p>
                         <br>
                     </div>
 
@@ -63,27 +60,27 @@ include 'template-dashboard.php';
                                                     <tbody>
                                                         <tr>
                                                             <td>Nom</td>
-                                                            <td>Blumveast</td>
+                                                            <td><?= $this->session->get('lname'); ?></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Prénom</td>
-                                                            <td>Donovan </td>
+                                                            <td><?= $this->session->get('fname'); ?> </td>
                                                         </tr>
                                                         <tr>
                                                             <td>Fonction</td>
-                                                            <td>Gérant</td>
+                                                            <td><?= $this->session->get('function'); ?></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Email</td>
-                                                            <td>Donovan.B@hestia.com</td>
+                                                            <td><?= $this->session->get('email'); ?></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Téléphone</td>
-                                                            <td>+33 45 67 89 00</td>
+                                                            <td><?= $this->session->get('phone'); ?></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Description</td>
-                                                            <td>Spécialiste de la transaction de bien atypique dans les environs de Cagnes-sur-mer. Je vous accompagerais toute au long de votre processus de sélection et d'achat jusqu'à votre eménagement dans votre nouvelle acquisition.</td>
+                                                            <td><?= $this->session->get('description'); ?></td>
                                                         </tr>
                                                     </tbody>
 
@@ -95,7 +92,7 @@ include 'template-dashboard.php';
                                             <div class="col-md-1"></div>
                                             <div class="col-md-10">
                                                 <div class="row centered mt mb">
-                                                    <a href="profile.php#edit"><button class="btn btn-theme05">Modifier mon mot de passe</button></a>
+                                                    <a href="../public/index.php?route=updatePassword"><button class="btn btn-theme05">Modifier mon mot de passe</button></a>
                                                 </div>
                                             </div>
                                             <div class="col-md-1"></div>
@@ -299,7 +296,3 @@ include 'template-dashboard.php';
 
     </section>
 </section>
-
-<?php
-include 'template-footer-dashboard.php';
-?>

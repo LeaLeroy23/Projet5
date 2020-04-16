@@ -39,8 +39,14 @@ class Router
                 elseif ($route === 'team'){
                     $this->frontController->team();
                 }
+                elseif ($route === 'contact'){
+                    $this->frontController->contact();
+                }
                 elseif($route === 'login'){
                     $this->frontController->login($this->request->getPost());
+                }
+                elseif ($route === 'dashboard'){
+                    $this->frontController->dashboard();
                 }
                 elseif ($route === 'all_agents'){
                     $this->backController->allAgents();
@@ -48,11 +54,11 @@ class Router
                 elseif ($route === 'addAgent'){
                     $this->backController->addAgent($this->request->getPost());
                 }
-                elseif ($route === 'dashboard'){
-                    $this->frontController->dashboard();
+                elseif ($route === 'profile'){
+                    $this->backController->profile();
                 }
-                elseif ($route === 'contact'){
-                    $this->frontController->contact();
+                elseif ($route === 'updatePassword'){
+                    $this->backController->updatePassword($this->request->getPost());
                 }
                 else{
                     $this->errorController->errorNotFound();
