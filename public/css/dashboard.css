@@ -458,6 +458,7 @@ ul.sidebar-menu li a.active i {
     padding-bottom: 30px;
     padding-top: 0;
     width: 100%;
+    min-height: 802px;;
 }
 
 a.logo {

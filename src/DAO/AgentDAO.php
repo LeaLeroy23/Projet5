@@ -78,4 +78,16 @@ class AgentDAO extends DAO
         ];
     }
 
+    public function updatePassword(Parameter $post, $email){
+        var_dump($post);
+        die();
+        $sql = 'UPDATE agent SET password = ? WHERE email = ?';
+        $this->createQuery($sql, [password_hash($post->get('password'), PASSWORD_BCRYPT), $email]);
+    }
+
+    public function updateProfile(Parameter $post, $email){
+        $sql = 'UPDATE agent SET function = ?, lname = ?, fname = ?, phone = ?, email = ?, description = ?, avatar = ? WHERE email = ?';
+        $this->createQuery($sql, [password_hash($post->get('password'), PASSWORD_BCRYPT), $email]);
+    }
+
 }

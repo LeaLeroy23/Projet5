@@ -38,4 +38,8 @@ class EstateDAO extends DAO
         $result->closeCursor();
         return $this->buildObject($estate);
     }
+
+    public function addType(){
+        $sql = 'INSERT INTO type (type = ?) VALUES (?)';
+    }
 }

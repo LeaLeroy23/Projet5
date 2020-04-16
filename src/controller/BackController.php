@@ -27,12 +27,12 @@ class BackController extends Controller
                 $this->session->set('addAgent', 'L\'inscription a bien été prise en compte');
             }
             
-            return $this->view->renderTemplate('addAgent', [
+            return $this->view->renderTemplate('add_agent', [
                 'post' => $post,
                 'errors' => $errors
             ]);
         }      
-        return $this->view->renderTemplate('addAgent');
+        return $this->view->renderTemplate('add_agent');
     }
 
     public function profile()
@@ -49,4 +49,15 @@ class BackController extends Controller
         }
         return $this->view->renderTemplate('update_password');
     }
+
+    public function updateProfile(Parameter $post)
+    {
+        if($post->get('submit')){
+            $this->agentDAO->updateProfile($post, $this->session->get('email'));
+            $this->session->set('update_profile', 'Votre profile a été mis à jour');
+            header('Location: ../public/index.php?route=update_profile');
+        }
+        return $this->view->renderTemplate('update_profile');
+    }
+
 }

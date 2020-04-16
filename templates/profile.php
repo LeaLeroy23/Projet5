@@ -92,6 +92,7 @@
                                             <div class="col-md-1"></div>
                                             <div class="col-md-10">
                                                 <div class="row centered mt mb">
+                                                    <?= $this->session->show('update_password'); ?>
                                                     <a href="../public/index.php?route=updatePassword"><button class="btn btn-theme05">Modifier mon mot de passe</button></a>
                                                 </div>
                                             </div>

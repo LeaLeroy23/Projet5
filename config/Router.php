@@ -60,6 +60,10 @@ class Router
                 elseif ($route === 'updatePassword'){
                     $this->backController->updatePassword($this->request->getPost());
                 }
+                elseif ($route === 'updateProfile'){
+                    $this->backController->updateProfile($this->request->getPost());
+                }
+               
                 else{
                     $this->errorController->errorNotFound();
                 }
