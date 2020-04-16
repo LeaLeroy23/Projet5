@@ -85,7 +85,7 @@
     </head>
 
     <body>
-
+    <?= $this->session->show('login'); ?>
     <!-- Start Header Top area -->
     <div class="header-top">
             <div class="container">
@@ -105,14 +105,24 @@
                     <div class="col-md-7 col-sm-6">
                         <div class="login-bookmark-area">
                            <div class="register-login">
-                                <a href="index.php?route=login"><i class="fa fa-user"></i>Connexion</a>
+                                <?php
+                                    if ($this->session->get('email')) {
+                                ?>
+                                    <a href="index.php?route=login"><i class="fa fa-user"></i>Déconnexion</a>
+                                <?php
+                                    } else {
+                                ?>
+                                    <a href="index.php?route=login"><i class="fa fa-user"></i>Connexion</a>
+                                <?php
+                                    }
+                                ?>
                            </div>
                            <div class="top-bookmark">
-                               <ul>
+                               <!--<ul>
                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                               </ul>
+                               </ul>-->
                            </div>
                         </div>
                     </div>
@@ -136,6 +146,22 @@
                         <div class="main-menu">
                             <nav>
                                 <ul id="nav">
+                                <?php
+                                    if ($this->session->get('email')) {
+                                ?>
+                                    <li class="active"><a href="index.php?route=dashboard">Tableau de bord</a></li>
+                                    <li class=""><a href="index.php">Accueil</a></li>
+                                    <li><a href="#">Biens</a>
+                                        <ul class="sub-menu">
+                                            <li></li><a href="index.php?route=properties">Biens à la Vente</a></li>
+                                            <li></li><a href="index.php?route=properties">Biens à la location</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="index.php?route=team">L'équipe</a></li>
+                                    <li><a href="index.php?route=contact">Contact</a></li>
+                                <?php
+                                    } else {
+                                ?>
                                     <li class="active"><a href="index.php">Accueil</a></li>
                                     <li><a href="#">Biens</a>
                                         <ul class="sub-menu">
@@ -145,6 +171,9 @@
                                     </li>
                                     <li><a href="index.php?route=team">L'équipe</a></li>
                                     <li><a href="index.php?route=contact">Contact</a></li>
+                                <?php
+                                    }
+                                ?>
                                 </ul>
                             </nav>
                         </div>
@@ -165,6 +194,22 @@
                             </div>
                             <nav id="mobile-menu">
                                 <ul>
+                                <?php
+                                    if ($this->session->get('email')) {
+                                ?>
+                                    <li class="active"><a href="index.php?route=dashboard">Tableau de bord</a></li>
+                                    <li class=""><a href="index.php">Accueil</a></li>
+                                    <li><a href="#">Biens</a>
+                                        <ul class="sub-menu">
+                                            <li></li><a href="index.php?route=properties">Biens à la Vente</a></li>
+                                            <li></li><a href="index.php?route=properties">Biens à la location</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="index.php?route=team">L'équipe</a></li>
+                                    <li><a href="index.php?route=contact">Contact</a></li>
+                                <?php
+                                    } else {
+                                ?>
                                     <li><a href="../public/index.php">Accueil</a></li>
                                     <li><a href="#">Biens</a>
                                         <ul>
@@ -175,6 +220,9 @@
                                     <li><a href="index.php?route=team">L'équipe</a></li>
                                    
                                     <li><a href="index.php?route=contact">Contact</a></li>
+                                <?php
+                                    }
+                                ?>
                                 </ul>
                             </nav>
                         </div>                  

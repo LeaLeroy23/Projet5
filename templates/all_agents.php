@@ -30,8 +30,8 @@
                         ?>
                             <tr>
                                 <td><?= htmlspecialchars($agent->getFunction());?></td>
-                                <td><?= htmlspecialchars($agent->getFirstname());?></td>
-                                <td><?= htmlspecialchars($agent->getLastname());?></td>
+                                <td><?= htmlspecialchars($agent->getFname());?></td>
+                                <td><?= htmlspecialchars($agent->getLname());?></td>
                                 <td><?= htmlspecialchars($agent->getAutorisation());?></td>
                                 <td><?= htmlspecialchars($agent->getPhone());?></td>
                                 <td><?= htmlspecialchars($agent->getEmail());?></td>

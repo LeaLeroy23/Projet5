@@ -2,7 +2,7 @@
 
 namespace App\src\controller;
 
-use blog\config\Parameter;
+use App\config\Parameter;
 
 class FrontController extends Controller
 {
@@ -65,10 +65,24 @@ class FrontController extends Controller
         ]);
     }
 
-    public function login()
+    public function login(Parameter $post)
     {
-        return $this->view->render('login', [
-
-        ]);
+        if($post->get('submit')){
+            $result = $this->agentDAO->login($post);
+            if($result && $result['isPasswordValid']){
+                $this->session->set('login', 'Content de vous revoir');
+                $this->session->set('id', $result['result']['id']);
+                
+                $this->session->set('email', $post->get('email'));
+                header('Location: ../public/index.php?route=dashboard');
+            }
+            else {
+                $this->session->set('error_login', "L'identifiant ou le mot de passe sont incorrect");
+                return $this->view->render('login', [
+                    'post' => $post
+                ]);
+            }
+        }
+        return $this->view->render('login');
     }
 }

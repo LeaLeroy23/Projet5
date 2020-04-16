@@ -11,12 +11,12 @@ class AgentDAO extends DAO
     private function buildObject($row){
         $agent = new Agent;
         $agent->setId($row['id']);
-        $agent->setFunction($row['function']);
-        $agent->setLastname($row['lastname']);
-        $agent->setFirstname($row['firstname']);
+        $agent->setLname($row['lname']);
+        $agent->setFname($row['fname']);
         $agent->setAutorisation($row['autorisation']);
         $agent->setPhone($row['phone']);
         $agent->setEmail($row['email']);
+        $agent->setFunction($row['function']);
         $agent->setFunction($row['password']);
         $agent->setFunction($row['status']);
         return $agent;
@@ -46,11 +46,13 @@ class AgentDAO extends DAO
     public function addAgent(Parameter $post)
     {
         $this->checkEmail($post);
-        $sql = 'INSERT INTO agent (id, function, lastname, firstname, autorisation, phone, email, password, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
-
-        $this->createQuery($sql, [$post->get('id'), $post->get('function'), $post->get('lastname'), $post->get('firstname'), $post->get('autorisation'), $post->get('phone'), $post->get('email'), $post->get('password'), $post->get('status') ]);
-        var_dump($post);
-        die();
+        $sql = 'INSERT INTO agent (lname, fname, autorisation, phone, email, function, password, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+        $getData = [$post->get('fname'), $post->get('lname'), $post->get('autorisation'), $post->get('phone'), $post->get('email'), $post->get('function'), password_hash($post->get('password'), PASSWORD_BCRYPT), $post->get('status')];
+        /*var_dump($getData);
+        die();*/
+        $result = $this->createQuery($sql, $getData);
+        return $result;
+        
     }
 
     public function checkEmail(Parameter $post)
@@ -61,6 +63,19 @@ class AgentDAO extends DAO
         if($isUnique) {
             return '<p>Cette email existe déjà</p>';
         }
+    }
+
+    public function login(Parameter $post)
+    {
+        $sql= 'SELECT id, password FROM agent WHERE email = ?';
+        $data = $this->createQuery($sql, [$post->get('email')]);
+        $result = $data->fetch();
+        $isPasswordValid =$post->get('password');
+        //$isPasswordValid = password_verify($post->get('password'), $result['password']);
+        return[
+            'result' => $result,
+            'isPasswordValid' => $isPasswordValid
+        ];
     }
 
 }

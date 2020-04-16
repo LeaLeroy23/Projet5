@@ -35,7 +35,8 @@ class View
         $content  = $this->renderFile($this->file, $data);
         $view = $this->renderFile('../templates/base_backoffice.php', [
             'title' => $this->title,
-            'content' => $content
+            'content' => $content,
+            'session' => $this->session
         ]);
         echo $view;
     }

@@ -3,10 +3,11 @@
 <section id="main-content">
     <section class="wrapper">
     
-    <?= $this->session->show('add_agent'); ?>
+    <?= $this->session->show('addAgent'); ?>
+    <?= $this->session->show('login'); ?>
 
         <h3><i class="fa fa-angle-right"></i> Ajouter un agent</h3>        
-        <form class="form-horizontal style-form" method='POST' action="../public/index.php?route=addAgent">
+        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addAgent">
             <div class="row mt">
                 <div class="col-lg-12">
                     <div class="form-panel">
@@ -20,6 +21,7 @@
                             <label class="col-sm-2 col-sm-2 control-label">Autorisation</label>
                             <div class="col-sm-4">
                                 <select name="autorisation" class="form-control">
+                                    <option value="">Aucun</option>
                                     <option value="Superadministrateur">Superadministrateur</option>
                                     <option value="administrateur">Administrateur</option>
                                     <option value="contributeur">Contributeur</option>
@@ -28,16 +30,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 col-sm-2 control-label">Nom</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" name="lastname" placeholder="Nom">
-                                <?= isset($errors['lastname']) ? $errors['lastname'] : ''; ?>
-                            </div>
-
                             <label class="col-sm-2 col-sm-2 control-label">Prénom</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" name="firstname" placeholder="Prénom">
-                                <?= isset($errors['firstname']) ? $errors['firstname'] : ''; ?>
+                                <input type="text" class="form-control" name="fname" placeholder="Prénom">
+                                <?= isset($errors['fname']) ? $errors['fname'] : ''; ?>
+                            </div>
+
+                            <label class="col-sm-2 col-sm-2 control-label">Nom</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="lname" placeholder="Nom">
+                                <?= isset($errors['lname']) ? $errors['lname'] : ''; ?>
                             </div>
                         </div>
 

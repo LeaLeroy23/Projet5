@@ -40,7 +40,7 @@ class Router
                     $this->frontController->team();
                 }
                 elseif($route === 'login'){
-                    $this->frontController->login($_POST);
+                    $this->frontController->login($this->request->getPost());
                 }
                 elseif ($route === 'all_agents'){
                     $this->backController->allAgents();

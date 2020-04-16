@@ -420,7 +420,7 @@
                                 <div class="overlay"></div>
                             </div>
                             <div class="agent-detail text-center">
-                                <h3><a href="index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>"><?= htmlspecialchars($agent->getFirstname());?><?= htmlspecialchars($agent->getLastname());?></a> </h3>
+                                <h3><a href="index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>"><?= htmlspecialchars($agent->getFname());?><?= htmlspecialchars($agent->getLname());?></a> </h3>
                                 <p><?= htmlspecialchars($agent->getFunction());?></p>
                             </div>
                         </div>

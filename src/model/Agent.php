@@ -7,15 +7,15 @@ class Agent
     
     private $id;
 
-    private $function;
+    private $lname;
 
-    private $lastname;
-
-    private $firstname;
+    private $fname;
 
     private $phone;
 
     private $email;
+
+    private $function;
 
     //private $description;
 
@@ -39,34 +39,24 @@ class Agent
         $this->id = $id;
     }
 
-    public function getFunction()
+    public function getFname()
     {
-        return $this->function;
+        return $this->fname;
     }
 
-    public function setFunction($function)
+    public function setFname($fname)
     {
-        $this->function = $function;
+        $this->fname = $fname;
     }
 
-    public function getLastname()
+    public function getLname()
     {
-        return $this->lastname;
+        return $this->lname;
     }
 
-    public function setLastname($lastname)
+    public function setLname($lname)
     {
-        $this->lastname = $lastname;
-    }
-
-    public function getFirstname()
-    {
-        return $this->firstname;
-    }
-
-    public function setFirstname($firstname)
-    {
-        $this->firstname = $firstname;
+        $this->lname = $lname;
     }
 
     public function getPhone()
@@ -87,6 +77,16 @@ class Agent
     public function setEmail($email)
     {
         $this->email = $email;
+    }
+
+    public function getFunction()
+    {
+        return $this->function;
+    }
+
+    public function setFunction($function)
+    {
+        $this->function = $function;
     }
 
     public function getAutorisation()
