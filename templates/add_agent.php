@@ -20,11 +20,11 @@
                             </div>
                             <label class="col-sm-2 col-sm-2 control-label">Autorisation</label>
                             <div class="col-sm-4">
-                                <select name="autorisation" class="form-control">
-                                    <option value="">Aucun</option>
-                                    <option value="Superadministrateur">Superadministrateur</option>
-                                    <option value="administrateur">Administrateur</option>
-                                    <option value="contributeur">Contributeur</option>
+                                <select name="status" class="form-control">
+                                    <option value="0">Aucun</option>
+                                    <option value="99">Superadministrateur</option>
+                                    <option value="80">Administrateur</option>
+                                    <option value="50">Contributeur</option>
                                 </select>
                             </div>
                         </div>
@@ -32,14 +32,14 @@
                         <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Prénom</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" name="fname" placeholder="Prénom">
-                                <?= isset($errors['fname']) ? $errors['fname'] : ''; ?>
+                                <input type="text" class="form-control" name="firstname" placeholder="Prénom">
+                                <?= isset($errors['firstname']) ? $errors['firstname'] : ''; ?>
                             </div>
 
                             <label class="col-sm-2 col-sm-2 control-label">Nom</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" name="lname" placeholder="Nom">
-                                <?= isset($errors['lname']) ? $errors['lname'] : ''; ?>
+                                <input type="text" class="form-control" name="lastname" placeholder="Nom">
+                                <?= isset($errors['lastname']) ? $errors['lastname'] : ''; ?>
                             </div>
                         </div>
 
@@ -64,11 +64,6 @@
                                 <?= isset($errors['phone']) ? $errors['phone'] : ''; ?>
                             </div>
 
-                            <label class="col-sm-2 col-sm-2 control-label">Status</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" name="status" placeholder="Status">
-                                <?= isset($errors['status']) ? $errors['status'] : ''; ?>
-                            </div>
                         </div>
 
                         <!--<div class="form-group">

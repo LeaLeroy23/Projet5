@@ -7,7 +7,15 @@ use App\src\model\Type;
 
 class TypeDAO extends DAO
 {
-    public function addType(){
-        $sql = 'INSERT INTO type (type = ?) VALUES (?)';
+    public function allType(){
+
     }
+
+    public function addType(){
+        $sql = 'INSERT INTO type (type) VALUES (:type)';
+        $this->createQuery($sql, [
+            'type' => $post->get('type')
+        ]);
+    }
+
 }

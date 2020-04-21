@@ -6,6 +6,20 @@ use App\config\Parameter;
 
 class BackController extends Controller
 {
+    public function addEstate()
+    {
+        return $this->view->renderTemplate('add_estate');
+    }
+
+    public function addCategory($post)
+    {
+        if($post->get('submit')){
+            $this->categoryDAO->addCategory($post);
+            header('Location: ../public/index.php?route=addEstate');
+        }
+        return $this->view->renderTemplate('add_estate');
+    }
+
     public function allAgents()
     {
         $agents = $this->agentDAO->getAgents();
@@ -14,19 +28,23 @@ class BackController extends Controller
         ]);
     }
 
-    public function addAgent(Parameter $post)
+    public function addAgent($post)
     {
         if($post->get('submit')){
-            $errors = $this->validation->validate($post, 'Agent');
-            if($this->agentDAO->checkEmail($post)) {
+            //$errors = $this->validation->validate($post, 'Agent');
+            /*if($this->agentDAO->checkEmail($post)) {
                 $errors['email'] = $this->agentDAO->checkEmail($post);
-            }
+            }*/
             if (!$errors){
-                $this->agentDAO->addAgent($post);
+                $createdAt = new \Datetime('NOW');
+                $password = password_hash($post->get('password'), PASSWORD_BCRYPT);
+
+                $this->agentDAO->addAgent($post, $password, null, $createdAt->format('Y-m-d H:i:s'), $this->session->get('id'));
                 
-                $this->session->set('addAgent', 'L\'inscription a bien été prise en compte');
+                //$this->session->set('addAgent', 'L\'inscription a bien été prise en compte');
+                header('Location: ../public/index.php?route=dashboard');
+                
             }
-            
             return $this->view->renderTemplate('add_agent', [
                 'post' => $post,
                 'errors' => $errors
@@ -34,6 +52,7 @@ class BackController extends Controller
         }      
         return $this->view->renderTemplate('add_agent');
     }
+
 
     public function profile()
     {

@@ -45,8 +45,11 @@ class Router
                 elseif($route === 'login'){
                     $this->frontController->login($this->request->getPost());
                 }
-                elseif ($route === 'dashboard'){
-                    $this->frontController->dashboard();
+                elseif ($route === 'add_estate'){
+                    $this->backController->addEstate();
+                }
+                elseif ($route === 'addCategory'){
+                    $this->backController->addCategory();
                 }
                 elseif ($route === 'all_agents'){
                     $this->backController->allAgents();
@@ -63,7 +66,9 @@ class Router
                 elseif ($route === 'updateProfile'){
                     $this->backController->updateProfile($this->request->getPost());
                 }
-               
+                elseif ($route === 'dashboard'){
+                    $this->frontController->dashboard();
+                }
                 else{
                     $this->errorController->errorNotFound();
                 }

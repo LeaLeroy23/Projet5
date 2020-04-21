@@ -11,9 +11,8 @@ class AgentDAO extends DAO
     private function buildObject($row){
         $agent = new Agent;
         $agent->setId($row['id']);
-        $agent->setLname($row['lname']);
-        $agent->setFname($row['fname']);
-        $agent->setAutorisation($row['autorisation']);
+        $agent->setFirstname($row['firstname']);
+        $agent->setLastname($row['lastname']);
         $agent->setPhone($row['phone']);
         $agent->setEmail($row['email']);
         $agent->setFunction($row['function']);
@@ -43,16 +42,28 @@ class AgentDAO extends DAO
         return $this->buildObject($agent);
     }
 
-    public function addAgent(Parameter $post)
+    public function addAgent(Parameter $post, $password, $token, $createdAt)
     {
-        $this->checkEmail($post);
-        $sql = 'INSERT INTO agent (lname, fname, autorisation, phone, email, function, password, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-        $getData = [$post->get('fname'), $post->get('lname'), $post->get('autorisation'), $post->get('phone'), $post->get('email'), $post->get('function'), password_hash($post->get('password'), PASSWORD_BCRYPT), $post->get('status')];
-        /*var_dump($getData);
-        die();*/
-        $result = $this->createQuery($sql, $getData);
-        return $result;
+        print_r($post);
+        //$this->checkEmail($post);
+        $sql = 'INSERT INTO agent (id, firstname, lastname, phone, email, function, description, avatar, password, token, status, created_at)
+                VALUES (:id, :firstname, :lastname, :phone, :email, :function, :description, :avatar, :password, :token, :status, :created_at)';
         
+        $this->createQuery($sql, [
+            'id' => $post->get('id'),
+            'firstname' => $post->get('firstname'),
+            'lastname' => $post->get('lastname'),
+            'phone' => $post->get('phone'),
+            'email' => $post->get('email'),
+            'function' => $post->get('function'),
+            'description' => null,
+            'avatar' => null,
+            'password' => $password,
+            'token' => $token,
+            'status' => $post->get('status'),
+            'created_at' => $createdAt
+        ]);
+
     }
 
     public function checkEmail(Parameter $post)

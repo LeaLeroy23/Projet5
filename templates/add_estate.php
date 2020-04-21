@@ -1,12 +1,9 @@
-<?php
-include 'template-dashboard.php';
-?>
-
+<?php $this->title = "Ajouter une annonce"; ?>
     <section id="main-content">
         <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Ajouter une annonce</h3>
 
-            <form class="form-horizontal style-form" method='POST' action="" enctype="multipart/form-data">
+            <form class="form-horizontal style-form" method='POST' action="../public/index.php?route=addEstate" enctype="multipart/form-data">
 
             <div class="row mt">
                 <div class="col-lg-12">
@@ -15,7 +12,7 @@ include 'template-dashboard.php';
 
                         <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Catégorie</label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-9">
                                 <div class="radio">
                                     <label>
                                         <input type="radio" id="optionsRadios1" name="category" value="a vendre">
@@ -27,20 +24,55 @@ include 'template-dashboard.php';
                                     </label>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">Type de bien</label>
-                            <div class="col-sm-10">
-                                <select name="type" class="form-control">
-                                    <option value="maison">Maison</option>
-                                    <option value="appartement">Appartement</option>
-                                    <option value="parking">Parking</option>
-                                    <option value="garage">Garage</option>
-                                    <option value="local_commercial">Local Commercial</option>
-                                </select>
+                            <div class="col-sm-1" id="adding-category">
+                                <a href="" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></a>
                             </div>
                         </div>
+
+                        <!-- Start add category -->
+                        <div class="form-group">
+                            <form class="form-horizontal style-form" method='POST' action="../public/index.php?route=addCategory">
+                                <label class="col-sm-2 col-sm-2 control-label">Ajouter une catégorie</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="name" placeholder="Ajouter une catégorie">
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">
+                                    </div>
+                            </form>
+                        </div>
+                        <!-- End add category -->
+
+
+                        <div class="form-group">
+                            <label class="col-sm-2 col-sm-2 control-label">Type de bien</label>
+                                <div class="col-sm-9">
+                                    <select name="type" class="form-control">
+                                        <option value="maison">Maison</option>
+                                        <option value="appartement">Appartement</option>
+                                        <option value="parking">Parking</option>
+                                        <option value="garage">Garage</option>
+                                        <option value="local_commercial">Local Commercial</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-1" id="adding-type">
+                                    <a href="../public/index.php?route=addType" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></a>
+                                </div>
+                        </div>
+
+                        <!-- Start add type -->
+                        <div class="form-group" id="add-type">
+                            <form class="form-horizontal style-form" method='POST' action="../public/index.php?route=addType" enctype="">
+                                <label class="col-sm-2 col-sm-2 control-label">Ajouter un Type de bien</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="type" placeholder="Ajouter un type">
+                                </div>
+                                <div class="col-sm-1">
+                                    <input type="submit" class="btn btn-theme05" value="Ajouter">
+                                </div>
+                            </form>
+                        </div>
+                        <!-- End add type -->
 
                         <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Titre</label>
@@ -136,6 +168,34 @@ include 'template-dashboard.php';
                         </div>
 
                         <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Energie</label>
+                            <div class="col-sm-9">
+                                <select name="energy" class="form-control">
+                                    <option value="">Type d'énergie</option>
+                                    <option value="Gaz">Gaz</option>
+                                    <option value="électricité">Electricité</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-1" id="adding-energy">
+                                <a href="../public/index.php?route=addEnergy" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- Start add energy -->
+                        <div class="form-group">
+                            <form class="form-horizontal style-form" method='POST' action="../public/index.php?route=addEnergy">
+                                <label class="col-sm-2 col-sm-2 control-label">Ajouter un type d'énergie</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="category" placeholder="Ajouter un type d'énergie">
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="submit" class="btn btn-theme05" value="Ajouter">
+                                    </div>
+                            </form>
+                        </div>
+                        <!-- End add energy -->
+
+                        <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Diagnostic Energétique</label>
                             <div class="col-sm-10">
 
@@ -202,7 +262,7 @@ include 'template-dashboard.php';
                 </div>
             </div>
 
-            <div class="row mt">
+            <!--<div class="row mt">
                 <div class="col-lg-12">
                     <div class="form-panel">
                         <h4 class="mb"><i class="fa fa-angle-right"></i> Descriptif</h4>
@@ -267,12 +327,15 @@ include 'template-dashboard.php';
                                 </div>
 
                                 <label class="col-sm-1 col-sm-1 control-label">Fréquence</label>
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <select name="charge_frequence" class="form-control">
                                         <option value="par mois">Par mois</option>
                                         <option value="par trimestre">Par trimestre</option>
                                         <option value="par an">Par an</option>
                                     </select>
+                                </div>
+                                <div class="col-sm-1">
+                                    <a href="../public/index.php?route=" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></a>
                                 </div>
                         </div> 
 
@@ -316,18 +379,11 @@ include 'template-dashboard.php';
 
                     </div>
                 </div>
-            </div>
+            </div>-->
 
 
         </form>
 
         </section>
     </secction>
-
-<?php
-include 'template-footer-dashboard.php';
-?>
-
-
-
 

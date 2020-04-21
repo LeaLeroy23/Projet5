@@ -15,8 +15,8 @@
                         <thead>
                             <tr>
                                 <th class="hidden-phone"><i class="fa fa-user"></i> Fonction</th>
-                                <th class="hidden-phone"> Nom</th>
                                 <th class="hidden-phone"> Prénom</th>
+                                <th class="hidden-phone"> Nom</th>
                                 <th class="hidden-phone"><i class="fa fa-lock"></i> Autorisation</th>
                                 <th class="hidden-phone"><i class="fa fa-phone"></i> Téléphone</th>
                                 <th class="hidden-phone"><i class="fa fa-enveloppe"></i> Email</th>
@@ -30,9 +30,9 @@
                         ?>
                             <tr>
                                 <td><?= htmlspecialchars($agent->getFunction());?></td>
-                                <td><?= htmlspecialchars($agent->getFname());?></td>
-                                <td><?= htmlspecialchars($agent->getLname());?></td>
-                                <td><?= htmlspecialchars($agent->getAutorisation());?></td>
+                                <td><?= htmlspecialchars($agent->getFirstname());?></td>
+                                <td><?= htmlspecialchars($agent->getLastname());?></td>
+                                <td><?= htmlspecialchars($agent->getStatus());?></td>
                                 <td><?= htmlspecialchars($agent->getPhone());?></td>
                                 <td><?= htmlspecialchars($agent->getEmail());?></td>
                                 <td>

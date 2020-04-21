@@ -167,7 +167,7 @@
         <!--common script for all pages-->
         <script src="../public/lib/common-scripts.js"></script>
         <!--script for this page-->
-        <script src="../public/lib/form-validation-script.js"></script>
+        <!--<script src="../public/lib/form-validation-script.js"></script>-->
   
   </body>
   

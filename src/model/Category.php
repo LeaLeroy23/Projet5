@@ -2,7 +2,7 @@
 
 namespace App\src\model;
 
-class Type
+class Category
 {
     /**
      * @var int
@@ -12,7 +12,7 @@ class Type
     /**
      * @var string
      */
-    private $type;
+    private $name;
 
     /**
      * @return int
@@ -33,16 +33,16 @@ class Type
     /**
      * @return string
      */
-    public function getType()
+    public function getName()
     {
-        return $this->type;
+        return $this->name;
     }
 
     /**
-     * @param string $type
+     * @param string $name
      */
-    public function setType($type)
+    public function setName($name)
     {
-        $this->type = $type;
+        $this->name = $name;
     }
 }
