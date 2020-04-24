@@ -24,20 +24,20 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-1" id="adding-category">
-                                <a href="" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></a>
+                            <div class="col-sm-1" id="">
+                                <a href="" id="btn-submit" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></a>
                             </div>
                         </div>
 
                         <!-- Start add category -->
-                        <div class="form-group">
+                        <div class="form-group" id="adding-category">
                             <form class="form-horizontal style-form" method='POST' action="../public/index.php?route=addCategory">
                                 <label class="col-sm-2 col-sm-2 control-label">Ajouter une catégorie</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" name="name" placeholder="Ajouter une catégorie">
                                     </div>
                                     <div class="col-sm-1">
-                                        <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">
+                                        <input type="submit" name="submit"class="btn btn-theme05" value="Ajouter">
                                     </div>
                             </form>
                         </div>

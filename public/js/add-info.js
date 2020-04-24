@@ -1,9 +1,15 @@
-class add {
+class Add {
     constructor(){
-        this.category = document.getElementById("adding-category");
-        this.type = document.getElementById("adding-type");
-        this.energy = document.getElementById("adding-energy");
+        this.initAddingCategory();
     }
 
-    
+    initAddingCategory(){
+        let addingBtn = document.getElementById("btn_submit");
+        addingBtn.addEventListener('click', (e) =>{
+            console.log('ici');
+            let addBlock = document.getElementById("adding-category");
+            addBlock.style.display = "block"; 
+        });
+    }
+
 }

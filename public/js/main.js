@@ -1,0 +1,1 @@
+let initAdding = new Add();

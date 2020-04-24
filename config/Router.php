@@ -48,7 +48,7 @@ class Router
                 elseif ($route === 'add_estate'){
                     $this->backController->addEstate();
                 }
-                elseif ($route === 'addCategory'){
+                elseif ($route === 'add_category'){
                     $this->backController->addCategory();
                 }
                 elseif ($route === 'all_agents'){

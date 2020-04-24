@@ -41,16 +41,15 @@ class AgentDAO extends DAO
         $result->closeCursor();
         return $this->buildObject($agent);
     }
-
+    
     public function addAgent(Parameter $post, $password, $token, $createdAt)
     {
-        print_r($post);
-        //$this->checkEmail($post);
-        $sql = 'INSERT INTO agent (id, firstname, lastname, phone, email, function, description, avatar, password, token, status, created_at)
-                VALUES (:id, :firstname, :lastname, :phone, :email, :function, :description, :avatar, :password, :token, :status, :created_at)';
+        
+        
+        $sql = "INSERT INTO agent (firstname, lastname, phone, email, function, description, avatar, password, token, status, created_at)
+                VALUES (:firstname, :lastname, :phone, :email, :function, :description, :avatar, :password, :token, :status, :created_at)";
         
         $this->createQuery($sql, [
-            'id' => $post->get('id'),
             'firstname' => $post->get('firstname'),
             'lastname' => $post->get('lastname'),
             'phone' => $post->get('phone'),
@@ -63,7 +62,6 @@ class AgentDAO extends DAO
             'status' => $post->get('status'),
             'created_at' => $createdAt
         ]);
-
     }
 
     public function checkEmail(Parameter $post)
