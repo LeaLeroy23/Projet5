@@ -11,7 +11,7 @@ class BackController extends Controller
         return $this->view->renderTemplate('add_estate');
     }
 
-    public function addCategory($post)
+    /*public function addCategory($post)
     {
         if($post->get('submit')){
             echo'hello';
@@ -20,7 +20,7 @@ class BackController extends Controller
             header('Location: ../public/index.php?route=add_estate');
         }
         return $this->view->renderTemplate('add_estate');
-    }
+    }*/
 
     public function allAgents()
     {
@@ -34,17 +34,19 @@ class BackController extends Controller
     {
         if($post->get('submit')){
             $errors = $this->validation->validate($post, 'Agent');
-            /*if($this->agentDAO->checkEmail($post)) {
+            if($this->agentDAO->checkEmail($post)) {
                 $errors['email'] = $this->agentDAO->checkEmail($post);
-            }*/
+            }
             if (!$errors){
+                $generateToken = openssl_random_pseudo_bytes(5);
+                $token = bin2hex($generateToken);
                 $createdAt = new \Datetime('NOW');
                 $password = password_hash($post->get('password'), PASSWORD_BCRYPT);
 
-                $this->agentDAO->addAgent($post, $password, null, $createdAt->format('Y-m-d H:i:s'));
+                $this->agentDAO->addAgent($post, $password, $token, $createdAt->format('Y-m-d H:i:s'));
                 
                 $this->session->set('addAgent', 'L\'inscription a bien été prise en compte');
-                header('Location: ../public/index.php?route=dashboard');
+                header('Location: ../public/index.php?route=all_agents');
                 exit();
                 
             }

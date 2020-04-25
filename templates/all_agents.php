@@ -4,10 +4,12 @@
     <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Tous les agents</h3>
 
+
         <!--main content start-->
   
         <div class="row">
             <div class="col-md-12">
+                <p class="session-success">l'inscription a bien été pris en compte <?= $this->session->show('addAgent'); ?></p>
                 <div class="form-panel">
                     <h4><i class="fa fa-angle-right"></i> Basic Table</h4>
                 <hr>
@@ -36,8 +38,9 @@
                                 <td><?= htmlspecialchars($agent->getPhone());?></td>
                                 <td><?= htmlspecialchars($agent->getEmail());?></td>
                                 <td>
-                                    <a href="agent.php" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
+                                    <a href="" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                                     <a href="../public/index.php?route=update_profile" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                    <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
                         <?php

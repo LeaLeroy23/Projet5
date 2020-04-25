@@ -51,7 +51,7 @@
                             </div>
                             <label class="col-sm-2 col-sm-2 control-label">Mot de passe</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" name="password" placeholder="password">
+                                <input type="password" class="form-control" name="password" placeholder="password">
                                 <?= isset($errors['password']) ? $errors['password'] : ''; ?>
                             </div>
                         </div>

@@ -3535,3 +3535,9 @@ ul.chat-available-user li a:hover {
     margin-bottom: 15px;
 }
 
+.session-success{
+    background-color: #2ba37e;
+    padding: 7px;
+    margin-left: 0.8%;
+    color: #fff;
+  }

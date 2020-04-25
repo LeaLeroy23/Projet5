@@ -16,8 +16,8 @@ class AgentDAO extends DAO
         $agent->setPhone($row['phone']);
         $agent->setEmail($row['email']);
         $agent->setFunction($row['function']);
-        $agent->setFunction($row['password']);
-        $agent->setFunction($row['status']);
+        $agent->setPassword($row['password']);
+        $agent->setStatus($row['status']);
         return $agent;
     }
 
@@ -80,7 +80,7 @@ class AgentDAO extends DAO
         $data = $this->createQuery($sql, [$post->get('email')]);
         $result = $data->fetch();
         $isPasswordValid =$post->get('password');
-        //$isPasswordValid = password_verify($post->get('password'), $result['password']);
+        $isPasswordValid = password_verify($post->get('password'), $result['password']);
         return[
             'result' => $result,
             'isPasswordValid' => $isPasswordValid
