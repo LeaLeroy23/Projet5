@@ -11,16 +11,15 @@ class BackController extends Controller
         return $this->view->renderTemplate('add_estate');
     }
 
-    /*public function addCategory($post)
+    public function addCategory($post)
     {
         if($post->get('submit')){
-            echo'hello';
-            print_r($post);
-            $this->categoryDAO->addCategory($post);
-            header('Location: ../public/index.php?route=add_estate');
+            die();
+            $this->categoryDAO->addCategory();
+            
         }
-        return $this->view->renderTemplate('add_estate');
-    }*/
+        return $this->view->renderTemplate('add_input');
+    }
 
     public function allAgents()
     {
@@ -38,7 +37,7 @@ class BackController extends Controller
                 $errors['email'] = $this->agentDAO->checkEmail($post);
             }
             if (!$errors){
-                $generateToken = openssl_random_pseudo_bytes(5);
+                $generateToken = openssl_random_pseudo_bytes(10);
                 $token = bin2hex($generateToken);
                 $createdAt = new \Datetime('NOW');
                 $password = password_hash($post->get('password'), PASSWORD_BCRYPT);

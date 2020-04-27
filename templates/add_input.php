@@ -2,13 +2,13 @@
 
 <section id="main-content">
     <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Tous les agents</h3>
+        <h3><i class="fa fa-angle-right"></i> Ajouter des s</h3>
 
         <!--main category start-->
         <div class="row">
             <div class="col-md-12">
                 <div class="form-panel">
-                    <h4><i class="fa fa-angle-right"></i> Basic Table</h4>
+                    <h4><i class="fa fa-angle-right"></i> Les catégories</h4>
                 <hr>
                     <table class="table">
                         <thead>
@@ -40,24 +40,30 @@
                             
                         </tbody>
                     </table>
+                </div>
+            </div> 
+        </div>
 
                     <!-- Start add category -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-panel">
+                <h4><i class="fa fa-angle-right"></i> Ajouter une catégorie</h4>
                     <div class="form-group">
-                            <form class="form-horizontal style-form" method='POST' action="../public/index.php?route=addCategory">
-                                <label class="col-sm-2 col-sm-2 control-label">Ajouter une catégorie</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="name" placeholder="Ajouter une catégorie">
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">
-                                    </div>
-                            </form>
-                        </div>
-                        <!-- End add category -->
+                        <form class="form-horizontal style-form" method='POST' action="../public/index.php?route=addCategory">
+                            <label class="col-sm-2 col-sm-2 control-label">Ajouter une catégorie</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="name" placeholder="Ajouter une catégorie">
+                                </div>
+                                <div class="col-sm-1">
+                                    <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">
+                                </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            
         </div>
+        <!-- End add category -->
         <!--main category end-->
 
     </section>

@@ -4,6 +4,8 @@
 namespace App\src\DAO;
 
 use App\config\Parameter;
+use App\config\Email;
+use App\vendor\autoload;
 
 class EmailDAO extends DAO
 {

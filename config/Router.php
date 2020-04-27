@@ -34,7 +34,7 @@ class Router
                     $this->frontController->all_estate();
                 }
                 elseif($route === 'agent'){
-                    $this->frontController->agent($_GET['agentId']);
+                    $this->frontController->agent($this->request->getGet()->get['agentId']);
                 }
                 elseif ($route === 'team'){
                     $this->frontController->team();
@@ -47,11 +47,12 @@ class Router
                 }
                 elseif ($route === 'add_estate'){
                     $this->backController->addEstate();
+                    $this->backController->addCategory($this->request->getPost());
                 }
-                elseif ($route === 'add_category'){
-                    $this->backController->addCategory();
+                elseif ($route === 'addInput'){
+                    $this->backController->addCategory($this->request->getPost());
                 }
-                elseif ($route === 'all_agents'){
+                elseif ($route === 'allAgents'){
                     $this->backController->allAgents();
                 }
                 elseif ($route === 'addAgent'){

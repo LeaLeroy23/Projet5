@@ -88,7 +88,7 @@
                         <!-- sidebar menu start-->
                         <ul class="sidebar-menu" id="nav-accordion">
                             <p class="centered"><a href="index.php?route=profile"><img src="../public/img/agent/ui-sam.jpg" class="img-circle" width="80"></a></p>
-                            <h5 class="centered"><?= $this->session->get('lname'); ?> <?= $this->session->get('fname'); ?></h5>
+                            <h5 class="centered"><?= $this->session->get('lastname'); ?> <?= $this->session->get('firstname'); ?></h5>
                             <li class="mt">
                                 <a href="index.php?route=dashboard">
                                 <i class="fa fa-dashboard"></i>
@@ -104,9 +104,9 @@
                             </li>
 
                             <li class="mt">
-                                <a href="index.php?route=add_infos">
+                                <a href="index.php?route=addInput">
                                 <i class="fa fa-plus"></i>
-                                <span>Ajouter </span>
+                                <span>Modifier les champs </span>
                                 </a>
                             </li>
 
