@@ -6,11 +6,13 @@ use App\config\Request;
 use App\src\constraint\Validation;
 use App\src\DAO\EstateDAO;
 use App\src\DAO\AgentDAO;
+use App\src\DAO\EmailDAO;
 use App\src\model\View;
 
 abstract class Controller{
     protected $estateDAO;
     protected $agentDAO;
+    protected $emailDAO;
     protected $view;
     private $request;
     protected $get;
@@ -21,6 +23,7 @@ abstract class Controller{
     public function __construct(){
         $this->estateDAO = new EstateDAO();
         $this->agentDAO = new AgentDAO();
+        $this->emailDAO = new EmailDAO();
         $this->view = new View();
         $this->validation = new Validation();
         $this->request = new Request();

@@ -27,7 +27,7 @@ class AgentValidation extends Validation
         if($name === 'function') {
             $error = $this->checkFunction($name, $value);
             $this->addError($name, $error);
-            }
+        }
         elseif($name === 'email') {
         $error = $this->checkEmail($name, $value);
         $this->addError($name, $error);
@@ -113,8 +113,8 @@ class AgentValidation extends Validation
         if($this->constraint->minLength($name, $value, 2)) {
             return $this->constraint->minLength('email', $value, 2);
         }
-        if($this->constraint->maxLength($name, $value, 30)) {
-            return $this->constraint->maxLength('email', $value, 30);
+        if($this->constraint->maxLength($name, $value, 50)) {
+            return $this->constraint->maxLength('email', $value, 50);
         }
     }
 

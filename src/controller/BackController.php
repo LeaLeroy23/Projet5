@@ -44,13 +44,14 @@ class BackController extends Controller
                 $password = password_hash($post->get('password'), PASSWORD_BCRYPT);
 
                 $this->agentDAO->addAgent($post, $password, $token, $createdAt->format('Y-m-d H:i:s'));
+                $this->emailDAO->registerEmail($post);
                 
                 $this->session->set('addAgent', 'L\'inscription a bien été prise en compte');
                 header('Location: ../public/index.php?route=all_agents');
                 exit();
                 
             }
-            return $this->view->renderTemplate('addAgent', [
+            return $this->view->renderTemplate('add_agent', [
                 'post' => $post,
                 'errors' => $errors
             ]);
