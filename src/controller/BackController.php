@@ -11,14 +11,26 @@ class BackController extends Controller
         return $this->view->renderTemplate('add_estate');
     }
 
+    public function allCategories()
+    {
+        $categories = $this->categoryDAO->getCategories();
+        
+        return $this->view->renderTemplate('add_estate', [
+            'categories' => $categories
+        ]);
+    }
+
     public function addCategory($post)
     {
         if($post->get('submit')){
-            die();
-            $this->categoryDAO->addCategory();
-            
+            $this->categoryDAO->addCategory($post);
+            $this->session->set('addCategory', 'L\'ajout d\'une catégorie a été faite');
+            header('Location: ../public/index.php?route=add_estate');
+            exit();
         }
-        return $this->view->renderTemplate('add_input');
+        return $this->view->renderTemplate('add_estate', [
+            'post', $post
+        ]);
     }
 
     public function allAgents()

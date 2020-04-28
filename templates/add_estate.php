@@ -2,8 +2,9 @@
     <section id="main-content">
         <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Ajouter une annonce</h3>
+        <?= $this->session->show('addCategory'); ?>
 
-            <form class="form-horizontal style-form" method='POST' action="../public/index.php?route=addEstate" enctype="multipart/form-data">
+            <form class="form-horizontal style-form" method='POST' action="" enctype="multipart/form-data">
 
             <div class="row mt">
                 <div class="col-lg-12">
@@ -22,6 +23,20 @@
                                         <input type="radio" id="optionsRadios1" name="category" value="a louer">
                                         A Louer
                                     </label>
+
+                                    <?php
+                                        foreach ($categories as $category)
+                                        {
+                                    ?>
+                                    <label>
+                                        <input type="radio" id="optionsRadios1" name="category" value="<?= htmlspecialchars($category->getName());?>">
+                                        <?= htmlspecialchars($category->getName());?>
+                                        <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+                                    </label>
+                                    <?php
+                                        }
+                                    ?>
+
                                 </div>
                             </div>
                             <div class="col-sm-1" id="">
@@ -29,7 +44,7 @@
                             </div>
                         </div>
 
-                        <!-- Start add category 
+                        <!-- Start add category  -->
                         <div class="form-group" id="adding-category">
                             <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addCategory">
                                 <label class="col-sm-2 col-sm-2 control-label">Ajouter une catégorie</label>
@@ -41,7 +56,7 @@
                                     </div>
                             </form>
                         </div>
-                         End add category -->
+                         <!--End add category -->
 
 
                         <div class="form-group">
