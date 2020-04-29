@@ -44,8 +44,9 @@ class CategoryDAO extends DAO
         ]);
     }
 
-    public function deleteCategory(){
-        
+    public function deleteCategory($categoryId){
+        $sql = 'DELETE FROM category WHERE id = ?';
+        $this->createQuery($sql, [$categoryId]);
     }
 
 }

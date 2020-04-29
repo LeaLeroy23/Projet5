@@ -7,6 +7,8 @@ use App\src\constraint\Validation;
 use App\src\DAO\EstateDAO;
 use App\src\DAO\AgentDAO;
 use App\src\DAO\CategoryDAO;
+use App\src\DAO\EnergyDAO;
+use App\src\DAO\TypeDAO;
 use App\src\DAO\EmailDAO;
 use App\src\model\View;
 
@@ -14,6 +16,8 @@ abstract class Controller{
     protected $estateDAO;
     protected $agentDAO;
     protected $categoryDAO;
+    protected $energyDAO;
+    protected $typeDAO;
     protected $emailDAO;
     protected $view;
     private $request;
@@ -26,6 +30,8 @@ abstract class Controller{
         $this->estateDAO = new EstateDAO();
         $this->agentDAO = new AgentDAO();
         $this->categoryDAO = new CategoryDAO();
+        $this->energyDAO = new EnergyDAO();
+        $this->typeDAO = new TypeDAO();
         $this->emailDAO = new EmailDAO();
         $this->view = new View();
         $this->validation = new Validation();

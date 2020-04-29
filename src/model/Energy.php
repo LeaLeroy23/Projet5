@@ -12,17 +12,17 @@ class Energy
     /**
      * @var string
      */
-    private $energy_diagnostic;
+    private $energyDiagnostic;
 
     /**
      * @var string
      */
-    private $level_energy_diagnostic;
+    private $levelEnergyDiagnostic;
 
     /**
      * @var string
      */
-    private $level_climat_diagnostic;
+    private $levelClimatDiagnostic;
 
     /**
      * @return int
@@ -43,7 +43,7 @@ class Energy
     /**
      * @return string
      */
-    public function getEnergy_diagnostic()
+    public function getEnergyDiagnostic()
     {
         return $this->energy_diagnostic;
     }
@@ -51,9 +51,9 @@ class Energy
     /**
      * @param string $energy_diagnostic
      */
-    public function setEnergy_diagnostic($energy_diagnostic)
+    public function setEnergyDiagnostic($energyDiagnostic)
     {
-        $this->energy_diagnostic = $energy_diagnostic;
+        $this->energy_diagnostic = $energyDiagnostic;
     }
 
     /**
@@ -61,15 +61,15 @@ class Energy
      */
     public function getLevel_energy_diagnostic()
     {
-        return $this->level_energy_diagnostic;
+        return $this->levelEnergyDiagnostic;
     }
 
     /**
      * @param string $level_energy_diagnostic
      */
-    public function setLevel_energy_diagnostic($level_energy_diagnostic)
+    public function setLevel_energy_diagnostic($levelEnergyDiagnostic)
     {
-        $this->level_energy_diagnostic = $level_energy_diagnostic;
+        $this->level_energy_diagnostic = $levelEnergyDiagnostic;
     }
 
     /**
@@ -83,8 +83,8 @@ class Energy
     /**
      * @param string $level_climat_diagnostic
      */
-    public function setLevel_climat_diagnostic($level_climat_diagnostic)
+    public function setLevel_climat_diagnostic($levelClimatDiagnostic)
     {
-        $this->level_climat_diagnostic = $level_climat_diagnostic;
+        $this->level_climat_diagnostic = $levelClimatDiagnostic;
     }
 }

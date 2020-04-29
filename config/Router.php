@@ -45,23 +45,33 @@ class Router
                 elseif($route === 'login'){
                     $this->frontController->login($this->request->getPost());
                 }
-                elseif ($route === 'add_estate'){
-                    $this->backController->allCategories();
-                    $this->backController->addAgent($this->request->getPost());
+                elseif ($route === 'addEstate'){
                     $this->backController->addEstate();
                 }
                 elseif ($route === 'addCategory'){
                     $this->backController->addCategory($this->request->getPost());
                 }
-                /*elseif ($route === 'addInput'){
-                    $this->backController->addCategory($this->request->getPost());
-                }*/
+                elseif ($route === 'addEnergy'){
+                    $this->backController->addEnergy($this->request->getPost());
+                }
+                elseif ($route === 'deleteCategory'){
+                    $this->backController->deleteCategory($this->request->getGet()->get('categoryId'));
+                }
+                elseif ($route === 'addType'){
+                    $this->backController->addType($this->request->getPost());
+                }
+                elseif ($route === 'deleteType'){
+                    $this->backController->deleteType($this->request->getGet()->get('typeId'));
+                }
+                elseif ($route === 'deleteEnergy'){
+                    $this->backController->deleteEnergy($this->request->getGet()->get('energyId'));
+                }
                 elseif ($route === 'allAgents'){
                     $this->backController->allAgents();
                 }
-                /*elseif ($route === 'addAgent'){
+                elseif ($route === 'addAgent'){
                     $this->backController->addAgent($this->request->getPost());
-                }*/
+                }
                 elseif ($route === 'profile'){
                     $this->backController->profile();
                 }

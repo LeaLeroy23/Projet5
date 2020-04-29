@@ -8,15 +8,13 @@ class BackController extends Controller
 {
     public function addEstate()
     {
-        return $this->view->renderTemplate('add_estate');
-    }
-
-    public function allCategories()
-    {
         $categories = $this->categoryDAO->getCategories();
-        
+        $types = $this->typeDAO->getTypes();
+        $energies = $this->energyDAO->getEnergies();
         return $this->view->renderTemplate('add_estate', [
-            'categories' => $categories
+            'categories' => $categories,
+            'types' => $types,
+            'energies' => $energies
         ]);
     }
 
@@ -25,12 +23,62 @@ class BackController extends Controller
         if($post->get('submit')){
             $this->categoryDAO->addCategory($post);
             $this->session->set('addCategory', 'L\'ajout d\'une catégorie a été faite');
-            header('Location: ../public/index.php?route=add_estate');
+            header('Location: ../public/index.php?route=addEstate');
             exit();
         }
         return $this->view->renderTemplate('add_estate', [
             'post', $post
         ]);
+    }
+
+    public function addType($post)
+    {
+        if($post->get('submit')){
+            $this->typeDAO->addType($post);
+            $this->session->set('addType', 'L\'ajout d\'un type a été fait');
+            header('Location: ../public/index.php?route=addEstate');
+            exit();
+        }
+        return $this->view->renderTemplate('add_estate', [
+            'post', $post
+        ]);
+    }
+
+    public function addEnergy($post)
+    {
+        if($post->get('submit')){
+            $this->energyDAO->addEnergy($post);
+            $this->session->set('addEnergy', 'L\'ajout d\'un type d\'énergie a été faite');
+            header('Location: ../public/index.php?route=addEstate');
+            exit();
+        }
+        return $this->view->renderTemplate('add_estate', [
+            'post', $post
+        ]);
+    }
+
+    public function deleteCategory($categoryId)
+    {
+        $this->categoryDAO->deleteCategory($categoryId);
+        $this->session->set('deleteCategory', 'La catégorie a été supprimer avec succès');
+        header('Location: ../public/index.php?route=addEstate');
+        exit();
+    }
+
+    public function deleteType($typeId)
+    {
+        $this->typeDAO->deleteType($typeId);
+        $this->session->set('deleteType', 'Le type a été supprimer avec succès');
+        header('Location: ../public/index.php?route=addEstate');
+        exit();
+    }
+
+    public function deleteEnergy($energyId)
+    {
+        $this->energyDAO->deleteEnergy($energyId);
+        $this->session->set('deleteEnergy', 'Le type d\'énergie a été supprimer avec succès');
+        header('Location: ../public/index.php?route=addEstate');
+        exit();
     }
 
     public function allAgents()
@@ -69,7 +117,6 @@ class BackController extends Controller
         }      
         return $this->view->renderTemplate('add_agent');
     }
-
 
     public function profile()
     {

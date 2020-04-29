@@ -3,19 +3,50 @@
 //Pour toutes les classes dans DAO
 namespace App\src\DAO;
 
+use App\config\Parameter;
 use App\src\model\Type;
 
 class TypeDAO extends DAO
 {
-    public function allType(){
-
+    private function buildObject($row){
+        $type = new Type;
+        $type->setId($row['id']);
+        $type->setType($row['type']);
+        return $type;
     }
 
-    public function addType(){
-        $sql = 'INSERT INTO type (type) VALUES (:type)';
+    public function getTypes(){
+        $sql ='SELECT * FROM type';
+        $result = $this->createQuery($sql);
+        $types = [];
+        foreach ($result as $row){
+            $typeId = $row['id'];
+            $types[$typeId] = $this->buildObject($row);
+        }
+        $result->closeCursor();
+        return $types;
+    }
+
+    public function getType($typeId)
+    {
+        $sql= 'SELECT * FROM type WHERE id = ?';
+        $result = $this->createQuery($sql, [$typeId]);
+        $type = $result->fetch();
+        $result->closeCursor();
+        return $this->buildObject($type);
+    }
+
+    public function addType($post){
+        $sql = 'INSERT INTO type (type) 
+        VALUES (:type)';
         $this->createQuery($sql, [
             'type' => $post->get('type')
         ]);
+    }
+
+    public function deleteType($typeId){
+        $sql = 'DELETE FROM type WHERE id = ?';
+        $this->createQuery($sql, [$typeId]);
     }
 
 }

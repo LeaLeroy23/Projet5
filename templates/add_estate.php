@@ -3,8 +3,11 @@
         <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Ajouter une annonce</h3>
         <?= $this->session->show('addCategory'); ?>
+        <?= $this->session->show('addType'); ?>
+        <?= $this->session->show('deleteCategory'); ?>
+        <?= $this->session->show('deleteType'); ?>
 
-            <form class="form-horizontal style-form" method='POST' action="" enctype="multipart/form-data">
+            <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addCategory">
 
             <div class="row mt">
                 <div class="col-lg-12">
@@ -31,7 +34,7 @@
                                     <label>
                                         <input type="radio" id="optionsRadios1" name="category" value="<?= htmlspecialchars($category->getName());?>">
                                         <?= htmlspecialchars($category->getName());?>
-                                        <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+                                        <a href="../public/index.php?route=deleteCategory&categoryId=<?= $category->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
                                     </label>
                                     <?php
                                         }
@@ -62,16 +65,42 @@
                         <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Type de bien</label>
                                 <div class="col-sm-9">
-                                    <select name="type" class="form-control">
-                                        <option value="maison">Maison</option>
-                                        <option value="appartement">Appartement</option>
-                                        <option value="parking">Parking</option>
-                                        <option value="garage">Garage</option>
-                                        <option value="local_commercial">Local Commercial</option>
-                                    </select>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" id="optionsRadios1" name="type" value="maison">
+                                            Maison
+                                        </label>
+                                        <label>
+                                            <input type="radio" id="optionsRadios1" name="type" value="appartement">
+                                            Appartement
+                                        </label>
+                                        <label>
+                                            <input type="radio" id="optionsRadios1" name="type" value="parking">
+                                            Parking
+                                        </label>
+                                        <label>
+                                            <input type="radio" id="optionsRadios1" name="type" value="Garage">
+                                            Garage
+                                        </label>
+
+                                        <?php
+                                            foreach ($types as $type)
+                                            {
+                                        ?>
+                                        <label>
+                                            <input type="radio" id="optionsRadios1" name="type" value="<?= htmlspecialchars($type->getType());?>">
+                                            <?= htmlspecialchars($type->getType());?>
+                                            <a href="../public/index.php?route=deleteType&typeId=<?= $type->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+                                        </label>
+                                        <?php
+                                            }
+                                        ?>
+
+                                    </div>
                                 </div>
+
                                 <div class="col-sm-1" id="adding-type">
-                                    <a href="../public/index.php?route=addType" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></a>
+                                    <a href="" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></a>
                                 </div>
                         </div>
 
@@ -83,7 +112,7 @@
                                     <input type="text" class="form-control" name="type" placeholder="Ajouter un type">
                                 </div>
                                 <div class="col-sm-1">
-                                    <input type="submit" class="btn btn-theme05" value="Ajouter">
+                                    <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">
                                 </div>
                             </form>
                         </div>
@@ -189,10 +218,18 @@
                                     <option value="">Type d'énergie</option>
                                     <option value="Gaz">Gaz</option>
                                     <option value="électricité">Electricité</option>
+                                    <?php
+                                        foreach ($energies as $energy)
+                                        {
+                                    ?>
+                                    <option value="<?= htmlspecialchars($energy->getEnergyDiagnostic());?>"><?= htmlspecialchars($energy->getEnergyDiagnostic());?></option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
                             </div>
                             <div class="col-sm-1" id="adding-energy">
-                                <a href="../public/index.php?route=addEnergy" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></a>
+                                <a href="" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></a>
                             </div>
                         </div>
 
