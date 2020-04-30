@@ -6,16 +6,22 @@ use App\config\Parameter;
 
 class BackController extends Controller
 {
-    public function addEstate()
-    {
+    public function estateForm(){
         $categories = $this->categoryDAO->getCategories();
         $types = $this->typeDAO->getTypes();
         $energies = $this->energyDAO->getEnergies();
-        return $this->view->renderTemplate('add_estate', [
+        $frequencies = $this->frequencyDAO->getFrequencies();
+        return $this->view->renderTemplate('estateForm', [
             'categories' => $categories,
             'types' => $types,
-            'energies' => $energies
+            'energies' => $energies,
+            'frequencies' => $frequencies
         ]);
+    }
+
+    public function addEstate()
+    {
+        return $this->view->renderTemplate('add_estate');
     }
 
     public function addCategory($post)
@@ -23,10 +29,10 @@ class BackController extends Controller
         if($post->get('submit')){
             $this->categoryDAO->addCategory($post);
             $this->session->set('addCategory', 'L\'ajout d\'une catégorie a été faite');
-            header('Location: ../public/index.php?route=addEstate');
+            header('Location: ../public/index.php?route=estateForm');
             exit();
         }
-        return $this->view->renderTemplate('add_estate', [
+        return $this->view->renderTemplate('estateForm', [
             'post', $post
         ]);
     }
@@ -36,10 +42,10 @@ class BackController extends Controller
         if($post->get('submit')){
             $this->typeDAO->addType($post);
             $this->session->set('addType', 'L\'ajout d\'un type a été fait');
-            header('Location: ../public/index.php?route=addEstate');
+            header('Location: ../public/index.php?route=estateForm');
             exit();
         }
-        return $this->view->renderTemplate('add_estate', [
+        return $this->view->renderTemplate('estateForm', [
             'post', $post
         ]);
     }
@@ -49,10 +55,23 @@ class BackController extends Controller
         if($post->get('submit')){
             $this->energyDAO->addEnergy($post);
             $this->session->set('addEnergy', 'L\'ajout d\'un type d\'énergie a été faite');
-            header('Location: ../public/index.php?route=addEstate');
+            header('Location: ../public/index.php?route=estateForm');
             exit();
         }
-        return $this->view->renderTemplate('add_estate', [
+        return $this->view->renderTemplate('estateForm', [
+            'post', $post
+        ]);
+    }
+
+    public function addFrequency($post)
+    {
+        if($post->get('submit')){
+            $this->frequencyDAO->addFrequency($post);
+            $this->session->set('addFrequency', 'L\'ajout d\'une frquence de charge a été faite');
+            header('Location: ../public/index.php?route=estateForm');
+            exit();
+        }
+        return $this->view->renderTemplate('estateForm', [
             'post', $post
         ]);
     }
@@ -61,7 +80,7 @@ class BackController extends Controller
     {
         $this->categoryDAO->deleteCategory($categoryId);
         $this->session->set('deleteCategory', 'La catégorie a été supprimer avec succès');
-        header('Location: ../public/index.php?route=addEstate');
+        header('Location: ../public/index.php?route=estateForm');
         exit();
     }
 
@@ -69,7 +88,7 @@ class BackController extends Controller
     {
         $this->typeDAO->deleteType($typeId);
         $this->session->set('deleteType', 'Le type a été supprimer avec succès');
-        header('Location: ../public/index.php?route=addEstate');
+        header('Location: ../public/index.php?route=estateForm');
         exit();
     }
 
@@ -77,7 +96,7 @@ class BackController extends Controller
     {
         $this->energyDAO->deleteEnergy($energyId);
         $this->session->set('deleteEnergy', 'Le type d\'énergie a été supprimer avec succès');
-        header('Location: ../public/index.php?route=addEstate');
+        header('Location: ../public/index.php?route=estateForm');
         exit();
     }
 

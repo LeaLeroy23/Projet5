@@ -97,7 +97,7 @@
                             </li>
 
                             <li class="mt">
-                                <a href="index.php?route=add_estate">
+                                <a href="index.php?route=estateForm">
                                 <i class="fa fa-plus"></i>
                                 <span>Nouvelle annonce</span>
                                 </a>
@@ -111,7 +111,7 @@
                             </li>
 
                             <li class="mt">
-                                <a href="index.php?route=all_estate">
+                                <a href="index.php?route=allEstate">
                                 <i class="fa fa-copy"></i>
                                 <span>Les annonces</span>
                                 </a>

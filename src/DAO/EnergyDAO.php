@@ -11,7 +11,7 @@ class EnergyDAO extends DAO
     private function buildObject($row){
         $energy = new Energy;
         $energy->setId($row['id']);
-        $energy->setName($row['name']);
+        $energy->setEnergyDiagnostic($row['energy_diagnostic']);
         return $energy;
     }
 

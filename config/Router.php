@@ -45,20 +45,26 @@ class Router
                 elseif($route === 'login'){
                     $this->frontController->login($this->request->getPost());
                 }
+                elseif ($route === 'estateForm'){
+                    $this->backController->estateForm();
+                }
                 elseif ($route === 'addEstate'){
                     $this->backController->addEstate();
                 }
                 elseif ($route === 'addCategory'){
                     $this->backController->addCategory($this->request->getPost());
                 }
+                elseif ($route === 'addType'){
+                    $this->backController->addType($this->request->getPost());
+                }
                 elseif ($route === 'addEnergy'){
                     $this->backController->addEnergy($this->request->getPost());
                 }
+                elseif ($route === 'addFrequency'){
+                    $this->backController->addFrequency($this->request->getPost());
+                }
                 elseif ($route === 'deleteCategory'){
                     $this->backController->deleteCategory($this->request->getGet()->get('categoryId'));
-                }
-                elseif ($route === 'addType'){
-                    $this->backController->addType($this->request->getPost());
                 }
                 elseif ($route === 'deleteType'){
                     $this->backController->deleteType($this->request->getGet()->get('typeId'));
