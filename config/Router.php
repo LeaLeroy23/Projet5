@@ -90,6 +90,9 @@ class Router
                 elseif ($route === 'updateProfile'){
                     $this->backController->updateProfile($this->request->getPost());
                 }
+                elseif ($route === 'configuration'){
+                    $this->frontController->configuration();
+                }
                 elseif ($route === 'dashboard'){
                     $this->frontController->dashboard();
                 }

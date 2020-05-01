@@ -21,7 +21,7 @@ class BackController extends Controller
 
     public function addEstate()
     {
-        return $this->view->renderTemplate('add_estate');
+        return $this->view->renderTemplate('estateForm');
     }
 
     public function addCategory($post)
@@ -29,10 +29,10 @@ class BackController extends Controller
         if($post->get('submit')){
             $this->categoryDAO->addCategory($post);
             $this->session->set('addCategory', 'L\'ajout d\'une catégorie a été faite');
-            header('Location: ../public/index.php?route=estateForm');
+            header('Location: ../public/index.php?route=configuration');
             exit();
         }
-        return $this->view->renderTemplate('estateForm', [
+        return $this->view->renderTemplate('configForm', [
             'post', $post
         ]);
     }
@@ -42,10 +42,10 @@ class BackController extends Controller
         if($post->get('submit')){
             $this->typeDAO->addType($post);
             $this->session->set('addType', 'L\'ajout d\'un type a été fait');
-            header('Location: ../public/index.php?route=estateForm');
+            header('Location: ../public/index.php?route=configuration');
             exit();
         }
-        return $this->view->renderTemplate('estateForm', [
+        return $this->view->renderTemplate('configForm', [
             'post', $post
         ]);
     }
@@ -55,10 +55,10 @@ class BackController extends Controller
         if($post->get('submit')){
             $this->energyDAO->addEnergy($post);
             $this->session->set('addEnergy', 'L\'ajout d\'un type d\'énergie a été faite');
-            header('Location: ../public/index.php?route=estateForm');
+            header('Location: ../public/index.php?route=configuration');
             exit();
         }
-        return $this->view->renderTemplate('estateForm', [
+        return $this->view->renderTemplate('configForm', [
             'post', $post
         ]);
     }
@@ -68,10 +68,10 @@ class BackController extends Controller
         if($post->get('submit')){
             $this->frequencyDAO->addFrequency($post);
             $this->session->set('addFrequency', 'L\'ajout d\'une frquence de charge a été faite');
-            header('Location: ../public/index.php?route=estateForm#frequency');
+            header('Location: ../public/index.php?route=configuration');
             exit();
         }
-        return $this->view->renderTemplate('estateForm', [
+        return $this->view->renderTemplate('configForm', [
             'post', $post
         ]);
     }
@@ -80,7 +80,7 @@ class BackController extends Controller
     {
         $this->categoryDAO->deleteCategory($categoryId);
         $this->session->set('deleteCategory', 'La catégorie a été supprimer avec succès');
-        header('Location: ../public/index.php?route=estateForm');
+        header('Location: ../public/index.php?route=configuration');
         exit();
     }
 
@@ -88,7 +88,7 @@ class BackController extends Controller
     {
         $this->typeDAO->deleteType($typeId);
         $this->session->set('deleteType', 'Le type a été supprimer avec succès');
-        header('Location: ../public/index.php?route=estateForm');
+        header('Location: ../public/index.php?route=configuration');
         exit();
     }
 
@@ -96,7 +96,7 @@ class BackController extends Controller
     {
         $this->energyDAO->deleteEnergy($energyId);
         $this->session->set('deleteEnergy', 'Le type d\'énergie a été supprimer avec succès');
-        header('Location: ../public/index.php?route=estateForm');
+        header('Location: ../public/index.php?route=configuration');
         exit();
     }
 
@@ -104,7 +104,7 @@ class BackController extends Controller
     {
         $this->frequencyDAO->deleteFrequency($frequencyId);
         $this->session->set('deleteFrequency', 'La fréquence de charge a été supprimer avec succès');
-        header('Location: ../public/index.php?route=estateForm#frequency');
+        header('Location: ../public/index.php?route=configuration');
         exit();
     }
 

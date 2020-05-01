@@ -85,4 +85,8 @@ class FrontController extends Controller
         }
         return $this->view->render('login');
     }
+
+    public function configuration(){
+        return $this->view->renderTemplate('configForm');
+    }
 }

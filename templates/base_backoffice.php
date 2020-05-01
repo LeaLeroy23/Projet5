@@ -131,8 +131,8 @@
                                 </a>
                             </li>
                             <li class="mt">
-                                <a href="index.php?route=profile">
-                                <i class="fa fa-user-circle"></i>
+                                <a href="index.php?route=configuration">
+                                <i class="fa fa-cogs"></i>
                                 <span>Configuration</span>
                                 </a>
                             </li>
