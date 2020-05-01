@@ -33,7 +33,7 @@ class Charges
     /**
      * @return string
      */
-    public function getFrenquency()
+    public function getFrequency()
     {
         return $this->frequency;
     }
@@ -41,7 +41,7 @@ class Charges
     /**
      * @param string $frequency
      */
-    public function setFrenquency($frequency)
+    public function setFrequency($frequency)
     {
         $this->frequency = $frequency;
     }

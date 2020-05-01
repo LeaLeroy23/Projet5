@@ -68,7 +68,7 @@ class BackController extends Controller
         if($post->get('submit')){
             $this->frequencyDAO->addFrequency($post);
             $this->session->set('addFrequency', 'L\'ajout d\'une frquence de charge a été faite');
-            header('Location: ../public/index.php?route=estateForm');
+            header('Location: ../public/index.php?route=estateForm#frequency');
             exit();
         }
         return $this->view->renderTemplate('estateForm', [
@@ -97,6 +97,14 @@ class BackController extends Controller
         $this->energyDAO->deleteEnergy($energyId);
         $this->session->set('deleteEnergy', 'Le type d\'énergie a été supprimer avec succès');
         header('Location: ../public/index.php?route=estateForm');
+        exit();
+    }
+
+    public function deleteFrequency($frequencyId)
+    {
+        $this->frequencyDAO->deleteFrequency($frequencyId);
+        $this->session->set('deleteFrequency', 'La fréquence de charge a été supprimer avec succès');
+        header('Location: ../public/index.php?route=estateForm#frequency');
         exit();
     }
 

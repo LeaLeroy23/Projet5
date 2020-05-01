@@ -4,8 +4,10 @@
         <h3><i class="fa fa-angle-right"></i> Ajouter une annonce</h3>
         <?= $this->session->show('addCategory'); ?>
         <?= $this->session->show('addType'); ?>
+        <?= $this->session->show('addFrequency'); ?>
         <?= $this->session->show('deleteCategory'); ?>
         <?= $this->session->show('deleteType'); ?>
+        <?= $this->session->show('deleteFrequency'); ?>
 
             <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addCategory">
 
@@ -372,7 +374,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" id="frequency">
                                 <label class="col-sm-2 col-sm-2 control-label">Fréquence des Charges</label>
                                 <div class="col-sm-9">
                                     <label>
@@ -390,6 +392,7 @@
                                     <label>
                                         <input type="radio" id="optionsRadios1" name="frequency" value="<?= htmlspecialchars($frequency->getFrequency());?>">
                                         <?= htmlspecialchars($frequency->getFrequency());?>
+                                        <a href="../public/index.php?route=deleteFrequency&frequencyId=<?= $frequency->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
                                     </label>
                                     <?php
                                         }

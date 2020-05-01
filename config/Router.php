@@ -72,6 +72,9 @@ class Router
                 elseif ($route === 'deleteEnergy'){
                     $this->backController->deleteEnergy($this->request->getGet()->get('energyId'));
                 }
+                elseif ($route === 'deleteFrequency'){
+                    $this->backController->deleteFrequency($this->request->getGet()->get('frequencyId'));
+                }
                 elseif ($route === 'allAgents'){
                     $this->backController->allAgents();
                 }

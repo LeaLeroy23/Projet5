@@ -104,13 +104,6 @@
                             </li>
 
                             <li class="mt">
-                                <a href="index.php?route=addInput">
-                                <i class="fa fa-plus"></i>
-                                <span>Modifier les champs </span>
-                                </a>
-                            </li>
-
-                            <li class="mt">
                                 <a href="index.php?route=allEstate">
                                 <i class="fa fa-copy"></i>
                                 <span>Les annonces</span>
@@ -135,6 +128,12 @@
                                 <a href="index.php?route=profile">
                                 <i class="fa fa-user-circle"></i>
                                 <span>Mon Profil</span>
+                                </a>
+                            </li>
+                            <li class="mt">
+                                <a href="index.php?route=profile">
+                                <i class="fa fa-user-circle"></i>
+                                <span>Configuration</span>
                                 </a>
                             </li>
 
