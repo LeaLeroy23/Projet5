@@ -6,119 +6,159 @@
 
         <!--main category start-->
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-sm-6">
                 <div class="form-panel">
-                    <h4><i class="fa fa-angle-right"></i> Les catégories d'habitation</h4>
-                <hr>
-                    <table class="table">
+                    <h4 class="mb"><i class="fa fa-angle-right"></i> Les catégories accessible</h4>
+                    <table class="table table-bordered table-striped table-condensed">
                         <thead>
                             <tr>
-                                <th class="hidden-phone"><i class="fa fa-user"></i> Fonction</th>
-                                <th class="hidden-phone"> Prénom</th>
-                                <th class="hidden-phone"> Nom</th>
-                                <th class="hidden-phone"><i class="fa fa-lock"></i> Autorisation</th>
-                                <th class="hidden-phone"><i class="fa fa-phone"></i> Téléphone</th>
-                                <th class="hidden-phone"><i class="fa fa-enveloppe"></i> Email</th>
-                                <th class="hidden-phone"></th>
+                                <th>Nom</th>
+                                <th>Gestion</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                        
+                        <?php
+                            foreach ($categories as $category)
+                            {
+                        ?>
                             <tr>
-                                <td>Responsable transaction</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>Contributeur</td>
-                                <td>06 XX XX XX XX</td>
-                                <td>@hestia.fr</td>
+                                <td><?= htmlspecialchars($category->getName());?></td>
                                 <td>
-                                    <a href="agent.php" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+                                    <a href="../public/index.php?route=deleteCategory&categoryId=<?= $category->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>  Supprimer</a>
                                 </td>
                             </tr>
-                            
+                        <?php
+                            }
+                        ?>
                         </tbody>
+
                     </table>
-                </div>
-            </div> 
-
-            <div class="col-md-6">
-                <div class="form-panel">
-                    <h4><i class="fa fa-angle-right"></i> Les Types d'habitation</h4>
-                <hr>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th class="hidden-phone"><i class="fa fa-user"></i> Fonction</th>
-                                <th class="hidden-phone"> Prénom</th>
-                                <th class="hidden-phone"> Nom</th>
-                                <th class="hidden-phone"><i class="fa fa-lock"></i> Autorisation</th>
-                                <th class="hidden-phone"><i class="fa fa-phone"></i> Téléphone</th>
-                                <th class="hidden-phone"><i class="fa fa-enveloppe"></i> Email</th>
-                                <th class="hidden-phone"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        
-                            <tr>
-                                <td>Responsable transaction</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>Contributeur</td>
-                                <td>06 XX XX XX XX</td>
-                                <td>@hestia.fr</td>
-                                <td>
-                                    <a href="agent.php" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-                                </td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
-                </div>
-            </div> 
-
-
-        </div>
-
-                    <!-- Start add category -->
-        <div class="row">
-
-            <div class="col-md-6">
-                <div class="form-panel">
-                <h4><i class="fa fa-angle-right"></i> Ajout d'une catégorie</h4>
-                    <div class="form-group">
-                        <form class="form-horizontal style-form" method='POST' action="../public/index.php?route=addCategory">
-                            <label class="col-sm-3 col-sm-3 control-label">Ajouter une catégorie</label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="name" placeholder="Ajouter une catégorie">
-                                </div>
-                                <div class="col-sm-3">
-                                    <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">
-                                </div>
-                        </form>
-                    </div>
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="form-panel">
-                <h4><i class="fa fa-angle-right"></i> Ajout d'une catégorie</h4>
-                    <div class="form-group">
-                        <form class="form-horizontal style-form" method='POST' action="../public/index.php?route=addCategory">
-                            <label class="col-sm-3 col-sm-3 control-label">Ajouter une catégorie</label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="name" placeholder="Ajouter une catégorie">
-                                </div>
-                                <div class="col-sm-3">
-                                    <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">
-                                </div>
-                        </form>
-                    </div>
+            <div class="col-sm-6">
+            <div class="form-panel">
+                <h4 class="mb"><i class="fa fa-angle-right"></i> Ajouter une catégorie</h4>
+                <div class="form-group config-form" id="adding-category">
+                    <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addCategory">
+                            <div class="col-sm-10">
+                                 <input type="text" class="form-control" name="name" placeholder="Ajouter une catégorie">
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">
+                            </div>
+                    </form>
                 </div>
+            </div>
             </div>
 
         </div>
-        <!-- End add category -->
         <!--main category end-->
+
+        <!--main type start-->
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-panel">
+                    <h4 class="mb"><i class="fa fa-angle-right"></i> Les Types de bien accessible</h4>
+                    <table class="table table-bordered table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Gestion</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                        <?php
+                            foreach ($types as $type)
+                            {
+                        ?>
+                            <tr>
+                                <td><?= htmlspecialchars($type->getType());?></td>
+                                <td>
+                                    <a href="../public/index.php?route=deleteType&typeId=<?= $type->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>  Supprimer</a>
+                                </td>
+                            </tr>
+                        <?php
+                            }
+                        ?>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+            <div class="form-panel">
+                <h4 class="mb"><i class="fa fa-angle-right"></i> Ajouter un Type de bien</h4>
+                <div class="form-group config-form" id="adding-type">
+                    <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addType">
+                            <div class="col-sm-10">
+                                 <input type="text" class="form-control" name="type" placeholder="Ajouter un type">
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">
+                            </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+
+        </div>
+        <!--main type end-->
+
+        <!--main frequency start-->
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-panel">
+                    <h4 class="mb"><i class="fa fa-angle-right"></i> Les Fréquences de charge accessible</h4>
+                    <table class="table table-bordered table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Gestion</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                        <?php
+                            foreach ($frequencies as $frequency)
+                            {
+                        ?>
+                            <tr>
+                                <td><?= htmlspecialchars($frequency->getfrequency());?></td>
+                                <td>
+                                    <a href="../public/index.php?route=deleteFrequency&frequencyId=<?= $frequency->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>  Supprimer</a>
+                                </td>
+                            </tr>
+                        <?php
+                            }
+                        ?>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+            <div class="form-panel">
+                <h4 class="mb"><i class="fa fa-angle-right"></i> Ajouter une frequence de charge</h4>
+                <div class="form-group config-form" id="adding-frequency">
+                    <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addFrequency">
+                            <div class="col-sm-10">
+                                 <input type="text" class="form-control" name="type" placeholder="Ajouter une frequence">
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">
+                            </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+
+        </div>
+        <!--main type end-->
 
     </section>
 </section>

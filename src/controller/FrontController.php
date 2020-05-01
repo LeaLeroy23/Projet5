@@ -87,6 +87,15 @@ class FrontController extends Controller
     }
 
     public function configuration(){
-        return $this->view->renderTemplate('configForm');
+        $categories = $this->categoryDAO->getCategories();
+        $types = $this->typeDAO->getTypes();
+        $energies = $this->energyDAO->getEnergies();
+        $frequencies = $this->frequencyDAO->getFrequencies();
+        return $this->view->renderTemplate('configForm', [
+            'categories' => $categories,
+            'types' => $types,
+            'energies' => $energies,
+            'frequencies' => $frequencies
+        ]);
     }
 }
