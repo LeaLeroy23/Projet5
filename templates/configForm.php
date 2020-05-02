@@ -3,6 +3,12 @@
 <section id="main-content">
     <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Configuration</h3>
+        <?= $this->session->show('addCategory'); ?>
+        <?= $this->session->show('addType'); ?>
+        <?= $this->session->show('addFrequency'); ?>
+        <?= $this->session->show('deleteCategory'); ?>
+        <?= $this->session->show('deleteType'); ?>
+        <?= $this->session->show('deleteFrequency'); ?>
 
         <!--main category start-->
         <div class="row">
@@ -12,6 +18,7 @@
                     <table class="table table-bordered table-striped table-condensed">
                         <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Nom</th>
                                 <th>Gestion</th>
                             </tr>
@@ -23,8 +30,9 @@
                             {
                         ?>
                             <tr>
+                                <td class="td-id"><?= htmlspecialchars($category->getId());?></td>
                                 <td><?= htmlspecialchars($category->getName());?></td>
-                                <td>
+                                <td class="td-btn-right">
                                     <a href="../public/index.php?route=deleteCategory&categoryId=<?= $category->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>  Supprimer</a>
                                 </td>
                             </tr>
@@ -64,6 +72,7 @@
                     <table class="table table-bordered table-striped table-condensed">
                         <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Nom</th>
                                 <th>Gestion</th>
                             </tr>
@@ -75,8 +84,9 @@
                             {
                         ?>
                             <tr>
+                                <td class="td-id"><?= htmlspecialchars($type->getId());?></td>
                                 <td><?= htmlspecialchars($type->getType());?></td>
-                                <td>
+                                <td class="td-btn-right">
                                     <a href="../public/index.php?route=deleteType&typeId=<?= $type->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>  Supprimer</a>
                                 </td>
                             </tr>
@@ -116,6 +126,7 @@
                     <table class="table table-bordered table-striped table-condensed">
                         <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Nom</th>
                                 <th>Gestion</th>
                             </tr>
@@ -127,8 +138,9 @@
                             {
                         ?>
                             <tr>
+                                <td class="td-id"><?= htmlspecialchars($frequency->getId());?></td>
                                 <td><?= htmlspecialchars($frequency->getfrequency());?></td>
-                                <td>
+                                <td class="td-btn-right">
                                     <a href="../public/index.php?route=deleteFrequency&frequencyId=<?= $frequency->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>  Supprimer</a>
                                 </td>
                             </tr>

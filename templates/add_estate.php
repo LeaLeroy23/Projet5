@@ -2,14 +2,8 @@
     <section id="main-content">
         <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Ajouter une annonce</h3>
-        <?= $this->session->show('addCategory'); ?>
-        <?= $this->session->show('addType'); ?>
-        <?= $this->session->show('addFrequency'); ?>
-        <?= $this->session->show('deleteCategory'); ?>
-        <?= $this->session->show('deleteType'); ?>
-        <?= $this->session->show('deleteFrequency'); ?>
 
-            <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addCategory">
+            <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addEstate">
 
                 <div class="row mt">
                     <div class="col-lg-12">
@@ -18,107 +12,44 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Catégorie</label>
-                                <div class="col-sm-9">
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" id="optionsRadios1" name="category" value="a vendre">
-                                            A Vendre
-                                        </label>
-                                        <label>
-                                            <input type="radio" id="optionsRadios1" name="category" value="a louer">
-                                            A Louer
-                                        </label>
-
+                                <div class="col-sm-10">
+                                    <select name="category" class="form-control">
+                                        <option value="A Vendre">A Vendre</option>
+                                        <option value="A Louer">A Louer</option>
                                         <?php
                                             foreach ($categories as $category)
                                             {
                                         ?>
-                                        <label>
-                                            <input type="radio" id="optionsRadios1" name="category" value="<?= htmlspecialchars($category->getName());?>">
-                                            <?= htmlspecialchars($category->getName());?>
-                                            <a href="../public/index.php?route=deleteCategory&categoryId=<?= $category->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-                                        </label>
+                                        <option value="<?= htmlspecialchars($category->getName());?>"><?= htmlspecialchars($category->getName());?></option>
                                         <?php
                                             }
+                                            
                                         ?>
-
-                                    </div>
-                                </div>
-                                <div class="col-sm-1" id="">
-                                    <a href="" id="btn-submit" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></a>
+                                    </select>
                                 </div>
                             </div>
-
-                            <!-- Start add category  -->
-                            <div class="form-group" id="adding-category">
-                                <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addCategory">
-                                    <label class="col-sm-2 col-sm-2 control-label">Ajouter une catégorie</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" name="name" placeholder="Ajouter une catégorie">
-                                        </div>
-                                        <div class="col-sm-1">
-                                            <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">
-                                        </div>
-                                </form>
-                            </div>
-                            <!--End add category -->
-
 
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Type de bien</label>
-                                    <div class="col-sm-9">
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" id="optionsRadios1" name="type" value="maison">
-                                                Maison
-                                            </label>
-                                            <label>
-                                                <input type="radio" id="optionsRadios1" name="type" value="appartement">
-                                                Appartement
-                                            </label>
-                                            <label>
-                                                <input type="radio" id="optionsRadios1" name="type" value="parking">
-                                                Parking
-                                            </label>
-                                            <label>
-                                                <input type="radio" id="optionsRadios1" name="type" value="Garage">
-                                                Garage
-                                            </label>
-
+                                    <div class="col-sm-10">
+                                        <select name="type" class="form-control">
+                                            <option value="Maison">Maison</option>
+                                            <option value="Appartement">Appartement</option>
+                                            <option value="Parking">Parking</option>
+                                            <option value="Garage">Garage</option>
                                             <?php
                                                 foreach ($types as $type)
                                                 {
                                             ?>
-                                            <label>
-                                                <input type="radio" id="optionsRadios1" name="type" value="<?= htmlspecialchars($type->getType());?>">
-                                                <?= htmlspecialchars($type->getType());?>
-                                                <a href="../public/index.php?route=deleteType&typeId=<?= $type->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-                                            </label>
+                                            <option value="<?= htmlspecialchars($type->getType());?>"><?= htmlspecialchars($type->getType());?></option>
                                             <?php
                                                 }
                                             ?>
+                                        </select>
 
-                                        </div>
                                     </div>
 
-                                    <div class="col-sm-1" id="adding-type">
-                                        <a href="" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></a>
-                                    </div>
                             </div>
-
-                            <!-- Start add type -->
-                            <div class="form-group" id="add-type">
-                                <form class="form-horizontal style-form" method='POST' action="../public/index.php?route=addType" enctype="">
-                                    <label class="col-sm-2 col-sm-2 control-label">Ajouter un Type de bien</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="type" placeholder="Ajouter un type">
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- End add type -->
 
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Titre</label>
@@ -224,39 +155,17 @@
                                         <input type="radio" id="optionsRadios1" name="energy_diagnostic" value="électricité">
                                         Electricité
                                     </label>
-                                        <?php
-                                            foreach ($energies as $energy)
-                                            {
-                                        ?>
+                                        
                                     <label>
-                                        <input type="radio" id="optionsRadios1" name="energy_diagnostic" value="<?= htmlspecialchars($energy->getEnergyDiagnostic());?>">
-                                        <?= htmlspecialchars($energy->getEnergyDiagnostic());?>
+                                        <input type="radio" id="optionsRadios1" name="energy_diagnostic" value="">
+                                        
                                     </label>
-                                        <?php
-                                        }
-                                        ?>
+                                        
                                     </select>
                                 </div>
-                                <div class="col-sm-1" id="adding-energy">
-                                    <a href="" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></a>
-                                </div>
                             </div>
 
-                            <!-- Start add energy -->
-                            <div class="form-group">
-                                <form class="form-horizontal style-form" method='POST' action="../public/index.php?route=addEnergy">
-                                    <label class="col-sm-2 col-sm-2 control-label">Ajouter un type d'énergie</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" name="category" placeholder="Ajouter un type d'énergie">
-                                        </div>
-                                        <div class="col-sm-1">
-                                            <input type="submit" class="btn btn-theme05" value="Ajouter">
-                                        </div>
-                                </form>
-                            </div>
-                            <!-- End add energy -->
-
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Diagnostic Energétique</label>
                                 <div class="col-sm-10">
 
@@ -273,9 +182,9 @@
                                                     <option value="> 450 G">> 450 G</option>
                                                 </select>
                                             </div>
-                                    </div>
+                                    </div>-->
 
-                                    <div class="col-sm-6">
+                                    <!--<div class="col-sm-6">
                                         <label class="col-sm-3 col-sm-3 control-label">GES :</label>
                                             <div class="col-sm-9">
                                                 <select name="level_climat_diagnostic" class="form-control">
@@ -288,7 +197,7 @@
                                                     <option value="> 450 G">> 450 G</option>
                                                 </select>
                                             </div>
-                                    </div>
+                                    </div>-->
 
                                 </div>
                             </div>
@@ -392,28 +301,13 @@
                                     <label>
                                         <input type="radio" id="optionsRadios1" name="frequency" value="<?= htmlspecialchars($frequency->getFrequency());?>">
                                         <?= htmlspecialchars($frequency->getFrequency());?>
-                                        <a href="../public/index.php?route=deleteFrequency&frequencyId=<?= $frequency->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
                                     </label>
                                     <?php
                                         }
                                     ?>
 
                                 </div>
-                                <div class="col-sm-1">
-                                    <a href="../public/index.php?route=" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></a>
-                                </div>
-                            </div>
-
-                            <div class="form-group" id="add-frequency">
-                                <form class="form-horizontal style-form" method='POST' action="../public/index.php?route=addFrequency" enctype="">
-                                    <label class="col-sm-2 col-sm-2 control-label">Ajouter une fréquence</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="frequency" placeholder="Ajouter une frequence">
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">
-                                    </div>
-                                </form>
+                                
                             </div>
 
                             <div class="form-group">

@@ -6,22 +6,34 @@ use App\config\Parameter;
 
 class BackController extends Controller
 {
-    public function estateForm(){
+
+    public function addEstate($post)
+    {
         $categories = $this->categoryDAO->getCategories();
         $types = $this->typeDAO->getTypes();
-        $energies = $this->energyDAO->getEnergies();
+        /*$energies = $this->energyDAO->getEnergies();*/
         $frequencies = $this->frequencyDAO->getFrequencies();
-        return $this->view->renderTemplate('estateForm', [
+        if($post->get('submit')){
+            $this->estateDAO->addEstate($post);
+            $this->session->set('addEstate', 'L\'ajout d\'une annonce a été faite');
+            header('Location: ../public/index.php?route=add_estate');
+            exit();
+        }
+        return $this->view->renderTemplate('add_estate', [
             'categories' => $categories,
             'types' => $types,
-            'energies' => $energies,
-            'frequencies' => $frequencies
+            /*'energies' => $energies,*/
+            'frequencies' => $frequencies,
+            'post', $post
         ]);
     }
 
-    public function addEstate()
+    public function allEstate()
     {
-        return $this->view->renderTemplate('estateForm');
+        $estates = $this->estateDAO->getEstates();
+        return $this->view->renderTemplate('all_estates', [
+            'estates' => $estates
+        ]);
     }
 
     public function addCategory($post)

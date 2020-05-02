@@ -2567,6 +2567,15 @@ ul.labels-info li img {
     color: #767676;
 }
 
+.td-btn-right{
+    width: 20%;
+    text-align: center;
+}
+
+.td-id{
+    width: 10%;;
+}
+
 ul.inbox-pagination {
     float:right;
 }

@@ -97,7 +97,7 @@
                             </li>
 
                             <li class="mt">
-                                <a href="index.php?route=estateForm">
+                                <a href="index.php?route=addEstate">
                                 <i class="fa fa-plus"></i>
                                 <span>Nouvelle annonce</span>
                                 </a>
