@@ -11,7 +11,7 @@ class BackController extends Controller
     {
         $categories = $this->categoryDAO->getCategories();
         $types = $this->typeDAO->getTypes();
-        /*$energies = $this->energyDAO->getEnergies();*/
+        $energies = $this->energyDAO->getEnergies();
         $frequencies = $this->frequencyDAO->getFrequencies();
         if($post->get('submit')){
             $this->estateDAO->addEstate($post);
@@ -22,7 +22,7 @@ class BackController extends Controller
         return $this->view->renderTemplate('add_estate', [
             'categories' => $categories,
             'types' => $types,
-            /*'energies' => $energies,*/
+            'energies' => $energies,
             'frequencies' => $frequencies,
             'post', $post
         ]);

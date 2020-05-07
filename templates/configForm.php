@@ -118,6 +118,60 @@
         </div>
         <!--main type end-->
 
+        <!--main energy start-->
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-panel">
+                    <h4 class="mb"><i class="fa fa-angle-right"></i> Les énergies accessible</h4>
+                    <table class="table table-bordered table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nom</th>
+                                <th>Gestion</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                        <?php
+                            foreach ($energies as $energy)
+                            {
+                        ?>
+                            <tr>
+                                <td class="td-id"><?= htmlspecialchars($energy->getId());?></td>
+                                <td><?= htmlspecialchars($energy->getEnergy());?></td>
+                                <td class="td-btn-right">
+                                    <a href="../public/index.php?route=deleteEnergy&energyId=<?= $energy->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>  Supprimer</a>
+                                </td>
+                            </tr>
+                        <?php
+                            }
+                        ?>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+            <div class="form-panel">
+                <h4 class="mb"><i class="fa fa-angle-right"></i> Ajouter un type d'énergie</h4>
+                <div class="form-group config-form" id="adding-energy">
+                    <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addEnergy">
+                            <div class="col-sm-10">
+                                 <input type="text" class="form-control" name="energy" placeholder="Ajouter une energy">
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">
+                            </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+
+        </div>
+        <!--main type end-->
+
         <!--main frequency start-->
         <div class="row">
             <div class="col-sm-6">
@@ -159,7 +213,7 @@
                 <div class="form-group config-form" id="adding-frequency">
                     <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addFrequency">
                             <div class="col-sm-10">
-                                 <input type="text" class="form-control" name="type" placeholder="Ajouter une frequence">
+                                 <input type="text" class="form-control" name="frequency" placeholder="Ajouter une frequence">
                             </div>
                             <div class="col-sm-2">
                                 <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">

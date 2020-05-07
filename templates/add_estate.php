@@ -3,7 +3,7 @@
         <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Ajouter une annonce</h3>
 
-            <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addEstate">
+            <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addEstate" enctype="multipart/form-data">
 
                 <div class="row mt">
                     <div class="col-lg-12">
@@ -145,24 +145,21 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-2 col-sm-2 control-label">Energie</label>
-                                <div class="col-sm-9">
-                                    <label>
-                                        <input type="radio" id="optionsRadios1" name="energy_diagnostic" value="gaz">
-                                        Gaz
-                                    </label>
-                                    <label>
-                                        <input type="radio" id="optionsRadios1" name="energy_diagnostic" value="électricité">
-                                        Electricité
-                                    </label>
-                                        
-                                    <label>
-                                        <input type="radio" id="optionsRadios1" name="energy_diagnostic" value="">
-                                        
-                                    </label>
-                                        
-                                    </select>
-                                </div>
+                                <label class="col-sm-2 col-sm-2 control-label">Energie du bien</label>
+                                    <div class="col-sm-10">
+                                        <select name="type" class="form-control">
+                                            <?php
+                                                foreach ($energies as $energy)
+                                                {
+                                            ?>
+                                            <option value="<?= htmlspecialchars($energy->getEnergy());?>"><?= htmlspecialchars($energy->getEnergy());?></option>
+                                            <?php
+                                                }
+                                            ?>
+                                        </select>
+
+                                    </div>
+
                             </div>
 
                             <!--<div class="form-group">
@@ -197,10 +194,10 @@
                                                     <option value="> 450 G">> 450 G</option>
                                                 </select>
                                             </div>
-                                    </div>-->
+                                    </div>
 
                                 </div>
-                            </div>
+                            </div>-->
 
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Localisation</label>
@@ -255,17 +252,8 @@
                             <div class="form-group last">
                                 <div class="col-md-12">
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
-                                        <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
-                                        </div>
-
-                                        <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-
-                                        <div>
-                                            <span class="btn btn-theme02 btn-file">
-                                            <input type="file" class="default" />
-                                            </span>
-                                        </div>
+                                            <label>Sélectionnez des images</label>
+                                            <input type="file" name="filename" class="default" id="file"/>
                                     </div>
                                 </div>
                                 

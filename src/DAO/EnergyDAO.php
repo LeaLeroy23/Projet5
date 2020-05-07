@@ -11,7 +11,7 @@ class EnergyDAO extends DAO
     private function buildObject($row){
         $energy = new Energy;
         $energy->setId($row['id']);
-        $energy->setEnergyDiagnostic($row['energy_diagnostic']);
+        $energy->setEnergy($row['energy']);
         return $energy;
     }
 
@@ -37,10 +37,10 @@ class EnergyDAO extends DAO
     }
 
     public function addEnergy($post){
-        $sql = 'INSERT INTO energy (energy_diagnostic)
-        VALUES (:energy_diagnostic)';
+        $sql = 'INSERT INTO energy (energy)
+        VALUES (:energy)';
         $this->createQuery($sql, [
-            'energy_diagnostic' => $post->get('energy_diagnostic')
+            'energy' => $post->get('energy')
         ]);
     }
 

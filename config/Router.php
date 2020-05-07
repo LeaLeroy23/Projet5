@@ -57,9 +57,9 @@ class Router
                 elseif ($route === 'addType'){
                     $this->backController->addType($this->request->getPost());
                 }
-                /*elseif ($route === 'addEnergy'){
+                elseif ($route === 'addEnergy'){
                     $this->backController->addEnergy($this->request->getPost());
-                }*/
+                }
                 elseif ($route === 'addFrequency'){
                     $this->backController->addFrequency($this->request->getPost());
                 }

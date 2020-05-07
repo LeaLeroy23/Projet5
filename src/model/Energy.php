@@ -12,17 +12,7 @@ class Energy
     /**
      * @var string
      */
-    private $energyDiagnostic;
-
-    /**
-     * @var string
-     */
-    private $levelEnergyDiagnostic;
-
-    /**
-     * @var string
-     */
-    private $levelClimatDiagnostic;
+    private $energy;
 
     /**
      * @return int
@@ -43,48 +33,17 @@ class Energy
     /**
      * @return string
      */
-    public function getEnergyDiagnostic()
+    public function getEnergy()
     {
-        return $this->energy_diagnostic;
+        return $this->energy;
     }
 
-    /**
-     * @param string $energy_diagnostic
+        /**
+     * @param int $energy
      */
-    public function setEnergyDiagnostic($energyDiagnostic)
+    public function setEnergy($energy)
     {
-        $this->energy_diagnostic = $energyDiagnostic;
+        $this->energy = $energy;
     }
 
-    /**
-     * @return string
-     */
-    public function getLevel_energy_diagnostic()
-    {
-        return $this->levelEnergyDiagnostic;
-    }
-
-    /**
-     * @param string $level_energy_diagnostic
-     */
-    public function setLevel_energy_diagnostic($levelEnergyDiagnostic)
-    {
-        $this->level_energy_diagnostic = $levelEnergyDiagnostic;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLevel_climat_diagnostic()
-    {
-        return $this->level_climat_diagnostic;
-    }
-
-    /**
-     * @param string $level_climat_diagnostic
-     */
-    public function setLevel_climat_diagnostic($levelClimatDiagnostic)
-    {
-        $this->level_climat_diagnostic = $levelClimatDiagnostic;
-    }
 }
