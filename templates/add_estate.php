@@ -14,13 +14,11 @@
                                 <label class="col-sm-2 col-sm-2 control-label">Catégorie</label>
                                 <div class="col-sm-10">
                                     <select name="category" class="form-control">
-                                        <option value="A Vendre">A Vendre</option>
-                                        <option value="A Louer">A Louer</option>
                                         <?php
                                             foreach ($categories as $category)
                                             {
                                         ?>
-                                        <option value="<?= htmlspecialchars($category->getName());?>"><?= htmlspecialchars($category->getName());?></option>
+                                        <option value="<?= htmlspecialchars($category->getId());?>"><?= htmlspecialchars($category->getName());?></option>
                                         <?php
                                             }
                                             
@@ -33,15 +31,11 @@
                                 <label class="col-sm-2 col-sm-2 control-label">Type de bien</label>
                                     <div class="col-sm-10">
                                         <select name="type" class="form-control">
-                                            <option value="Maison">Maison</option>
-                                            <option value="Appartement">Appartement</option>
-                                            <option value="Parking">Parking</option>
-                                            <option value="Garage">Garage</option>
                                             <?php
                                                 foreach ($types as $type)
                                                 {
                                             ?>
-                                            <option value="<?= htmlspecialchars($type->getType());?>"><?= htmlspecialchars($type->getType());?></option>
+                                            <option value="<?= htmlspecialchars($type->getId());?>"><?= htmlspecialchars($type->getType());?></option>
                                             <?php
                                                 }
                                             ?>
@@ -131,7 +125,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Stationnement</label>
                                 <div class="col-sm-5">
-                                    <select name="parking_type" class="form-control">
+                                    <select name="parking" class="form-control">
                                         <option value="oui">oui</option>
                                         <option value="non">non</option>
                                     </select>
@@ -147,12 +141,12 @@
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Energie du bien</label>
                                     <div class="col-sm-10">
-                                        <select name="type" class="form-control">
+                                        <select name="energy" class="form-control" multiple>
                                             <?php
                                                 foreach ($energies as $energy)
                                                 {
                                             ?>
-                                            <option value="<?= htmlspecialchars($energy->getEnergy());?>"><?= htmlspecialchars($energy->getEnergy());?></option>
+                                            <option value="<?= htmlspecialchars($energy->getId());?>"><?= htmlspecialchars($energy->getEnergy());?></option>
                                             <?php
                                                 }
                                             ?>
@@ -221,7 +215,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Disponible à partir du :</label>
                                 <div class="col-sm-10">
-                                    <input type="date" readonly="" value="01-01-2020" size="16" class="form-control">
+                                    <input type="date" value="01-01-2020" size="16">
                                 </div>
                             </div>
 
@@ -274,20 +268,12 @@
                             <div class="form-group" id="frequency">
                                 <label class="col-sm-2 col-sm-2 control-label">Fréquence des Charges</label>
                                 <div class="col-sm-9">
-                                    <label>
-                                        <input type="radio" id="optionsRadios1" name="frequency" value="Garage">
-                                        par mois
-                                    </label>
-                                    <label>
-                                        <input type="radio" id="optionsRadios1" name="frequency" value="Garage">
-                                        par semestre
-                                    </label>
                                     <?php
                                         foreach ($frequencies as $frequency)
                                         {
                                     ?>
                                     <label>
-                                        <input type="radio" id="optionsRadios1" name="frequency" value="<?= htmlspecialchars($frequency->getFrequency());?>">
+                                        <input type="radio" id="optionsRadios1" name="frequency" value="<?= htmlspecialchars($frequency->getId());?>">
                                         <?= htmlspecialchars($frequency->getFrequency());?>
                                     </label>
                                     <?php
@@ -319,16 +305,13 @@
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Date de la mise en ligne</label>
                                 <div class="col-sm-10">
-                                    <input type="date" readonly="" value="01-01-2020" size="16" class="form-control">
+                                    <input type="date" value="01-01-2020" size="16">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <div class="col-sm-6">
-                                    <input type="submit" class="btn btn-theme05" value="Publié">
-                                </div>
-                                <div class="col-sm-6">
-                                    <button class="btn btn-theme06" type="button"><a href="">Brouillon</a></button>
+                                <div class="col-sm-12">
+                                    <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Publié">
                                 </div>
                             </div>
 
