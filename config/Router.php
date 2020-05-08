@@ -24,7 +24,7 @@ class Router
     public function run()
     {
         $route = $this->request->getGet()->get('route');
-        try{
+        /*try{*/
             if(isset($_GET['route']))
             {
                 if($route === 'estate'){
@@ -91,7 +91,7 @@ class Router
                     $this->backController->updateProfile($this->request->getPost());
                 }
                 elseif ($route === 'configuration'){
-                    $this->frontController->configuration();
+                    $this->backController->configuration();
                 }
                 elseif ($route === 'dashboard'){
                     $this->frontController->dashboard();
@@ -103,10 +103,10 @@ class Router
             else{
                 $this->frontController->home();
             }
-        }
+        /*}
         catch (Exception $e)
         {
             $this->errorController->errorServer();
-        }
+        }*/
     }
 }

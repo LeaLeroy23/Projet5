@@ -49,9 +49,10 @@
             <div class="form-panel">
                 <h4 class="mb"><i class="fa fa-angle-right"></i> Ajouter une catégorie</h4>
                 <div class="form-group config-form" id="adding-category">
+                <?= isset($errors['name']) ? $errors['name'] : ''; ?>
                     <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addCategory">
                             <div class="col-sm-10">
-                                 <input type="text" class="form-control" name="name" placeholder="Ajouter une catégorie">
+                                 <input type="text" class="form-control" name="name">
                             </div>
                             <div class="col-sm-2">
                                 <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">
@@ -99,10 +100,11 @@
                 </div>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-6" id="type">
             <div class="form-panel">
                 <h4 class="mb"><i class="fa fa-angle-right"></i> Ajouter un Type de bien</h4>
                 <div class="form-group config-form" id="adding-type">
+                <?= isset($errors['type']) ? $errors['type'] : ''; ?>
                     <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addType">
                             <div class="col-sm-10">
                                  <input type="text" class="form-control" name="type" placeholder="Ajouter un type">
@@ -157,6 +159,7 @@
             <div class="form-panel">
                 <h4 class="mb"><i class="fa fa-angle-right"></i> Ajouter un type d'énergie</h4>
                 <div class="form-group config-form" id="adding-energy">
+                <?= isset($errors['energy']) ? $errors['energy'] : ''; ?>
                     <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addEnergy">
                             <div class="col-sm-10">
                                  <input type="text" class="form-control" name="energy" placeholder="Ajouter une energy">
@@ -211,6 +214,7 @@
             <div class="form-panel">
                 <h4 class="mb"><i class="fa fa-angle-right"></i> Ajouter une frequence de charge</h4>
                 <div class="form-group config-form" id="adding-frequency">
+                <?= isset($errors['frequency']) ? $errors['frequency'] : ''; ?>
                     <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addFrequency">
                             <div class="col-sm-10">
                                  <input type="text" class="form-control" name="frequency" placeholder="Ajouter une frequence">

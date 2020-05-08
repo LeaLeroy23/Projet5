@@ -70,57 +70,120 @@ class BackController extends Controller
         ]);
     }
 
+    public function configuration(){
+        $categories = $this->categoryDAO->getCategories();
+        $types = $this->typeDAO->getTypes();
+        $energies = $this->energyDAO->getEnergies();
+        $frequencies = $this->frequencyDAO->getFrequencies();
+        return $this->view->renderTemplate('configForm', [
+            'categories' => $categories,
+            'types' => $types,
+            'energies' => $energies,
+            'frequencies' => $frequencies
+        ]);
+    }
+
     public function addCategory($post)
     {
         if($post->get('submit')){
-            $errors = $this->validation->validate($post, 'category');
-            $this->categoryDAO->addCategory($post);
-            $this->session->set('addCategory', 'L\'ajout d\'une catégorie a été faite');
-            header('Location: ../public/index.php?route=configuration');
-            exit();
+            $categories = $this->categoryDAO->getCategories();
+            $types = $this->typeDAO->getTypes();
+            $energies = $this->energyDAO->getEnergies();
+            $frequencies = $this->frequencyDAO->getFrequencies();
+            $errors = $this->validation->validate($post, 'Category');
+            if (!$errors){
+                $this->categoryDAO->addCategory($post);
+                $this->session->set('addCategory', 'L\'ajout d\'une catégorie a été faite');
+                header('Location: ../public/index.php?route=configuration');
+                exit();
+            }
+            return $this->view->renderTemplate('configForm', [
+                'categories' => $categories,
+                'types' => $types,
+                'energies' => $energies,
+                'frequencies' => $frequencies,
+                'post'=> $post,
+                'errors' => $errors
+            ]);
         }
-        return $this->view->renderTemplate('configForm', [
-            'post', $post
-        ]);
+        return $this->view->renderTemplate('configForm');
     }
 
     public function addType($post)
     {
         if($post->get('submit')){
-            $this->typeDAO->addType($post);
-            $this->session->set('addType', 'L\'ajout d\'un type a été fait');
-            header('Location: ../public/index.php?route=configuration');
-            exit();
+            $categories = $this->categoryDAO->getCategories();
+            $types = $this->typeDAO->getTypes();
+            $energies = $this->energyDAO->getEnergies();
+            $frequencies = $this->frequencyDAO->getFrequencies();
+            $errors = $this->validation->validate($post, 'Type');
+            if (!$errors){
+                $this->typeDAO->addType($post);
+                $this->session->set('addType', 'L\'ajout d\'un type a été fait');
+                header('Location: ../public/index.php?route=configuration');
+                exit();
+            }
+            return $this->view->renderTemplate('configForm', [
+                'categories' => $categories,
+                'types' => $types,
+                'energies' => $energies,
+                'frequencies' => $frequencies,
+                'post'=> $post,
+                'errors' => $errors
+            ]);
         }
-        return $this->view->renderTemplate('configForm', [
-            'post', $post
-        ]);
+        return $this->view->renderTemplate('configForm#type');
     }
 
     public function addEnergy($post)
     {
         if($post->get('submit')){
-            $this->energyDAO->addEnergy($post);
-            $this->session->set('addEnergy', 'L\'ajout d\'un type d\'énergie a été faite');
-            header('Location: ../public/index.php?route=configuration');
-            exit();
+            $categories = $this->categoryDAO->getCategories();
+            $types = $this->typeDAO->getTypes();
+            $energies = $this->energyDAO->getEnergies();
+            $frequencies = $this->frequencyDAO->getFrequencies();
+            $errors = $this->validation->validate($post, 'Energy');
+            if (!$errors){
+                $this->energyDAO->addEnergy($post);
+                $this->session->set('addEnergy', 'L\'ajout d\'un type d\'énergie a été faite');
+                header('Location: ../public/index.php?route=configuration');
+                exit();
+            }
+            return $this->view->renderTemplate('configForm', [
+                'categories' => $categories,
+                'types' => $types,
+                'energies' => $energies,
+                'frequencies' => $frequencies,
+                'post'=> $post,
+                'errors' => $errors
+            ]);
         }
-        return $this->view->renderTemplate('configForm', [
-            'post', $post
-        ]);
+        return $this->view->renderTemplate('configForm');
     }
 
     public function addFrequency($post)
     {
         if($post->get('submit')){
-            $this->frequencyDAO->addFrequency($post);
-            $this->session->set('addFrequency', 'L\'ajout d\'une frquence de charge a été faite');
-            header('Location: ../public/index.php?route=configuration');
-            exit();
+            $categories = $this->categoryDAO->getCategories();
+            $types = $this->typeDAO->getTypes();
+            $energies = $this->energyDAO->getEnergies();
+            $frequencies = $this->frequencyDAO->getFrequencies();
+            $errors = $this->validation->validate($post, 'Frequency');
+            if (!$errors){
+                $this->session->set('addFrequency', 'L\'ajout d\'une frquence de charge a été faite');
+                header('Location: ../public/index.php?route=configuration');
+                exit();
+            }
+            return $this->view->renderTemplate('configForm', [
+                'categories' => $categories,
+                'types' => $types,
+                'energies' => $energies,
+                'frequencies' => $frequencies,
+                'post'=> $post,
+                'errors' => $errors
+            ]);
         }
-        return $this->view->renderTemplate('configForm', [
-            'post', $post
-        ]);
+        return $this->view->renderTemplate('configForm');
     }
 
     public function deleteCategory($categoryId)
