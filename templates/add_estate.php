@@ -108,7 +108,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Extérieur(s)</label>
                                     <div class="col-sm-5">
-                                        <select name="outside" class="form-control">
+                                        <select name="outside" id="outside" class="form-control">
                                             <option value="0">Pas d'extérieur</option>
                                             <option value="balcon">Balcon</option>
                                             <option value="terrasse">Terrasse</option>
@@ -116,24 +116,25 @@
                                         </select>
                                 </div>
 
-                                <div class="col-sm-5">
+                                <div class="col-sm-5" id="outside-area">
                                     <input type="number" class="form-control" name="outside_area" placeholder="Superficie">
                                     <span>en m2</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" id="parking">
                                 <label class="col-sm-2 col-sm-2 control-label">Stationnement</label>
                                 <div class="col-sm-5">
                                     <select name="parking" class="form-control">
                                         <option value="oui">oui</option>
-                                        <option value="non">non</option>
+                                        <option value="non" selected>non</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-5">
+                                <div class="col-sm-5" id="parking-type">
                                     <select name="parking_type" class="form-control">
                                         <option value="parking">Parking</option>
                                         <option value="garage">Garage</option>
+                                        <option value="box">Box</option>
                                     </select>
                                 </div>
                             </div>
@@ -247,7 +248,8 @@
                                 <div class="col-md-12">
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
                                             <label>Sélectionnez des images</label>
-                                            <input type="file" name="filename" class="default" id="file"/>
+                                            <input type="file" name="filename" class="default" id="file" onchange="previewImage()"/>
+                                            <img src="" height="200" alt="Image preview...">
                                     </div>
                                 </div>
                                 

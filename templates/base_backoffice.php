@@ -174,9 +174,8 @@
         <script src="../public/lib/common-scripts.js"></script>
         <!--script for this page-->
         <script src="../public/lib/form-validation-script.js"></script>
+        <script src="../public/js/Spec.js" type="text/javascript"></script>
         <script src="../public/js/main.js" type="text/javascript"></script>
-        <script src="../public/js/add-info.js" type="text/javascript"></script>
-        <script src="./path/to/dropzone.js"></script>
   
   </body>
   

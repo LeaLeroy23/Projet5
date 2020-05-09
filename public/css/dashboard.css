@@ -3550,4 +3550,12 @@ ul.chat-available-user li a:hover {
     padding: 7px;
     margin-left: 0.8%;
     color: #fff;
-  }
+}
+
+#outside-area{
+    display: none;
+}
+
+#parking-type{
+    display: none;
+}
