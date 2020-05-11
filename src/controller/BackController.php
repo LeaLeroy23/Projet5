@@ -15,7 +15,6 @@ class BackController extends Controller
         $frequencies = $this->frequencyDAO->getFrequencies();
         if($post->get('submit')){
             var_dump($post);
-            die();
             $form=[];
             $maxsize = 5 * 1024 * 1024;
             $filename = "";
@@ -30,17 +29,17 @@ class BackController extends Controller
                     die("Erreur : Veuillez sélectionner un format de fichier valide.");
                 }
 
-                if ($filesize > self::MAXSIZE) {
+                if ($filesize > $maxsize) {
                     die("Erreur: La taille du fichier est supérieure à la limite autorisée.");
                 }
 
                 if (in_array($filetype, $allowed)) {
                     /**verifie si le fichier existe avant de le telecharger*/
-                    if (file_exists("./contenu/upload/" . $_FILES["filename"]["name"])) {
+                    if (file_exists("./public/img/upload/" . $_FILES["filename"]["name"])) {
                         die($_FILES["filename"]["name"] . "existe déjà.");
                     } else {
                         $filename = uniqid() . '.' . $ext;
-                        move_uploaded_file($_FILES["filename"]["tmp_name"], "./contenu/upload/" .  $filename);
+                        move_uploaded_file($_FILES["filename"]["tmp_name"], "./public/img/upload/" .  $filename);
                     }
                 } else {
                     die("Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");

@@ -341,4 +341,15 @@ class Estate
         $this->status = $status;
     }
 
+    public function getPicture_url()
+    {
+        return $this->picture_url;
+    }
+
+    public function setPicture_url($picture_url)
+    {
+        $this->picture_url = $picture_url;
+    }
+
+
 }

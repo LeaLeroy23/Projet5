@@ -204,11 +204,9 @@
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Année de construction de l'immeuble</label>
                                     <div class="col-sm-5">
-                                        <div data-date-minviewmode="months" data-date-viewmode="years" data-date-format="mm/yyyy" data-date="01/2014" class="input-append date dpMonths">
-                                            <input type="text" readonly="" value="01/2014" size="16" class="form-control">
-                                            <span class="input-group-btn add-on">
-                                                <button class="btn btn-theme" type="button"><i class="fa fa-calendar"></i></button>
-                                            </span>
+                                        <div  data-date-viewmode="years" data-date-format="yyyy" data-date="2014" class="input-append date dpMonths">
+                                            <input type="date" readonly="" value="2014" size="16" class="form-control">
+                                            
                                         </div>
                                     </div>
                             </div>
@@ -247,9 +245,15 @@
                             <div class="form-group last">
                                 <div class="col-md-12">
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
-                                            <label>Sélectionnez des images</label>
-                                            <input type="file" name="filename" class="default" id="file" onchange="previewImage()"/>
-                                            <img src="" height="200" alt="Image preview...">
+                                        <label>Sélectionnez des images</label><br>
+                                        <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" height="200" id="preview" alt="Image preview">
+                                        </div>
+                                        <div>
+                                            <span class="btn btn-theme02 btn-file">
+                                                <input type="file" name="filename" id="file"/>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                                 
