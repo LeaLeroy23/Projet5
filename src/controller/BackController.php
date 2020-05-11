@@ -14,7 +14,6 @@ class BackController extends Controller
         $energies = $this->energyDAO->getEnergies();
         $frequencies = $this->frequencyDAO->getFrequencies();
         if($post->get('submit')){
-            var_dump($post);
             $form=[];
             $maxsize = 5 * 1024 * 1024;
             $filename = "";
@@ -35,11 +34,11 @@ class BackController extends Controller
 
                 if (in_array($filetype, $allowed)) {
                     /**verifie si le fichier existe avant de le telecharger*/
-                    if (file_exists("./public/img/upload/" . $_FILES["filename"]["name"])) {
+                    if (file_exists("../public/img/upload/" . $_FILES["filename"]["name"])) {
                         die($_FILES["filename"]["name"] . "existe déjà.");
                     } else {
                         $filename = uniqid() . '.' . $ext;
-                        move_uploaded_file($_FILES["filename"]["tmp_name"], "./public/img/upload/" .  $filename);
+                        move_uploaded_file($_FILES["filename"]["tmp_name"], "../public/img/upload/" .  $filename);
                     }
                 } else {
                     die("Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");

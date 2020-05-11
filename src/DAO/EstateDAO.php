@@ -60,21 +60,36 @@ class EstateDAO extends DAO
     }
 
     public function addEstate(Parameter $post){
+        print_r($post);
         $sql = "INSERT INTO estate (type_id, category_id, title, excerpt, description, area, rooms, bedrooms, bathrooms, parking, parking_type, agent_id, outside, outside_area, floor, charge_price, price, fees, available, building_year, zip_code, created_at, charge_frequency_id, status, picture_url)
-                VALUES (:firstname, :lastname, :phone, :email, :function, :description, :avatar, :password, :token, :status, :created_at)";
+                VALUES (:type_id, :category_id, :title, :excerpt, :description, :area, :rooms, :bedrooms, :bathrooms, :parking, :parking_type, :agent_id, :outside, :outside_area, :floor, :charge_price, :price, :fees, :available, :building_year, :zip_code, :created_at, :charge_frequency_id, :status, :picture_url)";
         
         $this->createQuery($sql, [
-            'firstname' => $post->get('firstname'),
-            'lastname' => $post->get('lastname'),
-            'phone' => $post->get('phone'),
-            'email' => $post->get('email'),
-            'function' => $post->get('function'),
-            'description' => null,
-            'avatar' => null,
-            'password' => $password,
-            'token' => $token,
+            'type_id' => $post->get('type_id'),
+            'category_id' => $post->get('category_id'),
+            'title' => $post->get('title'),
+            'excerpt' => $post->get('excerpt'),
+            'description' => $post->get('description'),
+            'area' => $post->get('area'),
+            'rooms' => $post->get('rooms'),
+            'bedrooms' => $post->get('bedrooms'),
+            'bathrooms' => $post->get('bathrooms'),
+            'parking' => $post->get('parking'),
+            'parking_type' => $post->get('parking_type'),
+            'agent_id' => $post->get('agent_id'),
+            'outside' => $post->get('outside'),
+            'outside_area' => $post->get('outside_area'),
+            'floor' => $post->get('floor'),
+            'charge_price' => $post->get('charge_price'),
+            'price' => $post->get('price'),
+            'fees' => $post->get('fees'),
+            'available' => $post->get('available'),
+            'building_year' => $post->get('building_year'),
+            'zip_code' => $post->get('zip_code'),
+            'created_at' => $post->get('created_at'),
+            'charge_frequency_id' => $post->get('charge_frequency_id'),
             'status' => $post->get('status'),
-            'created_at' => $createdAt
+            'picture_url' => $post->get('picture_url')
         ]);
     }
 
