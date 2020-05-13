@@ -60,6 +60,13 @@ class BackController extends Controller
         ]);
     }
 
+    public function editEstate(Parameter $post, $estateId){
+        $estate = $this->estateDAO->getEstate($estateId);
+        return $this->view->renderTemplate('edit_estate', [
+            'estate' => $estate
+        ]);
+    }
+
     public function allEstate()
     {
         $estates = $this->estateDAO->getEstates();

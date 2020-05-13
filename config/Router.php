@@ -34,7 +34,7 @@ class Router
                     $this->frontController->all_estate();
                 }
                 elseif($route === 'agent'){
-                    $this->frontController->agent($this->request->getGet()->get['agentId']);
+                    $this->frontController->agent($this->request->getGet()->get('agentId'));
                 }
                 elseif ($route === 'team'){
                     $this->frontController->team();
@@ -49,7 +49,7 @@ class Router
                     $this->backController->addEstate($this->request->getPost());
                 }
                 elseif ($route === 'editEstate'){
-                    $this->backController->editEstate($this->request->getPost());
+                    $this->backController->editEstate($this->request->getPost(), $this->request->getGet()->get('estateId'));
                 }
                 elseif ($route === 'allEstate'){
                     $this->backController->allEstate();
@@ -91,7 +91,7 @@ class Router
                     $this->backController->updatePassword($this->request->getPost());
                 }
                 elseif ($route === 'updateProfile'){
-                    $this->backController->updateProfile($this->request->getPost());
+                    $this->backController->updateProfile($this->request->getPost(), $this->request->getGet()->get('agentId'));
                 }
                 elseif ($route === 'configuration'){
                     $this->backController->configuration();

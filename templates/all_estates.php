@@ -32,7 +32,7 @@
                                 <td>
                                     <a href="#"><?= htmlspecialchars($estate->getTitle());?></a>
                                 </td>
-                                <td></td>
+                                <td><?= htmlspecialchars($estate->getCategory_id());?></td>
                                 <td class="hidden-phone"><?= htmlspecialchars($estate->getRooms());?></td>
                                 <td class="hidden-phone">Appartement</td>
                                 <td class="hidden-phone"><?= htmlspecialchars($estate->getExcerpt());?></td>
@@ -40,7 +40,7 @@
                                 <td><span class="label label-info label-mini"><?= htmlspecialchars($estate->getStatus());?></span></td>
                                 <td>
                                     <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                    <a href="../public/index.php?route=editEstate&estateId=<?= $estate->getId(); ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
                                     <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
                                 </td>
                             </tr>
