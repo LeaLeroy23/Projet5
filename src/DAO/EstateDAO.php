@@ -19,6 +19,7 @@ class EstateDAO extends DAO
         $estate->setRooms($row['rooms']);
         $estate->setBedrooms($row['bedrooms']);
         $estate->setBathrooms($row['bathrooms']);
+        $estate->setConvertible_attic($row['convertible_attic']);
         $estate->setParking($row['parking']);
         $estate->setParking_type($row['parking_type']);
         $estate->setAgent_id($row['agent_id']);
@@ -44,7 +45,7 @@ class EstateDAO extends DAO
         $estates = [];
         foreach ($result as $row){
             $estateId = $row['id'];
-            $estates[$estateId] = $this->buidObject($row);
+            $estates[$estateId] = $this->buildObject($row);
         }
         $result->closeCursor();
         return $estates;
@@ -59,37 +60,38 @@ class EstateDAO extends DAO
         return $this->buildObject($estate);
     }
 
-    public function addEstate(Parameter $post){
+    public function addEstate($post){
         print_r($post);
-        $sql = "INSERT INTO estate (type_id, category_id, title, excerpt, description, area, rooms, bedrooms, bathrooms, parking, parking_type, agent_id, outside, outside_area, floor, charge_price, price, fees, available, building_year, zip_code, created_at, charge_frequency_id, status, picture_url)
-                VALUES (:type_id, :category_id, :title, :excerpt, :description, :area, :rooms, :bedrooms, :bathrooms, :parking, :parking_type, :agent_id, :outside, :outside_area, :floor, :charge_price, :price, :fees, :available, :building_year, :zip_code, :created_at, :charge_frequency_id, :status, :picture_url)";
+        $sql = "INSERT INTO estate (type_id, category_id, title, floor, area, rooms, bedrooms, bathrooms, convertible_attic, outside, outside_area, parking, parking_type, zip_code, building_year, available, excerpt, description, picture_url, charge_price, charge_frequency_id, price, fees, created_at, agent_id, status)
+                VALUES (:type_id, :category_id, :title, :floor, :area, :rooms, :bedrooms, :bathrooms, :convertible_attic, :outside, :outside_area, :parking, :parking_type, :zip_code, :building_year, :available, :excerpt, :description, :picture_url, :charge_price, :charge_frequency_id, :price, :fees, :created_at, :agent_id, :status)";
         
         $this->createQuery($sql, [
             'type_id' => $post->get('type_id'),
             'category_id' => $post->get('category_id'),
             'title' => $post->get('title'),
-            'excerpt' => $post->get('excerpt'),
-            'description' => $post->get('description'),
+            'floor' => $post->get('floor'),
             'area' => $post->get('area'),
             'rooms' => $post->get('rooms'),
             'bedrooms' => $post->get('bedrooms'),
             'bathrooms' => $post->get('bathrooms'),
-            'parking' => $post->get('parking'),
-            'parking_type' => $post->get('parking_type'),
-            'agent_id' => $post->get('agent_id'),
+            'convertible_attic' => $post->get('convertible_attic'),
             'outside' => $post->get('outside'),
             'outside_area' => $post->get('outside_area'),
-            'floor' => $post->get('floor'),
+            'parking' => $post->get('parking'),
+            'parking_type' => $post->get('parking_type'),
+            'zip_code' => $post->get('zip_code'),
+            'building_year' => $post->get('building_year'),
+            'available' => $post->get('available'),
+            'excerpt' => $post->get('excerpt'),
+            'description' => $post->get('description'),
+            'picture_url' => $post->get('picture_url'),
             'charge_price' => $post->get('charge_price'),
+            'charge_frequency_id' => $post->get('charge_frequency_id'),
             'price' => $post->get('price'),
             'fees' => $post->get('fees'),
-            'available' => $post->get('available'),
-            'building_year' => $post->get('building_year'),
-            'zip_code' => $post->get('zip_code'),
             'created_at' => $post->get('created_at'),
-            'charge_frequency_id' => $post->get('charge_frequency_id'),
+            'agent_id' => $post->get('agent_id'),
             'status' => $post->get('status'),
-            'picture_url' => $post->get('picture_url')
         ]);
     }
 

@@ -11,26 +11,9 @@
                             <h4 class="mb"><i class="fa fa-angle-right"></i> Caractéristiques Général</h4>
 
                             <div class="form-group">
-                                <label class="col-sm-2 col-sm-2 control-label">Catégorie</label>
-                                <div class="col-sm-10">
-                                    <select name="category" class="form-control">
-                                        <?php
-                                            foreach ($categories as $category)
-                                            {
-                                        ?>
-                                        <option value="<?= htmlspecialchars($category->getId());?>"><?= htmlspecialchars($category->getName());?></option>
-                                        <?php
-                                            }
-                                            
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Type de bien</label>
                                     <div class="col-sm-10">
-                                        <select name="type" class="form-control">
+                                        <select name="type_id" class="form-control">
                                             <?php
                                                 foreach ($types as $type)
                                                 {
@@ -43,6 +26,23 @@
 
                                     </div>
 
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 col-sm-2 control-label">Catégorie</label>
+                                <div class="col-sm-10">
+                                    <select name="category_id" class="form-control">
+                                        <?php
+                                            foreach ($categories as $category)
+                                            {
+                                        ?>
+                                        <option value="<?= htmlspecialchars($category->getId());?>"><?= htmlspecialchars($category->getName());?></option>
+                                        <?php
+                                            }
+                                            
+                                        ?>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -61,7 +61,7 @@
 
                                     <label class="col-sm-1 col-sm-1 control-label">Surface</label>
                                     <div class="col-sm-4">
-                                        <input type="number" class="form-control" name="estate_area" placeholder="Superficie">
+                                        <input type="number" class="form-control" name="area" placeholder="Superficie">
                                         <span>en m2 selon la loi Carrez</span>
                                     </div>
                                 
@@ -106,6 +106,16 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-sm-2 col-sm-2 control-label">Comble aménageable</label>
+                                <div class="col-sm-10">
+                                    <select name="convertible_attic" class="form-control">
+                                        <option value="1">oui</option>
+                                        <option value="0" selected>non</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Extérieur(s)</label>
                                     <div class="col-sm-5">
                                         <select name="outside" id="outside" class="form-control">
@@ -126,8 +136,8 @@
                                 <label class="col-sm-2 col-sm-2 control-label">Stationnement</label>
                                 <div class="col-sm-5">
                                     <select name="parking" class="form-control">
-                                        <option value="oui">oui</option>
-                                        <option value="non" selected>non</option>
+                                        <option value="1">oui</option>
+                                        <option value="0" selected>non</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-5" id="parking-type">
@@ -139,7 +149,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Energie du bien</label>
                                     <div class="col-sm-10">
                                         <select name="energy" class="form-control" multiple>
@@ -157,7 +167,7 @@
 
                             </div>
 
-                            <!--<div class="form-group">
+                            <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Diagnostic Energétique</label>
                                 <div class="col-sm-10">
 
@@ -204,10 +214,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Année de construction de l'immeuble</label>
                                     <div class="col-sm-5">
-                                        <div  data-date-viewmode="years" data-date-format="yyyy" data-date="2014" class="input-append date dpMonths">
-                                            <input type="date" readonly="" value="2014" size="16" class="form-control">
-                                            
-                                        </div>
+                                        <input type="number" name="building_year" class="form-control">
                                     </div>
                             </div>
 
@@ -226,7 +233,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Description courte</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="short_description" placeholder="Courte description">
+                                    <input type="text" class="form-control" name="excerpt" placeholder="Courte description">
                                 </div>
                             </div>
 
@@ -279,7 +286,7 @@
                                         {
                                     ?>
                                     <label>
-                                        <input type="radio" id="optionsRadios1" name="frequency" value="<?= htmlspecialchars($frequency->getId());?>">
+                                        <input type="radio" id="optionsRadios1" name="charge_frequency_id" value="<?= htmlspecialchars($frequency->getId());?>">
                                         <?= htmlspecialchars($frequency->getFrequency());?>
                                     </label>
                                     <?php
@@ -310,14 +317,36 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Date de la mise en ligne</label>
-                                <div class="col-sm-10">
-                                    <input type="date" value="01-01-2020" size="16">
+                                <div class="col-sm-4">
+                                    <input type="date" name="created_at" value="01-01-2020" size="16">
+                                </div>
+                                
+                                <label class="col-sm-1 col-sm-1 control-label">Agent</label>
+                                <div class="col-sm-5">
+                                    <input type="number" class="form-control" name="agent_id" value="<?= $this->session->get('id'); ?>">
                                 </div>
                             </div>
 
                             <div class="form-group">
+                                <h4 class="mb"><i class="fa fa-angle-right"></i> Publication</h4>
+                                <label class="col-sm-2 col-sm-2 control-label">Status de la publication</label>
+                                <div class="col-sm-10">
+                                    <label>
+                                        <input type="radio" id="optionsRadios1" name="status" value="1">
+                                        Publié
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="optionsRadios1" name="status" value="0">
+                                        Brouillon
+                                    </label>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
                                 <div class="col-sm-12">
-                                    <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Publié">
+                                    <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Mettre en ligne">
                                 </div>
                             </div>
 

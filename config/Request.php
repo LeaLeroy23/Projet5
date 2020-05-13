@@ -16,7 +16,7 @@ class Request
     }
 
     /**
-     * @return mixed
+     * @return Parameter
      */
     public function getGet()
     {
@@ -24,7 +24,7 @@ class Request
     }
 
     /**
-     * @return mixed
+     * @return Parameter
      */
     public function getPost()
     {
@@ -32,7 +32,7 @@ class Request
     }
 
     /**
-     * @return mixed
+     * @return Session
      */
     public function getSession()
     {

@@ -20,7 +20,8 @@ class Spec {
         let parking = document.getElementById("parking")
         parking.addEventListener("change", function (e) {
             let parkingType = document.getElementById("parking-type");
-            if(e.target.value = "oui"){
+            
+            if(e.target.value = "1"){
                 parkingType.style.display = "block";
             } else {
                 parkingType.style.display = "none";

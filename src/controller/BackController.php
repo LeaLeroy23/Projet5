@@ -48,7 +48,7 @@ class BackController extends Controller
        
             $this->estateDAO->addEstate($post);
             $this->session->set('addEstate', 'L\'ajout d\'une annonce a été faite');
-            header('Location: ../public/index.php?route=add_estate');
+            header('Location: ../public/index.php?route=addEstate');
             exit();
         }
         return $this->view->renderTemplate('add_estate', [

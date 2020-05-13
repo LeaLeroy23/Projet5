@@ -24,7 +24,7 @@ class Router
     public function run()
     {
         $route = $this->request->getGet()->get('route');
-        /*try{*/
+        try{
             if(isset($_GET['route']))
             {
                 if($route === 'estate'){
@@ -47,6 +47,9 @@ class Router
                 }
                 elseif ($route === 'addEstate'){
                     $this->backController->addEstate($this->request->getPost());
+                }
+                elseif ($route === 'editEstate'){
+                    $this->backController->editEstate($this->request->getPost());
                 }
                 elseif ($route === 'allEstate'){
                     $this->backController->allEstate();
@@ -103,10 +106,10 @@ class Router
             else{
                 $this->frontController->home();
             }
-        /*}
+        }
         catch (Exception $e)
         {
             $this->errorController->errorServer();
-        }*/
+        }
     }
 }
