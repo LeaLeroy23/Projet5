@@ -104,14 +104,14 @@
                             </li>
 
                             <li class="mt">
-                                <a href="index.php?route=allEstate">
+                                <a href="index.php?route=allEstates">
                                 <i class="fa fa-copy"></i>
                                 <span>Les annonces</span>
                                 </a>
                             </li>
 
                             <li class="mt">
-                                <a href="index.php?route=all_agents">
+                                <a href="index.php?route=allAgents">
                                 <i class="fa fa-users"></i>
                                 <span>Les agents</span>
                                 </a>

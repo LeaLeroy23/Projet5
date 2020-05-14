@@ -48,7 +48,7 @@ class BackController extends Controller
        
             $this->estateDAO->addEstate($post);
             $this->session->set('addEstate', 'L\'ajout d\'une annonce a été faite');
-            header('Location: ../public/index.php?route=addEstate');
+            header('Location: ../public/index.php?route=allEstates');
             exit();
         }
         return $this->view->renderTemplate('add_estate', [
@@ -60,14 +60,34 @@ class BackController extends Controller
         ]);
     }
 
-    public function editEstate(Parameter $post, $estateId){
+    public function editEstate(Parameter $post, $estateId)
+    {
+        $categories = $this->categoryDAO->getCategories();
+        $types = $this->typeDAO->getTypes();
+        $energies = $this->energyDAO->getEnergies();
+        $frequencies = $this->frequencyDAO->getFrequencies();
         $estate = $this->estateDAO->getEstate($estateId);
+        if($post->get('submit')){
+            $this->estateDAO->editEstate($post, $estateId);
+            $this->session->set('edit_estate', 'Le bien a été mis à jour');
+            header('Location: ../public/index.php?route=allEstates');
+        }
         return $this->view->renderTemplate('edit_estate', [
-            'estate' => $estate
+            'estate' => $estate,
+            'categories' => $categories,
+            'types' => $types,
+            'energies' => $energies,
+            'frequencies' => $frequencies
         ]);
     }
 
-    public function allEstate()
+    public function deleteEstate($estateId){
+        $this->estateDAO->deleteEstate($estateId);
+        $this->session->set('delete_estate', 'L\'annonce a bien été supprimé');
+        header('Location: ../public/index.php?route=allEstates');
+    }
+
+    public function allEstates()
     {
         $estates = $this->estateDAO->getEstates();
         return $this->view->renderTemplate('all_estates', [

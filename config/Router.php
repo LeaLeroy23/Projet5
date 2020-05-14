@@ -24,7 +24,7 @@ class Router
     public function run()
     {
         $route = $this->request->getGet()->get('route');
-        try{
+        /*try{*/
             if(isset($_GET['route']))
             {
                 if($route === 'estate'){
@@ -51,8 +51,11 @@ class Router
                 elseif ($route === 'editEstate'){
                     $this->backController->editEstate($this->request->getPost(), $this->request->getGet()->get('estateId'));
                 }
-                elseif ($route === 'allEstate'){
-                    $this->backController->allEstate();
+                elseif ($route === 'deleteEstate'){
+                    $this->backController->deleteEstate($this->request->getGet()->get('estateId'));
+                }
+                elseif ($route === 'allEstates'){
+                    $this->backController->allEstates();
                 }
                 elseif ($route === 'addCategory'){
                     $this->backController->addCategory($this->request->getPost());
@@ -106,10 +109,10 @@ class Router
             else{
                 $this->frontController->home();
             }
-        }
+        /*}
         catch (Exception $e)
         {
             $this->errorController->errorServer();
-        }
+        }*/
     }
 }

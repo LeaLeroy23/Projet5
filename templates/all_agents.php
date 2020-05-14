@@ -3,13 +3,13 @@
 <section id="main-content">
     <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Tous les agents</h3>
-
+        <?= $this->session->show('addAgent'); ?>
 
         <!--main content start-->
   
         <div class="row">
             <div class="col-md-12">
-                <p class="session-success">l'inscription a bien été pris en compte <?= $this->session->show('addAgent'); ?></p>
+                
                 <div class="form-panel">
                     <h4><i class="fa fa-angle-right"></i> Basic Table</h4>
                 <hr>

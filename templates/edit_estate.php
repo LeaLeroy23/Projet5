@@ -14,9 +14,15 @@
                             <label class="col-sm-2 col-sm-2 control-label">Type de bien</label>
                                 <div class="col-sm-10">
                                     <select name="type_id" class="form-control">
-
-                                        <option value="<?= htmlspecialchars($estate->getType_id());?>"></option>
-
+                                        <option value="<?= htmlspecialchars($estate->getType_id());?>"><?= htmlspecialchars($estate->getType_id());?></option>
+                                        <?php
+                                            foreach ($types as $type)
+                                            {
+                                        ?>
+                                        <option value="<?= htmlspecialchars($type->getId());?>"><?= htmlspecialchars($type->getType());?></option>
+                                        <?php
+                                            }
+                                        ?>
                                     </select>
 
                                 </div>
@@ -27,9 +33,16 @@
                             <label class="col-sm-2 col-sm-2 control-label">Catégorie</label>
                             <div class="col-sm-10">
                                 <select name="category_id" class="form-control">
-
-                                    <option value="<?= htmlspecialchars($estate->getType_id());?>"></option>
-
+                                    <option value="<?= htmlspecialchars($estate->getCategory_id());?>"><?= htmlspecialchars($estate->getCategory_id());?></option>
+                                    <?php
+                                        foreach ($categories as $category)
+                                        {
+                                    ?>
+                                    <option value="<?= htmlspecialchars($category->getId());?>"><?= htmlspecialchars($category->getName());?></option>
+                                    <?php
+                                        }
+                                            
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -37,7 +50,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Titre</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="title" placeholder="Titre">
+                                <input type="text" class="form-control" name="title" placeholder="Titre" value="<?= htmlspecialchars($estate->getTitle());?>">
                             </div>
                         </div>
 
@@ -74,6 +87,7 @@
                             <label class="col-sm-2 col-sm-2 control-label">Chambre(s)</label>
                             <div class="col-sm-2">
                                 <select name="bedrooms" class="form-control">
+                                    <option value="<?= htmlspecialchars($estate->getBedrooms());?>"><?= htmlspecialchars($estate->getBedrooms());?></option>
                                     <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -85,6 +99,7 @@
                             <label class="col-sm-2 col-sm-2 control-label">Salle de bain</label>
                             <div class="col-sm-2">
                                 <select name="bathrooms" class="form-control">
+                                    <option value="<?= htmlspecialchars($estate->getBathrooms());?>"><?= htmlspecialchars($estate->getBathrooms());?></option>
                                     <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -99,6 +114,7 @@
                             <label class="col-sm-2 col-sm-2 control-label">Comble aménageable</label>
                             <div class="col-sm-10">
                                 <select name="convertible_attic" class="form-control">
+                                    <option value="<?= htmlspecialchars($estate->getConvertible_attic());?>"><?= htmlspecialchars($estate->getConvertible_attic());?></option>
                                     <option value="1">oui</option>
                                     <option value="0" selected>non</option>
                                 </select>
@@ -109,6 +125,7 @@
                             <label class="col-sm-2 col-sm-2 control-label">Extérieur(s)</label>
                                 <div class="col-sm-5">
                                     <select name="outside" id="outside" class="form-control">
+                                        <option value="<?= htmlspecialchars($estate->getOutside());?>"><?= htmlspecialchars($estate->getOutside());?></option>
                                         <option value="0">Pas d'extérieur</option>
                                         <option value="balcon">Balcon</option>
                                         <option value="terrasse">Terrasse</option>
@@ -117,7 +134,7 @@
                             </div>
 
                             <div class="col-sm-5" id="outside-area">
-                                <input type="number" class="form-control" name="outside_area" placeholder="Superficie">
+                                <input type="number" class="form-control" name="outside_area" value="<?= htmlspecialchars($estate->getOutside_area());?>" placeholder="Superficie">
                                 <span>en m2</span>
                             </div>
                         </div>
@@ -126,12 +143,14 @@
                             <label class="col-sm-2 col-sm-2 control-label">Stationnement</label>
                             <div class="col-sm-5">
                                 <select name="parking" class="form-control">
+                                    <option value="<?= htmlspecialchars($estate->getParking());?>"><?= htmlspecialchars($estate->getParking());?></option>
                                     <option value="1">oui</option>
-                                    <option value="0" selected>non</option>
+                                    <option value="0">non</option>
                                 </select>
                             </div>
                             <div class="col-sm-5" id="parking-type">
                                 <select name="parking_type" class="form-control">
+                                    <option value="<?= htmlspecialchars($estate->getParking_type());?>"><?= htmlspecialchars($estate->getParking_type());?></option>
                                     <option value="parking">Parking</option>
                                     <option value="garage">Garage</option>
                                     <option value="box">Box</option>
@@ -197,21 +216,21 @@
                         <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Localisation</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" name="zip_code" placeholder="Code Postal">
+                                <input type="number" class="form-control" name="zip_code" value="<?= htmlspecialchars($estate->getZip_code());?>" placeholder="Code Postal">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Année de construction de l'immeuble</label>
                                 <div class="col-sm-5">
-                                    <input type="number" name="building_year" class="form-control">
+                                    <input type="number" name="building_year" class="form-control" value="<?= htmlspecialchars($estate->getBuilding_year());?>">
                                 </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Disponible à partir du :</label>
                             <div class="col-sm-10">
-                                <input type="date" value="01-01-2020" size="16">
+                                <input type="date" value="<?= htmlspecialchars($estate->getAvailable());?>" size="16"><?= htmlspecialchars($estate->getAvailable());?>
                             </div>
                         </div>
 
@@ -223,14 +242,14 @@
                         <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Description courte</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="excerpt" placeholder="Courte description">
+                                <input type="text" class="form-control" name="excerpt" value="<?= htmlspecialchars($estate->getExcerpt());?>" placeholder="Courte description">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Description longue</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" name="description" placeholder="Longue description"></textarea>
+                                <textarea class="form-control" name="description" placeholder="Longue description"><?= htmlspecialchars($estate->getDescription());?></textarea>
                             </div>
                         </div>
 
@@ -264,13 +283,14 @@
                             <label class="col-sm-2 col-sm-2 control-label">Charge</label>
                             
                             <div class="col-sm-5">
-                                <input type="number" class="form-control" name="charge_price" placeholder="Prix des charges en €">
+                                <input type="number" class="form-control" name="charge_price" value="<?= htmlspecialchars($estate->getCharge_price());?>" placeholder="Prix des charges en €">
                             </div>
                         </div>
 
                         <div class="form-group" id="frequency">
                             <label class="col-sm-2 col-sm-2 control-label">Fréquence des Charges</label>
                             <div class="col-sm-9">
+                                <input type="radio" id="optionsRadios1" name="charge_frequency_id" value="<?= htmlspecialchars($estate->getCharge_frequency_Id());?>" checked><?= htmlspecialchars($estate->getCharge_frequency_Id());?>
                                 <?php
                                     foreach ($frequencies as $frequency)
                                     {
@@ -291,12 +311,12 @@
                             <label class="col-sm-2 col-sm-2 control-label">Prix</label>
                             
                             <div class="col-sm-5">
-                                <input type="number" class="form-control" name="price" placeholder="Prix en €">
+                                <input type="number" class="form-control" name="price" value="<?= htmlspecialchars($estate->getPrice());?>" placeholder="Prix en €">
                             </div>
 
                             <label class="col-sm-1 col-sm-1 control-label">Honoraire</label>
                             <div class="col-sm-4">
-                                <input type="number" class="form-control" name="fees" placeholder="Honoraire en €">
+                                <input type="number" class="form-control" name="fees" value="<?= htmlspecialchars($estate->getFees());?>" placeholder="Honoraire en €">
                             </div>
                         </div> 
 
@@ -306,37 +326,28 @@
                         <h4 class="mb"><i class="fa fa-angle-right"></i> Validation</h4>
 
                         <div class="form-group">
-                            <label class="col-sm-2 col-sm-2 control-label">Date de la mise en ligne</label>
-                            <div class="col-sm-4">
-                                <input type="date" name="created_at" value="01-01-2020" size="16">
+                                <h4 class="mb"><i class="fa fa-angle-right"></i> Publication</h4>
+                                <label class="col-sm-2 col-sm-2 control-label">Status de la publication</label>
+                                <div class="col-sm-10">
+                                    <label>
+                                        <input type="radio" id="optionsRadios1" name="status" value="<?= htmlspecialchars($estate->getStatus());?>" checked>
+                                        <?= htmlspecialchars($estate->getStatus());?>
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="optionsRadios1" name="status" value="1">
+                                        Publié
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="optionsRadios1" name="status" value="0">
+                                        Brouillon
+                                    </label>
+                                </div>
                             </div>
-                            
-                            <label class="col-sm-1 col-sm-1 control-label">Agent</label>
-                            <div class="col-sm-5">
-                                <input type="number" class="form-control" name="agent_id" value="<?= $this->session->get('id'); ?>">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <h4 class="mb"><i class="fa fa-angle-right"></i> Publication</h4>
-                            <label class="col-sm-2 col-sm-2 control-label">Status de la publication</label>
-                            <div class="col-sm-10">
-                                <label>
-                                    <input type="radio" id="optionsRadios1" name="status" value="1">
-                                    Publié
-                                </label>
-                                <label>
-                                    <input type="radio" id="optionsRadios1" name="status" value="0">
-                                    Brouillon
-                                </label>
-                            </div>
-                        </div>
-
 
 
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Mettre en ligne">
+                                <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Mettre à jour">
                             </div>
                         </div>
 

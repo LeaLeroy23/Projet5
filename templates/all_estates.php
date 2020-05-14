@@ -2,6 +2,9 @@
 <section id="main-content">
     <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Toute les annonces</h3>
+        
+        <?= $this->session->show('edit_estate'); ?>
+        <?= $this->session->show('delete_estate'); ?>
 
         <!-- row -->
         <div class="row mt">
@@ -34,14 +37,14 @@
                                 </td>
                                 <td><?= htmlspecialchars($estate->getCategory_id());?></td>
                                 <td class="hidden-phone"><?= htmlspecialchars($estate->getRooms());?></td>
-                                <td class="hidden-phone">Appartement</td>
+                                <td class="hidden-phone"><?= htmlspecialchars($estate->getType_id());?></td>
                                 <td class="hidden-phone"><?= htmlspecialchars($estate->getExcerpt());?></td>
                                 <td><?= htmlspecialchars($estate->getPrice());?>€</td>
                                 <td><span class="label label-info label-mini"><?= htmlspecialchars($estate->getStatus());?></span></td>
                                 <td>
                                     <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
                                     <a href="../public/index.php?route=editEstate&estateId=<?= $estate->getId(); ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                    <a href="../public/index.php?route=deleteEstate&estateId=<?= $estate->getId(); ?>"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
                                 </td>
                             </tr>
                             <?php 
