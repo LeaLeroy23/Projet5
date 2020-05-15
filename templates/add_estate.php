@@ -132,12 +132,12 @@
                                 </div>
                             </div>
 
-                            <div class="form-group" id="parking">
+                            <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Stationnement</label>
                                 <div class="col-sm-5">
-                                    <select name="parking" class="form-control">
+                                    <select name="parking" class="form-control" id="parking">
+                                        <option value="0">non</option>
                                         <option value="1">oui</option>
-                                        <option value="0" selected>non</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-5" id="parking-type">

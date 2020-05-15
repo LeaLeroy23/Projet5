@@ -14,12 +14,11 @@
                             <label class="col-sm-2 col-sm-2 control-label">Type de bien</label>
                                 <div class="col-sm-10">
                                     <select name="type_id" class="form-control">
-                                        <option value="<?= htmlspecialchars($estate->getType_id());?>"><?= htmlspecialchars($estate->getType_id());?></option>
                                         <?php
                                             foreach ($types as $type)
                                             {
                                         ?>
-                                        <option value="<?= htmlspecialchars($type->getId());?>"><?= htmlspecialchars($type->getType());?></option>
+                                        <option value="<?= $type->getId();?>" <?= ($type->getId() === $estate->getType_id()) ? 'selected' : '' ?>><?= $type->getType();?></option>
                                         <?php
                                             }
                                         ?>
@@ -33,12 +32,11 @@
                             <label class="col-sm-2 col-sm-2 control-label">Catégorie</label>
                             <div class="col-sm-10">
                                 <select name="category_id" class="form-control">
-                                    <option value="<?= htmlspecialchars($estate->getCategory_id());?>"><?= htmlspecialchars($estate->getCategory_id());?></option>
                                     <?php
                                         foreach ($categories as $category)
                                         {
                                     ?>
-                                    <option value="<?= htmlspecialchars($category->getId());?>"><?= htmlspecialchars($category->getName());?></option>
+                                    <option value="<?= $category->getId();?>" <?= ($category->getId() === $estate->getCategory_id()) ? 'selected' : '' ?>><?= $category->getName();?></option>
                                     <?php
                                         }
                                             

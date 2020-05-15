@@ -15,14 +15,14 @@
                         <hr>
                         <thead>
                             <tr>
-                                <th> Titre</th>
                                 <th><i class="fa fa-bullhorn"></i> Catégorie</th>
+                                <th> Titre</th>
                                 <th class="hidden-phone"><i class="fa fa-square"></i> Pièces</th>
                                 <th class="hidden-phone"><i class="fa fa-home"></i> Type</th>
                                 <th class="hidden-phone"><i class="fas fa-comment-alt"></i> Description</th>
                                 <th><i class="fa fa-bookmark"></i> Prix</th>
                                 <th><i class=" fa fa-edit"></i> Status</th>
-                                <th></th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,10 +32,10 @@
                                 {
                             ?>
                             <tr>
+                                <td><?= htmlspecialchars($estate->getCategory_id());?></td>
                                 <td>
                                     <a href="#"><?= htmlspecialchars($estate->getTitle());?></a>
                                 </td>
-                                <td><?= htmlspecialchars($estate->getCategory_id());?></td>
                                 <td class="hidden-phone"><?= htmlspecialchars($estate->getRooms());?></td>
                                 <td class="hidden-phone"><?= htmlspecialchars($estate->getType_id());?></td>
                                 <td class="hidden-phone"><?= htmlspecialchars($estate->getExcerpt());?></td>

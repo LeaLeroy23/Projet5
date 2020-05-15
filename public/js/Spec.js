@@ -1,13 +1,17 @@
 class Spec {
     constructor(){
+        this.outside = document.getElementById("outside");
+        this.outsideArea = $("#outside-area");
+        this.parking = $("#parking"); 
+        this.parkingName = $("[name='parking']");
+        this.parkingType = $("#parking-type");
+
         this.outsideSpec();
         this.parkingSpec();
     }
 
     outsideSpec(){
-        let outside = document.getElementById("outside");
-        outside.addEventListener("change", function (e) {
-            let outsideArea = document.getElementById("outside-area");
+        this.outside.addEventListener("change", function (e) {
             if(e.target.value){
                 outsideArea.style.display = "block";
             } else {
@@ -17,14 +21,11 @@ class Spec {
     }
 
     parkingSpec(){
-        let parking = document.getElementById("parking")
-        parking.addEventListener("change", function (e) {
-            let parkingType = document.getElementById("parking-type");
-            
-            if(e.target.value = "1"){
-                parkingType.style.display = "block";
+       this.parking.change(() => {
+            if(spec.parkingName[0].value == "1"){
+                spec.parkingType.css("display", "block");
             } else {
-                parkingType.style.display = "none";
+                spec.parkingType.css("display", "none");
             }
         });
     }

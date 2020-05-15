@@ -34,6 +34,5 @@ class Validation
             $errors = $frequencyValidation->check($data);
             return $errors;
         }
-        
     }
 }
