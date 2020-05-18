@@ -3551,6 +3551,10 @@ ul.chat-available-user li a:hover {
     color: #fff;
 }
 
+.alert-danger{
+    margin-top: 1.5%;
+}
+
 #outside-area{
     display: none;
 }

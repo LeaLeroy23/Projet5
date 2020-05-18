@@ -49,6 +49,7 @@
                                 <label class="col-sm-2 col-sm-2 control-label">Titre</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="title" placeholder="Titre">
+                                    <?= isset($errors['title']) ? $errors['title'] : ''; ?>
                                 </div>
                             </div>
 
@@ -57,12 +58,14 @@
                                 
                                     <div class="col-sm-5">
                                         <input type="number" class="form-control" name="floor" placeholder="Etage">
+                                        <?= isset($errors['floor']) ? $errors['floor'] : ''; ?>
                                     </div>
 
                                     <label class="col-sm-1 col-sm-1 control-label">Surface</label>
                                     <div class="col-sm-4">
                                         <input type="number" class="form-control" name="area" placeholder="Superficie">
                                         <span>en m2 selon la loi Carrez</span>
+                                        <?= isset($errors['area']) ? $errors['area'] : ''; ?>
                                     </div>
                                 
                             </div> 
@@ -208,6 +211,7 @@
                                 <label class="col-sm-2 col-sm-2 control-label">Localisation</label>
                                 <div class="col-sm-10">
                                     <input type="number" class="form-control" name="zip_code" placeholder="Code Postal">
+                                    <?= isset($errors['zip_code']) ? $errors['zip_code'] : ''; ?>
                                 </div>
                             </div>
 
@@ -215,6 +219,7 @@
                                 <label class="col-sm-2 col-sm-2 control-label">Année de construction de l'immeuble</label>
                                     <div class="col-sm-5">
                                         <input type="number" name="building_year" class="form-control">
+                                        <?= isset($errors['building_year']) ? $errors['building_year'] : ''; ?>
                                     </div>
                             </div>
 
@@ -234,6 +239,7 @@
                                 <label class="col-sm-2 col-sm-2 control-label">Description courte</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="excerpt" placeholder="Courte description">
+                                    <?= isset($errors['excerpt']) ? $errors['excerpt'] : ''; ?>
                                 </div>
                             </div>
 
@@ -241,6 +247,7 @@
                                 <label class="col-sm-2 col-sm-2 control-label">Description longue</label>
                                 <div class="col-sm-10">
                                     <textarea class="form-control" name="description" placeholder="Longue description"></textarea>
+                                    <?= isset($errors['description']) ? $errors['description'] : ''; ?>
                                 </div>
                             </div>
 
@@ -275,6 +282,7 @@
                                 
                                 <div class="col-sm-5">
                                     <input type="number" class="form-control" name="charge_price" placeholder="Prix des charges en €">
+                                    <?= isset($errors['charge_price']) ? $errors['charge_price'] : ''; ?>
                                 </div>
                             </div>
 
@@ -302,11 +310,13 @@
                                 
                                 <div class="col-sm-5">
                                     <input type="number" class="form-control" name="price" placeholder="Prix en €">
+                                    <?= isset($errors['price']) ? $errors['price'] : ''; ?>
                                 </div>
 
                                 <label class="col-sm-1 col-sm-1 control-label">Honoraire</label>
                                 <div class="col-sm-4">
                                     <input type="number" class="form-control" name="fees" placeholder="Honoraire en €">
+                                    <?= isset($errors['fees']) ? $errors['fees'] : ''; ?>
                                 </div>
                             </div> 
 
@@ -323,7 +333,7 @@
                                 
                                 <label class="col-sm-1 col-sm-1 control-label">Agent</label>
                                 <div class="col-sm-5">
-                                    <input type="number" class="form-control" name="agent_id" value="<?= $this->session->get('id'); ?>">
+                                    <input type="number" class="form-control" name="agent_id" value="<?= $this->session->get('lastname'); ?> <?= $this->session->get('firstname'); ?>">
                                 </div>
                             </div>
 

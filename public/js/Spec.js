@@ -1,6 +1,7 @@
 class Spec {
     constructor(){
-        this.outside = document.getElementById("outside");
+        this.outside = $("#outside"); 
+        this.outsideName = $("[name='outside']");
         this.outsideArea = $("#outside-area");
         this.parking = $("#parking"); 
         this.parkingName = $("[name='parking']");
@@ -11,17 +12,17 @@ class Spec {
     }
 
     outsideSpec(){
-        this.outside.addEventListener("change", function (e) {
-            if(e.target.value){
-                outsideArea.style.display = "block";
+        this.outside.change(() => {
+            if(spec.outsideName[0].value == "0"){
+                spec.outsideArea.css("display", "none");
             } else {
-                outsideArea.style.display = "none";
+                spec.outsideArea.css("display", "block");
             }
-        });
+        }); 
     }
 
     parkingSpec(){
-       this.parking.change(() => {
+        this.parking.change(() => {
             if(spec.parkingName[0].value == "1"){
                 spec.parkingType.css("display", "block");
             } else {

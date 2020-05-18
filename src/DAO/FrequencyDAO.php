@@ -36,7 +36,8 @@ class FrequencyDAO extends DAO
         return $this->buildObject($frequency);
     }
 
-    public function addFrequency($post){
+    public function addFrequency($post)
+    {
         $sql = 'INSERT INTO charge_frequency (frequency) 
         VALUES (:frequency)';
         $this->createQuery($sql, [

@@ -13,50 +13,55 @@ class BackController extends Controller
         $types = $this->typeDAO->getTypes();
         $energies = $this->energyDAO->getEnergies();
         $frequencies = $this->frequencyDAO->getFrequencies();
+        $errors = $this->validation->validate($post, 'Estate');
+
         if($post->get('submit')){
-            $form=[];
-            $maxsize = 5 * 1024 * 1024;
-            $filename = "";
-            if (isset($_FILES["filename"]) && $_FILES["filename"]["error"] == 0) {
-                $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png", "PNG" => "image/PNG");
-                $filename = $_FILES["filename"]["name"];
-                $filetype = $_FILES["filename"]["type"];
-                $filesize = $_FILES["filename"]["size"];
+            if (!$errors){
+                $form=[];
+                $maxsize = 5 * 1024 * 1024;
+                $filename = "";
+                if (isset($_FILES["filename"]) && $_FILES["filename"]["error"] == 0) {
+                    $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png", "PNG" => "image/PNG");
+                    $filename = $_FILES["filename"]["name"];
+                    $filetype = $_FILES["filename"]["type"];
+                    $filesize = $_FILES["filename"]["size"];
 
-                $ext = pathinfo($filename, PATHINFO_EXTENSION);
-                if (!array_key_exists($ext, $allowed)) {
-                    die("Erreur : Veuillez sélectionner un format de fichier valide.");
-                }
-
-                if ($filesize > $maxsize) {
-                    die("Erreur: La taille du fichier est supérieure à la limite autorisée.");
-                }
-
-                if (in_array($filetype, $allowed)) {
-                    /**verifie si le fichier existe avant de le telecharger*/
-                    if (file_exists("../public/img/upload/" . $_FILES["filename"]["name"])) {
-                        die($_FILES["filename"]["name"] . "existe déjà.");
-                    } else {
-                        $filename = uniqid() . '.' . $ext;
-                        move_uploaded_file($_FILES["filename"]["tmp_name"], "../public/img/upload/" .  $filename);
+                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                    if (!array_key_exists($ext, $allowed)) {
+                        echo("Erreur : Veuillez sélectionner un format de fichier valide.");
                     }
-                } else {
-                    die("Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");
+
+                    if ($filesize > $maxsize) {
+                        echo("Erreur: La taille du fichier est supérieure à la limite autorisée.");
+                    }
+
+                    if (in_array($filetype, $allowed)) {
+                        /**verifie si le fichier existe avant de le telecharger*/
+                        if (file_exists("../public/img/upload/" . $_FILES["filename"]["name"])) {
+                            echo($_FILES["filename"]["name"] . "existe déjà.");
+                        } else {
+                            $filename = uniqid() . '.' . $ext;
+                            move_uploaded_file($_FILES["filename"]["tmp_name"], "../public/img/upload/" .  $filename);
+                        }
+                    } else {
+                        echo("Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");
+                    }
+                    
                 }
-                
-            }
-       
+            
             $this->estateDAO->addEstate($post);
             $this->session->set('addEstate', 'L\'ajout d\'une annonce a été faite');
             header('Location: ../public/index.php?route=allEstates');
             exit();
+            }
         }
         return $this->view->renderTemplate('add_estate', [
             'categories' => $categories,
             'types' => $types,
             'energies' => $energies,
             'frequencies' => $frequencies,
-            'post', $post
+            'errors' => $errors,
+            'post'=> $post
         ]);
     }
 
@@ -67,17 +72,23 @@ class BackController extends Controller
         $energies = $this->energyDAO->getEnergies();
         $frequencies = $this->frequencyDAO->getFrequencies();
         $estate = $this->estateDAO->getEstate($estateId);
+        $errors = $this->validation->validate($post, 'Estate');
+
         if($post->get('submit')){
-            $this->estateDAO->editEstate($post, $estateId);
-            $this->session->set('edit_estate', 'Le bien a été mis à jour');
-            header('Location: ../public/index.php?route=allEstates');
+            if (!$errors){
+                $this->estateDAO->editEstate($post, $estateId);
+                $this->session->set('edit_estate', 'Le bien a été mis à jour');
+                header('Location: ../public/index.php?route=allEstates');
+                exit();
+            }
         }
         return $this->view->renderTemplate('edit_estate', [
             'estate' => $estate,
             'categories' => $categories,
             'types' => $types,
             'energies' => $energies,
-            'frequencies' => $frequencies
+            'frequencies' => $frequencies,
+            'errors' => $errors
         ]);
     }
 
@@ -89,7 +100,10 @@ class BackController extends Controller
 
     public function allEstates()
     {
+        $categories = $this->categoryDAO->getCategories();
+        $types = $this->typeDAO->getTypes();
         $estates = $this->estateDAO->getEstates();
+
         return $this->view->renderTemplate('all_estates', [
             'estates' => $estates
         ]);
@@ -194,14 +208,16 @@ class BackController extends Controller
             $energies = $this->energyDAO->getEnergies();
             $frequencies = $this->frequencyDAO->getFrequencies();
             $errors = $this->validation->validate($post, 'Frequency');
+            $post = strtolower($post);
             if (!$errors){
+                $this->frequencyDAO->addFrequency($post);
                 $this->session->set('addFrequency', 'L\'ajout d\'une frquence de charge a été faite');
                 header('Location: ../public/index.php?route=configuration');
                 exit();
             }
             return $this->view->renderTemplate('configForm', [
                 'categories' => $categories,
-                'types' => $types,
+                'types' => $types, 
                 'energies' => $energies,
                 'frequencies' => $frequencies,
                 'post'=> $post,
@@ -297,12 +313,21 @@ class BackController extends Controller
 
     public function updateProfile(Parameter $post)
     {
+        echo('je suis ici');
         if($post->get('submit')){
             $this->agentDAO->updateProfile($post, $this->session->get('email'));
             $this->session->set('update_profile', 'Votre profile a été mis à jour');
-            header('Location: ../public/index.php?route=update_profile');
+            header('Location: ../public/index.php?route=updateProfile');
         }
         return $this->view->renderTemplate('update_profile');
+    }
+
+    public function deleteProfile($agentId)
+    {
+        $this->agentDAO->deleteAgent($agentId);
+        $this->session->set('deleteAgent', "L'\agent' a été supprimer avec succès");
+        header('Location: ../public/index.php?route=allAgents');
+        exit();
     }
 
 }

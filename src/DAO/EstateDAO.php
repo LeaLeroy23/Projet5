@@ -132,5 +132,13 @@ class EstateDAO extends DAO
         $sql = "DELETE FROM estate WHERE id=?";
         $this->createQuery($sql, [$estateId]);
     }
+
+    public function jointType($typeId){
+        $sql = 'SELECT type FROM type INNER JOIN estate ON estate.type_id = type.id';
+        $result = $this->createQuery($sql, [$typeId]);
+        $type = $result->fetch();
+        $result->closeCursor();
+        return $this->buildObject($type);
+    }
    
 }

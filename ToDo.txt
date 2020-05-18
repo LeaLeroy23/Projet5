@@ -1,16 +1,10 @@
-Créer le repository pour le projet [X]
-Créer le projet vide [X]
-Créer le routeur [X]
-Créer le premier contrôleur (front) [X]
-Créer la page d'accueil [X]
-Ajouter le template de base [X]
-Créer le deuxième contrôleur (back) [X]
-Créer le tableau de bord
-Créer l'ajout de compte
-Créer la connexion
-Sécuriser le tableau de bord
-Faire la modification de profil
-Faire l'ajout de type
-Faire l'ajout de catégorie
-Faire l'ajout de fréquence des charges
-Faire l'ajout d'énergie
+Dans la liste des annonces mettre les catégories et les types en lieu et place des ids
+Mettre en place les validateurs pour l'ajout/modification d'un bien [X]
+Revoir les validateurs quand on poste une même chaine de caractères alors que la table est configurée en Unique
+Voir pour enregistrer les chaines de caractères en minuscule (strtolower())
+Voir pour afficher les chaines de caractères avec la première lettre en majuscule (ucfirst())
+Pour les boutons ajouter une info bulle [X]
+Reprendre la modification d'une annonce pour y mettre les différents types, catégories etc... à la place de ceux enregistrés comme dans la visio afin de ne pas avoir d'id sans les selects
+Reprendre le JS afin d'appliquer le même code que fait dans la session pour les autres spécifications [X]
+Faire en sorte que l'ajout / modification soit fonctionnel sans erreur [X]
+Faire l'upload de fichiers multiples pour une annonce

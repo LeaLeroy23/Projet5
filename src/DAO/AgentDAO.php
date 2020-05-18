@@ -74,6 +74,12 @@ class AgentDAO extends DAO
         }
     }
 
+    public function deleteAgent($agentId)
+    {
+        $sql = 'DELETE FROM agent WHERE id=?';
+        $this->createQuery($sql, [$agentId]);
+    }
+
     public function login(Parameter $post)
     {
         $sql= 'SELECT id, password FROM agent WHERE email = ?';

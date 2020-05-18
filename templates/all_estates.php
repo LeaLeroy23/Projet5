@@ -4,7 +4,7 @@
         <h3><i class="fa fa-angle-right"></i> Toute les annonces</h3>
         
         <?= $this->session->show('edit_estate'); ?>
-        <?= $this->session->show('delete_estate'); ?>
+        <?= $this->session->show('<div class="alert alert-success" role="alert">' . 'delete_estate' . '</div>'); ?>
 
         <!-- row -->
         <div class="row mt">
@@ -32,19 +32,22 @@
                                 {
                             ?>
                             <tr>
-                                <td><?= htmlspecialchars($estate->getCategory_id());?></td>
+                                <td><?= ($estate->getCategory_id());?></td>
                                 <td>
                                     <a href="#"><?= htmlspecialchars($estate->getTitle());?></a>
                                 </td>
                                 <td class="hidden-phone"><?= htmlspecialchars($estate->getRooms());?></td>
-                                <td class="hidden-phone"><?= htmlspecialchars($estate->getType_id());?></td>
+                                
+                                <td class="hidden-phone"><?= $estate->getType_id();?></td>
+                                
                                 <td class="hidden-phone"><?= htmlspecialchars($estate->getExcerpt());?></td>
                                 <td><?= htmlspecialchars($estate->getPrice());?>€</td>
                                 <td><span class="label label-info label-mini"><?= htmlspecialchars($estate->getStatus());?></span></td>
                                 <td>
                                     <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                    <a href="../public/index.php?route=editEstate&estateId=<?= $estate->getId(); ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                    <a href="../public/index.php?route=deleteEstate&estateId=<?= $estate->getId(); ?>"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
+                                    <a href="../public/index.php?route=editEstate&estateId=<?= $estate->getId(); ?>"><button class="btn btn-warning btn-xs" title="Modifier"><i class="fa fa-pencil"></i></button></a>
+                                    <a href="../public/index.php?route=deleteEstate&estateId=<?= $estate->getId(); ?>"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i></button></a>
+                                    <a href="../public/index.php?route=addImages&estateId=<?= $estate->getId(); ?>"><button class="btn btn-primary btn-xs" title="Ajouter des images"><i class="fa fa-camera "></i></button></a>
                                 </td>
                             </tr>
                             <?php 

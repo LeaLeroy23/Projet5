@@ -11,7 +11,7 @@
             <div class="col-md-12">
                 
                 <div class="form-panel">
-                    <h4><i class="fa fa-angle-right"></i> Basic Table</h4>
+                    <h4><i class="fa fa-angle-right"></i> Liste des Agents </h4>
                 <hr>
                     <table class="table">
                         <thead>
@@ -38,40 +38,14 @@
                                 <td><?= htmlspecialchars($agent->getPhone());?></td>
                                 <td><?= htmlspecialchars($agent->getEmail());?></td>
                                 <td>
-                                    <a href="" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
-                                    <a href="../public/index.php?route=update_profile" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                                    <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+                                    <a href="../public/index.php?route=updateProfile" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i></a>
+                                    <a href="../public/index.php?route=deleteProfile" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
                         <?php
                             }
                         ?>
-                            <tr>
-                                <td>Responsable transaction</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>Contributeur</td>
-                                <td>06 XX XX XX XX</td>
-                                <td>@hestia.fr</td>
-                                <td>
-                                <a href="agent.php" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
-                                    <a href="../public/index.php?route=update_profile" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                                    <a href="agent.php" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Agent immobilier</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>Contributeur</td>
-                                <td>06 XX XX XX XX</td>
-                                <td>@hestia.fr</td>
-                                <td>
-                                    <a href="agent.php" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
-                                    <a href="../public/index.php?route=update_profile" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                                    <a href="agent.php" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-                                </td>
-                            </tr>
+                           
                         </tbody>
                     </table>
                 </div>
