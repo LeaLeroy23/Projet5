@@ -39,8 +39,9 @@ class EnergyDAO extends DAO
     public function addEnergy($post){
         $sql = 'INSERT INTO energy (energy)
         VALUES (:energy)';
+        $strName = ucfirst(strtolower($post->get('energy')));
         $this->createQuery($sql, [
-            'energy' => $post->get('energy')
+            'energy' => $strName
         ]);
     }
 
