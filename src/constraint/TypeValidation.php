@@ -44,8 +44,8 @@ class TypeValidation extends Validation
         if($this->constraint->notBlank($name, $value)) {
             return $this->constraint->notBlank('type', $value);
         }
-        if($this->constraint->minLength($name, $value, 4)) {
-            return $this->constraint->minLength('type', $value, 4);
+        if($this->constraint->minLength($name, $value, 2)) {
+            return $this->constraint->minLength('type', $value, 2);
         }
         if($this->constraint->maxLength($name, $value, 40)) {
             return $this->constraint->maxLength('type', $value, 40);

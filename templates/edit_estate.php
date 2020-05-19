@@ -74,8 +74,7 @@
                             <label class="col-sm-2 col-sm-2 control-label">Nombre de pièce</label>
                             <div class="col-sm-2">
                                 <select name="rooms" class="form-control">
-                                    <option value="<?= htmlspecialchars($estate->getRooms());?>" selected>
-                                    </option>
+                                    <option value="<?= ($estate->getRooms());?>"<?= $estate->getRooms() ? 'selected' : '' ?>><?= ($estate->getRooms()); ?></option>
                                     <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>

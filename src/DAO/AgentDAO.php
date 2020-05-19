@@ -44,8 +44,6 @@ class AgentDAO extends DAO
     
     public function addAgent(Parameter $post, $password, $token, $createdAt)
     {
-        
-        
         $sql = "INSERT INTO agent (firstname, lastname, phone, email, function, description, avatar, password, token, status, created_at)
                 VALUES (:firstname, :lastname, :phone, :email, :function, :description, :avatar, :password, :token, :status, :created_at)";
         

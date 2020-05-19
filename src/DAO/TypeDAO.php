@@ -39,8 +39,9 @@ class TypeDAO extends DAO
     public function addType($post){
         $sql = 'INSERT INTO type (type) 
         VALUES (:type)';
+        $strName = ucfirst(strtolower($post->get('type')));
         $this->createQuery($sql, [
-            'type' => $post->get('type')
+            'type' => $strName
         ]);
     }
 

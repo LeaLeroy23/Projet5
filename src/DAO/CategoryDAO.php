@@ -37,10 +37,10 @@ class CategoryDAO extends DAO
     }
 
     public function addCategory($post){
-        $sql = 'INSERT INTO category (name)
-        VALUES (:name)';
+        $sql = 'INSERT INTO category (name) VALUES (:name)';
+        $strName = ucfirst(strtolower($post->get('name')));
         $this->createQuery($sql, [
-            'name' => $post->get('name')
+            'name' => $strName
         ]);
     }
 

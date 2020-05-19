@@ -40,8 +40,9 @@ class FrequencyDAO extends DAO
     {
         $sql = 'INSERT INTO charge_frequency (frequency) 
         VALUES (:frequency)';
+        $strName = ucfirst(strtolower($post->get('frequency')));
         $this->createQuery($sql, [
-            'frequency' => $post->get('frequency')
+            'frequency' => $strName
         ]);
     }
 

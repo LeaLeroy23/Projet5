@@ -22,4 +22,5 @@ class Constraint
             return '<p class="alert alert-danger" role="alert">Le champ doit contenir au maximum '.$maxSize.' caractères</p>';
         }
     }
+
 }
