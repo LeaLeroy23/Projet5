@@ -109,6 +109,32 @@ class BackController extends Controller
         ]);
     }
 
+    public function addPictures(Parameter $post, $estateId)
+    {
+        $estate = $this->estateDAO->getEstate($estateId);
+
+        if($post->get('submit')){
+            $ds = DIRECTORY_SEPARATOR;  //1
+            $storeFolder = 'upload'; 
+            if (!empty($_FILES)) {
+                $tempFile = $_FILES['file']['tmp_name'];          //3             
+                $targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;  //4
+                $targetFile =  $targetPath. $_FILES['file']['name'];  //5
+                move_uploaded_file($tempFile,$targetFile); //6
+            }
+            var_dump($targetPath);
+            die();
+            $this->pictureDAO->addPictures($post);
+            $this->session->set('addPictures', 'L\'ajout d\'images a été faite');
+            header('Location: ../public/index.php?route=allEstates');
+            exit();
+        }
+        return $this->view->renderTemplate('add_pictures', [
+            'estate' => $estate,
+            'post' => $estate
+        ]);
+    }
+
     public function configuration(){
         $categories = $this->categoryDAO->getCategories();
         $types = $this->typeDAO->getTypes();

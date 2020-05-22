@@ -57,6 +57,9 @@ class Router
                 elseif ($route === 'allEstates'){
                     $this->backController->allEstates();
                 }
+                elseif ($route === 'addPictures'){
+                    $this->backController->addPictures($this->request->getPost(), $this->request->getGet()->get('estateId'));
+                }
                 elseif ($route === 'addCategory'){
                     $this->backController->addCategory($this->request->getPost());
                 }

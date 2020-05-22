@@ -10,6 +10,7 @@ use App\src\DAO\CategoryDAO;
 use App\src\DAO\TypeDAO;
 use App\src\DAO\EnergyDAO;
 use App\src\DAO\FrequencyDAO;
+use App\src\DAO\PictureDAO;
 use App\src\DAO\EmailDAO;
 use App\src\model\View;
 
@@ -20,6 +21,7 @@ abstract class Controller{
     protected $typeDAO;
     protected $energyDAO;
     protected $frequencyDAO;
+    protected $pictureDAO;
     protected $emailDAO;
     protected $view;
     private $request;
@@ -35,6 +37,7 @@ abstract class Controller{
         $this->typeDAO = new TypeDAO();
         $this->energyDAO = new EnergyDAO();
         $this->frequencyDAO = new FrequencyDAO();
+        $this->pictureDAO = new PictureDAO();
         $this->emailDAO = new EmailDAO();
         $this->view = new View();
         $this->validation = new Validation();

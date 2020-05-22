@@ -940,3 +940,4 @@ if (typeof exports == "object") {
 } else {
   window["Dropzone"] = require("dropzone");
 }})();
+

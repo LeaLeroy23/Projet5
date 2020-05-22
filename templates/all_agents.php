@@ -38,8 +38,8 @@
                                 <td><?= htmlspecialchars($agent->getPhone());?></td>
                                 <td><?= htmlspecialchars($agent->getEmail());?></td>
                                 <td>
-                                    <a href="../public/index.php?route=updateProfile" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i></a>
-                                    <a href="../public/index.php?route=deleteProfile" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+                                    <a href="../public/index.php?route=updateProfile" class="btn btn-warning btn-xs" title="Modifier"><i class="fa fa-pencil"></i></a>
+                                    <a href="../public/index.php?route=deleteProfile" class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
                         <?php

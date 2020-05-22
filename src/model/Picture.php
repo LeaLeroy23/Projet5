@@ -4,6 +4,7 @@ namespace App\src\model;
 
 class Picture
 {
+    
     /**
      * @var int
      */
@@ -14,6 +15,12 @@ class Picture
      */
     private $filename;
 
+    /**
+     * @var int
+     */
+    private $estate_id;
+
+    
     /**
      * @return int
      */
@@ -45,4 +52,21 @@ class Picture
     {
         $this->filename = $filename;
     }
+
+    /**
+     * @return int
+     */
+    public function getEstate_id()
+    {
+        return $this->estate_id;
+    }
+
+    /**
+     * @param string $estate_id
+     */
+    public function setEstate_id($estate_id)
+    {
+        $this->estate_id = $estate_id;
+    }
+
 }
