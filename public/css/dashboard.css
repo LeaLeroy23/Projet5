@@ -3562,3 +3562,7 @@ ul.chat-available-user li a:hover {
 #parking-type{
     display: none;
 }
+
+#input-estate-id{
+    display: none;
+}

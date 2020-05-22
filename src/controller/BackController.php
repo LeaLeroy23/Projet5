@@ -100,8 +100,6 @@ class BackController extends Controller
 
     public function allEstates()
     {
-        $categories = $this->categoryDAO->getCategories();
-        $types = $this->typeDAO->getTypes();
         $estates = $this->estateDAO->getEstates();
 
         return $this->view->renderTemplate('all_estates', [
@@ -114,16 +112,17 @@ class BackController extends Controller
         $estate = $this->estateDAO->getEstate($estateId);
 
         if($post->get('submit')){
+            
             $ds = DIRECTORY_SEPARATOR;  //1
             $storeFolder = 'upload'; 
             if (!empty($_FILES)) {
-                $tempFile = $_FILES['file']['tmp_name'];          //3             
+                $tempFile = $_FILES['filename']['tmp_name'];          //3             
                 $targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;  //4
-                $targetFile =  $targetPath. $_FILES['file']['name'];  //5
+                $targetFile =  $targetPath. $_FILES['filename']['name'];  //5
                 move_uploaded_file($tempFile,$targetFile); //6
+
             }
-            var_dump($targetPath);
-            die();
+           
             $this->pictureDAO->addPictures($post);
             $this->session->set('addPictures', 'L\'ajout d\'images a été faite');
             header('Location: ../public/index.php?route=allEstates');
@@ -131,7 +130,7 @@ class BackController extends Controller
         }
         return $this->view->renderTemplate('add_pictures', [
             'estate' => $estate,
-            'post' => $estate
+            'post' => $post
         ]);
     }
 

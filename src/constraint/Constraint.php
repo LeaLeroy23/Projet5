@@ -2,6 +2,8 @@
 
 namespace App\src\constraint;
 
+use App\src\DAO\CategoryDAO;
+
 class Constraint
 {
     public function notBlank($name, $value)
@@ -19,6 +21,12 @@ class Constraint
     public function maxLength($name, $value, $maxSize)
     {
         if(strlen($value) > $maxSize) {
+            return '<p class="alert alert-danger" role="alert">Le champ doit contenir au maximum '.$maxSize.' caractères</p>';
+        }
+    }
+    public function unique($name, $value)
+    {
+        if($this->categoryDAO->getCategory() === true) {
             return '<p class="alert alert-danger" role="alert">Le champ doit contenir au maximum '.$maxSize.' caractères</p>';
         }
     }

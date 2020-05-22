@@ -41,15 +41,17 @@ class EstateDAO extends DAO
     }
 
     public function getEstates(){
-        $sql ='SELECT * FROM estate ORDER BY id DESC';
-        $result = $this->createQuery($sql);
-        $estates = [];
-        foreach ($result as $row){
-            $estateId = $row['id'];
-            $estates[$estateId] = $this->buildObject($row);
-        }
-        $result->closeCursor();
-        return $estates;
+        $sql = "SELECT e.id as id, e.title as title, e.excerpt as excerpt, e.status as status, e.price as price, e.rooms as rooms, c.name as category, t.type as type
+                FROM estate e
+                INNER JOIN category c
+                ON e.category_id = c.id
+                INNER JOIN type t
+                ON e.type_id = t.id
+                ORDER BY e.id DESC
+                ";
+        $result = $this->createQuery($sql)->fetchAll();
+        
+        return $result;
     }
 
     public function getEstate($estateId)
@@ -91,7 +93,7 @@ class EstateDAO extends DAO
             'fees' => $post->get('fees'),
             'created_at' => $post->get('created_at'),
             'agent_id' => $post->get('agent_id'),
-            'status' => $post->get('status'),
+            'status' => $post->get('status')
         ]);
     }
 
