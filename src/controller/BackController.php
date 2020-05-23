@@ -332,17 +332,18 @@ class BackController extends Controller
             $this->agentDAO->updatePassword($post, $this->session->get('email'));
             $this->session->set('update_password', 'Votre mot de passe a été mis à jour');
             header('Location: ../public/index.php?route=profile');
+            exit();
         }
         return $this->view->renderTemplate('update_password');
     }
 
     public function updateProfile(Parameter $post)
     {
-        echo('je suis ici');
         if($post->get('submit')){
             $this->agentDAO->updateProfile($post, $this->session->get('email'));
             $this->session->set('update_profile', 'Votre profile a été mis à jour');
             header('Location: ../public/index.php?route=updateProfile');
+            exit();
         }
         return $this->view->renderTemplate('update_profile');
     }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\src\constraint;
-
+use App\config\Parameter;
 use App\src\DAO\CategoryDAO;
 
 class Constraint
@@ -26,8 +26,12 @@ class Constraint
     }
     public function unique($name, $value)
     {
-        if($this->categoryDAO->getCategory() === true) {
-            return '<p class="alert alert-danger" role="alert">Le champ doit contenir au maximum '.$maxSize.' caractères</p>';
+        $categoryDAO = new \App\src\DAO\CategoryDAO;
+ 
+        if($categoryDAO->getCategories()) {
+            var_dump($categoryDAO->getCategories($name));
+            die();
+            return '<p class="alert alert-danger" role="alert">La valeur '.$value.' existe déjà</p>';
         }
     }
 
