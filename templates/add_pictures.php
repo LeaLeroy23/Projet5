@@ -6,7 +6,7 @@
             <div class="row mt">
                 <div class="white-panel mt">
                     <div class="panel-body">
-                        <form method="post" action="../public/index.php?route=addPictures&estateId=<?=($estate->getId());?>" class="dropzone" enctype="multipart/form-data">
+                        <form method="post" action="../public/index.php?route=addPictures&estateId=<?=($estate->getId());?>" class="dropzone"  id="my-awesome-dropzone" enctype="multipart/form-data">
                             <input type="number" name="estate_id" id="input-estate-id" value="<?= ($estate->getId());?>" />
                             
                         </form>

@@ -110,21 +110,34 @@ class BackController extends Controller
     public function addPictures(Parameter $post, $estateId)
     {
         $estate = $this->estateDAO->getEstate($estateId);
-
-            /*if (!empty($_FILES)) {
-                $tempFile = $_FILES['file']['tmp_name'];
-                $ds = DIRECTORY_SEPARATOR;
-                $folder = 'upload';        
-                $destination_path = dirname( __FILE__ , 3). $ds. 'public\img'. $ds. $folder. $ds;
-                $target_path =  $destination_path. $_FILES['file']['name'];
-                move_uploaded_file($temp,$target_path);
-            }*/
-
-            $target_dir = dirname( __FILE__ , 3) . 'public\img\upload';
-            $target_file = $target_dir.basename($_FILES['file']['name']);
-            if(move_uploaded_file($_FILES['file']['tmp_name'], $target_file)){
+        
+            $ds = DIRECTORY_SEPARATOR;
+            $target_dir = dirname( __FILE__ , 3) . '\public\img\upload' . $ds;
+            $target_file = basename($_FILES['file']['name']);
+            
+            $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png", "PNG" => "image/PNG");
+            $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+            $filename = uniqid() . '.' . $ext;
+            if(move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $filename)){
                 $status = 1;
-            }
+            } 
+        
+
+        /*$ds = DIRECTORY_SEPARATOR;
+        $target_dir = dirname( __FILE__ , 3) . '\public\img\upload' . $ds;
+        $target_file = basename($_FILES['file']['name']);
+        
+        $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png", "PNG" => "image/PNG");
+        $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+        $filename = uniqid() . '.' . $ext;
+
+
+
+
+
+        if(move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $filename)){
+            $status = 1;
+        }*/
            
             /*$this->pictureDAO->addPictures($post);
             $this->session->set('addPictures', 'L\'ajout d\'images a été faite');
