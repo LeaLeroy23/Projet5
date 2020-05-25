@@ -111,23 +111,26 @@ class BackController extends Controller
     {
         $estate = $this->estateDAO->getEstate($estateId);
 
-        if($post->get('submit')){
-            
-            $ds = DIRECTORY_SEPARATOR;  //1
-            $storeFolder = 'upload'; 
-            if (!empty($_FILES)) {
-                $tempFile = $_FILES['filename']['tmp_name'];          //3             
-                $targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;  //4
-                $targetFile =  $targetPath. $_FILES['filename']['name'];  //5
-                move_uploaded_file($tempFile,$targetFile); //6
+            /*if (!empty($_FILES)) {
+                $tempFile = $_FILES['file']['tmp_name'];
+                $ds = DIRECTORY_SEPARATOR;
+                $folder = 'upload';        
+                $destination_path = dirname( __FILE__ , 3). $ds. 'public\img'. $ds. $folder. $ds;
+                $target_path =  $destination_path. $_FILES['file']['name'];
+                move_uploaded_file($temp,$target_path);
+            }*/
 
+            $target_dir = dirname( __FILE__ , 3) . 'public\img\upload';
+            $target_file = $target_dir.basename($_FILES['file']['name']);
+            if(move_uploaded_file($_FILES['file']['tmp_name'], $target_file)){
+                $status = 1;
             }
            
-            $this->pictureDAO->addPictures($post);
+            /*$this->pictureDAO->addPictures($post);
             $this->session->set('addPictures', 'L\'ajout d\'images a été faite');
             header('Location: ../public/index.php?route=allEstates');
-            exit();
-        }
+            exit();*/
+        
         return $this->view->renderTemplate('add_pictures', [
             'estate' => $estate,
             'post' => $post

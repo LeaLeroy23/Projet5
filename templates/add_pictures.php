@@ -8,7 +8,7 @@
                     <div class="panel-body">
                         <form method="post" action="../public/index.php?route=addPictures&estateId=<?=($estate->getId());?>" class="dropzone" enctype="multipart/form-data">
                             <input type="number" name="estate_id" id="input-estate-id" value="<?= ($estate->getId());?>" />
-                            <input type="submit" name="submit" id="submit"/>
+                            
                         </form>
                     </div>
                 </div>

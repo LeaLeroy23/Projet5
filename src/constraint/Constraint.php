@@ -27,12 +27,15 @@ class Constraint
     public function unique($name, $value)
     {
         $categoryDAO = new \App\src\DAO\CategoryDAO;
- 
-        if($categoryDAO->getCategories()) {
-            var_dump($categoryDAO->getCategories($name));
-            die();
-            return '<p class="alert alert-danger" role="alert">La valeur '.$value.' existe déjà</p>';
+        
+        foreach ($keys as $key){
+            if (array_key_exists($key)){
+                var_dump($key);
+                die();
+                return '<p class="alert alert-danger" role="alert">La valeur '.$value.' existe déjà</p>';
+            }
         }
+       
     }
 
 }
