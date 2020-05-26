@@ -110,39 +110,32 @@ class BackController extends Controller
     public function addPictures(Parameter $post, $estateId)
     {
         $estate = $this->estateDAO->getEstate($estateId);
-        
+
+        if(isset($_FILES)){
             $ds = DIRECTORY_SEPARATOR;
             $target_dir = dirname( __FILE__ , 3) . '\public\img\upload' . $ds;
             $target_file = basename($_FILES['file']['name']);
-            
             $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png", "PNG" => "image/PNG");
-            $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-            $filename = uniqid() . '.' . $ext;
-            if(move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $filename)){
-                $status = 1;
-            } 
+            $filename = $_FILES["filename"]["name"];
+            $filetype = $_FILES["filename"]["type"];
+            $filesize = $_FILES["filename"]["size"];
+
+            if(in_array($filetype, $allowed)){
+                
+                $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+                $filename = uniqid() . '.' . $ext;
         
-
-        /*$ds = DIRECTORY_SEPARATOR;
-        $target_dir = dirname( __FILE__ , 3) . '\public\img\upload' . $ds;
-        $target_file = basename($_FILES['file']['name']);
-        
-        $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png", "PNG" => "image/PNG");
-        $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-        $filename = uniqid() . '.' . $ext;
-
-
-
-
-
-        if(move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $filename)){
-            $status = 1;
-        }*/
-           
-            /*$this->pictureDAO->addPictures($post);
-            $this->session->set('addPictures', 'L\'ajout d\'images a été faite');
-            header('Location: ../public/index.php?route=allEstates');
-            exit();*/
+                if(move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $filename)){
+                    $status = 1;
+                    die();
+                    //$this->pictureDAO->addPictures($post);
+                    /*$this->session->set('addPictures', 'L\'ajout d\'images a été faite');
+                    header('Location: ../public/index.php?route=allEstates');
+                    exit();*/
+                }
+                
+            }
+        }
         
         return $this->view->renderTemplate('add_pictures', [
             'estate' => $estate,
