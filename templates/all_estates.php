@@ -2,7 +2,7 @@
 <section id="main-content">
     <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Toute les annonces</h3>
-        
+        <?= $this->session->show('addPictures'); ?>
         <?= $this->session->show('edit_estate'); ?>
         <?= $this->session->show('<div class="alert alert-success" role="alert">' . 'delete_estate' . '</div>'); ?>
 

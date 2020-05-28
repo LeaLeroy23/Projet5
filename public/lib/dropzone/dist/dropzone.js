@@ -3840,7 +3840,7 @@ $(document).ready(function(){
   
     init: function() {
       var myAwesomeDropzone = document.getElementById("myAwesomeDropzone");
-      var submitButton = document.querySelector("#submit");
+      var submitButton = document.querySelector("#submit-all");
           myAwesomeDropzone = this; // closure
   
       submitButton.addEventListener("click", function() {

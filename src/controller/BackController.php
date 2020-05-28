@@ -131,11 +131,18 @@ class BackController extends Controller
         }*/
 
         if($post->get('submit')){
+            
             if (!$errors){
+
                 $form=[];
                 $maxsize = 5 * 1024 * 1024;
                 $filename = "";
+                $temp_file = $_FILES['filename']['tmp_name'];
+                var_dump($filename);
+                die();
                 if (isset($_FILES["filename"]) && $_FILES["filename"]["error"] == 0) {
+                    echo('hello again');
+                    die();
                     $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png", "PNG" => "image/PNG");
                     $filename = $_FILES["filename"]["name"];
                     $filetype = $_FILES["filename"]["type"];
@@ -155,6 +162,7 @@ class BackController extends Controller
                         if (file_exists("../public/img/upload/" . $_FILES["filename"]["name"])) {
                             echo($_FILES["filename"]["name"] . "existe déjà.");
                         } else {
+                           
                             $filename = uniqid() . '.' . $ext;
                             move_uploaded_file($_FILES["filename"]["tmp_name"], "../public/img/upload/" .  $filename);
                         }
@@ -164,8 +172,8 @@ class BackController extends Controller
                     
                 }
             
-                $this->pictureDAO->addPictures($filename, $post);
-            //$this->session->set('addEstate', 'L\'ajout d\'une annonce a été faite');
+            //$this->pictureDAO->addPictures($post);
+            $this->session->set('addPictures', 'L\'ajout d\'images a été faite avec succès');
             header('Location: ../public/index.php?route=allEstates');
             exit();
             }

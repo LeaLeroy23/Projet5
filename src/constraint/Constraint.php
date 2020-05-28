@@ -2,7 +2,7 @@
 
 namespace App\src\constraint;
 use App\config\Parameter;
-use App\src\DAO\CategoryDAO;
+
 
 class Constraint
 {
@@ -26,15 +26,13 @@ class Constraint
     }
     public function unique($name, $value)
     {
-        $categoryDAO = new \App\src\DAO\CategoryDAO;
-        
-        foreach ($keys as $key){
-            if (array_key_exists($key)){
-                var_dump($key);
-                die();
-                return '<p class="alert alert-danger" role="alert">La valeur '.$value.' existe déjà</p>';
-            }
+
+        if ($post->get($name)){
+            var_dump($post->get($name));
+            die();
+            return '<p class="alert alert-danger" role="alert">La valeur '.$value.' existe déjà</p>';
         }
+        
        
     }
 

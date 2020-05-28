@@ -8,10 +8,10 @@
                     <div class="panel-body">
                         <form method="POST" action="../public/index.php?route=addPictures" class="dropzone" id="myAwesomeDropzone" enctype="multipart/form-data">
                             <div class="fallback">
-                                <input name="file" type="file" multiple />
+                                <input type="file" name="filename" id="filename" multiple />
                             </div>
                             <input type="number" name="estate_id" id="input-estate-id" value="<?= ($estate->getId());?>" />
-                            <input type="submit" name="submit" id="submit" value="Ajouter les fichiers"  />
+                            <input type="submit" name="submit" id="submit-all" value="Ajouter les fichiers"  />
                         </form>
                     </div>
                 </div>
