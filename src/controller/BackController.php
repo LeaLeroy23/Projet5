@@ -20,11 +20,11 @@ class BackController extends Controller
                 $form=[];
                 $maxsize = 5 * 1024 * 1024;
                 $filename = "";
-                if (isset($_FILES["filename"]) && $_FILES["filename"]["error"] == 0) {
+                if (isset($_FILES["picture_url"]) && $_FILES["picture_url"]["error"] == 0) {
                     $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png", "PNG" => "image/PNG");
-                    $filename = $_FILES["filename"]["name"];
-                    $filetype = $_FILES["filename"]["type"];
-                    $filesize = $_FILES["filename"]["size"];
+                    $filename = $_FILES["picture_url"]["name"];
+                    $filetype = $_FILES["picture_url"]["type"];
+                    $filesize = $_FILES["picture_url"]["size"];
 
                     $ext = pathinfo($filename, PATHINFO_EXTENSION);
                     if (!array_key_exists($ext, $allowed)) {
@@ -37,11 +37,11 @@ class BackController extends Controller
 
                     if (in_array($filetype, $allowed)) {
                         /**verifie si le fichier existe avant de le telecharger*/
-                        if (file_exists("../public/img/upload/" . $_FILES["filename"]["name"])) {
-                            echo($_FILES["filename"]["name"] . "existe déjà.");
+                        if (file_exists("../public/img/upload/" . $_FILES["picture_url"]["name"])) {
+                            echo($_FILES["picture_url"]["name"] . "existe déjà.");
                         } else {
                             $filename = uniqid() . '.' . $ext;
-                            move_uploaded_file($_FILES["filename"]["tmp_name"], "../public/img/upload/" .  $filename);
+                            move_uploaded_file($_FILES["picture_url"]["tmp_name"], "../public/img/upload/" .  $filename);
                         }
                     } else {
                         echo("Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");
@@ -110,29 +110,66 @@ class BackController extends Controller
     public function addPictures(Parameter $post, $estateId)
     {
         $estate = $this->estateDAO->getEstate($estateId);
+        $errors = $this->validation->validate($post, 'Pictures');
 
-        /*if($post->get('submit')){*/
+        /*if($_SERVER['REQUEST_METHOD']=='POST'){
             $ds = DIRECTORY_SEPARATOR;
+            $file = $_FILES['file']['name'];
+            print_r($_FILES['file']['error']);
+            die();
             $target_dir = dirname( __FILE__ , 3) . '\public\img\upload' . $ds;
-            $target_file = basename($_FILES['file']['name']);
-
-            $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+            $target_file = basename($file);
+            $ext = pathinfo($file, PATHINFO_EXTENSION);
             $filename = $target_dir . uniqid() . '.' . $ext;
-                
-        
             if(move_uploaded_file($_FILES['file']['tmp_name'], $filename)){
                 $status = 1;
-                    
-                    /*$this->session->set('addPictures', 'L\'ajout d\'images a été faite');
+                    $this->session->set('addPictures', 'L\'ajout d\'images a été faite');
                     header('Location: ../public/index.php?route=allEstates');
-                    exit();*/
+                    exit();
             }
-            var_dump($_FILES['file']['tmp_name'], $filename);
             $this->pictureDAO->addPictures($post);
-            die();
-            
+        }*/
 
-        //}
+        if($post->get('submit')){
+            if (!$errors){
+                $form=[];
+                $maxsize = 5 * 1024 * 1024;
+                $filename = "";
+                if (isset($_FILES["filename"]) && $_FILES["filename"]["error"] == 0) {
+                    $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png", "PNG" => "image/PNG");
+                    $filename = $_FILES["filename"]["name"];
+                    $filetype = $_FILES["filename"]["type"];
+                    $filesize = $_FILES["filename"]["size"];
+
+                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                    if (!array_key_exists($ext, $allowed)) {
+                        echo("Erreur : Veuillez sélectionner un format de fichier valide.");
+                    }
+
+                    if ($filesize > $maxsize) {
+                        echo("Erreur: La taille du fichier est supérieure à la limite autorisée.");
+                    }
+
+                    if (in_array($filetype, $allowed)) {
+                        /**verifie si le fichier existe avant de le telecharger*/
+                        if (file_exists("../public/img/upload/" . $_FILES["filename"]["name"])) {
+                            echo($_FILES["filename"]["name"] . "existe déjà.");
+                        } else {
+                            $filename = uniqid() . '.' . $ext;
+                            move_uploaded_file($_FILES["filename"]["tmp_name"], "../public/img/upload/" .  $filename);
+                        }
+                    } else {
+                        echo("Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");
+                    }
+                    
+                }
+            
+                $this->pictureDAO->addPictures($filename, $post);
+            //$this->session->set('addEstate', 'L\'ajout d\'une annonce a été faite');
+            header('Location: ../public/index.php?route=allEstates');
+            exit();
+            }
+        }
         
         return $this->view->renderTemplate('add_pictures', [
             'estate' => $estate,
@@ -239,7 +276,6 @@ class BackController extends Controller
             $energies = $this->energyDAO->getEnergies();
             $frequencies = $this->frequencyDAO->getFrequencies();
             $errors = $this->validation->validate($post, 'Frequency');
-            $post = strtolower($post);
             if (!$errors){
                 $this->frequencyDAO->addFrequency($post);
                 $this->session->set('addFrequency', 'L\'ajout d\'une frquence de charge a été faite');

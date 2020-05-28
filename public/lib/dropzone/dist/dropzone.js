@@ -3828,3 +3828,31 @@ function __guardMethod__(obj, methodName, transform) {
     return undefined;
   }
 }
+
+
+$(document).ready(function(){
+  var myAwesomeDropzone = new Dropzone("#myAwesomeDropzone");
+
+  Dropzone.options.myAwesomeDropzone = {
+    paramName: "filename",
+    autoProcessQueue: false,
+    acceptedFiles:" .png, .jpg, .jpeg",
+  
+    init: function() {
+      var myAwesomeDropzone = document.getElementById("myAwesomeDropzone");
+      var submitButton = document.querySelector("#submit");
+          myAwesomeDropzone = this; // closure
+  
+      submitButton.addEventListener("click", function() {
+        myAwesomeDropzone.processQueue(); // Tell Dropzone to process all queued files
+      });
+      this.on("complete", function(){
+        if(this.getQueuedFules().length == 0 && this.getUploadingFiles().length == 0){
+          var _this = this;
+          _this.removeAllFiles();
+        }
+      })
+    }
+  }
+})
+

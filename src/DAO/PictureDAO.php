@@ -37,10 +37,10 @@ class PictureDAO extends DAO
         return $this->buildObject($picture);
     }
 
-    public function addPictures($post)
+    public function addPictures($filename, $post)
     {
         echo('je suis là');
-        die();
+        
         $sql = 'INSERT INTO picture (filename, estate_id) VALUES (:filename, :estate_id)';
         $result = $this->createQuery($sql, [
             'filename' => $post->get('filename'),

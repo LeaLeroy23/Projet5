@@ -122,7 +122,7 @@
                                 <label class="col-sm-2 col-sm-2 control-label">Extérieur(s)</label>
                                     <div class="col-sm-5">
                                         <select name="outside" id="outside" class="form-control">
-                                            <option value="0">Pas d'extérieur</option>
+                                            <option value="Pas d'extérieur">Pas d'extérieur</option>
                                             <option value="balcon">Balcon</option>
                                             <option value="terrasse">Terrasse</option>
                                             <option value="jardin">Jardin</option>
@@ -265,7 +265,7 @@
                                         </div>
                                         <div>
                                             <span class="btn btn-theme02 btn-file">
-                                                <input type="file" name="filename" id="file"/>
+                                                <input type="file" name="picture_url" id="file"/>
                                             </span>
                                         </div>
                                     </div>
