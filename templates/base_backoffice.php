@@ -166,33 +166,19 @@
                 <!--footer end-->
         </section>
         <!-- js placed at the end of the document so the pages load faster -->
-        <script src="../public/lib/jquery/jquery.min.js"></script>
+        <!--<script src="../public/lib/jquery/jquery.min.js"></script>
         <script src="../public/lib/bootstrap/js/bootstrap.min.js"></script>
-        <script class="include" type="text/javascript" src="../public/lib/jquery.dcjqaccordion.2.7.js"></script>
-        <script src="../public/lib/jquery.scrollTo.min.js"></script>
-        <script src="../public/lib/jquery.nicescroll.js" type="text/javascript"></script>
-        <!--common script for all pages-->
-        <script src="../public/lib/common-scripts.js"></script>
+        <script class="include" type="text/javascript" src="../public/lib/jquery.dcjqaccordion.2.7.js"></script>-->
+        <!--<script src="../public/lib/jquery.scrollTo.min.js"></script>
+        <script src="../public/lib/jquery.nicescroll.js" type="text/javascript"></script>-->
+        <!--common script for all pages
+        <script src="../public/lib/common-scripts.js"></script>-->
         <!--script for this page-->
-        <script src="../public/js/filepond.js"></script>
+        
         <!--<script src="../public/js/Spec.js" type="text/javascript"></script>
         <script src="../public/js/Preview.js" type="text/javascript"></script>
         <script src="../public/js/main.js" type="text/javascript"></script>-->
-        <script>
         
-        // Get a reference to the file input element
-        const inputElement = document.querySelector('input[type="file"]');
-
-        // Create the FilePond instance
-        const pond = FilePond.create(inputElement, {
-            allowMultiple: true,
-            allowReorder: true
-        });
-
-        // Easy console access for testing purposes
-        window.pond = pond;
-    </script>
-  
   </body>
   
 </html>

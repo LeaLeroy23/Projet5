@@ -41,7 +41,7 @@ class PictureDAO extends DAO
     {
         $sql = 'INSERT INTO picture (filename, estate_id) VALUES (:filename, :estate_id)';
         $result = $this->createQuery($sql, [
-            'filename' => $post->get('filename'),
+            'filename' => $filename,
             'estate_id' => $post->get('estate_id')
         ]);
 

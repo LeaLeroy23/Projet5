@@ -24,7 +24,7 @@ class Router
     public function run()
     {
         $route = $this->request->getGet()->get('route');
-        try{
+        /*try{*/
             if(isset($_GET['route']))
             {
                 if($route === 'estate'){
@@ -112,10 +112,10 @@ class Router
             else{
                 $this->frontController->home();
             }
-        }
+        /*}
         catch (Exception $e)
         {
             $this->errorController->errorServer();
-        }
+        }*/
     }
 }

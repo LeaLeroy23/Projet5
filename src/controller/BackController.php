@@ -112,37 +112,17 @@ class BackController extends Controller
         $estate = $this->estateDAO->getEstate($estateId);
         $errors = $this->validation->validate($post, 'Pictures');
 
-        /*if($_SERVER['REQUEST_METHOD']=='POST'){
-            $ds = DIRECTORY_SEPARATOR;
-            $file = $_FILES['file']['name'];
-            print_r($_FILES['file']['error']);
-            die();
-            $target_dir = dirname( __FILE__ , 3) . '\public\img\upload' . $ds;
-            $target_file = basename($file);
-            $ext = pathinfo($file, PATHINFO_EXTENSION);
-            $filename = $target_dir . uniqid() . '.' . $ext;
-            if(move_uploaded_file($_FILES['file']['tmp_name'], $filename)){
-                $status = 1;
-                    $this->session->set('addPictures', 'L\'ajout d\'images a été faite');
-                    header('Location: ../public/index.php?route=allEstates');
-                    exit();
-            }
-            $this->pictureDAO->addPictures($post);
-        }*/
-
         if($post->get('submit')){
-            
+            $files = $_FILES['filename']['name'];
+
             if (!$errors){
 
                 $form=[];
                 $maxsize = 5 * 1024 * 1024;
                 $filename = "";
-                $temp_file = $_FILES['filename']['tmp_name'];
-                var_dump($filename);
-                die();
+                
                 if (isset($_FILES["filename"]) && $_FILES["filename"]["error"] == 0) {
-                    echo('hello again');
-                    die();
+                    
                     $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png", "PNG" => "image/PNG");
                     $filename = $_FILES["filename"]["name"];
                     $filetype = $_FILES["filename"]["type"];
