@@ -107,7 +107,7 @@ class BackController extends Controller
         ]);
     }
 
-    public function addPictures(Parameter $post, $estateId)
+    public function addPictures(Parameter $post, Parameter $files, $estateId)
     {
         $estate = $this->estateDAO->getEstate($estateId);
         $errors = $this->validation->validate($post, 'Pictures');
@@ -172,7 +172,7 @@ class BackController extends Controller
                     
                 }
             
-            //$this->pictureDAO->addPictures($post);
+            $this->pictureDAO->addPictures($post, $filename);
             $this->session->set('addPictures', 'L\'ajout d\'images a été faite avec succès');
             header('Location: ../public/index.php?route=allEstates');
             exit();

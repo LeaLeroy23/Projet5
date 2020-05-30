@@ -27,6 +27,7 @@ abstract class Controller{
     private $request;
     protected $get;
     protected $post;
+    protected $files;
     protected $session;
     protected $validation;
 
@@ -44,6 +45,7 @@ abstract class Controller{
         $this->request = new Request();
         $this->get = $this->request->getGet();
         $this->post = $this->request->getPost();
+        $this->files = $this->request->getFiles();
         $this->session = $this->request->getSession();
     }
     

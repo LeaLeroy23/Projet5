@@ -26,13 +26,11 @@ class Constraint
     }
     public function unique($name, $value)
     {
-
-        if ($post->get($name)){
-            var_dump($post->get($name));
+        if ($row['name'] == $categoryID){
+            var_dump($value, get($name));
             die();
             return '<p class="alert alert-danger" role="alert">La valeur '.$value.' existe déjà</p>';
         }
-        
        
     }
 

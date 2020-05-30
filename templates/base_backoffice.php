@@ -25,9 +25,9 @@
         <link href="../public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!--external css-->
         <link href="../public/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-        <link href="lib/dropzone/dist/min/dropzone.min.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="../public/lib/bootstrap-datepicker/css/datepicker.css" />
         <link rel="stylesheet" type="text/css" href="../public/lib/bootstrap-daterangepicker/daterangepicker.css" />
+        <link href="../public/css/filepond.css" rel="stylesheet">
         <!-- Custom styles for this template -->
         <link href="../public/css/dashboard.css" rel="stylesheet">
         <link href="../public/css/dashboard-responsive.css" rel="stylesheet">
@@ -174,12 +174,11 @@
         <!--common script for all pages-->
         <script src="../public/lib/common-scripts.js"></script>
         <!--script for this page-->
-        <script src="../public/lib/dropzone/dist/min/dropzone.min.js"></script>
-        <script src="../public/lib/dropzone/dist/dropzone.js"></script>
-        <script src="../public/js/Spec.js" type="text/javascript"></script>
+        <script src="../public/js/filepond.js"></script>
+        <!--<script src="../public/js/Spec.js" type="text/javascript"></script>
         <script src="../public/js/Preview.js" type="text/javascript"></script>
-        <script src="../public/js/main.js" type="text/javascript"></script>
-        
+        <script src="../public/js/main.js" type="text/javascript"></script>-->
+
   
   </body>
   
