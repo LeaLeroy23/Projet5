@@ -178,7 +178,20 @@
         <!--<script src="../public/js/Spec.js" type="text/javascript"></script>
         <script src="../public/js/Preview.js" type="text/javascript"></script>
         <script src="../public/js/main.js" type="text/javascript"></script>-->
+        <script>
+        
+        // Get a reference to the file input element
+        const inputElement = document.querySelector('input[type="file"]');
 
+        // Create the FilePond instance
+        const pond = FilePond.create(inputElement, {
+            allowMultiple: true,
+            allowReorder: true
+        });
+
+        // Easy console access for testing purposes
+        window.pond = pond;
+    </script>
   
   </body>
   

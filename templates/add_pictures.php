@@ -9,12 +9,12 @@
                     <div class="panel-body">
 
                        <form method="POST" action="../public/index.php?route=addPictures" enctype="multipart/form-data">
-                            <input type="file">
+                            <input type="file" name="picture_url" />
 
                             <input type="number" name="estate_id" id="input-estate-id" value="<?= ($estate->getId());?>" />
                             <input type="submit" name="submit" id="submit-all" value="Ajouter les fichiers"  />
                         </form>
-                        
+
                     </div>
                 </div>
             </div>
@@ -22,18 +22,3 @@
         <!-- /wrapper -->
     </section>
     <!-- /MAIN CONTENT -->
-
-    <script>
-        
-        // Get a reference to the file input element
-        const inputElement = document.querySelector('input[type="file"]');
-
-        // Create the FilePond instance
-        const pond = FilePond.create(inputElement, {
-            allowMultiple: true,
-            allowReorder: true
-        });
-
-        // Easy console access for testing purposes
-        window.pond = pond;
-    </script>
