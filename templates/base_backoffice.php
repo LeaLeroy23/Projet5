@@ -27,7 +27,6 @@
         <link href="../public/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="../public/lib/bootstrap-datepicker/css/datepicker.css" />
         <link rel="stylesheet" type="text/css" href="../public/lib/bootstrap-daterangepicker/daterangepicker.css" />
-        <link href="../public/css/filepond.css" rel="stylesheet">
         <!-- Custom styles for this template -->
         <link href="../public/css/dashboard.css" rel="stylesheet">
         <link href="../public/css/dashboard-responsive.css" rel="stylesheet">
