@@ -9670,7 +9670,8 @@
     ignoreRect: true,
     ignoreRectUpdate: true,
     attributes: {
-      type: 'file'
+      //type: 'file',
+      name = 'filename'
     },
 
     create: create$a,
@@ -12090,7 +12091,7 @@
          */
         browse: function browse() {
           // needs to be trigger directly as user action needs to be traceable (is not traceable in requestAnimationFrame)
-          var input = view.element.querySelector('input[type=file]');
+          var input = view.element.querySelector('input[name=filename]');
           if (input) {
             input.click();
           }
@@ -12368,7 +12369,7 @@
 
     var attributeOptions = getAttributesAsObject(
       element.nodeName === 'FIELDSET'
-        ? element.querySelector('input[type=file]')
+        ? element.querySelector('input[name=filename]')
         : element,
       attributeMapping
     );
@@ -12388,7 +12389,7 @@
     // if parent is a fieldset, get files from parent by selecting all input fields that are not file upload fields
     // these will then be automatically set to the initial files
     mergedOptions.files = (options.files || []).concat(
-      Array.from(element.querySelectorAll('input:not([type=file])')).map(
+      Array.from(element.querySelectorAll('input:not([name=filename])')).map(
         function(input) {
           return {
             source: input.value,

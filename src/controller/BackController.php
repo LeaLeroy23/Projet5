@@ -131,7 +131,6 @@ class BackController extends Controller
                     $ext = pathinfo($filename, PATHINFO_EXTENSION);
                     if (!array_key_exists($ext, $allowed)) {
                         echo("Erreur : Veuillez sélectionner un format de fichier valide.");
-                        die();
                     }
 
                     if ($filesize > $maxsize) {
@@ -142,7 +141,6 @@ class BackController extends Controller
                         /**verifie si le fichier existe avant de le telecharger*/
                         if (file_exists("../public/img/upload/" . $_FILES["filename"]["name"])) {
                             echo($_FILES["filename"]["name"] . "existe déjà.");
-                            die();
                         } else {
                            
                             $filename = uniqid() . '.' . $ext;
@@ -150,7 +148,6 @@ class BackController extends Controller
                         }
                     } else {
                         echo("Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");
-                        die();
                     }
                     
                 }

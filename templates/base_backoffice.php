@@ -16,18 +16,16 @@
 		============================================ -->
 		<link rel="shortcut icon" type="../public/css/img/x-icon" href="../public/img/favicon.ico">		
 
-        <!-- Template Fonts form google 
+        <!-- Template Fonts form google
         =============================================-->
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
         <!-- Template CSS files -->
 
         <!-- Bootstrap core CSS -->
-        <link href="../public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../public/css/bootstrap.min.css" rel="stylesheet">
         <!--external css-->
         <link href="../public/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="../public/lib/bootstrap-datepicker/css/datepicker.css" />
-        <link rel="stylesheet" type="text/css" href="../public/lib/bootstrap-daterangepicker/daterangepicker.css" />
-        <!-- Custom styles for this template -->
+        <!-- Custom styles for this template-->
         <link href="../public/css/dashboard.css" rel="stylesheet">
         <link href="../public/css/dashboard-responsive.css" rel="stylesheet">
 

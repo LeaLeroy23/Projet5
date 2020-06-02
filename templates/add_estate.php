@@ -253,7 +253,7 @@
 
                         </div>
 
-                        <div class="form-panel">
+                        <!--<div class="form-panel">
                             <h4 class="mb"><i class="fa fa-angle-right"></i> Télécharger des photos </h4>
 
                             <div class="form-group last">
@@ -272,7 +272,7 @@
                                 </div>
                                 
                             </div>
-                        </div>
+                        </div>-->
 
                         <div class="form-panel">
                             <h4 class="mb"><i class="fa fa-angle-right"></i> Tarification</h4>

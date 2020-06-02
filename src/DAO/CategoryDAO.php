@@ -36,6 +36,13 @@ class CategoryDAO extends DAO
         return $this->buildObject($category);
     }
 
+    public function getCategoryByName($category)
+    {
+        $sql= 'SELECT count(id) as nb_category FROM category WHERE name = ?';
+        $result = $this->createQuery($sql, [$category]);
+        return $result->fetch();
+    }
+
     public function addCategory($post){
         $sql = 'INSERT INTO category (name) VALUES (:name)';
         $strName = ucfirst(strtolower($post->get('name')));

@@ -1,6 +1,6 @@
 <?php $this->title = "Ajouter des images"; ?>
 
-<link href="../public/css/filepond.css" rel="stylesheet">
+<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
 <link href="../public/css/filepond-plugin-image-preview.css" rel="stylesheet">
 
 <!--main content start-->
@@ -9,7 +9,7 @@
             <h3><i class="fa fa-angle-right"></i> Ajout de plusieurs images</h3>
 
                 <form method="post" action="../public/index.php?route=addPictures" enctype="multipart/form-data">
-                    <input type="file" name="filename" id="filename" multiple/>
+                    <input type="file" name="filename"/>
                     <input type="number" name="estate_id" id="estate-id" value="<?= ($estate->getId());?>" />
                     <input type="submit" name="submit" vlaue="valider"/>
                 </form>
@@ -21,7 +21,7 @@
     <script src="https://unpkg.com/filepond-plugin-file-metadata/dist/filepond-plugin-file-metadata.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.js"></script>
     <script src="../public/js/filepond-plugin-image-preview.js"></script>
-    <script src="../public/js/filepond.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 
     <script>
         // Register the plugin with FilePond
@@ -29,7 +29,7 @@
                 FilePondPluginFileMetadata, 
                 FilePondPluginImageCrop,
                 FilePondPluginImagePreview
-            );
+        );
         
         // Get a reference to the file input element
         const inputElement = document.querySelector('input[type="file"]');

@@ -77,11 +77,7 @@
 
         <!-- Mordernizer Js -->
         <script src="../public/js/modernizr-2.8.3.min.js"></script>
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-        <script src="js/html5shiv.js"></script>
-        <script src="js/respond.min.js"></script>
-        <![endif]-->
+
     </head>
 
     <body>
@@ -268,7 +264,7 @@
         <script src="../public/js/owl.carousel.min.js"></script>
         <!-- scroll up js -->
         <script src="../public/js/jquery.scrollUp.min.js"></script>
-        <!-- BX Slider js -->
+        <!-- BX Slider js-->
         <script src="../public/js/jquery.bxslider.min.js"></script>
         <!-- wow js -->
         <script src="../public/js/wow.min.js"></script>
@@ -284,7 +280,6 @@
         </script>
         <!-- Theme jQuery Codes goes hear -->
         <script src="../public/js/script.js"></script>
-    
     </body>
     <!-- Body End  -->
 </html>

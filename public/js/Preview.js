@@ -1,4 +1,4 @@
-/*class Preview {
+class Preview {
     constructor(){
         this.previewImage();
     }
@@ -37,4 +37,4 @@
         })
     }
 
-}*/
+}

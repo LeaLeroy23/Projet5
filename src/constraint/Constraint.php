@@ -26,9 +26,11 @@ class Constraint
     }
     public function unique($name, $value)
     {
-        if ($row['name'] == $categoryID){
-            var_dump($value, get($name));
-            die();
+        $categoryDAO = new \App\src\DAO\CategoryDAO;
+        $category = $categoryDAO->getCategoryByName($value);
+
+        if ($category != 0){
+            
             return '<p class="alert alert-danger" role="alert">La valeur '.$value.' existe déjà</p>';
         }
        
