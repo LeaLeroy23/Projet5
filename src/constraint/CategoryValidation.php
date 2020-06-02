@@ -50,8 +50,8 @@ class CategoryValidation extends Validation
         if($this->constraint->maxLength($name, $value, 40)) {
             return $this->constraint->maxLength('name', $value, 40);
         }
-        if($this->constraint->unique($name, $value)) {
-            return $this->constraint->unique('name', $value);
+        if($this->constraint->uniqueCategory($name, $value)) {
+            return $this->constraint->uniqueCategory('name', $value);
         }
     }
 

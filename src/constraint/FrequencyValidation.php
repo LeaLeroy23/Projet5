@@ -44,11 +44,14 @@ class FrequencyValidation extends Validation
         if($this->constraint->notBlank($name, $value)) {
             return $this->constraint->notBlank('frequency', $value);
         }
-        if($this->constraint->minLength($name, $value, 4)) {
-            return $this->constraint->minLength('frequency', $value, 4);
+        if($this->constraint->minLength($name, $value, 3)) {
+            return $this->constraint->minLength('frequency', $value, 3);
         }
         if($this->constraint->maxLength($name, $value, 40)) {
             return $this->constraint->maxLength('frequency', $value, 40);
+        }
+        if($this->constraint->uniqueFrequency($name, $value)) {
+            return $this->constraint->uniqueType('frequency', $value);
         }
     }
 

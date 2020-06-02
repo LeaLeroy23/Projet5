@@ -41,13 +41,28 @@ class EstateDAO extends DAO
     }
 
     public function getEstates(){
-        $sql = "SELECT e.id as id, e.title as title, e.excerpt as excerpt, e.status as status, e.price as price, e.rooms as rooms, c.name as category, t.type as type
+        $sql = "SELECT e.id as id, e.title as title, e.excerpt as excerpt, e.status as status, e.price as price, e.rooms as rooms, e.bedrooms as bedrooms, e.area as area, e.zip_code as zip_code, c.name as category, t.type as type
                 FROM estate e
                 INNER JOIN category c
                 ON e.category_id = c.id
                 INNER JOIN type t
                 ON e.type_id = t.id
                 ORDER BY e.id DESC
+                ";
+        $result = $this->createQuery($sql)->fetchAll();
+        
+        return $result;
+    }
+
+    public function getEstatesLocation(){
+        $sql = "SELECT e.id as id, e.title as title, e.excerpt as excerpt, e.status as status, e.price as price, e.rooms as rooms, e.bedrooms as bedrooms, e.area as area, e.zip_code as zip_code, c.name as category, t.type as type
+                FROM estate e
+                INNER JOIN category c
+                ON e.category_id = c.id
+                INNER JOIN type t
+                ON e.type_id = t.id
+                ORDER BY e.id DESC
+                WHERE 
                 ";
         $result = $this->createQuery($sql)->fetchAll();
         

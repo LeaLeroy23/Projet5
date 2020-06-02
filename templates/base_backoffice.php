@@ -44,7 +44,7 @@
                     <ul class="nav top-menu">
                         <!-- settings start -->
                         <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="index.php?route=all_estate">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="index.php?route=allEstates">
                             <i class="fa fa-home"></i>
                             <span class="badge bg-theme">0</span>
                             </a>
@@ -52,7 +52,7 @@
                         <!-- settings end -->
                     <!-- inbox dropdown start-->
                     <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.php?route=all_users">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.php?route=allAgents">
                         <i class="fa fa-users"></i>
                         <span class="badge bg-theme">0</span>
                         </a>
@@ -60,7 +60,7 @@
                     <!-- inbox dropdown end -->
                     <!-- notification dropdown start-->
                     <li id="header_notification_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="public/index.php?route=all_estate">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.php?route=allEstates">
                         <i class="fa fa-edit"></i>
                         <span class="badge bg-warning">0</span>
                         </a>

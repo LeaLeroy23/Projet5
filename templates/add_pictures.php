@@ -32,7 +32,7 @@
         );
         
         // Get a reference to the file input element
-        const inputElement = document.querySelector('input[type="file"]');
+        const inputElement = document.querySelector('input[type=file]');
 
         // Create the FilePond instance
         const pond = FilePond.create(inputElement, {

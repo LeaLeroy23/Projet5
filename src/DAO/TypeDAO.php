@@ -36,6 +36,13 @@ class TypeDAO extends DAO
         return $this->buildObject($type);
     }
 
+    public function getTypeByName($type)
+    {
+        $sql= 'SELECT count(id) as nb_type FROM type WHERE type = ?';
+        $result = $this->createQuery($sql, [$type]);
+        return $result->fetch();
+    }
+
     public function addType($post){
         $sql = 'INSERT INTO type (type) 
         VALUES (:type)';

@@ -36,6 +36,13 @@ class EnergyDAO extends DAO
         return $this->buildObject($energy);
     }
 
+    public function getEnergyByName($energy)
+    {
+        $sql= 'SELECT count(id) as nb_energy FROM energy WHERE energy = ?';
+        $result = $this->createQuery($sql, [$energy]);
+        return $result->fetch();
+    }
+
     public function addEnergy($post){
         $sql = 'INSERT INTO energy (energy)
         VALUES (:energy)';

@@ -50,6 +50,9 @@ class TypeValidation extends Validation
         if($this->constraint->maxLength($name, $value, 40)) {
             return $this->constraint->maxLength('type', $value, 40);
         }
+        if($this->constraint->uniqueType($name, $value)) {
+            return $this->constraint->uniqueType('type', $value);
+        }
     }
 
 }

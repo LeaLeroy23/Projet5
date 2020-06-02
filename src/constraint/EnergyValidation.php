@@ -44,11 +44,14 @@ class EnergyValidation extends Validation
         if($this->constraint->notBlank($name, $value)) {
             return $this->constraint->notBlank('energy', $value);
         }
-        if($this->constraint->minLength($name, $value, 4)) {
-            return $this->constraint->minLength('energy', $value, 4);
+        if($this->constraint->minLength($name, $value, 2)) {
+            return $this->constraint->minLength('energy', $value, 2);
         }
         if($this->constraint->maxLength($name, $value, 40)) {
             return $this->constraint->maxLength('energy', $value, 40);
+        }
+        if($this->constraint->uniqueEnergy($name, $value)) {
+            return $this->constraint->uniqueEnergy('energy', $value);
         }
     }
 
