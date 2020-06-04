@@ -3,8 +3,9 @@
     <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Toute les annonces</h3>
         <?= $this->session->show('addPictures'); ?>
-        <?= $this->session->show('edit_estate'); ?>
-        <?= $this->session->show('<div class="alert alert-success" role="alert">' . 'delete_estate' . '</div>'); ?>
+        <?= $this->session->show('addEstate'); ?>
+        <?= $this->session->show('editEstate'); ?>
+        <?= $this->session->show('deleteEstate'); ?>
 
         <!-- row -->
         <div class="row mt">

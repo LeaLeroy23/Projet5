@@ -73,6 +73,22 @@ class Estate
     /**
      * @var int
      */
+    private $energy_id;
+
+       /**
+     * @var int
+     */
+    private $level_energy_diagnostic;
+
+       /**
+     * @var string
+     */
+    private $level_climat_diagnostic;
+
+
+    /**
+     * @var int
+     */
     private $agent_id;
 
     /**
@@ -123,7 +139,7 @@ class Estate
     /**
      * @var int
      */
-    private $zip_code;
+    private $city;
 
     /**
      * @var \DateTime
@@ -355,6 +371,54 @@ class Estate
     /**
      * @return int
      */
+    public function getEnergy_id()
+    {
+        return $this->energy_id;
+    }
+
+    /**
+     * @param int $energy_id
+     */
+    public function setEnergy_id($energy_id)
+    {
+        $this->energy_id = $energy_id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLevel_energy_diagnostic()
+    {
+        return $this->level_energy_diagnostic;
+    }
+
+    /**
+     * @param string $level_energy_diagnostic
+     */
+    public function setLevel_energy_diagnostic($level_energy_diagnostic)
+    {
+        $this->level_energy_diagnostic = $level_energy_diagnostic;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLevel_climat_diagnostic()
+    {
+        return $this->level_climat_diagnostic;
+    }
+
+    /**
+     * @param string $level_climat_diagnostic
+     */
+    public function setLevel_climat_diagnostic($level_climat_diagnostic)
+    {
+        $this->level_climat_diagnostic = $level_climat_diagnostic;
+    }
+
+    /**
+     * @return int
+     */
     public function getAgent_id()
     {
         return $this->agent_id;
@@ -513,19 +577,19 @@ class Estate
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getZip_code()
+    public function getCity()
     {
-        return $this->zip_code;
+        return $this->city;
     }
 
     /**
-     * @param int $zip_code
+     * @param string $city
      */
-    public function setZip_code($zip_code)
+    public function setCity($city)
     {
-        $this->zip_code = $zip_code;
+        $this->city = $city;
     }
 
     /**
@@ -575,22 +639,5 @@ class Estate
     {
         $this->status = $status;
     }
-
-    /**
-     * @return string
-     */
-    public function getPicture_url()
-    {
-        return $this->picture_url;
-    }
-
-    /**
-     * @param string $picture_url
-     */
-    public function setPicture_url($picture_url)
-    {
-        $this->picture_url = $picture_url;
-    }
-
 
 }

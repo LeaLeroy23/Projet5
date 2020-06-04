@@ -159,7 +159,7 @@
                             </div>
                         </div>
 
-                        <!--<div class="form-group">
+                        <<div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Energie du bien</label>
                                 <div class="col-sm-10">
                                     <select name="energy" class="form-control" multiple>
@@ -185,6 +185,7 @@
                                     <label class="col-sm-3 col-sm-3 control-label">Electrique :</label>
                                         <div class="col-sm-9">
                                             <select name="level_energy_diagnostic" class="form-control">
+                                                <option value="aucun">Aucun</option>
                                                 <option value="< 50 A">< 50 A</option>
                                                 <option value="51 à 90 B">51 à 90 B</option>
                                                 <option value="91 à 150 C">91 à 150 C</option>
@@ -194,12 +195,13 @@
                                                 <option value="> 450 G">> 450 G</option>
                                             </select>
                                         </div>
-                                </div>-->
+                                </div>
 
-                                <!--<div class="col-sm-6">
+                                <div class="col-sm-6">
                                     <label class="col-sm-3 col-sm-3 control-label">GES :</label>
                                         <div class="col-sm-9">
                                             <select name="level_climat_diagnostic" class="form-control">
+                                                <option value="aucun">Aucun</option>
                                                 <option value="< 50 A">< 50 A</option>
                                                 <option value="51 à 90 B">51 à 90 B</option>
                                                 <option value="91 à 150 C">91 à 150 C</option>
@@ -212,13 +214,13 @@
                                 </div>
 
                             </div>
-                        </div>-->
+                        </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Localisation</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" name="zip_code" value="<?= htmlspecialchars($estate->getZip_code());?>" placeholder="Code Postal">
-                                <?= isset($errors['zip_code']) ? $errors['zip_code'] : ''; ?>
+                                <input type="number" class="form-control" name="city" value="<?= htmlspecialchars($estate->getCity());?>" placeholder="Ville">
+                                <?= isset($errors['city']) ? $errors['city'] : ''; ?>
                             </div>
                         </div>
 

@@ -6,9 +6,11 @@
         <?= $this->session->show('addCategory'); ?>
         <?= $this->session->show('addType'); ?>
         <?= $this->session->show('addFrequency'); ?>
+        <?= $this->session->show('addEnergy'); ?>
         <?= $this->session->show('deleteCategory'); ?>
         <?= $this->session->show('deleteType'); ?>
         <?= $this->session->show('deleteFrequency'); ?>
+        <?= $this->session->show('deleteEnergy'); ?>
 
         <!--main category start-->
         <div class="row">

@@ -54,7 +54,7 @@ class Constraint
     public function uniqueEnergy($name, $value)
     {
         $energyDAO = new \App\src\DAO\EnergyDAO;
-        $energy = $categoryDAO->getEnergyByName($value);
+        $energy = $energyDAO->getEnergyByName($value);
 
         if ($energy['nb_energy'] && $energy > 0){
             return '<p class="alert alert-danger" role="alert">La valeur '.$value.' existe déjà</p>';

@@ -130,7 +130,7 @@
                                 </div>
 
                                 <div class="col-sm-5" id="outside-area">
-                                    <input type="number" class="form-control" name="outside_area" placeholder="Superficie">
+                                    <input type="number" class="form-control" name="outside_area" placeholder="Superficie" value="0" min="0"/>
                                     <span>en m2</span>
                                 </div>
                             </div>
@@ -178,6 +178,7 @@
                                         <label class="col-sm-3 col-sm-3 control-label">Electrique :</label>
                                             <div class="col-sm-9">
                                                 <select name="level_energy_diagnostic" class="form-control">
+                                                    <option value="aucun">Aucun</option>
                                                     <option value="< 50 A">< 50 A</option>
                                                     <option value="51 à 90 B">51 à 90 B</option>
                                                     <option value="91 à 150 C">91 à 150 C</option>
@@ -193,6 +194,7 @@
                                         <label class="col-sm-3 col-sm-3 control-label">GES :</label>
                                             <div class="col-sm-9">
                                                 <select name="level_climat_diagnostic" class="form-control">
+                                                    <option value="aucun">Aucun</option>
                                                     <option value="< 50 A">< 50 A</option>
                                                     <option value="51 à 90 B">51 à 90 B</option>
                                                     <option value="91 à 150 C">91 à 150 C</option>
@@ -210,8 +212,8 @@
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Localisation</label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" name="zip_code" placeholder="Code Postal">
-                                    <?= isset($errors['zip_code']) ? $errors['zip_code'] : ''; ?>
+                                    <input type="number" class="form-control" name="city" placeholder="Ville">
+                                    <?= isset($errors['city']) ? $errors['city'] : ''; ?>
                                 </div>
                             </div>
 
@@ -226,7 +228,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Disponible à partir du :</label>
                                 <div class="col-sm-10">
-                                    <input type="date" value="01-01-2020" size="16">
+                                    <input type="date" >
                                 </div>
                             </div>
 

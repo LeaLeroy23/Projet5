@@ -77,7 +77,7 @@ class BackController extends Controller
         if($post->get('submit')){
             if (!$errors){
                 $this->estateDAO->editEstate($post, $estateId);
-                $this->session->set('edit_estate', 'Le bien a été mis à jour');
+                $this->session->set('editEstate', 'Le bien a été mis à jour');
                 header('Location: ../public/index.php?route=allEstates');
                 exit();
             }
@@ -94,7 +94,7 @@ class BackController extends Controller
 
     public function deleteEstate($estateId){
         $this->estateDAO->deleteEstate($estateId);
-        $this->session->set('delete_estate', 'L\'annonce a bien été supprimé');
+        $this->session->set('deleteEstate', 'L\'annonce a bien été supprimé');
         header('Location: ../public/index.php?route=allEstates');
     }
 
