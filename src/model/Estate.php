@@ -90,6 +90,11 @@ class Estate
      */
     private $floor;
 
+            /**
+     * @var string
+     */
+    private $picture_url;
+
     /**
      * @var int
      */
@@ -134,6 +139,8 @@ class Estate
      * @var string
      */
     private $status;
+
+
 
 
     /**
@@ -409,6 +416,22 @@ class Estate
         $this->floor = $floor;
     }
 
+        /**
+     * @return string
+     */
+    public function getPicture_url()
+    {
+        return $this->picture_url;
+    }
+
+    /**
+     * @param string $picture_url
+     */
+    public function setPicture_url($picture_url)
+    {
+        $this->picture_url = $picture_url;
+    }
+
     /**
      * @return int
      */
@@ -458,7 +481,7 @@ class Estate
     }
 
     /**
-     * @return \DateTime
+     * @return \Date
      */
     public function getAvailable()
     {
@@ -466,7 +489,7 @@ class Estate
     }
 
     /**
-     * @param \DateTime $available
+     * @param \Date $available
      */
     public function setAvailable($available)
     {

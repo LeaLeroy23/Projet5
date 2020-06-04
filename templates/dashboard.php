@@ -18,7 +18,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p class="small mt">EN LIGNE</p>
-                                            <p>21</p>
+                                            <p></p>
                                         </div>
                                         <div class="col-md-6">
                                             <p class="small mt">BROUILLON</p>

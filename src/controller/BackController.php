@@ -7,7 +7,7 @@ use App\config\Parameter;
 class BackController extends Controller
 {
 
-    public function addEstate($post)
+    public function addEstate(Parameter $post, Parameter $files)
     {
         $categories = $this->categoryDAO->getCategories();
         $types = $this->typeDAO->getTypes();
@@ -49,7 +49,7 @@ class BackController extends Controller
                     
                 }
             
-            $this->estateDAO->addEstate($post);
+            $this->estateDAO->addEstate($post, $filename);
             $this->session->set('addEstate', 'L\'ajout d\'une annonce a été faite');
             header('Location: ../public/index.php?route=allEstates');
             exit();

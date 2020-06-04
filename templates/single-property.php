@@ -61,7 +61,7 @@
                                 <div class="tab-pane fade in active" id="description">
                                     <div class="description-tab-content tab-content-padding">
                                         <p>Description</p>
-                                        <h4>Property Attachments</h4>
+                                        <h4><?= htmlspecialchars($estate->getDescription());?></h4>
                                         
                                     </div>
                                 </div>
@@ -78,7 +78,7 @@
                                                     <li><strong>Pièces :</strong><?= htmlspecialchars($estate->getRooms());?></li>
                                                     <li><strong>Chambres :</strong><?= htmlspecialchars($estate->getBedrooms());?></li>
                                                     <li><strong>Salle de bain :</strong><?= htmlspecialchars($estate->getBathrooms());?></li>
-                                                    <li><strong>Extérieur : terrasse</strong></li>
+                                                    <li><strong>Extérieur : <?= htmlspecialchars($estate->getOutside());?></strong></li>
                                                     <li><strong>Garage / Parking :</strong>Garage</li>
                                                     <li><strong>Exposition:</strong>Sud Est</li>
                                                 </ul>

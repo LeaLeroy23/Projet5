@@ -152,7 +152,7 @@
                                 </div>
                             </div>
 
-                            <!--<div class="form-group">
+                            <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Energie du bien</label>
                                     <div class="col-sm-10">
                                         <select name="energy" class="form-control" multiple>
@@ -187,9 +187,9 @@
                                                     <option value="> 450 G">> 450 G</option>
                                                 </select>
                                             </div>
-                                    </div>-->
+                                    </div>
 
-                                    <!--<div class="col-sm-6">
+                                    <div class="col-sm-6">
                                         <label class="col-sm-3 col-sm-3 control-label">GES :</label>
                                             <div class="col-sm-9">
                                                 <select name="level_climat_diagnostic" class="form-control">
@@ -205,7 +205,7 @@
                                     </div>
 
                                 </div>
-                            </div>-->
+                            </div>
 
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Localisation</label>
@@ -253,7 +253,7 @@
 
                         </div>
 
-                        <!--<div class="form-panel">
+                        <div class="form-panel">
                             <h4 class="mb"><i class="fa fa-angle-right"></i> Télécharger des photos </h4>
 
                             <div class="form-group last">
@@ -272,7 +272,7 @@
                                 </div>
                                 
                             </div>
-                        </div>-->
+                        </div>
 
                         <div class="form-panel">
                             <h4 class="mb"><i class="fa fa-angle-right"></i> Tarification</h4>

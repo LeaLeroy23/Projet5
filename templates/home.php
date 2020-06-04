@@ -114,8 +114,8 @@
                             <div class="properties-include">
                                 <ul>
                                     <li><i class="fa fa-home"></i> 50 m2</li>
-                                    <li><i class="fa fa-square"></i>2 Pièces</li>
-                                    <li><i class="fa fa-bed"></i> 1 Chambre</li>
+                                    <li><i class="fa fa-square"></i>2 Pièce(s)</li>
+                                    <li><i class="fa fa-bed"></i> 1 Chambre(s)</li>
                                 </ul>
                             </div>
                             <div class="properties-content">

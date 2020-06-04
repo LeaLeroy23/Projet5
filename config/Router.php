@@ -46,7 +46,7 @@ class Router
                     $this->frontController->login($this->request->getPost());
                 }
                 elseif ($route === 'addEstate'){
-                    $this->backController->addEstate($this->request->getPost());
+                    $this->backController->addEstate($this->request->getPost(), $this->request->getFiles());
                 }
                 elseif ($route === 'editEstate'){
                     $this->backController->editEstate($this->request->getPost(), $this->request->getGet()->get('estateId'));
@@ -115,6 +115,7 @@ class Router
         }
         catch (Exception $e)
         {
+            var_dump($e);
             $this->errorController->errorServer();
         }
     }
