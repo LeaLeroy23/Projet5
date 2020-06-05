@@ -5,21 +5,54 @@
 
 <!--main content start-->
     <section id="main-content">
-        <section class="wrapper site-min-height">
+        <section class="wrapper">
             <h3><i class="fa fa-angle-right"></i> Ajout de plusieurs images</h3>
 
-                <form method="post" action="../public/index.php?route=addPictures" enctype="multipart/form-data">
-                    <input type="file"  name="files_upload" multiple />
-                    <input type="number" name="estate_id" id="estate-id" value="<?= ($estate->getId());?>" />
-                    <input type="submit" name="submit" value="valider"/>
-                </form>
+            <div class="row mt">
+                <div class="col-lg-12">
+
+                    <div class="form-panel">
+                        <form method="post" action="../public/index.php?route=addPictures" enctype="multipart/form-data">
+                            <input type="file"  name="files_upload" multiple />
+                            <input type="number" name="estate_id" id="estate-id" value="<?= ($estate->getId());?>" />
+                            <input type="submit" name="submit" value="valider"/>
+                        </form>
+                    </div>
+
+                    <div class="content-panel">
+                        <table class="table table-striped table-advance table-hover">
+                            <h4><i class="fa fa-angle-right"></i> Les annonces </h4>
+                            <hr>
+                            <thead>
+                                <tr>
+                                    <th><i class="fa fa-bullhorn"></i> Catégorie</th>
+                                    <th> Titre</th>
+                                    <th class="hidden-phone"><i class="fa fa-square"></i> Pièces</th>
+                                    <th class="hidden-phone"><i class="fa fa-home"></i> Type</th>
+                                    <th class="hidden-phone"><i class="fas fa-comment-alt"></i> Description</th>
+                                    <th><i class="fa fa-bookmark"></i> Prix</th>
+                                    <th><i class=" fa fa-edit"></i> Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <?php
+                            foreach ($pictures as $pict)
+                            {
+                        ?>
+                    </div>
+
+                </div>
+            </div>
 
         </section>
-
-        <section class="wrapper site-min-height"></section>
         <!-- /wrapper -->
     </section>
     <!-- /MAIN CONTENT  -->
+
+
     <script src="https://unpkg.com/filepond-plugin-file-metadata/dist/filepond-plugin-file-metadata.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.js"></script>
     <script src="../public/js/filepond-plugin-image-preview.js"></script>
