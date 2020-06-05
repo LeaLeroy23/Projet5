@@ -159,15 +159,15 @@
                             </div>
                         </div>
 
-                        <<div class="form-group">
+                        <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Energie du bien</label>
                                 <div class="col-sm-10">
-                                    <select name="energy" class="form-control" multiple>
+                                    <select name="energy_id" class="form-control">
                                         <?php
                                             foreach ($energies as $energy)
                                             {
                                         ?>
-                                        <option value="<?= htmlspecialchars($energy->getId());?>"><?= htmlspecialchars($energy->getEnergy());?></option>
+                                        <option value="<?= $energy->getId();?>" <?= ($energy->getId() === $estate->getEnergy_id()) ? 'selected' : '' ?>><?= $energy->getEnergy();?></option>
                                         <?php
                                             }
                                         ?>
@@ -185,6 +185,7 @@
                                     <label class="col-sm-3 col-sm-3 control-label">Electrique :</label>
                                         <div class="col-sm-9">
                                             <select name="level_energy_diagnostic" class="form-control">
+                                                <option value="<?= htmlspecialchars($estate->getLevel_energy_diagnostic());?>"><?= htmlspecialchars($estate->getLevel_energy_diagnostic());?></option>
                                                 <option value="aucun">Aucun</option>
                                                 <option value="< 50 A">< 50 A</option>
                                                 <option value="51 à 90 B">51 à 90 B</option>
@@ -201,6 +202,7 @@
                                     <label class="col-sm-3 col-sm-3 control-label">GES :</label>
                                         <div class="col-sm-9">
                                             <select name="level_climat_diagnostic" class="form-control">
+                                            <option value="<?= htmlspecialchars($estate->getLevel_climat_diagnostic());?>"><?= htmlspecialchars($estate->getLevel_climat_diagnostic());?></option>
                                                 <option value="aucun">Aucun</option>
                                                 <option value="< 50 A">< 50 A</option>
                                                 <option value="51 à 90 B">51 à 90 B</option>
@@ -270,11 +272,11 @@
                                 <div class="fileupload fileupload-new" data-provides="fileupload">
                                     <label>Sélectionnez des images</label><br>
                                     <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" height="200" id="preview" alt="Image preview">
+                                        <img src="../public/img/upload/<?= htmlspecialchars($estate->getPicture_url());?>" height="200" id="preview" alt="Image preview">
                                     </div>
                                     <div>
                                         <span class="btn btn-theme02 btn-file">
-                                            <input type="file" name="filename" id="file"/>
+                                            <input type="file" name="picture_url" id="file" value="<?= htmlspecialchars($estate->getPicture_url());?>"/>
                                         </span>
                                     </div>
                                 </div>
@@ -336,10 +338,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Status de la publication</label>
                                 <div class="col-sm-10">
-                                    <label>
-                                        <input type="radio" id="optionsRadios1" name="status" value="<?= htmlspecialchars($estate->getStatus());?>" checked>
-                                        <?= htmlspecialchars($estate->getStatus());?>
-                                    </label>
+                                
                                     <label>
                                         <input type="radio" id="optionsRadios1" name="status" value="1">
                                         Publié

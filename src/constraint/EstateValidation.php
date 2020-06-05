@@ -1,8 +1,8 @@
 <?php
 
-namespace App\src\constraint;
+namespace Hestia\src\constraint;
 
-use App\config\Parameter;
+use Hestia\config\Parameter;
 
 class EstateValidation extends Validation
 {
@@ -109,16 +109,16 @@ class EstateValidation extends Validation
         }
     }
 
-    private function checkZip_code($name, $value)
+    private function checkCity($name, $value)
     {
         if($this->constraint->notBlank($name, $value)) {
-            return $this->constraint->notBlank('zip_code', $value);
+            return $this->constraint->notBlank('city', $value);
         }
         if($this->constraint->minLength($name, $value, 1)) {
-            return $this->constraint->minLength('zip_code', $value, 1);
+            return $this->constraint->minLength('city', $value, 1);
         }
         if($this->constraint->maxLength($name, $value, 7)) {
-            return $this->constraint->maxLength('zip_code', $value, 7);
+            return $this->constraint->maxLength('city', $value, 7);
         }
     }
 
@@ -140,11 +140,11 @@ class EstateValidation extends Validation
         if($this->constraint->notBlank($name, $value)) {
             return $this->constraint->notBlank('excerpt', $value);
         }
-        if($this->constraint->minLength($name, $value, 10)) {
-            return $this->constraint->minLength('excerpt', $value, 10);
+        if($this->constraint->minLength($name, $value, 5)) {
+            return $this->constraint->minLength('excerpt', $value, 5);
         }
-        if($this->constraint->maxLength($name, $value, 75)) {
-            return $this->constraint->maxLength('excerpt', $value, 75);
+        if($this->constraint->maxLength($name, $value, 100)) {
+            return $this->constraint->maxLength('excerpt', $value, 100);
         }
     }
 
@@ -153,11 +153,11 @@ class EstateValidation extends Validation
         if($this->constraint->notBlank($name, $value)) {
             return $this->constraint->notBlank('description', $value);
         }
-        if($this->constraint->minLength($name, $value, 50)) {
-            return $this->constraint->minLength('description', $value, 50);
+        if($this->constraint->minLength($name, $value, 20)) {
+            return $this->constraint->minLength('description', $value, 20);
         }
         if($this->constraint->maxLength($name, $value, 850)) {
-            return $this->constraint->maxLength('building_year', $value, 850);
+            return $this->constraint->maxLength('description', $value, 850);
         }
     }
 

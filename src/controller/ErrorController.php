@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\controller;
+namespace Hestia\src\controller;
 
 class ErrorController extends Controller
 {

@@ -9,12 +9,14 @@
             <h3><i class="fa fa-angle-right"></i> Ajout de plusieurs images</h3>
 
                 <form method="post" action="../public/index.php?route=addPictures" enctype="multipart/form-data">
-                    <input type="file" name="filename"/>
+                    <input type="file"  name="files_upload" multiple />
                     <input type="number" name="estate_id" id="estate-id" value="<?= ($estate->getId());?>" />
-                    <input type="submit" name="submit" vlaue="valider"/>
+                    <input type="submit" name="submit" value="valider"/>
                 </form>
 
         </section>
+
+        <section class="wrapper site-min-height"></section>
         <!-- /wrapper -->
     </section>
     <!-- /MAIN CONTENT  -->
@@ -24,6 +26,7 @@
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 
     <script>
+    /*
         // Register the plugin with FilePond
         FilePond.registerPlugin(
                 FilePondPluginFileMetadata, 
@@ -64,7 +67,10 @@
             }
         });
 
+
+
         // Easy console access for testing purposes
         window.pond = pond;
+        */
     </script>
 

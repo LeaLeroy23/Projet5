@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\constraint;
+namespace Hestia\src\constraint;
 
 class Validation
 {

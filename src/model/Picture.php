@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\model;
+namespace Hestia\src\model;
 
 class Picture
 {

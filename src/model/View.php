@@ -1,8 +1,8 @@
 <?php
 
-namespace App\src\model;
+namespace Hestia\src\model;
 
-use App\config\Request;
+use Hestia\config\Request;
 
 class View
 {

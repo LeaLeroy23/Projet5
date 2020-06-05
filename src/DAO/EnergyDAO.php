@@ -1,10 +1,10 @@
 <?php
 
 //Pour toutes les classes dans DAO
-namespace App\src\DAO;
+namespace Hestia\src\DAO;
 
-use App\config\Parameter;
-use App\src\model\Energy;
+use Hestia\config\Parameter;
+use Hestia\src\model\Energy;
 
 class EnergyDAO extends DAO
 {

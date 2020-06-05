@@ -172,9 +172,9 @@
         <script src="../public/lib/common-scripts.js"></script>
         <!--script for this page-->
         
-        <script src="../public/js/Spec.js" type="text/javascript"></script>
+        <!--<script src="../public/js/Spec.js" type="text/javascript"></script>
         <script src="../public/js/Preview.js" type="text/javascript"></script>
-        <script src="../public/js/main.js" type="text/javascript"></script>
+        <script src="../public/js/main.js" type="text/javascript"></script>-->
         
   </body>
   

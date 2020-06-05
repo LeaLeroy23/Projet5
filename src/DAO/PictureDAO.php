@@ -1,10 +1,10 @@
 <?php
 
 //Pour toutes les classes dans DAO
-namespace App\src\DAO;
+namespace Hestia\src\DAO;
 
-use App\config\Parameter;
-use App\src\model\Picture;
+use Hestia\config\Parameter;
+use Hestia\src\model\Picture;
 
 class PictureDAO extends DAO
 {
@@ -37,14 +37,19 @@ class PictureDAO extends DAO
         return $this->buildObject($picture);
     }
 
-    public function addPictures($post, $filename)
+    public function addPictures(Parameter $post, Parameter $filename)
     {
+
         $sql = 'INSERT INTO picture (filename, estate_id) VALUES (:filename, :estate_id)';
         $result = $this->createQuery($sql, [
             'filename' => $filename,
             'estate_id' => $post->get('estate_id')
         ]);
-
+        foreach ($result as $row){
+            $pictureId = $row['id'];
+            $pictures[$pictureId] = $this->buildObject($row);
+        }
+        return $picture;
     }
 
 }

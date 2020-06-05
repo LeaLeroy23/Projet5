@@ -1,11 +1,11 @@
 <?php
 
 //Pour toutes les classes dans DAO
-namespace App\src\DAO;
+namespace Hestia\src\DAO;
 
-use App\config\Parameter;
-use App\config\Email;
-use App\vendor\autoload;
+use Hestia\config\Parameter;
+use Hestia\config\Email;
+use Hestia\vendor\autoload;
 
 class EmailDAO extends DAO
 {

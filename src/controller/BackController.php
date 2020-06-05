@@ -1,8 +1,8 @@
 <?php
 
-namespace App\src\controller;
+namespace Hestia\src\controller;
 
-use App\config\Parameter;
+use Hestia\config\Parameter;
 
 class BackController extends Controller
 {
@@ -113,13 +113,12 @@ class BackController extends Controller
         $errors = $this->validation->validate($post, 'Pictures');
 
         if($post->get('submit')){
-            $files = $_FILES['filename']['name'];
-
+            
             if (!$errors){
 
                 $form=[];
                 $maxsize = 5 * 1024 * 1024;
-                $filename = "";
+               
                 
                 if (isset($_FILES["filename"]) && $_FILES["filename"]["error"] == 0) {
                     
@@ -151,8 +150,10 @@ class BackController extends Controller
                     }
                     
                 }
-            
-            $this->pictureDAO->addPictures($post, $filename);
+            var_dump($post);
+            var_dump($_FILES);
+            die();
+            $this->pictureDAO->addPictures($post, $files);
             $this->session->set('addPictures', 'L\'ajout d\'images a été faite avec succès');
             header('Location: ../public/index.php?route=allEstates');
             exit();

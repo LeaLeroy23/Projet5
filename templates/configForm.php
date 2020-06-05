@@ -164,7 +164,7 @@
                 <?= isset($errors['energy']) ? $errors['energy'] : ''; ?>
                     <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addEnergy">
                             <div class="col-sm-10">
-                                 <input type="text" class="form-control" name="energy" placeholder="Ajouter une energy">
+                                 <input type="text" class="form-control" name="energy" placeholder="Ajouter une energie">
                             </div>
                             <div class="col-sm-2">
                                 <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">

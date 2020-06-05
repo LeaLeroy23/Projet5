@@ -1,8 +1,8 @@
 <?php
 
-namespace App\src\constraint;
+namespace Hestia\src\constraint;
 
-use App\config\Parameter;
+use Hestia\config\Parameter;
 
 class EnergyValidation extends Validation
 {

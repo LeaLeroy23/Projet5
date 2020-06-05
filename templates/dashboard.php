@@ -18,7 +18,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p class="small mt">EN LIGNE</p>
-                                            <p></p>
+                                            <p><?php $count->getEstateCount();?></p>
                                         </div>
                                         <div class="col-md-6">
                                             <p class="small mt">BROUILLON</p>

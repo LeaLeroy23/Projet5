@@ -256,12 +256,12 @@
                         </div>
 
                         <div class="form-panel">
-                            <h4 class="mb"><i class="fa fa-angle-right"></i> Télécharger des photos </h4>
+                            <h4 class="mb"><i class="fa fa-angle-right"></i>Télécharger une photo à la une</h4>
 
                             <div class="form-group last">
                                 <div class="col-md-12">
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
-                                        <label>Sélectionnez des images</label><br>
+                                        <label>Sélectionnez une images</label><br>
                                         <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
                                             <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" height="200" id="preview" alt="Image preview">
                                         </div>

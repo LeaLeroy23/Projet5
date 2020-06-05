@@ -1,7 +1,7 @@
 <?php
 
-namespace App\src\constraint;
-use App\config\Parameter;
+namespace Hestia\src\constraint;
+use Hestia\config\Parameter;
 
 
 class Constraint
@@ -26,7 +26,7 @@ class Constraint
     }
     public function uniqueCategory($name, $value)
     {
-        $categoryDAO = new \App\src\DAO\CategoryDAO;
+        $categoryDAO = new \Hestia\src\DAO\CategoryDAO;
         $category = $categoryDAO->getCategoryByName($value);
 
         if ($category['nb_category'] && $category > 0){
@@ -35,7 +35,7 @@ class Constraint
     }
     public function uniqueType($name, $value)
     {
-        $typeDAO = new \App\src\DAO\TypeDAO;
+        $typeDAO = new \Hestia\src\DAO\TypeDAO;
         $type = $typeDAO->getTypeByName($value);
 
         if ($type['nb_type'] && $type > 0){
@@ -44,7 +44,7 @@ class Constraint
     }
     public function uniqueFrequency($name, $value)
     {
-        $frequencyDAO = new \App\src\DAO\FrequencyDAO;
+        $frequencyDAO = new \Hestia\src\DAO\FrequencyDAO;
         $frequency = $frequencyDAO->getFrequencyByName($value);
 
         if ($frequency['nb_frequency'] && $frequency > 0){
@@ -53,7 +53,7 @@ class Constraint
     }
     public function uniqueEnergy($name, $value)
     {
-        $energyDAO = new \App\src\DAO\EnergyDAO;
+        $energyDAO = new \Hestia\src\DAO\EnergyDAO;
         $energy = $energyDAO->getEnergyByName($value);
 
         if ($energy['nb_energy'] && $energy > 0){

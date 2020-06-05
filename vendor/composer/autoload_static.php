@@ -22,6 +22,11 @@ class ComposerStaticInitf27abd3c98d55cd0d9d25a1a3f172345
             'Symfony\\Polyfill\\Intl\\Idn\\' => 26,
             'Symfony\\Polyfill\\Iconv\\' => 23,
         ),
+        'H' => 
+        array (
+            'Hestia\\src\\' => 11,
+            'Hestia\\config\\' => 14,
+        ),
         'E' => 
         array (
             'Egulias\\EmailValidator\\' => 23,
@@ -29,11 +34,6 @@ class ComposerStaticInitf27abd3c98d55cd0d9d25a1a3f172345
         'D' => 
         array (
             'Doctrine\\Common\\Lexer\\' => 22,
-        ),
-        'A' => 
-        array (
-            'App\\src\\' => 8,
-            'App\\config\\' => 11,
         ),
     );
 
@@ -54,6 +54,14 @@ class ComposerStaticInitf27abd3c98d55cd0d9d25a1a3f172345
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-iconv',
         ),
+        'Hestia\\src\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
+        'Hestia\\config\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/config',
+        ),
         'Egulias\\EmailValidator\\' => 
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator',
@@ -61,14 +69,6 @@ class ComposerStaticInitf27abd3c98d55cd0d9d25a1a3f172345
         'Doctrine\\Common\\Lexer\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/lexer/lib/Doctrine/Common/Lexer',
-        ),
-        'App\\src\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src',
-        ),
-        'App\\config\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/config',
         ),
     );
 

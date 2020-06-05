@@ -1,10 +1,10 @@
 <?php
 
 //Pour toutes les classes dans DAO
-namespace App\src\DAO;
+namespace Hestia\src\DAO;
 
-use App\config\Parameter;
-use App\src\model\Estate;
+use Hestia\config\Parameter;
+use Hestia\src\model\Estate;
 
 class EstateDAO extends DAO
 {
@@ -141,5 +141,10 @@ class EstateDAO extends DAO
         $this->createQuery($sql, [$estateId]);
     }
 
-   
+    public function getEstateCount(){
+        $sql = "SELECT COUNT(*) FROM estate";
+
+        $result = $this->createQuery($sql)->fetchAll();
+        return $result;
+    }
 }

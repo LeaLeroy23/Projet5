@@ -1,8 +1,8 @@
 <?php
 
-namespace App\src\controller;
+namespace Hestia\src\controller;
 
-use App\config\Parameter;
+use Hestia\config\Parameter;
 
 class FrontController extends Controller
 {
@@ -21,9 +21,11 @@ class FrontController extends Controller
     {
         $estates = $this->estateDAO->getEstates();
         $agents = $this->agentDAO->getAgents();
+        $count = $this->estateDAO->getEstateCount();
         return $this->view->renderTemplate('dashboard', [
             'estates' => $estates,
-            'agents' => $agents
+            'agents' => $agents,
+            'count' => $count
         ]);
     }
 

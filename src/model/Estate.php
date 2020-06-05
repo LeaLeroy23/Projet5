@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\model;
+namespace Hestia\src\model;
 
 class Estate
 {
@@ -106,7 +106,7 @@ class Estate
      */
     private $floor;
 
-            /**
+    /**
      * @var string
      */
     private $picture_url;

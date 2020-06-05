@@ -1,8 +1,8 @@
 {
   "autoload": {
     "psr-4": {
-        "App\\config\\":"config/",
-        "App\\src\\": "src/"
+        "Hestia\\config\\":"config/",
+        "Hestia\\src\\": "src/"
     }
   },
   "require": {

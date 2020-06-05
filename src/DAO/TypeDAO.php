@@ -1,10 +1,10 @@
 <?php
 
 //Pour toutes les classes dans DAO
-namespace App\src\DAO;
+namespace Hestia\src\DAO;
 
-use App\config\Parameter;
-use App\src\model\Type;
+use Hestia\config\Parameter;
+use Hestia\src\model\Type;
 
 class TypeDAO extends DAO
 {

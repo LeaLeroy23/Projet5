@@ -1,9 +1,9 @@
 <?php
 
-namespace App\config;
-use App\src\controller\BackController;
-use App\src\controller\ErrorController;
-use App\src\controller\FrontController;
+namespace Hestia\config;
+use Hestia\src\controller\BackController;
+use Hestia\src\controller\ErrorController;
+use Hestia\src\controller\FrontController;
 use Exception;
 
 class Router

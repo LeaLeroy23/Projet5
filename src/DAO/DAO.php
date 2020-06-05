@@ -1,6 +1,6 @@
 <?php
 //Pour toutes les classes dans DAO
-namespace App\src\DAO;
+namespace Hestia\src\DAO;
 
 //Uniquement pour la classe DAO
 use PDO;
