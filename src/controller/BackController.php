@@ -110,6 +110,7 @@ class BackController extends Controller
     public function addPictures(Parameter $post, Parameter $files, $estateId)
     {
         $estate = $this->estateDAO->getEstate($estateId);
+        $pictures = $this->pictureDAO->getPicturesByEstateId();
         $errors = $this->validation->validate($post, 'Pictures');
 
         if($post->get('submit')){
@@ -162,8 +163,16 @@ class BackController extends Controller
         
         return $this->view->renderTemplate('add_pictures', [
             'estate' => $estate,
+            'pictures' => $pictures,
             'post' => $post
         ]);
+    }
+
+    public function deletePicture($pictureId){
+        $this->pictureDAO->deletePicture($pictureId);
+        $this->session->set('deleteEstate', 'L\'annonce a bien été supprimé');
+        header('Location: ../public/index.php?route=addPictures');
+        exit();
     }
 
     public function configuration(){

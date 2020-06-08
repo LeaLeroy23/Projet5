@@ -1,7 +1,6 @@
 <?php $this->title = "Ajouter des images"; ?>
 
-<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
-<link href="../public/css/filepond-plugin-image-preview.css" rel="stylesheet">
+<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 
 <!--main content start-->
     <section id="main-content">
@@ -12,36 +11,47 @@
                 <div class="col-lg-12">
 
                     <div class="form-panel">
-                        <form method="post" action="../public/index.php?route=addPictures" enctype="multipart/form-data">
-                            <input type="file"  name="files_upload" multiple />
-                            <input type="number" name="estate_id" id="estate-id" value="<?= ($estate->getId());?>" />
-                            <input type="submit" name="submit" value="valider"/>
+                        <form method="post" action="../public/index.php?route=addPictures" class="dropzone" enctype="multipart/form-data">
+                            <div class="fallback">
+                                <input type="file"  name="files_upload" multiple />
+                                <input type="hidden" name="estate_id" id="estate-id" value="<?= ($estate->getId());?>" />
+                                <!--<input type="submit" name="submit" value="valider"/>-->
+                            </div>
                         </form>
                     </div>
+                </div>
 
-                    <div class="content-panel">
+                <div class="col-lg-12">
+                    <div class="form-panel">
                         <table class="table table-striped table-advance table-hover">
-                            <h4><i class="fa fa-angle-right"></i> Les annonces </h4>
+                            <h4><i class="fa fa-angle-right"></i> Les images associées aux annonces</h4>
                             <hr>
                             <thead>
                                 <tr>
-                                    <th><i class="fa fa-bullhorn"></i> Catégorie</th>
-                                    <th> Titre</th>
-                                    <th class="hidden-phone"><i class="fa fa-square"></i> Pièces</th>
-                                    <th class="hidden-phone"><i class="fa fa-home"></i> Type</th>
-                                    <th class="hidden-phone"><i class="fas fa-comment-alt"></i> Description</th>
-                                    <th><i class="fa fa-bookmark"></i> Prix</th>
-                                    <th><i class=" fa fa-edit"></i> Status</th>
-                                    <th>Action</th>
+                                    <th><i class="fa fa-picture-o"></i> Les Images</th>
+                                    <th><i class="fa fa-folder-open-o"></i> Nom du fichier</th>
+                                    <th><i class="fa fa-gear"></i> Action</th>
                                 </tr>
                             </thead>
+
                             <tbody>
+                            <?php 
+                            foreach($pictures as $picture){
+                            ?>
+                                <tr>
+                                    <td><img src="../public/img/upload/" <?php $picture->getFilename(); ?> height="150"></td>
+                                    <td></td>
+                                    <td>
+                                        <a href="../public/index.php?route=deletePicture&pictureId=<?=htmlspecialchars($picture->getId());?>"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i> Supprimer</button></a>
+                                    </td>
+                                </tr>
+                            <?php 
+                            }
+                            ?>
                             </tbody>
+
                         </table>
-                        <?php
-                            foreach ($pictures as $pict)
-                            {
-                        ?>
+                        
                     </div>
 
                 </div>
@@ -52,58 +62,9 @@
     </section>
     <!-- /MAIN CONTENT  -->
 
-
-    <script src="https://unpkg.com/filepond-plugin-file-metadata/dist/filepond-plugin-file-metadata.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.js"></script>
-    <script src="../public/js/filepond-plugin-image-preview.js"></script>
-    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
 
     <script>
-    /*
-        // Register the plugin with FilePond
-        FilePond.registerPlugin(
-                FilePondPluginFileMetadata, 
-                FilePondPluginImageCrop,
-                FilePondPluginImagePreview
-        );
-        
-        // Get a reference to the file input element
-        const inputElement = document.querySelector('input[type=file]');
-
-        // Create the FilePond instance
-        const pond = FilePond.create(inputElement, {
-            allowMultiple: true,
-            allowReorder: true,
-            imageCropAspectRatio: '1:1',
-            fileMetadataObject: {
-                'markup': [
-                    [
-                        'rect', {
-                            left: 0,
-                            right: 0,
-                            bottom: 0,
-                            height: '60px',
-                            backgroundColor: 'rgba(0,0,0,.5)'
-                        },
-                    ],
-                    [
-                        'image', {
-                            right: '10px',
-                            bottom: '10px',
-                            width: '30px',
-                            height: '30px',
-                            src: '',
-                            fit: 'contain'
-                        }
-                    ]
-                ]
-            }
-        });
-
-
-
-        // Easy console access for testing purposes
-        window.pond = pond;
-        */
+    
     </script>
 

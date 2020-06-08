@@ -143,8 +143,7 @@ class EstateDAO extends DAO
 
     public function getEstateCount(){
         $sql = "SELECT COUNT(*) FROM estate";
-
-        $result = $this->createQuery($sql)->fetchAll();
-        return $result;
+        $count = $this->createQuery($sql)->fetchAll();
+        return $count;
     }
 }

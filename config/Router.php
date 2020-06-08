@@ -60,6 +60,9 @@ class Router
                 elseif ($route === 'addPictures'){
                 $this->backController->addPictures($this->request->getPost(), $this->request->getFiles(), $this->request->getGet()->get('estateId'));
                 }
+                elseif ($route === 'deletePicture'){
+                    $this->backController->deletePicture($this->request->getGet()->get('pictureId'));
+                    }
                 elseif ($route === 'addCategory'){
                     $this->backController->addCategory($this->request->getPost());
                 }

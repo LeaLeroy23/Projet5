@@ -18,7 +18,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p class="small mt">EN LIGNE</p>
-                                            <p><?php $count->getEstateCount();?></p>
+                                            <p><?= $count; ?></p>
                                         </div>
                                         <div class="col-md-6">
                                             <p class="small mt">BROUILLON</p>
@@ -114,7 +114,7 @@
                         <!-- First Member -->
                         <div class="desc">
                             <div class="thumb">
-                                <img class="img-circle" src="../public/img/agent/ui-sam.jpg" width="35px" height="35px" align="">
+                                <img class="img-circle" src="../public/img/agent/ui-sam.jpg" width="35px" height="35px">
                             </div>
                             <div class="details">
                                 <p>

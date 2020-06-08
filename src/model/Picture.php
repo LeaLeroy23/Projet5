@@ -18,7 +18,7 @@ class Picture
     /**
      * @var int
      */
-    private $estate_id;
+    private $estateId;
 
     
     /**
@@ -56,17 +56,17 @@ class Picture
     /**
      * @return int
      */
-    public function getEstate_id()
+    public function getEstateId()
     {
-        return $this->estate_id;
+        return $this->estateId;
     }
 
     /**
      * @param string $estate_id
      */
-    public function setEstate_id($estate_id)
+    public function setEstateId($estateId)
     {
-        $this->estate_id = $estate_id;
+        $this->estateId = $estateId;
     }
 
 }
