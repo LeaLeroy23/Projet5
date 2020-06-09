@@ -39,10 +39,10 @@
                             foreach($pictures as $picture){
                             ?>
                                 <tr>
-                                    <td><img src="../public/img/upload/" <?php $picture->getFilename(); ?> height="150"></td>
-                                    <td></td>
+                                    <td><img src="..\public\img\upload\"<?=$picture->getFilename();?> height="150"></td>
+                                    <td><?=htmlspecialchars($picture->getFilename());?></td>
                                     <td>
-                                        <a href="../public/index.php?route=deletePicture&pictureId=<?=htmlspecialchars($picture->getId());?>"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i> Supprimer</button></a>
+                                        <a href="../public/index.php?route=deletePicture&pictureId=<?=$picture->getId();?>"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i> Supprimer</button></a>
                                     </td>
                                 </tr>
                             <?php 

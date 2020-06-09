@@ -6,6 +6,29 @@ use Hestia\config\Parameter;
 
 class BackController extends Controller
 {
+    private function checkLoggedIn()
+    {
+        
+        if($this->session->get('email')){
+            $this->session->set('need_login', 'Vous devez être connecté pour accéder à cet page');
+            header('Location: ../public/index.php?route=login');
+        } else {
+            return true;
+        }
+    }
+
+    private function checkAdmin()
+    {
+        $this->checkLoggedIn();
+        var_dump($this->session->get('status'));
+        die();
+        if(!($this->session->get('status') == 99)){
+            $this->session->set('not_admin', 'Vous n\'avez pas accès à cette page');
+            header('Location: ../public/index.php?route=dashboard');
+        } else {
+            return true;
+        }
+    }
 
     public function addEstate(Parameter $post, Parameter $files)
     {
@@ -110,7 +133,7 @@ class BackController extends Controller
     public function addPictures(Parameter $post, Parameter $files, $estateId)
     {
         $estate = $this->estateDAO->getEstate($estateId);
-        $pictures = $this->pictureDAO->getPicturesByEstateId();
+        $pictures = $this->pictureDAO->getPicturesByEstateId($estateId);
         $errors = $this->validation->validate($post, 'Pictures');
 
         if($post->get('submit')){
@@ -170,22 +193,24 @@ class BackController extends Controller
 
     public function deletePicture($pictureId){
         $this->pictureDAO->deletePicture($pictureId);
-        $this->session->set('deleteEstate', 'L\'annonce a bien été supprimé');
-        header('Location: ../public/index.php?route=addPictures');
+        $this->session->set('deleteEstate', 'L\'image a bien été supprimé');
+        header('Location: ../public/index.php?route=allEstates');
         exit();
     }
 
     public function configuration(){
-        $categories = $this->categoryDAO->getCategories();
-        $types = $this->typeDAO->getTypes();
-        $energies = $this->energyDAO->getEnergies();
-        $frequencies = $this->frequencyDAO->getFrequencies();
-        return $this->view->renderTemplate('configForm', [
-            'categories' => $categories,
-            'types' => $types,
-            'energies' => $energies,
-            'frequencies' => $frequencies
-        ]);
+        if($this->checkAdmin()){
+            $categories = $this->categoryDAO->getCategories();
+            $types = $this->typeDAO->getTypes();
+            $energies = $this->energyDAO->getEnergies();
+            $frequencies = $this->frequencyDAO->getFrequencies();
+            return $this->view->renderTemplate('configForm', [
+                'categories' => $categories,
+                'types' => $types,
+                'energies' => $energies,
+                'frequencies' => $frequencies
+            ]);
+        }
     }
 
     public function addCategory($post)

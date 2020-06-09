@@ -112,65 +112,23 @@
                         <!-- USERS ONLINE SECTION -->
                         <h4 class="centered mt">Membre de l'équipe</h4>
                         <!-- First Member -->
+                        <?php 
+                            foreach($agents as $agent){
+                            ?>
                         <div class="desc">
                             <div class="thumb">
                                 <img class="img-circle" src="../public/img/agent/ui-sam.jpg" width="35px" height="35px">
                             </div>
                             <div class="details">
                                 <p>
-                                <a href="#">Donovan Blumveast</a><br/>
-                                Donovan.B@hestia.com
+                                <a href="#"><?=$agent->getFirstname();?> <?=$agent->getLastname();?></a><br/>
+                                <?=$agent->getEmail();?>
                                 </p>
                             </div>
                         </div>
-                        <!-- Second Member -->
-                        <div class="desc">
-                            <div class="thumb">
-                                <img class="img-circle" src="../public/img/agent/ui-divya.jpg" width="35px" height="35px" align="">
-                            </div>
-                            <div class="details">
-                                <p>
-                                <a href="#">Ludivine Holmes</a><br/>
-                                Ludivine.H@hestia.com
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Third Member -->
-                        <div class="desc">
-                            <div class="thumb">
-                                <img class="img-circle" src="../public/img/agent/ui-danro.jpg" width="35px" height="35px" align="">
-                            </div>
-                            <div class="details">
-                                <p>
-                                <a href="#">Rudy Cagliari</a><br/>
-                                Rudy.C@hestia.com
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Fourth Member -->
-                        <div class="desc">
-                            <div class="thumb">
-                                <img class="img-circle" src="../public/img/agent/ui-sherman.jpg" width="35px" height="35px" align="">
-                            </div>
-                            <div class="details">
-                                <p>
-                                <a href="#">William Dupont</a><br/>
-                                William.D@hestia.com
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="desc">
-                            <div class="thumb">
-                                <img class="img-circle" src="../public/img/agent/ui-zac.jpg" width="35px" height="35px" align="">
-                            </div>
-                            <div class="details">
-                                <p>
-                                <a href="#">Zac Sniders</a><br/>
-                                Zac.S@hestia.com
-                                </p>
-                            </div>
-                        </div>
+                        <?php 
+                            }
+                        ?>
 
                         <h4 class="centered mt cog-title">Support Technique</h4>
                         <!-- Start contact form -->

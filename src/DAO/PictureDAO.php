@@ -30,16 +30,16 @@ class PictureDAO extends DAO
 
     public function getPicture($pictureId)
     {
-        $sql= 'SELECT * FROM picture WHERE id = ?';
+        $sql= 'SELECT * FROM picture';
         $result = $this->createQuery($sql, [$pictureId]);
         $picture = $result->fetch();
         $result->closeCursor();
         return $this->buildObject($picture);
     }
 
-    public function getPicturesByEstateId()
+    public function getPicturesByEstateId($estateId)
     {
-        $sql= 'SELECT * FROM picture';
+        $sql= 'SELECT * FROM picture WHERE estate_id =' . $estateId;
         $result = $this->createQuery($sql);
         $pictures = [];
         foreach ($result as $row){
@@ -61,9 +61,9 @@ class PictureDAO extends DAO
         return $picture;
     }
 
-    public function deletePicture($estateId){
-        $sql = "DELETE FROM picture WHERE estate_id=?";
-        $this->createQuery($sql, [$estateId]);
+    public function deletePicture($pictureId){
+        $sql = "DELETE FROM picture WHERE id=?";
+        $this->createQuery($sql, [$pictureId]);
     }
 
 }

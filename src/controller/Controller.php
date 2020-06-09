@@ -14,7 +14,9 @@ use Hestia\src\DAO\PictureDAO;
 use Hestia\src\DAO\EmailDAO;
 use Hestia\src\model\View;
 
-abstract class Controller{
+abstract class Controller
+{
+
     protected $estateDAO;
     protected $agentDAO;
     protected $categoryDAO;
