@@ -75,7 +75,7 @@ class FrontController extends Controller
             if($result && $result['isPasswordValid']){
                 $this->session->set('login', 'Content de vous revoir');
                 $this->session->set('id', $result['result']['id']);
-                $this->session->set('status', $result['result']['status']);
+                $this->session->set('status', $result['status']);
                 
                 $this->session->set('email', $post->get('email'));
                 header('Location: ../public/index.php?route=dashboard');

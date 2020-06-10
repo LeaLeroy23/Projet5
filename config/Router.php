@@ -108,6 +108,9 @@ class Router
                 elseif ($route === 'dashboard'){
                     $this->frontController->dashboard();
                 }
+                elseif ($route === 'logout'){
+                    $this->backController->logout();
+                }
                 else{
                     $this->errorController->errorNotFound();
                 }

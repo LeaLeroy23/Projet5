@@ -88,9 +88,12 @@ class AgentDAO extends DAO
         $result = $data->fetch();
         $isPasswordValid = $post->get('password');
         $isPasswordValid = password_verify($post->get('password'), $result['password']);
+        $status = $result['status'];
+        
         return[
             'result' => $result,
             'isPasswordValid' => $isPasswordValid,
+            'status' => $status
         ];
         
     }
