@@ -80,20 +80,22 @@ class AgentDAO extends DAO
 
     public function login(Parameter $post)
     {
-        $sql= 'SELECT id, password FROM agent WHERE email = ?';
-        $data = $this->createQuery($sql, [$post->get('email')]);
+        
+        $sql= 'SELECT id, password, status FROM agent WHERE email = ?';
+        $data = $this->createQuery($sql, [
+            $post->get('email')
+        ]);
         $result = $data->fetch();
-        $isPasswordValid =$post->get('password');
+        $isPasswordValid = $post->get('password');
         $isPasswordValid = password_verify($post->get('password'), $result['password']);
         return[
             'result' => $result,
-            'isPasswordValid' => $isPasswordValid
+            'isPasswordValid' => $isPasswordValid,
         ];
+        
     }
 
     public function updatePassword(Parameter $post, $email){
-        var_dump($post);
-        die();
         $sql = 'UPDATE agent SET password = ? WHERE email = ?';
         $this->createQuery($sql, [password_hash($post->get('password'), PASSWORD_BCRYPT), $email]);
     }

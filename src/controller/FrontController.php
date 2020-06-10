@@ -19,6 +19,7 @@ class FrontController extends Controller
 
     public function dashboard()
     {
+        
         $estates = $this->estateDAO->getEstates();
         $agents = $this->agentDAO->getAgents();
         $count = $this->estateDAO->getEstateCount();
@@ -74,6 +75,7 @@ class FrontController extends Controller
             if($result && $result['isPasswordValid']){
                 $this->session->set('login', 'Content de vous revoir');
                 $this->session->set('id', $result['result']['id']);
+                $this->session->set('status', $result['result']['status']);
                 
                 $this->session->set('email', $post->get('email'));
                 header('Location: ../public/index.php?route=dashboard');
@@ -88,16 +90,4 @@ class FrontController extends Controller
         return $this->view->render('login');
     }
 
-    public function configuration(){
-        $categories = $this->categoryDAO->getCategories();
-        $types = $this->typeDAO->getTypes();
-        $energies = $this->energyDAO->getEnergies();
-        $frequencies = $this->frequencyDAO->getFrequencies();
-        return $this->view->renderTemplate('configForm', [
-            'categories' => $categories,
-            'types' => $types,
-            'energies' => $energies,
-            'frequencies' => $frequencies
-        ]);
-    }
 }

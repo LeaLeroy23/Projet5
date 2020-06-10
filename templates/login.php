@@ -9,6 +9,7 @@
                         <div class="contact-area-title">
                             <h2 class="text-uppercase">Connectez-vous</h2>
                             <p>En cas de problème contactez contact@stratos-consulting.fr</p>
+                            <?= $this->session->show('needLogin'); ?>
                         </div>
                         <form action="../public/index.php?route=login" method="post">
                             <?= $this->session->show('error_login'); ?>

@@ -5,6 +5,7 @@
                 <div class="row">
                     <div class="col-lg-9 main-chart">
                     <h3><i class="fa fa-angle-right"></i> Ajouter une annonce</h3>
+                    <?= $this->session->show('notAdmin'); ?>
 
                         <div class="row mt">
                             <!-- col-md-4 -->

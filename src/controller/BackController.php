@@ -8,10 +8,9 @@ class BackController extends Controller
 {
     private function checkLoggedIn()
     {
-        
-        if($this->session->get('email')){
-            $this->session->set('need_login', 'Vous devez être connecté pour accéder à cet page');
-            header('Location: ../public/index.php?route=login');
+        if(!$this->session->get('email')){
+            $this->session->set('needLogin', 'Vous devez être connecté pour accéder à cet page');
+            header('Location: ../public/index.php');
         } else {
             return true;
         }
@@ -21,9 +20,9 @@ class BackController extends Controller
     {
         $this->checkLoggedIn();
         var_dump($this->session->get('status'));
-        die();
-        if(!($this->session->get('status') == 99)){
-            $this->session->set('not_admin', 'Vous n\'avez pas accès à cette page');
+        die;
+        if(!($this->session->get('status') === '99')){
+            $this->session->set('notAdmin', 'Vous n\'avez pas accès à cette page');
             header('Location: ../public/index.php?route=dashboard');
         } else {
             return true;
@@ -199,6 +198,7 @@ class BackController extends Controller
     }
 
     public function configuration(){
+        
         if($this->checkAdmin()){
             $categories = $this->categoryDAO->getCategories();
             $types = $this->typeDAO->getTypes();
@@ -357,7 +357,7 @@ class BackController extends Controller
         ]);
     }
 
-    public function addAgent($post)
+    public function addAgent(Parameter $post)
     {
         if($post->get('submit')){
             $errors = $this->validation->validate($post, 'Agent');
@@ -419,6 +419,14 @@ class BackController extends Controller
         $this->session->set('deleteAgent', "L'\agent' a été supprimer avec succès");
         header('Location: ../public/index.php?route=allAgents');
         exit();
+    }
+
+    public function logout()
+    {
+        $this->session->stop();
+        $this->session->start();
+        $this->session->set('logout', 'À bientôt');
+        header('Location: ../public/index.php');
     }
 
 }
