@@ -108,4 +108,10 @@ class AgentDAO extends DAO
         $this->createQuery($sql, [password_hash($post->get('password'), PASSWORD_BCRYPT), $email]);
     }
 
+    public function getAgentCount(){
+        $sql = "SELECT COUNT(*) FROM agent";
+        $countAgent = $this->createQuery($sql);
+        return $countAgent->fetch()[0];
+    }
+
 }

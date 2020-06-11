@@ -168,6 +168,7 @@
                 <?= $content; ?>
 
                     <!-- /MAIN CONTENT -->
+                    </section>
                 <!--main content end-->
                 <!--footer start-->
             <footer class="site-footer">
@@ -185,7 +186,6 @@
                     </div>
             </footer>
                 <!--footer end-->
-        </section>
         <!-- js placed at the end of the document so the pages load faster -->
         <script src="../public/lib/jquery/jquery.min.js"></script>
         <script src="../public/lib/bootstrap/js/bootstrap.min.js"></script>

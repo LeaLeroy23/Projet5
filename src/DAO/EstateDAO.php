@@ -153,15 +153,11 @@ class EstateDAO extends DAO
         return $countDraft->fetch()[0];
     }
 
-    /*public function getEstateByAgent(){
-        $sql = "SELECT (e.id as id, a.email as email) 
-        FROM estate e
-        INNER JOIN agent as a
-        ON e.agent_id = a.id
-        WHERE a.email=?";
+    public function getEstateByAgent($agentId){
+        $sql = "";
         $estateByAgent = $this->createQuery($sql)->fetchAll();
         var_dump($estateByAgent);
         die();
         return $estateByAgent;
-    }*/
+    }
 }

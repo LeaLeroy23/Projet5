@@ -34,14 +34,15 @@ class BackController extends Controller
             $agents = $this->agentDAO->getAgents();
             $count = $this->estateDAO->getEstatePublishCount();
             $countDraft = $this->estateDAO->getEstateDraftCount();
-            //$EstateByAgent = $this->estateDAO->getEstateByAgent();
+            $countAgent = $this->agentDAO->getAgentCount();
+            $estatesByAgent = $this->estateDAO->getEstatesByAgent();
             
             return $this->view->renderTemplate('dashboard', [
                 'estates' => $estates,
                 'agents' => $agents,
                 'count' => $count,
                 'countDraft' => $countDraft,
-                //'estatesByAgent' => $estatesByAgent
+                'countAgent' => $countAgent
             ]);
         }
     }
