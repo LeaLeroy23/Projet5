@@ -141,9 +141,27 @@ class EstateDAO extends DAO
         $this->createQuery($sql, [$estateId]);
     }
 
-    public function getEstateCount(){
+    public function getEstatePublishCount(){
         $sql = "SELECT COUNT(*) FROM estate";
-        $count = $this->createQuery($sql)->fetchAll();
-        return $count;
+        $count = $this->createQuery($sql);
+        return $count->fetch()[0];
     }
+
+    public function getEstateDraftCount(){
+        $sql = "SELECT COUNT(*) FROM estate WHERE status = 0";
+        $countDraft = $this->createQuery($sql);
+        return $countDraft->fetch()[0];
+    }
+
+    /*public function getEstateByAgent(){
+        $sql = "SELECT (e.id as id, a.email as email) 
+        FROM estate e
+        INNER JOIN agent as a
+        ON e.agent_id = a.id
+        WHERE a.email=?";
+        $estateByAgent = $this->createQuery($sql)->fetchAll();
+        var_dump($estateByAgent);
+        die();
+        return $estateByAgent;
+    }*/
 }

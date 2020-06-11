@@ -106,7 +106,7 @@ class Router
                     $this->backController->configuration();
                 }
                 elseif ($route === 'dashboard'){
-                    $this->frontController->dashboard();
+                    $this->backController->dashboard();
                 }
                 elseif ($route === 'logout'){
                     $this->backController->logout();

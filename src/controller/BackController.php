@@ -27,6 +27,25 @@ class BackController extends Controller
         }
     }
 
+    public function dashboard()
+    {
+        if($this->checkLoggedIn()){
+            $estates = $this->estateDAO->getEstates();
+            $agents = $this->agentDAO->getAgents();
+            $count = $this->estateDAO->getEstatePublishCount();
+            $countDraft = $this->estateDAO->getEstateDraftCount();
+            //$EstateByAgent = $this->estateDAO->getEstateByAgent();
+            
+            return $this->view->renderTemplate('dashboard', [
+                'estates' => $estates,
+                'agents' => $agents,
+                'count' => $count,
+                'countDraft' => $countDraft,
+                //'estatesByAgent' => $estatesByAgent
+            ]);
+        }
+    }
+
     public function addEstate(Parameter $post, Parameter $files)
     {
         if($this->checkLoggedIn()){
@@ -145,11 +164,8 @@ class BackController extends Controller
             if($post->get('submit')){
                 
                 if (!$errors){
-
                     $form=[];
                     $maxsize = 5 * 1024 * 1024;
-                
-                    
                     if (isset($_FILES["filename"]) && $_FILES["filename"]["error"] == 0) {
                         
                         $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png", "PNG" => "image/PNG");

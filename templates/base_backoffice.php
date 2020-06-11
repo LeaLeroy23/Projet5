@@ -39,36 +39,7 @@
                 <!--logo start-->
                 <a href="index.php" class="logo"><img src="../public/img/logo-min.png" alt=""></a>
                 <!--logo end-->
-                <div class="nav notify-row" id="top_menu">
-                    <!--  notification start -->
-                    <ul class="nav top-menu">
-                        <!-- settings start -->
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="index.php?route=allEstates">
-                            <i class="fa fa-home"></i>
-                            <span class="badge bg-theme">0</span>
-                            </a>
-                        </li>
-                        <!-- settings end -->
-                    <!-- inbox dropdown start-->
-                    <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.php?route=allAgents">
-                        <i class="fa fa-users"></i>
-                        <span class="badge bg-theme">0</span>
-                        </a>
-                    </li>
-                    <!-- inbox dropdown end -->
-                    <!-- notification dropdown start-->
-                    <li id="header_notification_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.php?route=allEstates">
-                        <i class="fa fa-edit"></i>
-                        <span class="badge bg-warning">0</span>
-                        </a>
-                    </li>
-                    <!-- notification dropdown end -->
-                    </ul>
-                    <!--  notification end -->
-                </div>
+                
                 <div class="top-menu">
                     <ul class="nav pull-right top-menu">
                     <li><a class="logout" href="../public/index.php?route=logout">Déconnexion</a></li>

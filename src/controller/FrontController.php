@@ -6,7 +6,7 @@ use Hestia\config\Parameter;
 
 class FrontController extends Controller
 {
-    
+
     public function home()
     {
         $estates = $this->estateDAO->getEstates();
@@ -17,18 +17,6 @@ class FrontController extends Controller
         ]);
     }
 
-    public function dashboard()
-    {
-        
-        $estates = $this->estateDAO->getEstates();
-        $agents = $this->agentDAO->getAgents();
-        $count = $this->estateDAO->getEstateCount();
-        return $this->view->renderTemplate('dashboard', [
-            'estates' => $estates,
-            'agents' => $agents,
-            'count' => $count
-        ]);
-    }
 
     public function contact()
     {
