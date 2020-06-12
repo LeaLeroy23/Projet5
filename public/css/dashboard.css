@@ -2579,6 +2579,11 @@ ul.labels-info li img {
     width: 10%;;
 }
 
+.td-dashboard{
+    border-top: 1px solid #2b835e;
+    color: #2b835e;
+}
+
 ul.inbox-pagination {
     float:right;
 }

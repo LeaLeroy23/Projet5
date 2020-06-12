@@ -99,8 +99,8 @@ class Router
                 elseif ($route === 'updatePassword'){
                     $this->backController->updatePassword($this->request->getPost());
                 }
-                elseif ($route === 'updateProfile'){
-                    $this->backController->updateProfile($this->request->getPost(), $this->request->getGet()->get('agentId'));
+                elseif ($route === 'editProfile'){
+                    $this->backController->editProfile($this->request->getPost(), $this->request->getGet()->get('agentId'));
                 }
                 elseif ($route === 'configuration'){
                     $this->backController->configuration();

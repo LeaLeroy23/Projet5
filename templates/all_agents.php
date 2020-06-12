@@ -22,7 +22,7 @@
                                 <th class="hidden-phone"><i class="fa fa-lock"></i> Autorisation</th>
                                 <th class="hidden-phone"><i class="fa fa-phone"></i> Téléphone</th>
                                 <th class="hidden-phone"><i class="fa fa-enveloppe"></i> Email</th>
-                                <th class="hidden-phone"></th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -37,10 +37,7 @@
                                 <td><?= htmlspecialchars($agent->getStatus());?></td>
                                 <td><?= htmlspecialchars($agent->getPhone());?></td>
                                 <td><?= htmlspecialchars($agent->getEmail());?></td>
-                                <td>
-                                    <a href="../public/index.php?route=updateProfile" class="btn btn-warning btn-xs" title="Modifier"><i class="fa fa-pencil"></i></a>
-                                    <a href="../public/index.php?route=deleteProfile" class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o"></i></a>
-                                </td>
+                                
                             </tr>
                         <?php
                             }

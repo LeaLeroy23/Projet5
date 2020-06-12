@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<!-- Favicon
 		============================================ -->
-		<link rel="shortcut icon" type="../public/css/img/x-icon" href="../public/img/favicon.ico">		
+		<link rel="shortcut icon" type="css/img/x-icon" href="img/favicon.ico">		
 
         <!-- Template Fonts form google
         =============================================-->
@@ -22,12 +22,12 @@
         <!-- Template CSS files -->
 
         <!-- Bootstrap core CSS -->
-        <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <!--external css-->
-        <link href="../public/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <!-- Custom styles for this template-->
-        <link href="../public/css/dashboard.css" rel="stylesheet">
-        <link href="../public/css/dashboard-responsive.css" rel="stylesheet">
+        <link href="css/dashboard.css" rel="stylesheet">
+        <link href="css/dashboard-responsive.css" rel="stylesheet">
 
     </head>
 
@@ -37,7 +37,7 @@
             <header class="header black-bg">
                 
                 <!--logo start-->
-                <a href="index.php" class="logo"><img src="../public/img/logo-min.png" alt=""></a>
+                <a href="index.php" class="logo"><img src="img/logo-min.png" alt=""></a>
                 <!--logo end-->
                 
                 <div class="top-menu">
@@ -56,7 +56,7 @@
                     <div id="sidebar" class="nav-collapse ">
                         <!-- sidebar menu start-->
                         <ul class="sidebar-menu" id="nav-accordion">
-                            <p class="centered"><a href="index.php?route=profile"><img src="../public/img/agent/ui-sam.jpg" class="img-circle" width="80"></a></p>
+                            <p class="centered"><a href="index.php?route=profile"><img src="img/agent/ui-sam.jpg" class="img-circle" width="80"></a></p>
                             <h5 class="centered"></h5>
                             <?php
                                 if ($this->session->get('status') === "99") {
@@ -79,13 +79,6 @@
                                 <a href="index.php?route=allEstates">
                                 <i class="fa fa-copy"></i>
                                 <span>Les annonces</span>
-                                </a>
-                            </li>
-
-                            <li class="mt">
-                                <a href="index.php?route=allAgents">
-                                <i class="fa fa-users"></i>
-                                <span>Les agents</span>
                                 </a>
                             </li>
 
@@ -171,7 +164,7 @@
                     </p>
                     <div class="credits">
                     
-                        Created with Dashio template by <a href="https://stratos-consulting.fr/">TemplateMag</a>
+                        Created with Dashio template by <a href="https://stratos-consulting.fr/"></a>
                     </div>
                     <a href="form_validation.html#" class="go-top">
                         <i class="fa fa-angle-up"></i>
@@ -180,18 +173,18 @@
             </footer>
                 <!--footer end-->
         <!-- js placed at the end of the document so the pages load faster -->
-        <script src="../public/lib/jquery/jquery.min.js"></script>
-        <script src="../public/lib/bootstrap/js/bootstrap.min.js"></script>
-        <script class="include" type="text/javascript" src="../public/lib/jquery.dcjqaccordion.2.7.js"></script>-->
-        <script src="../public/lib/jquery.scrollTo.min.js"></script>
-        <script src="../public/lib/jquery.nicescroll.js" type="text/javascript"></script>-->
+        <script src="lib/jquery/jquery.min.js"></script>
+        <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+        <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>-->
+        <script src="lib/jquery.scrollTo.min.js"></script>
+        <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>-->
         <!--common script for all pages-->
-        <script src="../public/lib/common-scripts.js"></script>
+        <script src="lib/common-scripts.js"></script>
         <!--script for this page-->
         
-        <!--<script src="../public/js/Spec.js" type="text/javascript"></script>
-        <script src="../public/js/Preview.js" type="text/javascript"></script>
-        <script src="../public/js/main.js" type="text/javascript"></script>-->
+        <script src="js/Spec.js" type="text/javascript"></script>
+        <script src="js/Preview.js" type="text/javascript"></script>
+        <script src="js/main.js" type="text/javascript"></script>
         
   </body>
   

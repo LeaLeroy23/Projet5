@@ -12,11 +12,11 @@
                             <?= $this->session->show('needLogin'); ?>
                             <?= $this->session->show('logout'); ?>
                         </div>
-                        <form action="../public/index.php?route=login" method="post">
+                        <form action="index.php?route=login" method="post">
                             <?= $this->session->show('error_login'); ?>
                             <input type="text" id="email" name="email" placeholder="Identifiant" value="<?= isset($post) ? htmlspecialchars($post->get('email')): ''; ?>">
-                            <input type="text" id="password" name="password" placeholder="Mot de passe">
-                            <a href="#">mot de passe oublié ?</a>
+                            <input type="password" id="password" name="password" placeholder="Mot de passe">
+                            
                             <div class="submit-button">
                                 <input type="submit" name="submit" id="submit" value="Connexion">
                             </div>

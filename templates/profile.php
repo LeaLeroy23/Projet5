@@ -60,11 +60,11 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>Nom</td>
-                                                            <td><?= $this->session->get('lname'); ?></td>
+                                                            <td><?= $this->session->get('lastname'); ?></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Prénom</td>
-                                                            <td><?= $this->session->get('fname'); ?> </td>
+                                                            <td><?= $this->session->get('firstname'); ?> </td>
                                                         </tr>
                                                         <tr>
                                                             <td>Fonction</td>
@@ -88,17 +88,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="detailed mt">
-                                            <div class="col-md-1"></div>
-                                            <div class="col-md-10">
-                                                <div class="row centered mt mb">
-                                                    <?= $this->session->show('update_password'); ?>
-                                                    <a href="../public/index.php?route=updatePassword"><button class="btn btn-theme05">Modifier mon mot de passe</button></a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1"></div>
-
-                                        </div>
+                                      
 
                                     </div>
 
@@ -127,30 +117,7 @@
                                         </div>
                                          <!--fin stat-->
 
-                                        <!--Début contact-->
-                                        <div class="detailed mt">
-                                            <h4>Contact</h4>
-                                            <div class="row centered mt mb">
-                                            <p>Vous trouverez ici toutes les coordonnées pour contacter le support technique si vous rencontrez un problème.</p>
-
-                                            <div class="recent-activity">
-                                                <div class="activity-icon bg-theme"><i class="fa fa-envelope"></i></div>
-                                                <div class="activity-panel">
-                                                    <p class="contact-panel">Email: service.technique@stratos-consulting.fr</p>
-                                                </div>
-                                                <div class="activity-icon bg-theme02"><i class="fa fa-phone"></i></div>
-                                                <div class="activity-panel">
-                                                    <p class="contact-panel">Téléphone: 06 XX XX XX XX</p>
-                                                </div>
-                                                <div class="activity-icon bg-theme04"><i class="fa fa-dot-circle-o"></i></div>
-                                                <div class="activity-panel">
-                                                    <p class="contact-panel">Adresse Postal: </p>
-                                                </div>
-                                            </div>
-
-                                            </div>
-                                        </div>
-                                        <!--fin contact-->
+                                        
 
                                     </div>
 
@@ -213,43 +180,43 @@
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label"> Avatar</label>
                                                 <div class="col-lg-8">
-                                                    <input type="file" id="exampleInputFile" class="file-pos" name="avatar_img">
+                                                    <input type="file" id="exampleInputFile" class="file-pos" name="avatar_img" value="<?= $this->session->get('email'); ?>">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Nom</label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" placeholder="" id="c-name" class="form-control" name="lastname">
+                                                    <input type="text" placeholder="" id="c-name" class="form-control" name="lastname" value="<?= $this->session->get('lastname'); ?>">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Prénom</label>
                                                 <div class="col-lg-8">
-                                                <input type="text" placeholder=" " id="lives-in" class="form-control" name="firstname">
+                                                <input type="text" placeholder=" " id="lives-in" class="form-control" name="firstname" value="<?= $this->session->get('firstname'); ?>">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Téléphone</label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" placeholder=" " id="country" class="form-control" name="phone">
+                                                    <input type="text" class="form-control" name="phone" placeholder="Téléphone" value="<?= $this->session->get('phone'); ?>">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Email</label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" placeholder=" " id="country" class="form-control" name="email">
+                                                    <input type="text" placeholder=" " id="country" class="form-control" name="email" value="<?= $this->session->get('email'); ?>">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Description</label>
                                                 <div class="col-lg-8">
-                                                    <textarea rows="10" cols="30" class="form-control" id="" name="description"></textarea>
+                                                    <textarea rows="10" cols="30" class="form-control" id="" name="description">value="<?= $this->session->get('description'); ?>"</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-lg-offset-2 col-lg-10">
-                                                    <button class="btn btn-theme" type="submit">Sauvegarder</button>
-                                                    <button class="btn btn-theme04" type="button">Supprimer</button>
+                                                    <input class="btn btn-theme" type="submit" value="Sauvegarder">
+                                                    
                                                 </div>
                                             </div>
                                         </form>
@@ -258,8 +225,8 @@
 
                                     <!--début modif mdp-->
                                     <div class="col-lg-10 col-lg-offset-2 detailed mt">
-                                        <h4 class="mb">Contact Information</h4>
-                                        <form role="form" class="form-horizontal">
+                                        <h4 class="mb">Modifier mon mot de passe</h4>
+                                        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=updateProfile">
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Nouveau mot de passe</label>
                                                 <div class="col-lg-8">
@@ -274,7 +241,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-lg-offset-2 col-lg-10">
-                                                    <button class="btn btn-theme" type="submit">Réinitialiser</button>
+                                                    <input class="btn btn-theme" type="submit" value="Réinitialiser">
                                                 </div>
                                             </div>
                                         </form>

@@ -11,8 +11,7 @@ class BackController extends Controller
         if(!$this->session->get('email')){
             $this->session->set('needLogin', 'Vous devez être connecté pour accéder à cet page');
             header('Location: ../public/index.php?route=login');
-        } else {
-            return true;
+            exit();
         }
     }
 
@@ -22,8 +21,7 @@ class BackController extends Controller
         if(!($this->session->get('status') === '99')){
             $this->session->set('notAdmin', 'Vous n\'avez pas accès à cette page');
             header('Location: ../public/index.php?route=dashboard');
-        } else {
-            return true;
+            exit();
         }
     }
 
@@ -35,7 +33,7 @@ class BackController extends Controller
             $count = $this->estateDAO->getEstatePublishCount();
             $countDraft = $this->estateDAO->getEstateDraftCount();
             $countAgent = $this->agentDAO->getAgentCount();
-            $estatesByAgent = $this->estateDAO->getEstatesByAgent();
+            //$estatesByAgent = $this->estateDAO->getEstatesByAgent();
             
             return $this->view->renderTemplate('dashboard', [
                 'estates' => $estates,
@@ -414,7 +412,6 @@ class BackController extends Controller
                     $password = password_hash($post->get('password'), PASSWORD_BCRYPT);
 
                     $this->agentDAO->addAgent($post, $password, $token, $createdAt->format('Y-m-d H:i:s'));
-                    $this->emailDAO->registerEmail($post);
                     
                     $this->session->set('addAgent', 'L\'inscription a bien été prise en compte');
                     header('Location: ../public/index.php?route=all_agents');
@@ -450,16 +447,16 @@ class BackController extends Controller
         }
     }
 
-    public function updateProfile(Parameter $post)
+    public function editProfile(Parameter $post)
     {
         if($this->checkLoggedIn()){
             if($post->get('submit')){
                 $this->agentDAO->updateProfile($post, $this->session->get('email'));
                 $this->session->set('update_profile', 'Votre profile a été mis à jour');
-                header('Location: ../public/index.php?route=updateProfile');
+                header('Location: ../public/index.php?route=Profile');
                 exit();
             }
-            return $this->view->renderTemplate('update_profile');
+            return $this->view->renderTemplate('profile');
         }
     }
 

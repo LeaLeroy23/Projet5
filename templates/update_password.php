@@ -8,17 +8,18 @@
             <div class="row mt">
                 <div class="col-lg-12">
                     <div class="form-panel">
-                        <h4 class="mb"><i class="fa fa-plus"></i> Modification du mot de passse de <?= $this->session->get('fname'); ?> <?= $this->session->get('lname'); ?></h4>
+                        <h4 class="mb"><i class="fa fa-plus"></i> Modification du mot de passse de <?= $this->session->get('lastname'); ?> <?= $this->session->get('lname'); ?></h4>
                         
                         <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Nom</label>
                             <div class="col-sm-4">
-                                <p><?= $this->session->get('Lname'); ?></p>
+                                <p><?= $this->session->get('lastname'); ?></p>
                             </div>
 
                             <label class="col-sm-2 col-sm-2 control-label">Prénom</label>
                             <div class="col-sm-4">
-                                <p><?= $this->session->get('fname'); ?></p>
+                            <p><?= $this->session->get('firstname'); ?></p>
+                            <p><?php print_r($this->session); ?></p>
                             </div>
                         </div>
 

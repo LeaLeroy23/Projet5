@@ -58,24 +58,31 @@ class FrontController extends Controller
 
     public function login(Parameter $post)
     {
-        if($post->get('submit')){
-            $result = $this->agentDAO->login($post);
-            if($result && $result['isPasswordValid']){
-                $this->session->set('login', 'Content de vous revoir');
-                $this->session->set('id', $result['result']['id']);
-                $this->session->set('status', $result['status']);
-                
-                $this->session->set('email', $post->get('email'));
-                header('Location: ../public/index.php?route=dashboard');
+        if(!$this->checkLoggedIn()){
+            if($post->get('submit')){
+                $result = $this->agentDAO->login($post);
+                if($result && $result['isPasswordValid']){
+                    $this->session->set('login', 'Content de vous revoir');
+                    $this->session->set('id', $result['result']['id']);
+                    $this->session->set('status', $result['status']);
+                    $this->session->set('firstname', $result['firstname']);
+                    $this->session->set('lastname', $result['lastname']);
+                    $this->session->set('description', $result['description']);
+                    $this->session->set('avatar', $result['avatar']);
+                    $this->session->set('phone', $result['phone']);
+                    
+                    $this->session->set('email', $post->get('email'));
+                    header('Location: ../public/index.php?route=dashboard');
+                }
+                else {
+                    $this->session->set('error_login', "L'identifiant ou le mot de passe sont incorrect");
+                    return $this->view->render('login', [
+                        'post' => $post
+                    ]);
+                }
             }
-            else {
-                $this->session->set('error_login', "L'identifiant ou le mot de passe sont incorrect");
-                return $this->view->render('login', [
-                    'post' => $post
-                ]);
-            }
+            return $this->view->render('login');
         }
-        return $this->view->render('login');
     }
 
 }

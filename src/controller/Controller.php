@@ -24,7 +24,6 @@ abstract class Controller
     protected $energyDAO;
     protected $frequencyDAO;
     protected $pictureDAO;
-    protected $emailDAO;
     protected $view;
     private $request;
     protected $get;
@@ -41,7 +40,6 @@ abstract class Controller
         $this->energyDAO = new EnergyDAO();
         $this->frequencyDAO = new FrequencyDAO();
         $this->pictureDAO = new PictureDAO();
-        $this->emailDAO = new EmailDAO();
         $this->view = new View();
         $this->validation = new Validation();
         $this->request = new Request();
