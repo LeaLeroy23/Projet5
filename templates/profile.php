@@ -85,7 +85,7 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <a href="../public/index.php?route=editProfile&agentId=<?=$this->session->get('id');?>"><button type="button" class="btn btn-primary btn-lg btn-block">Modifier mon profil</button></a>
+                                                <a href="#edit"><button type="button" class="btn btn-primary btn-lg btn-block">Modifier mon profil</button></a>
                                             </div>
                                         </div>
 
@@ -177,47 +177,50 @@
                                     <div class="col-lg-1"></div>
                                     <div class="col-lg-10 detailed">
                                         <h4 class="mb">Information Personnel</h4>
-                                        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=editProfile&agentId=<?= $this->session->get('id'); ?>">
-                                            <div class="form-group">
-                                                <label class="col-lg-2 control-label"> Avatar</label>
-                                                <div class="col-lg-8">
-                                                    <input type="file" id="exampleInputFile" class="file-pos" name="avatar_img" value="<?= $this->session->get('email'); ?>">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-lg-2 control-label">Nom</label>
-                                                <div class="col-lg-8">
-                                                    <input type="text" placeholder="" id="c-name" class="form-control" name="lastname" value="<?= $this->session->get('lastname'); ?>">
-                                                </div>
-                                            </div>
+                                        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=editProfile&agentId=<?=$agent->getId();?>">
+                                            
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Prénom</label>
                                                 <div class="col-lg-8">
-                                                <input type="text" placeholder=" " id="lives-in" class="form-control" name="firstname" value="<?= $this->session->get('firstname'); ?>">
+                                                <input type="text" id="lives-in" class="form-control" name="firstname" value="<?=htmlspecialchars($agent->getFirstname());?>">
                                                 </div>
                                             </div>
+
+                                            <div class="form-group">
+                                                <label class="col-lg-2 control-label">Nom</label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" id="c-name" class="form-control" name="lastname" value="<?=htmlspecialchars($agent->getLastname());?>">
+                                                </div>
+                                            </div>
+                                            
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Téléphone</label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="phone" placeholder="Téléphone" value="<?= $this->session->get('phone'); ?>">
+                                                    <input type="text" class="form-control" name="phone" placeholder="Téléphone" value="<?=htmlspecialchars($agent->getPhone());?>">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Email</label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" placeholder=" " id="country" class="form-control" name="email" value="<?= $this->session->get('email'); ?>">
+                                                    <input type="text" id="country" class="form-control" name="email" value="<?=htmlspecialchars($agent->getEmail());?>">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Description</label>
                                                 <div class="col-lg-8">
-                                                    <textarea rows="10" cols="30" class="form-control" id="" name="description" value="<?= $this->session->get('description'); ?>"><?= $this->session->get('description'); ?></textarea>
+                                                    <textarea rows="10" cols="30" class="form-control" id="" name="description"><?=htmlspecialchars($agent->getDescription());?></textarea>
                                                 </div>
                                             </div>
-                                            
-                                                
-                                            <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Mettre à jour">
-                                                
+                                            <div class="form-group">
+                                                <label class="col-lg-2 control-label">Avatar</label> 
+                                                <div class="col-lg-8">
+                                                    <input type="file" id="exampleInputFile" class="file-pos" name="avatar" value="<?=htmlspecialchars($agent->getAvatar());?>">
+                                                </div>
+                                                <br />
+                                                <div class="col-lg-8">
+                                                    <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Mettre à jour">
+                                                </div>
+                                            </div>
                                             
                                         </form>
                                     </div>

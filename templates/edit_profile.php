@@ -12,14 +12,14 @@
                         <div class="form-group">
                             <label class="col-lg-2 control-label"> Avatar</label>
                             <div class="col-lg-8">
-                                <input type="file" id="exampleInputFile" class="file-pos" name="avatar_img" value="<?= $this->session->get('email'); ?>">
+                                <input type="file" id="exampleInputFile" class="file-pos" name="avatar_img" value="<?= $this->session->get('avatar'); ?>">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-lg-2 control-label">Nom</label>
                             <div class="col-lg-8">
-                                <input type="text" placeholder="" id="c-name" class="form-control" name="lastname" value="<?= $this->session->get('lastname'); ?>">
+                                <input type="text" id="c-name" class="form-control" name="lastname" value="<?=htmlspecialchars($agent->getLastname());?>">
                             </div>
                         </div>
 
@@ -47,7 +47,7 @@
                         <div class="form-group">
                             <label class="col-lg-2 control-label">Description</label>
                             <div class="col-lg-8">
-                                <textarea rows="10" cols="30" class="form-control" id="" name="description" value="<?= $this->session->get('description'); ?>"><?= $this->session->get('description'); ?></textarea>
+                                <textarea rows="10" cols="30" class="form-control" name="description" value="<?= $this->session->get('description'); ?>"><?= $this->session->get('description'); ?></textarea>
                             </div>
                         </div>
                                             

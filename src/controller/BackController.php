@@ -436,7 +436,12 @@ class BackController extends Controller
     public function profile()
     {
         if($this->checkLoggedIn()){
-            return $this->view->renderTemplate('profile');
+            $agentId = $this->session->get('id');
+            $agent = $this->agentDAO->getAgent($agentId);
+
+            return $this->view->renderTemplate('profile', [
+                'agent' => $agent
+            ]);
         }
     }
 
@@ -455,17 +460,19 @@ class BackController extends Controller
 
     public function editProfile(Parameter $post, $agentId)
     {
-
         if($this->checkLoggedIn()){
-            
+            $agent = $this->agentDAO->getAgent($agentId);
+
             if($post->get('submit')){
-                
-                $this->agentDAO->editProfile($post, $this->session->get('id'));
+                $agentId = $this->session->get('id');
+                $this->agentDAO->editProfile($post, $agentId);
                 $this->session->set('update_profile', 'Votre profile a été mis à jour');
                 header('Location: ../public/index.php?route=Profile');
                 exit();
             }
-            return $this->view->renderTemplate('edit_profile');
+            return $this->view->renderTemplate('edit_profile', [
+                'agente' => $agent,
+            ]);
         }
     }
 
