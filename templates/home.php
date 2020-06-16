@@ -170,7 +170,7 @@
                             </div>
                             <div class="properties-content">
                                 <h3><a href="index.php?route=estate&estateId=<?= ($estate['id']);?>"><?= ($estate['title']);?></a></h3>
-                                <p><i class="fa fa-map-marker"></i> <?= ($estate['zip_code']);?></p>
+                                <p><i class="fa fa-map-marker"></i> <?= ($estate['city']);?></p>
                                 <p class="detail-text"><?= ($estate['excerpt']);?></p>
                                 <div class="price-detail">
                                     <p class="price-range pull-left"><?= ($estate['price']);?> €</p>
@@ -236,7 +236,7 @@
                                     <div class="overlay"></div>
                                 </div>
                                 <div class="agent-detail text-center">
-                                    <h3><a href="index.php?route=agent&agentId=<?= ($agent->getId());?>"><?= ($agent->getFirstname());;?><?= ($agent->getLastname());;?></a> </h3>
+                                    <h3><a href="index.php?route=agent&agentId=<?= ($agent->getId());?>"><?= ($agent->getFirstname());?> <?= ($agent->getLastname());?></a> </h3>
                                     <p><?= ($agent->getFunction());?></p>
                                 </div>
                             </div>

@@ -13,7 +13,7 @@ class Picture
     /**
      * @var string
      */
-    private $filename;
+    private $file;
 
     /**
      * @var int
@@ -40,17 +40,17 @@ class Picture
     /**
      * @return string
      */
-    public function getFilename()
+    public function getFile()
     {
-        return $this->filename;
+        return $this->file;
     }
 
     /**
-     * @param string $filename
+     * @param string $file
      */
-    public function setFilename($filename)
+    public function setFile($file)
     {
-        $this->filename = $filename;
+        $this->file = $file;
     }
 
     /**

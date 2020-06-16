@@ -33,7 +33,7 @@
                                 <div class="column-property-content-wrap">
                                     <div class="column-property-content">
                                         <h2><a href="single-property.php"><?= ($estate['title']);?> €</a> </h2>
-                                        <h3><?= ($estate['zip_code']);?></h3>
+                                        <h3><?= ($estate['city']);?></h3>
                                         <p><?= ($estate['excerpt']);?></p>
                                     </div>
                                     <div class="column-property-more">
@@ -46,10 +46,6 @@
                             }
                         ?>
 
-                    
-                    <div class="scroll-for-btn">
-                        <a href="single-property.php">Voir plus</a>
-                    </div>
                 </div>
 
                 <div class="col-md-4 col-sm-12 padding-left-65">

@@ -24,7 +24,7 @@ class Router
     public function run()
     {
         $route = $this->request->getGet()->get('route');
-        /*try{*/
+        //try{
             if(isset($_GET['route']))
             {
                 if($route === 'estate'){
@@ -106,6 +106,7 @@ class Router
                     $this->backController->configuration();
                 }
                 elseif ($route === 'dashboard'){
+                    
                     $this->backController->dashboard();
                 }
                 elseif ($route === 'logout'){

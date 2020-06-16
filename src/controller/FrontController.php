@@ -6,6 +6,16 @@ use Hestia\config\Parameter;
 
 class FrontController extends Controller
 {
+    private function loggedIn()
+    {
+        if($this->session->get('email')){
+            $this->session->set('needLogin', 'Vous devez être connecté pour accéder à cet page');
+            header('Location: index.php?route=dashboard');
+            exit();
+        } else {
+            return true;
+        }
+    }
 
     public function home()
     {
@@ -56,9 +66,11 @@ class FrontController extends Controller
         ]);
     }
 
+
+
     public function login(Parameter $post)
     {
-        if(!$this->checkLoggedIn()){
+        if($this->loggedIn()){
             if($post->get('submit')){
                 $result = $this->agentDAO->login($post);
                 if($result && $result['isPasswordValid']){
@@ -67,12 +79,14 @@ class FrontController extends Controller
                     $this->session->set('status', $result['status']);
                     $this->session->set('firstname', $result['firstname']);
                     $this->session->set('lastname', $result['lastname']);
+                    $this->session->set('function', $result['function']);
                     $this->session->set('description', $result['description']);
                     $this->session->set('avatar', $result['avatar']);
                     $this->session->set('phone', $result['phone']);
                     
                     $this->session->set('email', $post->get('email'));
                     header('Location: ../public/index.php?route=dashboard');
+                    exit();
                 }
                 else {
                     $this->session->set('error_login', "L'identifiant ou le mot de passe sont incorrect");

@@ -11,7 +11,7 @@ class PictureDAO extends DAO
     private function buildObject($row){
         $picture = new Picture;
         $picture->setId($row['id']);
-        $picture->setFilename($row['filename']);
+        $picture->setFile($row['file']);
         $picture->setEstateId($row['estate_id']);
         return $picture;
     }
@@ -50,15 +50,16 @@ class PictureDAO extends DAO
         return $pictures;
     }
 
-    public function addPictures(Parameter $post, Parameter $filename)
+    public function addPictures($post, $file, $estateId)
     {
-
-        $sql = 'INSERT INTO picture (filename, estate_id) VALUES (:filename, :estate_id)';
+        var_dump($post, $file);
+        die();
+        $sql = 'INSERT INTO picture (file, estate_id) VALUES (:file, :estate_id)';
         $result = $this->createQuery($sql, [
-            'filename' => $filename,
-            'estate_id' => $post->get('estateId')
+            'file' => $file,
+            'estate_id' => $estateId
         ]);
-        return $picture;
+        
     }
 
     public function deletePicture($pictureId){

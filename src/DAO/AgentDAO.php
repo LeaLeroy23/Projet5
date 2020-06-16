@@ -15,7 +15,9 @@ class AgentDAO extends DAO
         $agent->setLastname($row['lastname']);
         $agent->setPhone($row['phone']);
         $agent->setEmail($row['email']);
+        $agent->setAvatar($row['avatar']);
         $agent->setFunction($row['function']);
+        $agent->setDescription($row['description']);
         $agent->setPassword($row['password']);
         $agent->setStatus($row['status']);
         return $agent;
@@ -81,18 +83,30 @@ class AgentDAO extends DAO
     public function login(Parameter $post)
     {
         
-        $sql= 'SELECT id, password, status FROM agent WHERE email = ?';
+        $sql= 'SELECT id, password, firstname, lastname, phone, function, description, avatar, status FROM agent WHERE email = ?';
         $data = $this->createQuery($sql, [
             $post->get('email')
         ]);
         $result = $data->fetch();
         $isPasswordValid = $post->get('password');
         $isPasswordValid = password_verify($post->get('password'), $result['password']);
+        $firstname = $result['firstname'];
+        $lastname = $result['lastname'];
+        $phone = $result['phone'];
+        $function = $result['function'];
+        $description = $result['description'];
+        $avatar = $result['avatar'];
         $status = $result['status'];
         
         return[
             'result' => $result,
             'isPasswordValid' => $isPasswordValid,
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'phone' => $phone,
+            'function' => $function,
+            'description' => $description,
+            'avatar' => $avatar,
             'status' => $status
         ];
         

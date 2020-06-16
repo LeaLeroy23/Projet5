@@ -104,7 +104,7 @@
                                 <?php
                                     if ($this->session->get('email')) {
                                 ?>
-                                    <a href="index.php?route=login"><i class="fa fa-user"></i>Déconnexion</a>
+                                    <a href="index.php?route=logout"><i class="fa fa-user"></i>Déconnexion</a>
                                 <?php
                                     } else {
                                 ?>

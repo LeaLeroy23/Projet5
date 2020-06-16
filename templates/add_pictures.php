@@ -1,6 +1,6 @@
 <?php $this->title = "Ajouter des images"; ?>
 
-<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css" />
 
 <!--main content start-->
     <section id="main-content">
@@ -9,15 +9,18 @@
 
             <div class="row mt">
                 <div class="col-lg-12">
-
                     <div class="form-panel">
-                        <form method="post" action="../public/index.php?route=addPictures" class="dropzone" enctype="multipart/form-data">
-                            <div class="fallback">
-                                <input type="file"  name="files_upload" multiple />
-                                <input type="hidden" name="estate_id" id="estate-id" value="<?= ($estate->getId());?>" />
-                                <!--<input type="submit" name="submit" value="valider"/>-->
-                            </div>
-                        </form>
+                        <form action="../public/index.php?route=addPictures" class="dropzone" id="dropzoneFrom"></form>
+                        <br />
+                        <br />
+                        <div align="center">
+                            <button type="button" class="btn btn-info" id="submit-all">Upload</button>
+                        </div>
+                        <br />
+                        <br />
+                        <div id="preview"></div>
+                        <br />
+                        <br />
                     </div>
                 </div>
 
@@ -39,8 +42,8 @@
                             foreach($pictures as $picture){
                             ?>
                                 <tr>
-                                    <td><img src="..\public\img\upload\"<?=$picture->getFilename();?> height="150"></td>
-                                    <td><?=htmlspecialchars($picture->getFilename());?></td>
+                                    <td><img src="..\public\img\upload\"<?=$picture->getFile();?> height="150"></td>
+                                    <td><?=htmlspecialchars($picture->getFile());?></td>
                                     <td>
                                         <a href="../public/index.php?route=deletePicture&pictureId=<?=$picture->getId();?>"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i> Supprimer</button></a>
                                     </td>
@@ -62,9 +65,57 @@
     </section>
     <!-- /MAIN CONTENT  -->
 
-    <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
     <script>
-    
-    </script>
 
+    $(document).ready(function(){
+    
+    Dropzone.options.dropzoneFrom = {
+    autoProcessQueue: false,
+    acceptedFiles:".png,.jpg,.gif,.bmp,.jpeg",
+    init: function(){
+    var submitButton = document.querySelector('#submit-all');
+    myDropzone = this;
+    submitButton.addEventListener("click", function(){
+        myDropzone.processQueue();
+    });
+    this.on("complete", function(){
+        if(this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0)
+        {
+        var _this = this;
+        _this.removeAllFiles();
+        }
+        list_image();
+    });
+    },
+    };
+
+    list_image();
+
+    function list_image()
+    {
+    $.ajax({
+    url:"../public/index.php?route=addPictures",
+    success:function(data){
+        $('#preview').html(data);
+    }
+    });
+    }
+
+    $(document).on('click', '.remove_image', function(){
+    var name = $(this).attr('id');
+    $.ajax({
+    url:"../public/index.php?route=addPictures",
+    method:"POST",
+    data:{name:name},
+    success:function(data)
+    {
+        list_image();
+    }
+    })
+    });
+    
+    });
+    </script>

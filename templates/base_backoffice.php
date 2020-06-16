@@ -83,16 +83,16 @@
                             </li>
 
                             <li class="mt">
-                                <a href="index.php?route=allAgents">
-                                <i class="fa fa-users"></i>
-                                <span>Les agents</span>
+                                <a href="index.php?route=addAgent">
+                                <i class="fa fa-plus"></i>
+                                <span>Nouvelle Agent</span>
                                 </a>
                             </li>
 
                             <li class="mt">
-                                <a href="index.php?route=addAgent">
-                                <i class="fa fa-plus"></i>
-                                <span>Nouvelle Agent</span>
+                                <a href="index.php?route=allAgents">
+                                <i class="fa fa-users"></i>
+                                <span>Les agents</span>
                                 </a>
                             </li>
 
@@ -161,7 +161,7 @@
                 <?= $content; ?>
 
                     <!-- /MAIN CONTENT -->
-                    </section>
+                </section>
                 <!--main content end-->
                 <!--footer start-->
             <footer class="site-footer">

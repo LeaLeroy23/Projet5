@@ -10,8 +10,10 @@ class BackController extends Controller
     {
         if(!$this->session->get('email')){
             $this->session->set('needLogin', 'Vous devez être connecté pour accéder à cet page');
-            header('Location: ../public/index.php?route=login');
+            header('Location: index.php?route=login');
             exit();
+        } else {
+            return true;
         }
     }
 
@@ -22,11 +24,14 @@ class BackController extends Controller
             $this->session->set('notAdmin', 'Vous n\'avez pas accès à cette page');
             header('Location: ../public/index.php?route=dashboard');
             exit();
+        } else {
+            return true;
         }
     }
 
     public function dashboard()
     {
+        
         if($this->checkLoggedIn()){
             $estates = $this->estateDAO->getEstates();
             $agents = $this->agentDAO->getAgents();
@@ -161,45 +166,47 @@ class BackController extends Controller
             $errors = $this->validation->validate($post, 'Pictures');
 
             if($post->get('submit')){
-                
-                if (!$errors){
-                    $form=[];
-                    $maxsize = 5 * 1024 * 1024;
-                    if (isset($_FILES["filename"]) && $_FILES["filename"]["error"] == 0) {
-                        
-                        $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png", "PNG" => "image/PNG");
-                        $filename = $_FILES["filename"]["name"];
-                        $filetype = $_FILES["filename"]["type"];
-                        $filesize = $_FILES["filename"]["size"];
+                $folder_name = '../public/img/upload/';
 
-                        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-                        if (!array_key_exists($ext, $allowed)) {
-                            echo("Erreur : Veuillez sélectionner un format de fichier valide.");
-                        }
-
-                        if ($filesize > $maxsize) {
-                            echo("Erreur: La taille du fichier est supérieure à la limite autorisée.");
-                        }
-
-                        if (in_array($filetype, $allowed)) {
-                            /**verifie si le fichier existe avant de le telecharger*/
-                            if (file_exists("../public/img/upload/" . $_FILES["filename"]["name"])) {
-                                echo($_FILES["filename"]["name"] . "existe déjà.");
-                            } else {
-                            
-                                $filename = uniqid() . '.' . $ext;
-                                move_uploaded_file($_FILES["filename"]["tmp_name"], "../public/img/upload/" .  $filename);
-                            }
-                        } else {
-                            echo("Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");
-                        }
-                        
-                    }
-                $this->pictureDAO->addPictures($post, $files);
-                $this->session->set('addPictures', 'L\'ajout d\'images a été faite avec succès');
-                header('Location: ../public/index.php?route=allEstates');
-                exit();
+                if(!empty($_FILES))
+                {
+                $temp_file = $_FILES['file']['tmp_name'];
+                $location = $folder_name . $_FILES['file']['name'];
+                move_uploaded_file($temp_file, $location);
                 }
+
+                if(isset($_POST["name"]))
+                {
+                $filename = $folder_name.$_POST["name"];
+                unlink($filename);
+                }
+
+                $result = array();
+
+                $files = scandir('../public/img/upload/');
+
+                $output = '<div class="row">';
+
+                if(false !== $files)
+                {
+                foreach($files as $file)
+                {
+                if('.' !=  $file && '..' != $file)
+                {
+                $output .= '
+                <div class="col-md-2">
+                    <img src="'.$folder_name.$file.'" class="img-thumbnail" width="175" height="175" style="height:175px;" />
+                    <button type="button" class="btn btn-link remove_image" id="'.$file.'">Remove</button>
+                </div>
+                ';
+                }
+                }
+                }
+                $output .= '</div>';
+                echo $output;
+                
+                $this->pictureDAO->addPictures($post, $file, $estateId);
+               
             }
             
             return $this->view->renderTemplate('add_pictures', [
