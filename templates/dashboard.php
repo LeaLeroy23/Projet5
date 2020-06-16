@@ -62,31 +62,19 @@
                             <!-- /col-md-4 -->
                             <div class="col-md-12 col-sm-12 mb">
                                 <!-- REVENUE PANEL -->
-                                <div class="green-panel pn">
-                                    <div class="green-header">
+                                <div class="message-p pn">
+                                    <div class="message-header">
                                         <h5>Vos dernières annonces</h5>
                                     </div>
                                     
                                         <?php 
                                         ?>
-                                        <div class="desc">
-                                            <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-md-10">
                                                 
                                                     <table class="table table-hover">
                                                         <tbody>
                                                         
-                                                        <tr>
-                                                            <td>3</td>
-                                                            <td>Simon</td>
-                                                            <td>Mosa</td>
-                                                            <td>@twitter</td>
-                                                            <td><span class="label label-info label-mini">Publié</span></td>
-                                                            <td>
-                                                                <a href="../public/index.php?route=editEstate&estateId="><button class="btn btn-warning btn-xs" title="Modifier"><i class="fa fa-pencil"></i></button></a>
-                                                                <a href="../public/index.php?route=deleteEstate&estateId"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i></button></a>
-                                                                <a href="../public/index.php?route=addPictures&estateId="><button class="btn btn-primary btn-xs" title="Ajouter des images"><i class="fa fa-camera "></i></button></a>
-                                                            </td>
-                                                        </tr>
                                                         </tbody>
                                                     </table>
                                                 

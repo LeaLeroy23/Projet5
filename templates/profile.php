@@ -1,6 +1,7 @@
 <?php $this->title = 'Mon profil'; ?>
 <section id="main-content">
     <section class="wrapper site-min-height">
+    <?= $this->session->show('update_profile'); ?>
 
         <div class="row mt">
             <div class="col-lg-12">
@@ -9,7 +10,7 @@
                     <div class="col-sm-1"></div>
 
                     <div class="col-md-4 profile-text">
-                        <h3><?= $this->session->get('lname'); ?> <?= $this->session->get('fname'); ?></h3>
+                        <h3><?= $this->session->get('lastname'); ?> <?= $this->session->get('firstname'); ?></h3>
                         <h6><?= $this->session->get('function'); ?></h6>
                         <p><?= $this->session->get('description'); ?></p>
                         <br>
@@ -83,8 +84,8 @@
                                                             <td><?= $this->session->get('description'); ?></td>
                                                         </tr>
                                                     </tbody>
-
                                                 </table>
+                                                <a href="../public/index.php?route=editProfile&agentId=<?=$this->session->get('id');?>"><button type="button" class="btn btn-primary btn-lg btn-block">Modifier mon profil</button></a>
                                             </div>
                                         </div>
 
@@ -176,7 +177,7 @@
                                     <div class="col-lg-1"></div>
                                     <div class="col-lg-10 detailed">
                                         <h4 class="mb">Information Personnel</h4>
-                                        <form role="form" class="form-horizontal">
+                                        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=editProfile&agentId=<?= $this->session->get('id'); ?>">
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label"> Avatar</label>
                                                 <div class="col-lg-8">
@@ -210,15 +211,14 @@
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Description</label>
                                                 <div class="col-lg-8">
-                                                    <textarea rows="10" cols="30" class="form-control" id="" name="description">value="<?= $this->session->get('description'); ?>"</textarea>
+                                                    <textarea rows="10" cols="30" class="form-control" id="" name="description" value="<?= $this->session->get('description'); ?>"><?= $this->session->get('description'); ?></textarea>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <div class="col-lg-offset-2 col-lg-10">
-                                                    <input class="btn btn-theme" type="submit" value="Sauvegarder">
-                                                    
-                                                </div>
-                                            </div>
+                                            
+                                                
+                                            <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Mettre à jour">
+                                                
+                                            
                                         </form>
                                     </div>
                                     <div class="col-md-1"></div>
@@ -226,7 +226,8 @@
                                     <!--début modif mdp-->
                                     <div class="col-lg-10 col-lg-offset-2 detailed mt">
                                         <h4 class="mb">Modifier mon mot de passe</h4>
-                                        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=updateProfile">
+
+                                        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=updatePassword">
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Nouveau mot de passe</label>
                                                 <div class="col-lg-8">

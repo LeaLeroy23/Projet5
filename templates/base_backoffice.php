@@ -57,7 +57,10 @@
                         <!-- sidebar menu start-->
                         <ul class="sidebar-menu" id="nav-accordion">
                             <p class="centered"><a href="index.php?route=profile"><img src="../public/img/agent/ui-sam.jpg" class="img-circle" width="80"></a></p>
-                            <h5 class="centered"></h5>
+                            <h5 class="centered">
+                            <?= $this->session->show('login'); ?>
+                            <?= $this->session->get('firstname'); ?> <?= $this->session->get('lastname'); ?>
+                            </h5>
                             <?php
                                 if ($this->session->get('status') === "99") {
                             ?>
@@ -97,7 +100,7 @@
                             </li>
 
                             <li class="mt">
-                                <a href="index.php?route=profile">
+                                <a href="index.php?route=profile&agentId=<?= $this->session->get('id'); ?>">
                                 <i class="fa fa-user-circle"></i>
                                 <span>Mon Profil</span>
                                 </a>
@@ -182,9 +185,9 @@
         <!-- js placed at the end of the document so the pages load faster -->
         <script src="../public/lib/jquery/jquery.min.js"></script>
         <script src="../public/lib/bootstrap/js/bootstrap.min.js"></script>
-        <script class="include" type="text/javascript" src="../public/lib/jquery.dcjqaccordion.2.7.js"></script>-->
+        <script class="include" type="text/javascript" src="../public/lib/jquery.dcjqaccordion.2.7.js"></script>
         <script src="../public/lib/jquery.scrollTo.min.js"></script>
-        <script src="../public/lib/jquery.nicescroll.js" type="text/javascript"></script>-->
+        <script src="../public/lib/jquery.nicescroll.js" type="text/javascript"></script>
         <!--common script for all pages-->
         <script src="../public/lib/common-scripts.js"></script>
         <!--script for this page-->

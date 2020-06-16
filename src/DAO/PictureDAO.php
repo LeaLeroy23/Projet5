@@ -59,6 +59,7 @@ class PictureDAO extends DAO
             'file' => $file,
             'estate_id' => $estateId
         ]);
+        return $result;
         
     }
 

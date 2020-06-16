@@ -165,50 +165,49 @@ class BackController extends Controller
             $pictures = $this->pictureDAO->getPicturesByEstateId($estateId);
             $errors = $this->validation->validate($post, 'Pictures');
 
-            if($post->get('submit')){
+            
                 $folder_name = '../public/img/upload/';
 
                 if(!empty($_FILES))
                 {
-                $temp_file = $_FILES['file']['tmp_name'];
-                $location = $folder_name . $_FILES['file']['name'];
-                move_uploaded_file($temp_file, $location);
+                    $temp_file = $_FILES['file']['tmp_name'];
+                    $location = $folder_name . $_FILES['file']['name'];
+                    move_uploaded_file($temp_file, $location);
+                    var_dump($file);
+                    die();
+                    $this->pictureDAO->addPictures($post, $file, $estateId);
                 }
 
                 if(isset($_POST["name"]))
                 {
-                $filename = $folder_name.$_POST["name"];
-                unlink($filename);
+                    $filename = $folder_name.$_POST["name"];
+                    unlink($filename);
                 }
 
                 $result = array();
 
                 $files = scandir('../public/img/upload/');
 
-                $output = '<div class="row">';
+                $output = '<div class="form-panel">';
 
                 if(false !== $files)
                 {
-                foreach($files as $file)
-                {
-                if('.' !=  $file && '..' != $file)
-                {
-                $output .= '
-                <div class="col-md-2">
-                    <img src="'.$folder_name.$file.'" class="img-thumbnail" width="175" height="175" style="height:175px;" />
-                    <button type="button" class="btn btn-link remove_image" id="'.$file.'">Remove</button>
-                </div>
-                ';
-                }
-                }
+                    foreach($files as $file)
+                    {
+                        if('.' !=  $file && '..' != $file)
+                        {
+                        $output .= '
+                        <div class="col-md-2">
+                            <img src="'.$folder_name.$file.'" class="img-thumbnail" width="175" height="175" style="height:175px;" />
+                            <button type="button" class="btn btn-link remove_image" id="'.$file.'">Remove</button>
+                        </div>
+                        ';
+                        }
+                    }
                 }
                 $output .= '</div>';
                 echo $output;
                 
-                $this->pictureDAO->addPictures($post, $file, $estateId);
-               
-            }
-            
             return $this->view->renderTemplate('add_pictures', [
                 'estate' => $estate,
                 'pictures' => $pictures,
@@ -421,7 +420,7 @@ class BackController extends Controller
                     $this->agentDAO->addAgent($post, $password, $token, $createdAt->format('Y-m-d H:i:s'));
                     
                     $this->session->set('addAgent', 'L\'inscription a bien été prise en compte');
-                    header('Location: ../public/index.php?route=all_agents');
+                    header('Location: ../public/index.php?route=allAgents');
                     exit();
                     
                 }
@@ -454,16 +453,19 @@ class BackController extends Controller
         }
     }
 
-    public function editProfile(Parameter $post)
+    public function editProfile(Parameter $post, $agentId)
     {
+
         if($this->checkLoggedIn()){
+            
             if($post->get('submit')){
-                $this->agentDAO->updateProfile($post, $this->session->get('email'));
+                
+                $this->agentDAO->editProfile($post, $this->session->get('id'));
                 $this->session->set('update_profile', 'Votre profile a été mis à jour');
                 header('Location: ../public/index.php?route=Profile');
                 exit();
             }
-            return $this->view->renderTemplate('profile');
+            return $this->view->renderTemplate('edit_profile');
         }
     }
 

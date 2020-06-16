@@ -117,9 +117,18 @@ class AgentDAO extends DAO
         $this->createQuery($sql, [password_hash($post->get('password'), PASSWORD_BCRYPT), $email]);
     }
 
-    public function updateProfile(Parameter $post, $email){
-        $sql = 'UPDATE agent SET function = ?, lname = ?, fname = ?, phone = ?, email = ?, description = ?, avatar = ? WHERE email = ?';
-        $this->createQuery($sql, [password_hash($post->get('password'), PASSWORD_BCRYPT), $email]);
+    public function editProfile(Parameter $post, $email){
+        $sql = 'UPDATE agent SET function=:function, lastname = :lastname, firstname = :firstname, phone = :phone, email = :email, description = :description, avatar = :avatar WHERE email = ?';
+        $this->createQuery($sql, [
+            'function' => $post->get('function'),
+            'lastname' => $post->get('lastname'),
+            'firstname' => $post->get('firstname'),
+            'phone' => $post->get('phone'),
+            'email' => $post->get('email'),
+            'description' => $post->get('description'),
+            'avatar' => $post->get('avatar'),
+            'email' => $post->get('email'),
+        ]);
     }
 
     public function getAgentCount(){

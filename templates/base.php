@@ -64,13 +64,6 @@
         ==========================================================-->
         <link rel="stylesheet" href="../public/style.css">
 
-         <!-- Theme dashboard CSS File 
-        ==========================================================-->
-        <link rel="stylesheet" href="../public/css/dashboard.css">
-        <link rel="stylesheet" href="../public/css/dashboard.min.css">
-        <link rel="stylesheet" href="../public/css/mdb.min.css">
-        <link rel="stylesheet" href="../public/css/mdb.lite.min.css">
-
         <!-- responsive CSS 
         ==========================================================-->
         <link rel="stylesheet" href="../public/css/responsive.css">
@@ -257,7 +250,7 @@
         
     <!-- Placed js at the end of the document so the pages load faster -->
         <!-- Main jQuery file -->
-        <script src="../public/js/jquery-1.11.3.min.js"></script>
+        <script src="../public/lib/jquery/jquery.min.js"></script>
         <!-- Bootstrap Js -->
         <script src="../public/js/bootstrap.min.js"></script>
         <!-- Owl carousel js -->
@@ -270,10 +263,6 @@
         <script src="../public/js/wow.min.js"></script>
         <!-- meanmenu js -->
         <script src="../public/js/jquery.meanmenu.js"></script>
-        <!-- dashboard js -->
-        <script src="../public/js/jquery-3.4.1.min.js"></script>
-        <script src="../public/js/popper.min.js"></script>
-        <script src="../public/js/mdb.min.js"></script>
         <!-- Initialize WOW js for Animation-->
         <script>
             new WOW().init();
