@@ -42,11 +42,11 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p class="small mt">EN LIGNE</p>
-                                            <p><?php ?></p>
+                                            <p><?= $estateByAgentCount; ?></p>
                                         </div>
                                         <div class="col-md-6">
                                             <p class="small mt">BROUILLON</p>
-                                            <p><?php $countByAgent;?></p>
+                                            <p><?= $countEstateByAgentDraft; ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -60,30 +60,40 @@
                             <!-- SERVER STATUS PANELS -->
 
                             <!-- /col-md-4 -->
-                            <div class="col-md-12 col-sm-12 mb">
+                            <div class="col-md-12 col-sm-12 mt">
                                 <!-- REVENUE PANEL -->
-                                <div class="message-p pn">
+                                <div class="message-p pn conetnt-panel">
                                     <div class="message-header">
                                         <h5>Vos dernières annonces</h5>
                                     </div>
-                                    
-                                        <?php 
-                                        ?>
-                                        <div class="row">
-                                            <div class="col-md-10">
-                                                
-                                                    <table class="table table-hover">
-                                                        <tbody>
-                                                        
-                                                        </tbody>
-                                                    </table>
-                                                
-                                            </div>
-                                        </div>
-                                        <?php 
-                                            
-                                        ?>
-                                    
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Categorie</th>
+                                                <th>Type</th>
+                                                <th>Pièces</th>
+                                                <th>Titre</th>
+                                                <th>Prix</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                            foreach($estatesByAgent as $estateByAgent){
+                                            ?>
+                                            <tr>
+                                                <td><?=$estateByAgent['category'];?></td>
+                                                <td><?=$estateByAgent['type'];?></td>
+                                                <td><?=$estateByAgent['rooms'];?></td>
+                                                <td><?=$estateByAgent['title'];?></td>
+                                                <td><?=$estateByAgent['price'];?> €</td>
+                                            </tr>
+                                            <?php 
+                                            } 
+                                            ?>
+                                        </tbody>
+
+                                    </table>
+           
                                 </div>
                             </div>
                         </div>

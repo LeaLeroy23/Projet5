@@ -97,7 +97,7 @@ class Router
                     $this->backController->profile();
                 }
                 elseif ($route === 'updatePassword'){
-                    $this->backController->updatePassword($this->request->getPost());
+                    $this->backController->updatePassword($this->request->getPost(), $this->request->getGet()->get('agentId'));
                 }
                 elseif ($route === 'editProfile'){
                     $this->backController->editProfile($this->request->getPost(), $this->request->getGet()->get('agentId'));

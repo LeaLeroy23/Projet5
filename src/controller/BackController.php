@@ -33,19 +33,26 @@ class BackController extends Controller
     {
         
         if($this->checkLoggedIn()){
+            $agentId = $this->session->get('id');            
+            
             $estates = $this->estateDAO->getEstates();
             $agents = $this->agentDAO->getAgents();
             $count = $this->estateDAO->getEstatePublishCount();
             $countDraft = $this->estateDAO->getEstateDraftCount();
             $countAgent = $this->agentDAO->getAgentCount();
-            //$estatesByAgent = $this->estateDAO->getEstatesByAgent();
-            
+            $estatesByAgent = $this->estateDAO->getEstatesByAgent($agentId);
+            $estateByAgentCount = $this->estateDAO->getEstateByAgentCount($agentId);
+            $countEstateByAgentDraft = $this->estateDAO->getCountEstateByAgentDraft($agentId);
+
             return $this->view->renderTemplate('dashboard', [
                 'estates' => $estates,
                 'agents' => $agents,
                 'count' => $count,
                 'countDraft' => $countDraft,
-                'countAgent' => $countAgent
+                'countAgent' => $countAgent,
+                'estatesByAgent' => $estatesByAgent,
+                'estateByAgentCount' => $estateByAgentCount,
+                'countEstateByAgentDraft' => $countEstateByAgentDraft
             ]);
         }
     }
@@ -438,21 +445,36 @@ class BackController extends Controller
         if($this->checkLoggedIn()){
             $agentId = $this->session->get('id');
             $agent = $this->agentDAO->getAgent($agentId);
+            $count = $this->estateDAO->getEstatePublishCount();
+            $estatesByAgent = $this->estateDAO->getEstatesByAgent($agentId);
+            $estateByAgentCount = $this->estateDAO->getEstateByAgentCount($agentId);
+            $countEstateByAgentDraft = $this->estateDAO->getCountEstateByAgentDraft($agentId);
+
 
             return $this->view->renderTemplate('profile', [
-                'agent' => $agent
+                'agent' => $agent,
+                'count' => $count,
+                'estatesByAgent' => $estatesByAgent,
+                'estateByAgentCount' => $estateByAgentCount,
+                'countEstateByAgentDraft' => $countEstateByAgentDraft
             ]);
         }
     }
 
-    public function updatePassword(Parameter $post)
+    public function updatePassword(Parameter $post, $agentId)
     {
         if($this->checkLoggedIn()){
             if($post->get('submit')){
-                $this->agentDAO->updatePassword($post, $this->session->get('email'));
-                $this->session->set('update_password', 'Votre mot de passe a été mis à jour');
-                header('Location: ../public/index.php?route=profile');
-                exit();
+                if($post->get('newPassword') == $post->get('confirmPassword')){
+                    $password = $post->get('confirmPassword');
+                    $this->agentDAO->updatePassword($password, $agentId);
+                    $this->session->set('update_password', 'Votre mot de passe a été mis à jour');
+                    header('Location: ../public/index.php?route=profile');
+                    exit();
+                } else {
+                    $this->session->set('wrong_password', 'vos mots de passe ne sont pas identique');
+                }
+               
             }
             return $this->view->renderTemplate('update_password');
         }

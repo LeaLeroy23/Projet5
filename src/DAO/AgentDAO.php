@@ -20,6 +20,7 @@ class AgentDAO extends DAO
         $agent->setDescription($row['description']);
         $agent->setPassword($row['password']);
         $agent->setStatus($row['status']);
+        $agent->setCreated_at($row['created_at']);
         return $agent;
     }
 
@@ -112,23 +113,30 @@ class AgentDAO extends DAO
         
     }
 
-    public function updatePassword(Parameter $post, $email){
-        $sql = 'UPDATE agent SET password = ? WHERE email = ?';
-        $this->createQuery($sql, [password_hash($post->get('password'), PASSWORD_BCRYPT), $email]);
+    public function updatePassword($password, $agentId){
+        $sql = 'UPDATE agent SET password=:password WHERE id = agentId';
+        $this->createQuery($sql, [
+            password_hash($password, PASSWORD_BCRYPT), 
+            'agentId' => $agentId
+        ]);
     }
 
     public function editProfile(Parameter $post, $agentId){
         
-        $sql = 'UPDATE agent SET firstname = :firstname, lastname = :lastname, phone = :phone, email = :email, description = :description, avatar = :avatar WHERE email = ?';
-        var_dump($post);
-        die();
+        $sql = 'UPDATE agent SET firstname=:firstname, lastname=:lastname, phone=:phone, email =:email, description =:description, avatar =:avatar, token=:token, password=:password, status=:status, created_at=:created_at WHERE id = agentId';
+        
         $this->createQuery($sql, [
             'firstname' => $post->get('firstname'),
             'lastname' => $post->get('lastname'),
             'phone' => $post->get('phone'),
             'email' => $post->get('email'),
             'description' => $post->get('description'),
-            'avatar' => $post->get('avatar')
+            'avatar' => $post->get('avatar'),
+            'token' => $post->get('token'),
+            'password' => $post->get('password'),
+            'status' => $post->get('status'),
+            'created_at' => $post->get('created_at'),
+            'agentId' => $agentId
         ]);
     }
 

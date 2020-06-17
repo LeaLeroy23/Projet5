@@ -153,11 +153,29 @@ class EstateDAO extends DAO
         return $countDraft->fetch()[0];
     }
 
-    public function getEstateByAgent($agentId){
-        $sql = "";
-        $estateByAgent = $this->createQuery($sql)->fetchAll();
-        var_dump($estateByAgent);
-        die();
-        return $estateByAgent;
+    public function getEstatesByAgent($agentId){
+        $sql = "SELECT e.id as id, e.title as title, e.excerpt as excerpt, e.status as status, e.charge_price as charge_price, e.fees as fees, e.price as price, e.rooms as rooms, e.bedrooms as bedrooms, e.area as area, e.city as city, c.name as category, t.type as type, a.id as agent
+        FROM estate e
+        INNER JOIN category c
+        ON e.category_id = c.id
+        INNER JOIN type t
+        ON e.type_id = t.id
+        INNER JOIN agent a
+        ON e.agent_id = a.id
+        WHERE e.agent_id = " . $agentId;
+        $result = $this->createQuery($sql)->fetchAll();
+        return $result;
+    }
+
+    public function getEstateByAgentCount($agentId){
+        $sql = "SELECT COUNT(*) FROM estate WHERE agent_id = " . $agentId;
+        $estateByAgentCount = $this->createQuery($sql);
+        return $estateByAgentCount->fetch()[0];
+    }
+
+    public function getCountEstateByAgentDraft($agentId){
+        $sql = "SELECT COUNT(*) FROM estate WHERE status = 0 AND agent_id = " . $agentId;
+        $countEstateByAgentDraft = $this->createQuery($sql);
+        return $countEstateByAgentDraft->fetch()[0];
     }
 }

@@ -7,16 +7,22 @@
             <div class="col-lg-12">
                 <div class="row content-panel">
 
-                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4 profile-text mt mb centered">
+                        <div class="right-divider hidden-sm hidden-xs">
+                        <h4>Ma Description</h4>
+                        <h6><?= $this->session->get('description'); ?></h6>
+                        </div>
+                    </div>
 
                     <div class="col-md-4 profile-text">
                         <h3><?= $this->session->get('lastname'); ?> <?= $this->session->get('firstname'); ?></h3>
                         <h6><?= $this->session->get('function'); ?></h6>
-                        <p><?= $this->session->get('description'); ?></p>
-                        <br>
+                        <p><?= $this->session->get('phone'); ?></p>
+                        <p><?= $this->session->get('email'); ?></p>
+                        <p><a href=""><button class="btn btn-theme">Voir ma page</button></a></p>
                     </div>
 
-                    <div class="col-md-7 centered">
+                    <div class="col-md-4 centered">
                         <div class="profile-pic">
                             <p><img src="../public/img/agent/ui-sam.jpg" class="img-circle"></p>
                             
@@ -85,7 +91,7 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <a href="#edit"><button type="button" class="btn btn-primary btn-lg btn-block">Modifier mon profil</button></a>
+                                                <a href="#edit"><button type="button" class="btn btn-theme btn-lg btn-block">Modifier mon profil</button></a>
                                             </div>
                                         </div>
 
@@ -100,19 +106,20 @@
                                             <div class="row centered mt mb">
                                                 <div class="col-sm-4">
                                                     <h1><i class="fa fa-tags"></i></h1>
-                                                    <h3>12</h3>
+                                                    <h3><?= $count; ?></h3>
+                                                    <h6>Total d'annonce</h6>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <h1><i class="fa fa-home"></i></h1>
+                                                    <h3><?= $estateByAgentCount; ?></h3>
                                                     <h6>Toutes mes annonces</h6>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <h1><i class="fa fa-home"></i></h1>
-                                                    <h3>4</h3>
-                                                    <h6>Mes annonces à louer</h6>
+                                                    <h1><i class="fa fa-pencil"></i></h1>
+                                                    <h3><?= $countEstateByAgentDraft ?></h3>
+                                                    <h6>Mes annonces en cours</h6>
                                                 </div>
-                                                <div class="col-sm-4">
-                                                    <h1><i class="fa fa-home"></i></h1>
-                                                    <h3>8</h3>
-                                                    <h6>Mes annnonces à vendre</h6>
-                                                </div>
+                                                
                                             </div>
 
                                         </div>
@@ -147,22 +154,28 @@
                                             </thead>
 
                                             <tbody>
-
+                                            <?php 
+                                            foreach($estatesByAgent as $estateByAgent){
+                                            ?>
                                                 <tr>
-                                                    <td>2P Saint Roch</td>
-                                                    <td>à louer</td>
-                                                    <td>Appartement</td>
-                                                    <td class="numeric">2</td>
-                                                    <td class="numeric">1</td>
-                                                    <td>Grand 2 pièces refait à neuf</td>
-                                                    <td class="numeric">150</td>
-                                                    <td class="numeric">850</td>
-                                                    <td class="numeric">850</td>
+                                                    <td><?=$estateByAgent['title'];?></td>
+                                                    <td><?=$estateByAgent['category'];?></td>
+                                                    <td><?=$estateByAgent['type'];?></td>
+                                                    <td class="numeric"><?=$estateByAgent['rooms'];?></td>
+                                                    <td class="numeric"><?=$estateByAgent['bedrooms'];?></td>
+                                                    <td><?=$estateByAgent['excerpt'];?></td>
+                                                    <td class="numeric"><?=$estateByAgent['charge_price'];?></td>
+                                                    <td class="numeric"><?=$estateByAgent['fees'];?></td>
+                                                    <td class="numeric"><?=$estateByAgent['price'];?></td>
                                                     <td>
-                                                    <button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Publié</button>
+                                                    <a href="../public/index.php?route=editEstate&estateId=<?=  $estateByAgent['id']; ?>"><button class="btn btn-warning btn-xs" title="Modifier"><i class="fa fa-pencil"></i></button></a>
+                                                    <a href="../public/index.php?route=deleteEstate&estateId=<?=  $estateByAgent['id']; ?>"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i></button></a>
+                                                    <button class="btn btn-success btn-xs"><?=$estateByAgent['status'] ? 'Publié' : 'Non Publié';?></button>
                                                     </td>
                                                 </tr>
-
+                                            <?php 
+                                            } 
+                                            ?>
                                             </tbody>
 
                                         </table>
@@ -182,42 +195,55 @@
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Prénom</label>
                                                 <div class="col-lg-8">
-                                                <input type="text" id="lives-in" class="form-control" name="firstname" value="<?=htmlspecialchars($agent->getFirstname());?>">
+                                                <input type="text" class="form-control" name="firstname" value="<?=htmlspecialchars($agent->getFirstname());?>">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Nom</label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" id="c-name" class="form-control" name="lastname" value="<?=htmlspecialchars($agent->getLastname());?>">
+                                                    <input type="text" class="form-control" name="lastname" value="<?=htmlspecialchars($agent->getLastname());?>">
                                                 </div>
                                             </div>
                                             
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Téléphone</label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="phone" placeholder="Téléphone" value="<?=htmlspecialchars($agent->getPhone());?>">
+                                                    <input type="text" class="form-control" name="phone" value="<?=htmlspecialchars($agent->getPhone());?>">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Email</label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" id="country" class="form-control" name="email" value="<?=htmlspecialchars($agent->getEmail());?>">
+                                                    <input type="text" class="form-control" name="email" value="<?=htmlspecialchars($agent->getEmail());?>">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Description</label>
                                                 <div class="col-lg-8">
-                                                    <textarea rows="10" cols="30" class="form-control" id="" name="description"><?=htmlspecialchars($agent->getDescription());?></textarea>
+                                                    <textarea rows="10" cols="30" class="form-control" name="description"><?=htmlspecialchars($agent->getDescription());?></textarea>
                                                 </div>
                                             </div>
+
                                             <div class="form-group">
-                                                <label class="col-lg-2 control-label">Avatar</label> 
                                                 <div class="col-lg-8">
+                                                <label class="col-lg-2 control-label">Avatar</label> 
                                                     <input type="file" id="exampleInputFile" class="file-pos" name="avatar" value="<?=htmlspecialchars($agent->getAvatar());?>">
                                                 </div>
-                                                <br />
+                                            </div>
+
+                                            <div class="form-group hidden-part">
                                                 <div class="col-lg-8">
+                                                    <input type="hidden" class="form-control" name="token" value="<?=$agent->getToken();?>">
+                                                    <input type="hidden" class="form-control" name="password" value="<?=htmlspecialchars($agent->getPassword());?>">
+                                                    <input type="hidden" class="form-control" name="status" value="<?=$agent->getStatus();?>">
+                                                    <input type="hidden" class="form-control" name="created_at" value="<?=$agent->getCreated_at();?>">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <br />
+                                                <div class="col-lg-12">
                                                     <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Mettre à jour">
                                                 </div>
                                             </div>
@@ -230,22 +256,22 @@
                                     <div class="col-lg-10 col-lg-offset-2 detailed mt">
                                         <h4 class="mb">Modifier mon mot de passe</h4>
 
-                                        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=updatePassword">
+                                        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=updatePassword&agentId=<?=$agent->getId();?>">
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Nouveau mot de passe</label>
                                                 <div class="col-lg-8">
-                                                <input type="text" placeholder=" " id="addr1" class="form-control" name="password">
+                                                <input type="password" id="addr1" class="form-control" name="newPassword">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Retaper votre mot de passe</label>
                                                 <div class="col-lg-8">
-                                                <input type="text" placeholder=" " id="addr2" class="form-control">
+                                                    <input type="password" id="addr2" class="form-control" name="confirmPassword">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-lg-offset-2 col-lg-10">
-                                                    <input class="btn btn-theme" type="submit" value="Réinitialiser">
+                                                    <input class="btn btn-theme" type="submit" name="submit" value="Réinitialiser">
                                                 </div>
                                             </div>
                                         </form>
@@ -268,3 +294,21 @@
 
     </section>
 </section>
+
+<script>
+function validatePassword() {
+    var newPassword,confirmPassword,output = true;
+    newPassword = document.frmChange.newPassword;
+    confirmPassword = document.frmChange.confirmPassword;
+
+    if(newPassword.value != confirmPassword.value) {
+        newPassword.value="";
+        confirmPassword.value="";
+        newPassword.focus();
+        document.getElementById("confirmPassword").innerHTML = "not same";
+        output = false;
+    } 	
+    return output;
+    
+}
+</script>
