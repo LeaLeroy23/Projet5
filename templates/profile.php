@@ -38,14 +38,14 @@
                     <!--debut panel heading-->
                     <div class="panel-heading">
                         <ul class="nav nav-tabs nav-justified">
-                            <li class="active">
+                            <li id="li-profile" class="active">
                                 <a data-toggle="tab" href="#infos">Mes informations</a>
                             </li>
                             <li>
                                 <a data-toggle="tab" href="#estates">Mes annonces</a>
                             </li>
-                            <li>
-                                <a data-toggle="tab" href="#edit">Modifier mon profil</a>
+                            <li id="li-edit-profile">
+                                <a data-toggle="tab" href="#updateProfile">Modifier mon profil</a>
                             </li>
                         </ul>
                     </div>
@@ -91,7 +91,7 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <a href="#edit"><button type="button" class="btn btn-theme btn-lg btn-block">Modifier mon profil</button></a>
+                                                <button type="button" class="btn btn-theme btn-lg btn-block" id="btn-profile">Modifier mon profil</button>
                                             </div>
                                         </div>
 
@@ -185,7 +185,7 @@
                             <!--fin annonce-->
 
                             <!--début modif profil-->
-                            <div id="edit" class="tab-pane">
+                            <div class="tab-pane">
                                 <div class="row">
                                     <div class="col-lg-1"></div>
                                     <div class="col-lg-10 detailed">

@@ -16,11 +16,12 @@
                         <hr>
                         <thead>
                             <tr>
-                                <th><i class="fa fa-bullhorn"></i> Catégorie</th>
+                                <th> Catégorie</th>
                                 <th> Titre</th>
                                 <th class="hidden-phone"><i class="fa fa-square"></i> Pièces</th>
                                 <th class="hidden-phone"><i class="fa fa-home"></i> Type</th>
                                 <th class="hidden-phone"><i class="fas fa-comment-alt"></i> Description</th>
+                                <th class="hidden-phone"><i class="fa fa-user"></i> Agent</th>
                                 <th><i class="fa fa-bookmark"></i> Prix</th>
                                 <th><i class=" fa fa-edit"></i> Status</th>
                                 <th>Action</th>
@@ -35,13 +36,14 @@
                             <tr>
                                 <td><?= $estate['category'];?></td>
                                 <td>
-                                    <a href="#"><?= htmlspecialchars( $estate['title']);?></a>
+                                    <a href="index.php?route=estate&estateId=<?= ($estate['id']);?>"><?= htmlspecialchars( $estate['title']);?></a>
                                 </td>
                                 <td class="hidden-phone"><?= htmlspecialchars( $estate['rooms']);?></td>
                                 
                                 <td class="hidden-phone"><?= $estate['type'];?></td>
                                 
                                 <td class="hidden-phone"><?= htmlspecialchars($estate['excerpt']);?></td>
+                                <td><?= htmlspecialchars( $estate['firstname']);?> <?= htmlspecialchars( $estate['lastname']);?></td>
                                 <td><?= htmlspecialchars( $estate['price']);?>€</td>
                                 <td><span class="label label-info label-mini"><?= $estate['status'] ? 'Publié' : 'Non Publié';?></span></td>
                                 <td>

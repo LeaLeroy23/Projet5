@@ -165,55 +165,34 @@ class BackController extends Controller
         }
     }
 
-    public function addPictures(Parameter $post, Parameter $files, $estateId)
+    public function addPictures(Parameter $post, $estateId)
     {
         if($this->checkLoggedIn()){
             $estate = $this->estateDAO->getEstate($estateId);
             $pictures = $this->pictureDAO->getPicturesByEstateId($estateId);
             $errors = $this->validation->validate($post, 'Pictures');
 
-            
-                $folder_name = '../public/img/upload/';
+            $folder_name = 'img/test/';
+
 
                 if(!empty($_FILES))
                 {
+                    
                     $temp_file = $_FILES['file']['tmp_name'];
                     $location = $folder_name . $_FILES['file']['name'];
                     move_uploaded_file($temp_file, $location);
-                    var_dump($file);
-                    die();
-                    $this->pictureDAO->addPictures($post, $file, $estateId);
+                    var_dump($_FILES);
+                    //die();
                 }
 
                 if(isset($_POST["name"]))
                 {
+                    
                     $filename = $folder_name.$_POST["name"];
                     unlink($filename);
                 }
 
-                $result = array();
-
-                $files = scandir('../public/img/upload/');
-
-                $output = '<div class="form-panel">';
-
-                if(false !== $files)
-                {
-                    foreach($files as $file)
-                    {
-                        if('.' !=  $file && '..' != $file)
-                        {
-                        $output .= '
-                        <div class="col-md-2">
-                            <img src="'.$folder_name.$file.'" class="img-thumbnail" width="175" height="175" style="height:175px;" />
-                            <button type="button" class="btn btn-link remove_image" id="'.$file.'">Remove</button>
-                        </div>
-                        ';
-                        }
-                    }
-                }
-                $output .= '</div>';
-                echo $output;
+            
                 
             return $this->view->renderTemplate('add_pictures', [
                 'estate' => $estate,

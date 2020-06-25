@@ -80,7 +80,7 @@
                                         <option value="3">3</option>
                                         <option value="4">4</option>
                                         <option value="5">5</option>
-                                        <option value="plus">5 +</option>
+                                        <option value="6">6 +</option>
                                     </select>
                                 </div>
 
@@ -91,7 +91,8 @@
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
-                                        <option value="4 +">4 +</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
                                     </select>
                                 </div>
 
@@ -102,7 +103,8 @@
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
-                                        <option value="4 +">4 +</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
                                     </select>
                                 </div>
 
@@ -155,12 +157,12 @@
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Energie du bien</label>
                                     <div class="col-sm-10">
-                                        <select name="energy" class="form-control" multiple>
+                                        <select name="energy_id" class="form-control" multiple>
                                             <?php
                                                 foreach ($energies as $energy)
                                                 {
                                             ?>
-                                            <option value="<?= htmlspecialchars($energy->getId());?>"><?= htmlspecialchars($energy->getEnergy());?></option>
+                                            <option value="<?= $energy->getId();?>"><?= htmlspecialchars($energy->getEnergy());?></option>
                                             <?php
                                                 }
                                             ?>
@@ -212,7 +214,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Localisation</label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" name="city" placeholder="Ville">
+                                    <input type="text" class="form-control" name="city" placeholder="Ville">
                                     <?= isset($errors['city']) ? $errors['city'] : ''; ?>
                                 </div>
                             </div>
@@ -335,7 +337,7 @@
                                 
                                 <label class="col-sm-1 col-sm-1 control-label">Agent</label>
                                 <div class="col-sm-5">
-                                    <input type="number" class="form-control" name="agent_id" value="<?= $this->session->get('lastname'); ?> <?= $this->session->get('firstname'); ?>">
+                                    <input type="number" class="form-control" name="agent_id" value="<?= $this->session->get('id'); ?>"><?= $this->session->get('lastname'); ?> <?= $this->session->get('firstname'); ?>
                                 </div>
                             </div>
 
@@ -374,4 +376,5 @@
 
     </section>
 </secction>
+
 

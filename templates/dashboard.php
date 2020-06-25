@@ -100,7 +100,7 @@
 
                     </div>
 
-                    <div class="col-lg-3 ds">
+                    <div class="col-lg-3 col-md-4 ds">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="nav notify-row" id="top_menu">

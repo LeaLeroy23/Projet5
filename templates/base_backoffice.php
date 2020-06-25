@@ -61,9 +61,7 @@
                             <?= $this->session->show('login'); ?>
                             <?= $this->session->get('firstname'); ?> <?= $this->session->get('lastname'); ?>
                             </h5>
-                            <?php
-                                if ($this->session->get('status') === "99") {
-                            ?>
+                            
                             <li class="mt">
                                 <a href="index.php?route=dashboard">
                                 <i class="fa fa-dashboard"></i>
@@ -85,12 +83,20 @@
                                 </a>
                             </li>
 
+                            <?php
+                                if ($this->session->get('status') === "99") {
+                            ?>
+
                             <li class="mt">
                                 <a href="index.php?route=addAgent">
                                 <i class="fa fa-plus"></i>
                                 <span>Nouvelle Agent</span>
                                 </a>
                             </li>
+
+                            <?php
+                                }
+                            ?>
 
                             <li class="mt">
                                 <a href="index.php?route=allAgents">
@@ -106,6 +112,10 @@
                                 </a>
                             </li>
 
+                            <?php
+                                if ($this->session->get('status') === "99") {
+                            ?>
+
                             <li class="mt">
                                 <a href="index.php?route=configuration">
                                 <i class="fa fa-cogs"></i>
@@ -114,47 +124,9 @@
                             </li>
 
                             <?php
-                                } else {
-                            ?>
-
-                            <li class="mt">
-                                <a href="index.php?route=dashboard">
-                                <i class="fa fa-dashboard"></i>
-                                <span>Tableau de bord</span>
-                                </a>
-                            </li>
-
-                            <li class="mt">
-                                <a href="index.php?route=addEstate">
-                                <i class="fa fa-plus"></i>
-                                <span>Nouvelle annonce</span>
-                                </a>
-                            </li>
-
-                            <li class="mt">
-                                <a href="index.php?route=allEstates">
-                                <i class="fa fa-copy"></i>
-                                <span>Les annonces</span>
-                                </a>
-                            </li>
-
-                            <li class="mt">
-                                <a href="index.php?route=allAgents">
-                                <i class="fa fa-users"></i>
-                                <span>Les agents</span>
-                                </a>
-                            </li>
-
-                            <li class="mt">
-                                <a href="index.php?route=profile">
-                                <i class="fa fa-user-circle"></i>
-                                <span>Mon Profil</span>
-                                </a>
-                            </li>
-
-                            <?php
                                 }
                             ?>
+
                         </ul>
                         <!-- sidebar menu end-->
                     </div>
@@ -191,11 +163,10 @@
         <!--common script for all pages-->
         <script src="../public/lib/common-scripts.js"></script>
         <!--script for this page-->
-        
-        <!--<script src="../public/js/Spec.js" type="text/javascript"></script>
-        <script src="../public/js/Preview.js" type="text/javascript"></script>
-        <script src="../public/js/main.js" type="text/javascript"></script>-->
-        
+        <script src="../public/js/Spec.js" type="text/javascript"></script>
+        <script src="../public/js/updateProfile.js" type="text/javascript"></script>
+        <!--<script src="../public/js/Preview.js" type="text/javascript"></script>-->
+        <script src="../public/js/main.js" type="text/javascript"></script>
   </body>
   
 </html>

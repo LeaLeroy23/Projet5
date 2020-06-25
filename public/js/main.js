@@ -1,3 +1,5 @@
 let spec = new Spec();
 
-let imagePreview = new Preview();
+let updateProfile = new UpdateProfile();
+
+//let imagePreview = new Preview();

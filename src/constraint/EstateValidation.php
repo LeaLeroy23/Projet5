@@ -81,8 +81,8 @@ class EstateValidation extends Validation
         if($this->constraint->minLength($name, $value, 2)) {
             return $this->constraint->minLength('title', $value, 2);
         }
-        if($this->constraint->maxLength($name, $value, 75)) {
-            return $this->constraint->maxLength('title', $value, 75);
+        if($this->constraint->maxLength($name, $value, 100)) {
+            return $this->constraint->maxLength('title', $value, 100);
         }
     }
 
@@ -163,11 +163,8 @@ class EstateValidation extends Validation
 
     private function checkCharge_price($name, $value)
     {
-        if($this->constraint->notBlank($name, $value)) {
-            return $this->constraint->notBlank('charge_price', $value);
-        }
-        if($this->constraint->minLength($name, $value, 1)) {
-            return $this->constraint->minLength('charge_price', $value, 1);
+        if($this->constraint->minLength($name, $value, 0)) {
+            return $this->constraint->minLength('charge_price', $value, 0);
         }
         if($this->constraint->maxLength($name, $value, 5)) {
             return $this->constraint->maxLength('charge_price', $value, 5);
