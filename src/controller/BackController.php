@@ -165,39 +165,36 @@ class BackController extends Controller
         }
     }
 
-    public function addPictures(Parameter $post, $estateId)
+    public function addPictures(Parameter $post, Parameter $files, $estateId)
     {
         if($this->checkLoggedIn()){
             $estate = $this->estateDAO->getEstate($estateId);
             $pictures = $this->pictureDAO->getPicturesByEstateId($estateId);
-            $errors = $this->validation->validate($post, 'Pictures');
+            $folder_name = 'img/upload/';
 
-            $folder_name = 'img/test/';
+            if (!empty($_FILES)) {
+                $temp_file = $_FILES['file']['tmp_name'];
+                $location = $folder_name . $_FILES['file']['name'];
+                move_uploaded_file($temp_file, $location);
+            }
 
+            $files = $files->get('file');
+            var_dump($files);
+            $filename = $_FILES['file']['name'];
 
-                if(!empty($_FILES))
-                {
-                    
-                    $temp_file = $_FILES['file']['tmp_name'];
-                    $location = $folder_name . $_FILES['file']['name'];
-                    move_uploaded_file($temp_file, $location);
-                    var_dump($_FILES);
-                    //die();
-                }
+            if (isset($_POST["name"])) {
+                $filename = $folder_name.$filename;
+                unlink($filename);
+            }
 
-                if(isset($_POST["name"]))
-                {
-                    
-                    $filename = $folder_name.$_POST["name"];
-                    unlink($filename);
-                }
+            $result = array();
+                        
+            $this->pictureDAO->addPictures($filename, $estateId);
 
-            
-                
             return $this->view->renderTemplate('add_pictures', [
                 'estate' => $estate,
                 'pictures' => $pictures,
-                'post' => $post
+                'post' => $_POST
             ]);
         }
     }
@@ -206,7 +203,7 @@ class BackController extends Controller
     {
         if($this->checkLoggedIn()){
             $this->pictureDAO->deletePicture($pictureId);
-            $this->session->set('deleteEstate', 'L\'image a bien été supprimé');
+            $this->session->set('deletePicture', 'L\'image a bien été supprimé');
             header('Location: ../public/index.php?route=allEstates');
             exit();
         }

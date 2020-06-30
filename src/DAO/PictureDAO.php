@@ -30,7 +30,7 @@ class PictureDAO extends DAO
 
     public function getPicture($pictureId)
     {
-        $sql= 'SELECT * FROM picture';
+        $sql= 'SELECT * FROM picture where id = ?';
         $result = $this->createQuery($sql, [$pictureId]);
         $picture = $result->fetch();
         $result->closeCursor();
@@ -42,7 +42,7 @@ class PictureDAO extends DAO
         $sql= 'SELECT * FROM picture WHERE estate_id =' . $estateId;
         $result = $this->createQuery($sql);
         $pictures = [];
-        foreach ($result as $row){
+        foreach ($result as $row) {
             $pictureId = $row['id'];
             $pictures[$pictureId] = $this->buildObject($row);
         }
@@ -50,17 +50,14 @@ class PictureDAO extends DAO
         return $pictures;
     }
 
-    public function addPictures($post, $file, $estateId)
-    {
-        var_dump($post, $file);
-        die();
+    public function addPictures($filename, $estateId)
+    {       
         $sql = 'INSERT INTO picture (file, estate_id) VALUES (:file, :estate_id)';
-        $result = $this->createQuery($sql, [
-            'file' => $file,
+
+        $this->createQuery($sql, [
+            'file' => $filename,
             'estate_id' => $estateId
         ]);
-        return $result;
-        
     }
 
     public function deletePicture($pictureId){

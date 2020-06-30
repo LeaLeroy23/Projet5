@@ -41,7 +41,7 @@
                             <li id="li-profile" class="active">
                                 <a data-toggle="tab" href="#infos">Mes informations</a>
                             </li>
-                            <li>
+                            <li id="li-estate">
                                 <a data-toggle="tab" href="#estates">Mes annonces</a>
                             </li>
                             <li id="li-edit-profile">
@@ -164,10 +164,11 @@
                                                     <td class="numeric"><?=$estateByAgent['rooms'];?></td>
                                                     <td class="numeric"><?=$estateByAgent['bedrooms'];?></td>
                                                     <td><?=$estateByAgent['excerpt'];?></td>
-                                                    <td class="numeric"><?=$estateByAgent['charge_price'];?></td>
-                                                    <td class="numeric"><?=$estateByAgent['fees'];?></td>
-                                                    <td class="numeric"><?=$estateByAgent['price'];?></td>
+                                                    <td class="numeric"><?=$estateByAgent['charge_price'];?> €</td>
+                                                    <td class="numeric"><?=$estateByAgent['fees'];?> €</td>
+                                                    <td class="numeric"><?=$estateByAgent['price'];?> €</td>
                                                     <td>
+                                                    <a href="../public/index.php?route=addPictures&estateId=<?=  $estateByAgent['id']; ?>"><button class="btn btn-primary btn-xs" title="Ajouter des images"><i class="fa fa-camera "></i></button></a>
                                                     <a href="../public/index.php?route=editEstate&estateId=<?=  $estateByAgent['id']; ?>"><button class="btn btn-warning btn-xs" title="Modifier"><i class="fa fa-pencil"></i></button></a>
                                                     <a href="../public/index.php?route=deleteEstate&estateId=<?=  $estateByAgent['id']; ?>"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i></button></a>
                                                     <button class="btn btn-success btn-xs"><?=$estateByAgent['status'] ? 'Publié' : 'Non Publié';?></button>
@@ -185,7 +186,7 @@
                             <!--fin annonce-->
 
                             <!--début modif profil-->
-                            <div class="tab-pane">
+                            <div class="tab-pane" id="updateProfile">
                                 <div class="row">
                                     <div class="col-lg-1"></div>
                                     <div class="col-lg-10 detailed">

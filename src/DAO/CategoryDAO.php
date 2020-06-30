@@ -56,4 +56,18 @@ class CategoryDAO extends DAO
         $this->createQuery($sql, [$categoryId]);
     }
 
+    public function getEstatesByCategory(){
+        $sql = "SELECT e.title as title, e.excerpt as excerpt, e.status as status, e.price as price, e.rooms as rooms, e.bedrooms as bedrooms, e.area as area, e.city as city, c.name as category, t.type as type, a.firstname as firstname, a.lastname as lastname
+                FROM category c
+                INNER JOIN estate e
+                ON e.title = c.id
+                INNER JOIN type t
+                ON e.type_id = t.id
+                INNER JOIN agent a
+                ON e.agent_id = a.id
+                WHERE c.id =" . $categoryId ;
+        $result = $this->createQuery($sql)->fetchAll();
+        return $result;
+    }
+
 }

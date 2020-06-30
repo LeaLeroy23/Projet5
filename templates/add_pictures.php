@@ -6,13 +6,13 @@
     <section id="main-content">
         <section class="wrapper">
             <h3><i class="fa fa-angle-right"></i> Ajout de plusieurs images</h3>
-
+            <?= $this->session->show('deletePicture'); ?>
             <div class="row mt">
                 <div class="col-lg-12">
                     <div class="form-panel">
                     
                         <form action="index.php?route=addPictures&estateId=<?= $estate->getId();?>" class="dropzone" id="dropzoneFrom">
-                            
+                            <input type="hidden" name="estate_id" value="<?=$estate->getId();?>" />
                         </form>
                         <div align="center">
                             <button type="button" class="btn btn-info" id="submit">Upload</button>
@@ -45,7 +45,7 @@
                             foreach($pictures as $picture){
                             ?>
                                 <tr>
-                                    <td><img src="..\public\img\upload\"<?=$picture->getFile();?> height="150"></td>
+                                    <td><img src="../public/img/upload/<?=$picture->getFile();?>" height="150px"></td>
                                     <td><?=htmlspecialchars($picture->getFile());?></td>
                                     <td>
                                         <a href="../public/index.php?route=deletePicture&pictureId=<?=$picture->getId();?>"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i> Supprimer</button></a>
@@ -81,7 +81,7 @@ Dropzone.options.dropzoneFrom = {
     acceptedFiles:".png,.jpg,.gif,.bmp,.jpeg",
     init: function(){
         let submitButton = document.querySelector('#submit');
-    console.log(submitButton);
+        console.log(submitButton);
         myDropzone = this;
         submitButton.addEventListener("click", function(){
             console.log('hello again');
@@ -103,7 +103,7 @@ list_image();
 function list_image()
 {
 $.ajax({
-    url:"index.php?route=addPictures&estateId=<?= $estate->getId();?>",
+    url:"index.php?route=addPictures",
     success:function(data){
         $('#preview').html(data);
     }
@@ -114,9 +114,9 @@ $(document).on('click', '.remove_image', function(){
     console.log('hello again');
 var name = $(this).attr('id');
 $.ajax({
-url:"index.php?route=addPictures&estateId=<?= $estate->getId();?>",
+url:"index.php?route=addPictures",
 method:"POST",
-data:{name:name},
+data:{name:file},
 success:function(data)
 {
 list_image();

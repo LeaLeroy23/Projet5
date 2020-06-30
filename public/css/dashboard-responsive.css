@@ -1,3 +1,38 @@
+
+@media (min-width: 1200px) and (max-width: 1471px) {
+    ul.top-menu > li > a  {
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+}
+
+@media (min-width: 1080px) and (max-width: 1200px) {
+    ul.top-menu > li > a  {
+        margin-right: 3px;
+        margin-left: 3px;
+    }
+    .ds .details{
+        margin-left: 20px;
+    }
+}
+
+@media (min-width: 990px) and (max-width: 1080px) {
+    ul.top-menu > li > a  {
+        margin-right: 3px;
+        margin-left: 3px;
+        padding: 8px 12px 8px 12px;
+    }
+    .ds .details{
+        margin-left: 20px;
+    }
+    .control-label{
+        padding-left: 0px;
+    }
+    .dashboard-contact{
+        padding-left: 0px;
+    }
+}
+
 @media (min-width: 980px) {
     /*-----*/
     .custom-bar-chart {
@@ -20,62 +55,9 @@
         margin-bottom: 40px;
     }
 
-    /*chat room*/
-
-    .chat-room aside {
-        display: block;
+    ul.top-menu > li > a  {
+        display: none;
     }
-    .chat-room .left-side, .chat-room .mid-side, .chat-room .right-side, .chat-room .left-side footer {
-        width: 100%;
-    }
-
-    .chat-room .left-side footer {
-        position: relative;
-    }
-
-    ul.chat-user {
-        margin-bottom: 20px;
-    }
-
-    .chat-room .left-side , .chat-room .mid-side{
-        margin-bottom: 10px;
-
-    }
-
-    .chat-room .left-side .user-head , .chat-room-head, .chat-room .right-side .user-head{
-        border-radius: 4px 4px 0 0;
-        -webit-border-radius: 4px 4px 0 0;
-    }
-    .chat-room .left-side footer {
-        border-radius: 0 0 4px 4px;
-        -webkit-border-radius: 0 0 4px 4px;
-    }
-    /**/
-    .chat-room .right-side .user-head {
-        float: left;
-        width: 100%;
-    }
-
-    .chat-room .mid-side footer {
-        position: relative;
-        float: left;
-        width: 100%;
-        border-right: 0;
-    }
-
-    .chat-txt {
-        width: 65%;
-    }
-
-    .chat-room .right-side footer {
-        width: 100%;
-        position: relative;
-    }
-
-    .chat-room .mid-side {
-        margin-bottom: 0!important;
-    }
-
 
 }
 
@@ -83,6 +65,10 @@
 
     .header {
         position: absolute;
+    }
+
+    .wrapper{
+        padding-left: 15px;
     }
 
     /*sidebar*/
@@ -314,6 +300,11 @@
 
 
 @media (max-width: 480px) {
+
+    .wrapper{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 
     .notify-row, .search, .dont-show , .inbox-head .sr-input, .inbox-head .sr-btn{
         display: none;

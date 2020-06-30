@@ -6,14 +6,14 @@ class UpdateProfile {
     linkBtn(){
         console.log("je suis là");
         var btnProfile = document.getElementById('btn-profile');
-        btnProfile.addEventListener( "click", function(e){
+        var liEdit =  document.getElementById("li-edit-profile");
+        var liProfile =  document.getElementById("li-profile");
+
+        btnProfile.addEventListener( "click", function(){
             console.log("je encore suis là");
-            var liProfile =  document.getElementById("li-profile");
-            liProfile.classList.remove("active");
-            var liEdit =  document.getElementById("li-edit-profile");
+            liProfile.classList.remove('active');
             liEdit.classList.add("active");
-            e.href("#uploadProfile");
-            
+
         });
     }
 
