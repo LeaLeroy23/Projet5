@@ -178,10 +178,8 @@ class BackController extends Controller
                 move_uploaded_file($temp_file, $location);
             }
 
-            $files = $files->get('file');
-            var_dump($files);
-            $filename = $_FILES['file']['name'];
-
+            
+            $filename =  $_FILES['file']['name'];
             if (isset($_POST["name"])) {
                 $filename = $folder_name.$filename;
                 unlink($filename);
