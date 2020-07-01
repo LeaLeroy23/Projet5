@@ -7,7 +7,7 @@
     <?= $this->session->show('login'); ?>
 
         <h3><i class="fa fa-angle-right"></i> Ajouter un agent</h3>        
-        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addAgent">
+        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addAgent" enctype="multipart/form-data">
             <div class="row mt">
                 <div class="col-lg-12">
                     <div class="form-panel">
@@ -21,7 +21,7 @@
                             <label class="col-sm-2 col-sm-2 control-label">Autorisation</label>
                             <div class="col-sm-4">
                                 <select name="status" class="form-control">
-                                    <option value="0">Aucun</option>
+                                    <option value="00">Aucun</option>
                                     <option value="99">Superadministrateur</option>
                                     <option value="80">Administrateur</option>
                                     <option value="50">Contributeur</option>
@@ -67,7 +67,7 @@
                             <label class="col-sm-2 col-sm-2 control-label">Avatar</label>
                             <div class="form-group last">
                                 <div class="col-md-4"> 
-                                    <input type="file" name="picture_url" class="form-control">
+                                    <input type="file" name="avatar" class="form-control">
                                 </div>
                                 
                             </div>

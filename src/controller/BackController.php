@@ -394,16 +394,19 @@ class BackController extends Controller
                     $errors['email'] = $this->agentDAO->checkEmail($post);
                 }
                 if (!$errors){
+                    $generateToken = openssl_random_pseudo_bytes(10);
+                    $createdAt = new \Datetime('NOW');
+                    $password = password_hash($post->get('password'), PASSWORD_BCRYPT);
+
                     $form=[];
-                    $maxsize = 5 * 1024 * 1024;
+                    $maxsize = 5 * 1024 * 1024; 
                     $filename = "";
-                    if (isset($_POST["picture_url"]) && $_POST["picture_url"]["error"] == 0) {
-                        var_dump($_FILES["picture_url"]);
-                        die();
+                    if (isset($_FILES["avatar"]) && $_FILES["avatar"]["error"] == 0) {
+
                         $allowed = array("jpg" => "image/jpg", "JPG" => "image/JPG", "jpeg" => "image/jpeg", "png" => "image/png", "PNG" => "image/PNG");
-                        $filename = $_FILES["picture_url"]["name"];
-                        $filetype = $_FILES["picture_url"]["type"];
-                        $filesize = $_FILES["picture_url"]["size"];
+                        $filename = $_FILES["avatar"]["name"];
+                        $filetype = $_FILES["avatar"]["type"];
+                        $filesize = $_FILES["avatar"]["size"];
 
                         $ext = pathinfo($filename, PATHINFO_EXTENSION);
                         if (!array_key_exists($ext, $allowed)) {
@@ -416,23 +419,17 @@ class BackController extends Controller
 
                         if (in_array($filetype, $allowed)) {
                             /**verifie si le fichier existe avant de le telecharger*/
-                            if (file_exists("../public/img/agent/" . $_FILES["picture_url"]["name"])) {
-                                exit($_FILES["picture_url"]["name"] . "existe déjà.");
+                            if (file_exists("../public/img/agent/" . $_FILES["avatar"]["name"])) {
+                                exit($_FILES["avatar"]["name"] . "existe déjà.");
                             } else {
                                 $filename = uniqid() . '.' . $ext;
-                                move_uploaded_file($_FILES["picture_url"]["tmp_name"], "../public/img/agent/" .  $filename);
+                                move_uploaded_file($_FILES["avatar"]["tmp_name"], "../public/img/agent/" .  $filename);
                             }
                         } else {
                             exit("Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");
                         }
                         
                     }
-                    var_dump($post, $filename);
-                    die();
-
-                    $generateToken = openssl_random_pseudo_bytes(10);
-                    $createdAt = new \Datetime('NOW');
-                    $password = password_hash($post->get('password'), PASSWORD_BCRYPT);
 
                     $this->agentDAO->addAgent($post, $password, $filename, $createdAt->format('Y-m-d H:i:s'));
                     $this->session->set('addAgent', 'L\'inscription a bien été prise en compte');
