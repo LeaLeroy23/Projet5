@@ -1,13 +1,12 @@
-<?php $this->title = "Ajouter un agent"; ?>
+<?php $this->title = "Modifier un agent"; ?>
 
 <section id="main-content">
     <section class="wrapper">
     
-    <?= $this->session->show('addAgent'); ?>
-    <?= $this->session->show('login'); ?>
+    <?= $this->session->show('editAgent'); ?>
 
         <h3><i class="fa fa-angle-right"></i> Ajouter un agent</h3>        
-        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addAgent">
+        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=editAgent">
             <div class="row mt">
                 <div class="col-lg-12">
                     <div class="form-panel">

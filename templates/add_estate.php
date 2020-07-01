@@ -263,7 +263,7 @@
                             <div class="form-group last">
                                 <div class="col-md-12">
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
-                                        <label>Sélectionnez une images</label><br>
+                                        <label>Sélectionnez une image</label><br>
                                         <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
                                             <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" height="200" id="preview" alt="Image preview">
                                         </div>

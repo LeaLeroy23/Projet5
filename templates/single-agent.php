@@ -1,8 +1,4 @@
-<?php
-include 'header.php';
-?>
-
-    <!--  Single Property Area Start-->
+<!--  Single Property Area Start-->
     <div class="section single-agent-content-area area-pading">
         <div class="container">
             <div class="row">
@@ -136,8 +132,3 @@ include 'header.php';
             </div>
         </div>
     </div>
-    <!-- Property Page Main content Area End Hear-->
-    
-<?php
-include 'footer.php';
-?>

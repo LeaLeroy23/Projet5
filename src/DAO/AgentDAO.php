@@ -45,10 +45,11 @@ class AgentDAO extends DAO
         return $this->buildObject($agent);
     }
     
-    public function addAgent(Parameter $post, $password, $token, $createdAt)
+    public function addAgent(Parameter $post, $password, $filename, $createdAt)
     {
-        $sql = "INSERT INTO agent (firstname, lastname, phone, email, function, description, avatar, password, token, status, created_at)
-                VALUES (:firstname, :lastname, :phone, :email, :function, :description, :avatar, :password, :token, :status, :created_at)";
+        
+        $sql = "INSERT INTO agent (firstname, lastname, phone, email, function, description, avatar, password, status, created_at)
+                VALUES (:firstname, :lastname, :phone, :email, :function, :description, :avatar, :password, :status, :created_at)";
         
         $this->createQuery($sql, [
             'firstname' => $post->get('firstname'),
@@ -56,10 +57,9 @@ class AgentDAO extends DAO
             'phone' => $post->get('phone'),
             'email' => $post->get('email'),
             'function' => $post->get('function'),
-            'description' => null,
-            'avatar' => null,
+            'description' => $post->get('description'),
+            'avatar' => $filename,
             'password' => $password,
-            'token' => $token,
             'status' => $post->get('status'),
             'created_at' => $createdAt
         ]);

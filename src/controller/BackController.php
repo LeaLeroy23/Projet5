@@ -170,24 +170,25 @@ class BackController extends Controller
         if($this->checkLoggedIn()){
             $estate = $this->estateDAO->getEstate($estateId);
             $pictures = $this->pictureDAO->getPicturesByEstateId($estateId);
+
             $folder_name = 'img/upload/';
 
             if (!empty($_FILES)) {
                 $temp_file = $_FILES['file']['tmp_name'];
                 $location = $folder_name . $_FILES['file']['name'];
                 move_uploaded_file($temp_file, $location);
+                
             }
-
             
-            $filename =  $_FILES['file']['name'];
             if (isset($_POST["name"])) {
+                $filename = $_FILES['file']['name'];
                 $filename = $folder_name.$filename;
                 unlink($filename);
+                     
+                $this->pictureDAO->addPictures($filename, $estateId);
             }
 
-            $result = array();
-                        
-            $this->pictureDAO->addPictures($filename, $estateId);
+                
 
             return $this->view->renderTemplate('add_pictures', [
                 'estate' => $estate,
@@ -393,18 +394,52 @@ class BackController extends Controller
                     $errors['email'] = $this->agentDAO->checkEmail($post);
                 }
                 if (!$errors){
+                    $form=[];
+                    $maxsize = 5 * 1024 * 1024;
+                    $filename = "";
+                    if (isset($_POST["picture_url"]) && $_POST["picture_url"]["error"] == 0) {
+                        var_dump($_FILES["picture_url"]);
+                        die();
+                        $allowed = array("jpg" => "image/jpg", "JPG" => "image/JPG", "jpeg" => "image/jpeg", "png" => "image/png", "PNG" => "image/PNG");
+                        $filename = $_FILES["picture_url"]["name"];
+                        $filetype = $_FILES["picture_url"]["type"];
+                        $filesize = $_FILES["picture_url"]["size"];
+
+                        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                        if (!array_key_exists($ext, $allowed)) {
+                            exit("Erreur : Veuillez sélectionner un format de fichier valide.");
+                        }
+
+                        if ($filesize > $maxsize) {
+                            exit("Erreur: La taille du fichier est supérieure à la limite autorisée.");
+                        }
+
+                        if (in_array($filetype, $allowed)) {
+                            /**verifie si le fichier existe avant de le telecharger*/
+                            if (file_exists("../public/img/agent/" . $_FILES["picture_url"]["name"])) {
+                                exit($_FILES["picture_url"]["name"] . "existe déjà.");
+                            } else {
+                                $filename = uniqid() . '.' . $ext;
+                                move_uploaded_file($_FILES["picture_url"]["tmp_name"], "../public/img/agent/" .  $filename);
+                            }
+                        } else {
+                            exit("Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");
+                        }
+                        
+                    }
+                    var_dump($post, $filename);
+                    die();
+
                     $generateToken = openssl_random_pseudo_bytes(10);
-                    $token = bin2hex($generateToken);
                     $createdAt = new \Datetime('NOW');
                     $password = password_hash($post->get('password'), PASSWORD_BCRYPT);
 
-                    $this->agentDAO->addAgent($post, $password, $token, $createdAt->format('Y-m-d H:i:s'));
-                    
+                    $this->agentDAO->addAgent($post, $password, $filename, $createdAt->format('Y-m-d H:i:s'));
                     $this->session->set('addAgent', 'L\'inscription a bien été prise en compte');
                     header('Location: ../public/index.php?route=allAgents');
                     exit();
-                    
                 }
+
                 return $this->view->renderTemplate('add_agent', [
                     'post' => $post,
                     'errors' => $errors
@@ -451,6 +486,24 @@ class BackController extends Controller
                
             }
             return $this->view->renderTemplate('update_password');
+        }
+    }
+
+    public function editAgent(Parameter $post, $agentId)
+    {
+        if($this->checkAdmin()){
+            $agent = $this->agentDAO->getAgent($agentId);
+
+            if($post->get('submit')){
+                
+                $this->agentDAO->editProfile($post, $agentId);
+                $this->session->set('update_profile', 'Votre profile a été mis à jour');
+                header('Location: ../public/index.php?route=allAgents');
+                exit();
+            }
+            return $this->view->renderTemplate('edit_agent', [
+                'agente' => $agent,
+            ]);
         }
     }
 

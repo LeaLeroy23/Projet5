@@ -49,7 +49,7 @@
                                     <td data-title="Prix"><?= htmlspecialchars( $estate['price']);?>€</td>
                                     <td data-title="Status"><span class="label label-info label-mini"><?= $estate['status'] ? 'Publié' : 'Non Publié';?></span></td>
                                     <td data-title="Actions">
-                                        <button class="btn btn-success btn-xs" title="Publier"><i class="fa fa-check"></i></button>
+                                        <!--<button class="btn btn-success btn-xs" title="Publier"><i class="fa fa-check"></i></button>-->
                                         <a href="../public/index.php?route=editEstate&estateId=<?=  $estate['id']; ?>"><button class="btn btn-warning btn-xs" title="Modifier"><i class="fa fa-pencil"></i></button></a>
                                         <a href="../public/index.php?route=deleteEstate&estateId=<?=  $estate['id']; ?>"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i></button></a>
                                         <a href="../public/index.php?route=addPictures&estateId=<?=  $estate['id']; ?>"><button class="btn btn-primary btn-xs" title="Ajouter des images"><i class="fa fa-camera "></i></button></a>

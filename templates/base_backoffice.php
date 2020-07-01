@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<!-- Favicon
 		============================================ -->
-		<link rel="shortcut icon" type="../public/css/img/x-icon" href="../public/img/favicon.png">		
+		<link rel="shortcut icon" href="../public/img/logo-min.png">		
 
         <!-- Template Fonts form google
         =============================================-->
@@ -42,7 +42,7 @@
             <!--header start-->
             <header class="header black-bg">
                 <div class="sidebar-toggle-box">
-                    <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Navigation"></div>
+                    <div class="fa fa-bars tooltips" data-placement="right"></div>
                 </div>
                 <a href="index.php" class="logo"><img src="../public/img/logo-min.png" /></a>
                 

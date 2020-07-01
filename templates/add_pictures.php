@@ -98,7 +98,7 @@ Dropzone.options.dropzoneFrom = {
     },
 };
 
-list_image();
+//list_image();
 
 function list_image()
 {

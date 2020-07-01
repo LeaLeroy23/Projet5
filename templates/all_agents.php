@@ -21,8 +21,14 @@
                                     <th class="hidden-phone"> Nom</th>
                                     <th class="hidden-phone"><i class="fa fa-lock"></i> Autorisation</th>
                                     <th class="hidden-phone"><i class="fa fa-phone"></i> Téléphone</th>
-                                    <th class="hidden-phone"><i class="fa fa-enveloppe"></i> Email</th>
-                                    
+                                    <th class="hidden-phone"> Email</th>
+                                    <?php
+                                        if ($this->session->get('status') === "99") {
+                                    ?>
+                                    <th class="hidden-phone"> Action</th>
+                                    <?php
+                                        }
+                                    ?>
                                 </tr>
                             </thead>
                             <tbody>
@@ -37,6 +43,16 @@
                                     <td data-title="Status"><?= htmlspecialchars($agent->getStatus());?></td>
                                     <td data-title="Téléphone"><?= htmlspecialchars($agent->getPhone());?></td>
                                     <td data-title="Email"><?= htmlspecialchars($agent->getEmail());?></td>
+                                    <?php
+                                        if ($this->session->get('status') === "99") {
+                                    ?>
+                                    <td data-title="Action">
+                                    <a href="../public/index.php?route=editAgent&agentId=<?=  $agent->getId(); ?>"><button class="btn btn-warning btn-xs" title="Modifier"><i class="fa fa-pencil"></i></button></a>
+                                    <a href="../public/index.php?route=deleteAgent&agentId=<?= $agent->getId(); ?>"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i></button></a>
+                                    </td>
+                                    <?php
+                                        }
+                                    ?>
                                     
                                 </tr>
                             <?php
