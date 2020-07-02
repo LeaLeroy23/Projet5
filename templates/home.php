@@ -225,7 +225,7 @@
                         <div class="col-md-3 col-sm-6">
                             <div class="single-agent wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".3s">
                                 <div class="agentimg-social">
-                                    <img src="../public/img/agent/1.jpg" alt="">
+                                    <img src="../public/img/agent/<?= ($agent->getAvatar());?>" alt="">
                                     <ul class="agent-bookmark">
                                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>

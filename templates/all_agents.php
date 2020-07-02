@@ -6,6 +6,8 @@
         <?= $this->session->show('addAgent'); ?>
         <?= $this->session->show('editAgent'); ?>
         <?= $this->session->show('deleteAgent'); ?>
+        <?= $this->session->show('updatePassword'); ?>
+        
 
         <!--main content start-->
   

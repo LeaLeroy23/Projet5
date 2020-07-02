@@ -25,7 +25,7 @@
 
                     <div class="col-md-4 centered">
                         <div class="profile-pic">
-                            <p><img src="../public/img/agent/<?=$this->session->get('avatar');?>" class="img-circle"></p>
+                            <p><img src="../public/img/agent/<?=$this->session->get('avatar');?>" width="150" height="150" class="img-circle"></p>
                             
                         </div>
                     </div>
@@ -231,15 +231,6 @@
                                                 <div class="col-lg-8">
                                                 <label class="col-lg-2 control-label">Avatar</label> 
                                                     <input type="file" id="exampleInputFile" class="file-pos" name="avatar" value="<?=htmlspecialchars($agent->getAvatar());?>">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group hidden-part">
-                                                <div class="col-lg-8">
-                                                    <input type="hidden" class="form-control" name="token" value="<?=$agent->getToken();?>">
-                                                    <input type="hidden" class="form-control" name="password" value="<?=htmlspecialchars($agent->getPassword());?>">
-                                                    <input type="hidden" class="form-control" name="status" value="<?=$agent->getStatus();?>">
-                                                    <input type="hidden" class="form-control" name="created_at" value="<?=$agent->getCreated_at();?>">
                                                 </div>
                                             </div>
 

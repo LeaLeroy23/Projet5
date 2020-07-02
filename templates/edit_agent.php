@@ -48,27 +48,23 @@
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" name="email" value="<?= htmlspecialchars($agent->getEmail());?>">
                             </div>
-                            <label class="col-sm-2 col-sm-2 control-label">Mot de passe</label>
-                            <div class="col-sm-4">
-                                <input type="password" class="form-control" name="password" value="<?= htmlspecialchars($agent->getPassword());?>">
-                                <?= isset($errors['password']) ? $errors['password'] : ''; ?>
-                            </div>
-                        </div>
 
-
-                        <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Téléphone</label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" name="phone" value="<?= htmlspecialchars($agent->getPhone());?>">
                                 <?= isset($errors['phone']) ? $errors['phone'] : ''; ?>
                             </div>
+                        </div>
 
+
+                        <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Avatar</label>
-                            <div class="form-group last">
-                                <div class="col-md-4"> 
-                                    <input type="file" name="avatar" value="<?= $agent->getAvatar();?>" class="form-control">
-                                    <img src="../public/img/agent/<?=$agent->getAvatar();?>" height="150px">
-                                </div>
+                            <div class="col-md-4"> 
+                                <input type="file" name="avatar" value="<?= $agent->getAvatar();?>"class="form-control">
+                            </div>
+                            <label class="col-sm-2 col-sm-2 control-label"></label>
+                            <div class="col-md-4"> 
+                                <img src="../public/img/agent/<?=$agent->getAvatar();?>" height="150px">
                             </div>
 
                         </div>
@@ -91,5 +87,41 @@
             </div>
 
         </form>
+
+
+        <div class="row mt">
+            <div class="col-lg-12">
+                <div class="form-panel">
+                    <h4 class="mb"><i class="fa fa-angle-right"></i> Modification du mot de passe</h4>
+                    <?= $this->session->show('wrongPassword'); ?>
+
+                    <form class="form-horizontal style-form" method='post' action="../public/index.php?route=updatePassword&agentId=<?=$agent->getId();?>">
+                        <div class="form-group">
+                            <div class="col-sm-10">
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">Nouveau mot de passe</label>
+                                    <div class="col-lg-8">
+                                        <input type="password" id="addr1" class="form-control" name="newPassword">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">Retaper votre mot de passe</label>
+                                    <div class="col-lg-8">
+                                        <input type="password" id="addr2" class="form-control" name="confirmPassword">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                    <?= $this->session->show('wrongPassword'); ?>
+                                        <input class="btn btn-theme" type="submit" name="submit" value="Réinitialiser">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>   
+        </div>
+
     </section>
 </section>

@@ -450,11 +450,10 @@ class BackController extends Controller
         if($this->checkLoggedIn()){
             $agent = $this->agentDAO->getAgent($agentId);
             $errors = $this->validation->validate($post, 'Agent');
+            
 
             if($post->get('submit')){
                 if (!$errors){
-                    $password = password_hash($post->get('password'), PASSWORD_BCRYPT);
-
                     $form=[];
                     $maxsize = 5 * 1024 * 1024; 
                     $filename = "";
@@ -488,7 +487,7 @@ class BackController extends Controller
                         
                     }
 
-                    $this->agentDAO->editAgent($post, $password, $filename, $agentId);
+                    $this->agentDAO->editAgent($post, $filename, $agentId);
                     $this->session->set('editAgent', 'L\'agent a été mis à jour');
                     header('Location: ../public/index.php?route=allAgents');
                     exit();
@@ -534,20 +533,24 @@ class BackController extends Controller
 
     public function updatePassword(Parameter $post, $agentId)
     {
-        if($this->checkLoggedIn()){
+        if($this->checkAdmin()){
             if($post->get('submit')){
                 if($post->get('newPassword') == $post->get('confirmPassword')){
                     $password = $post->get('confirmPassword');
+                    var_dump($password);
+                    die();
                     $this->agentDAO->updatePassword($password, $agentId);
-                    $this->session->set('update_password', 'Votre mot de passe a été mis à jour');
-                    header('Location: ../public/index.php?route=profile');
+                    $this->session->set('updatePassword', 'Votre mot de passe a été mis à jour');
+                    header('Location: ../public/index.php?route=allAgents');
                     exit();
                 } else {
-                    $this->session->set('wrong_password', 'vos mots de passe ne sont pas identique');
+                    $this->session->set('wrongPassword', 'vos mots de passe ne sont pas identique');
+                    header('Location: ../public/index.php?route=editAgent&agentId=' . $agentId);
+                    exit();
                 }
                
             }
-            return $this->view->renderTemplate('update_password');
+            return $this->view->renderTemplate('all_agents');
         }
     }
 

@@ -65,9 +65,9 @@ class AgentDAO extends DAO
         ]);
     }
 
-    public function editAgent($post, $password, $filename, $agentId)
+    public function editAgent($post, $filename, $agentId)
     {
-        $sql = "UPDATE agent SET firstname=:firstname, lastname=:lastname, phone=:phone, email=:email, function=:function, description=:description, avatar=:avatar, password=:password, status=:status WHERE id=:agentId";
+        $sql = "UPDATE agent SET firstname=:firstname, lastname=:lastname, phone=:phone, email=:email, function=:function, description=:description, avatar=:avatar, status=:status WHERE id=:agentId";
         $this->createQuery($sql, [
             'firstname' => $post->get('firstname'),
             'lastname' => $post->get('lastname'),
@@ -76,7 +76,6 @@ class AgentDAO extends DAO
             'function' => $post->get('function'),
             'description' => $post->get('description'),
             'avatar' => $filename,
-            'password' => $password,
             'status' => $post->get('status'),
             'agentId' => $agentId
         ]);
@@ -131,6 +130,8 @@ class AgentDAO extends DAO
     }
 
     public function updatePassword($password, $agentId){
+        var_dump($password);
+        die();
         $sql = 'UPDATE agent SET password=:password WHERE id = agentId';
         $this->createQuery($sql, [
             password_hash($password, PASSWORD_BCRYPT), 
