@@ -394,7 +394,6 @@ class BackController extends Controller
                     $errors['email'] = $this->agentDAO->checkEmail($post);
                 }
                 if (!$errors){
-                    $generateToken = openssl_random_pseudo_bytes(10);
                     $createdAt = new \Datetime('NOW');
                     $password = password_hash($post->get('password'), PASSWORD_BCRYPT);
 
@@ -446,6 +445,72 @@ class BackController extends Controller
         }
     }
 
+    public function editAgent(Parameter $post, $agentId)
+    {
+        if($this->checkLoggedIn()){
+            $agent = $this->agentDAO->getAgent($agentId);
+            $errors = $this->validation->validate($post, 'Agent');
+
+            if($post->get('submit')){
+                if (!$errors){
+                    $password = password_hash($post->get('password'), PASSWORD_BCRYPT);
+
+                    $form=[];
+                    $maxsize = 5 * 1024 * 1024; 
+                    $filename = "";
+                    if (isset($_FILES["avatar"]) && $_FILES["avatar"]["error"] == 0) {
+
+                        $allowed = array("jpg" => "image/jpg", "JPG" => "image/JPG", "jpeg" => "image/jpeg", "png" => "image/png", "PNG" => "image/PNG");
+                        $filename = $_FILES["avatar"]["name"];
+                        $filetype = $_FILES["avatar"]["type"];
+                        $filesize = $_FILES["avatar"]["size"];
+
+                        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                        if (!array_key_exists($ext, $allowed)) {
+                            exit("Erreur : Veuillez sélectionner un format de fichier valide.");
+                        }
+
+                        if ($filesize > $maxsize) {
+                            exit("Erreur: La taille du fichier est supérieure à la limite autorisée.");
+                        }
+
+                        if (in_array($filetype, $allowed)) {
+                            /**verifie si le fichier existe avant de le telecharger*/
+                            if (file_exists("../public/img/agent/" . $_FILES["avatar"]["name"])) {
+                                exit($_FILES["avatar"]["name"] . "existe déjà.");
+                            } else {
+                                $filename = uniqid() . '.' . $ext;
+                                move_uploaded_file($_FILES["avatar"]["tmp_name"], "../public/img/agent/" .  $filename);
+                            }
+                        } else {
+                            exit("Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");
+                        }
+                        
+                    }
+
+                    $this->agentDAO->editAgent($post, $password, $filename, $agentId);
+                    $this->session->set('editAgent', 'L\'agent a été mis à jour');
+                    header('Location: ../public/index.php?route=allAgents');
+                    exit();
+                }
+            }
+            return $this->view->renderTemplate('edit_agent', [
+                'agent' => $agent,
+                'errors' => $errors
+            ]);
+        }
+    }
+
+    public function deleteAgent($agentId)
+    {
+        if($this->checkAdmin()){
+            $this->agentDAO->deleteAgent($agentId);
+            $this->session->set('deleteAgent', "L'\agent' a été supprimer avec succès");
+            header('Location: ../public/index.php?route=allAgents');
+            exit();
+        }
+    }
+
     public function profile()
     {
         if($this->checkLoggedIn()){
@@ -486,24 +551,6 @@ class BackController extends Controller
         }
     }
 
-    public function editAgent(Parameter $post, $agentId)
-    {
-        if($this->checkAdmin()){
-            $agent = $this->agentDAO->getAgent($agentId);
-
-            if($post->get('submit')){
-                
-                $this->agentDAO->editProfile($post, $agentId);
-                $this->session->set('update_profile', 'Votre profile a été mis à jour');
-                header('Location: ../public/index.php?route=allAgents');
-                exit();
-            }
-            return $this->view->renderTemplate('edit_agent', [
-                'agente' => $agent,
-            ]);
-        }
-    }
-
     public function editProfile(Parameter $post, $agentId)
     {
         if($this->checkLoggedIn()){
@@ -519,16 +566,6 @@ class BackController extends Controller
             return $this->view->renderTemplate('edit_profile', [
                 'agente' => $agent,
             ]);
-        }
-    }
-
-    public function deleteProfile($agentId)
-    {
-        if($this->checkAdmin()){
-            $this->agentDAO->deleteAgent($agentId);
-            $this->session->set('deleteAgent', "L'\agent' a été supprimer avec succès");
-            header('Location: ../public/index.php?route=allAgents');
-            exit();
         }
     }
 

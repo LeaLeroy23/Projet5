@@ -29,8 +29,8 @@ class AgentValidation extends Validation
             $this->addError($name, $error);
         }
         elseif($name === 'email') {
-        $error = $this->checkEmail($name, $value);
-        $this->addError($name, $error);
+            $error = $this->checkEmail($name, $value);
+            $this->addError($name, $error);
         }
         elseif($name === 'firstname') {
             $error = $this->checkFirstname($name, $value);

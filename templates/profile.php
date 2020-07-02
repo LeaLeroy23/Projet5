@@ -24,7 +24,7 @@
 
                     <div class="col-md-4 centered">
                         <div class="profile-pic">
-                            <p><img src="../public/img/agent/ui-sam.jpg" class="img-circle"></p>
+                            <p><img src="../public/img/agent/<?= $this->session->get('avatar'); ?>" class="img-circle"></p>
                             
                         </div>
                     </div>

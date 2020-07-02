@@ -93,6 +93,12 @@ class Router
                 elseif ($route === 'addAgent'){
                     $this->backController->addAgent($this->request->getPost());
                 }
+                elseif ($route === 'editAgent'){
+                    $this->backController->editAgent($this->request->getPost(), $this->request->getGet()->get('agentId'));
+                }
+                elseif ($route === 'deleteAgent'){
+                    $this->backController->deleteAgent($this->request->getGet()->get('agentId'));
+                }
                 elseif ($route === 'profile'){
                     $this->backController->profile();
                 }

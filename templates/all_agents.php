@@ -4,6 +4,8 @@
     <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Tous les agents</h3>
         <?= $this->session->show('addAgent'); ?>
+        <?= $this->session->show('editAgent'); ?>
+        <?= $this->session->show('deleteAgent'); ?>
 
         <!--main content start-->
   
@@ -16,6 +18,7 @@
                         <table class="table table-bordered table-striped table-condensed table-advance cf">
                             <thead>
                                 <tr>
+                                    <th class="hidden-phone">Avatar</th>
                                     <th class="hidden-phone"><i class="fa fa-user"></i> Fonction</th>
                                     <th class="hidden-phone"> Prénom</th>
                                     <th class="hidden-phone"> Nom</th>
@@ -37,7 +40,16 @@
                                 {
                             ?>
                                 <tr>
-                                    <td data-title="Fonction"><?= htmlspecialchars($agent->getFunction());?></td>
+                                    <td data-title="Avatar">
+                                        <img class="img-circle" src="../public/img/agent/<?=$agent->getAvatar();?>" width="35px" height="35px">
+                                    </td>
+                                    <td data-title="Fonction"><?php
+                                    /*if($agent->getFunction() == '99'){
+                                        $agent->getFunction();
+                                    } else {
+
+                                    }*/
+                                        htmlspecialchars($agent->getFunction());?></td>
                                     <td data-title="Prénom"><?= htmlspecialchars($agent->getFirstname());?></td>
                                     <td data-title="Nom"><?= htmlspecialchars($agent->getLastname());?></td>
                                     <td data-title="Status"><?= htmlspecialchars($agent->getStatus());?></td>

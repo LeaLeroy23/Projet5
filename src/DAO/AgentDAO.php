@@ -65,6 +65,23 @@ class AgentDAO extends DAO
         ]);
     }
 
+    public function editAgent($post, $password, $filename, $agentId)
+    {
+        $sql = "UPDATE agent SET firstname=:firstname, lastname=:lastname, phone=:phone, email=:email, function=:function, description=:description, avatar=:avatar, password=:password, status=:status WHERE id=:agentId";
+        $this->createQuery($sql, [
+            'firstname' => $post->get('firstname'),
+            'lastname' => $post->get('lastname'),
+            'phone' => $post->get('phone'),
+            'email' => $post->get('email'),
+            'function' => $post->get('function'),
+            'description' => $post->get('description'),
+            'avatar' => $filename,
+            'password' => $password,
+            'status' => $post->get('status'),
+            'agentId' => $agentId
+        ]);
+    }
+
     public function checkEmail(Parameter $post)
     {
         $sql = 'SELECT COUNT(email) FROM agent WHERE email = ?';
@@ -123,7 +140,7 @@ class AgentDAO extends DAO
 
     public function editProfile(Parameter $post, $agentId){
         
-        $sql = 'UPDATE agent SET firstname=:firstname, lastname=:lastname, phone=:phone, email =:email, description =:description, avatar =:avatar, token=:token, password=:password, status=:status, created_at=:created_at WHERE id = agentId';
+        $sql = 'UPDATE agent SET firstname=:firstname, lastname=:lastname, phone=:phone, email =:email, description =:description, avatar =:avatar, password=:password, status=:status WHERE id = agentId';
         
         $this->createQuery($sql, [
             'firstname' => $post->get('firstname'),
@@ -132,10 +149,8 @@ class AgentDAO extends DAO
             'email' => $post->get('email'),
             'description' => $post->get('description'),
             'avatar' => $post->get('avatar'),
-            'token' => $post->get('token'),
             'password' => $post->get('password'),
             'status' => $post->get('status'),
-            'created_at' => $post->get('created_at'),
             'agentId' => $agentId
         ]);
     }
