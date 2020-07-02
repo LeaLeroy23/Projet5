@@ -9,7 +9,7 @@
             ?>
 
                 <div class="item">
-                    <img src="../public/img/slider/1.jpg" alt="">
+                    <img src="../public/img/upload/<?= ($estate['picture_url']);?>" alt="">
                     <div class="slide-content carousel-caption hidden-xs">
                         <div class="slide-content-top">
                             <h1><?= htmlspecialchars($estate['type']);?></h1>

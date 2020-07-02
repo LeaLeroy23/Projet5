@@ -64,11 +64,10 @@
                 <div id="sidebar" class="main-menu nav-collapse">
                     <!-- sidebar menu start-->
                     <ul class="sidebar-menu" id="nav nav-accordion">
-                        <p class="centered"><a href="index.php?route=profile"><img src="../public/img/agent/<?= $this->session->get('avatar'); ?>" class="img-circle" width="80"></a></p>
+                        <p class="centered"><a href="index.php?route=profile"><img src="../public/img/agent/<?= $this->session->get('avatar'); ?>" class="img-circle" width="80" height="80"></a></p>
                         <h5 class="centered">
                         <?= $this->session->show('login'); ?>
                         <?= $this->session->get('firstname'); ?> <?= $this->session->get('lastname'); ?>
-                        <img src="<?= $this->session->get('avatar'); ?>" class="img-circle" width="80">
                         </h5>
                             
                             <li class="mt">

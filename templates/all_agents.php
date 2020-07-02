@@ -43,13 +43,7 @@
                                     <td data-title="Avatar">
                                         <img class="img-circle" src="../public/img/agent/<?=$agent->getAvatar();?>" width="35px" height="35px">
                                     </td>
-                                    <td data-title="Fonction"><?php
-                                    /*if($agent->getFunction() == '99'){
-                                        $agent->getFunction();
-                                    } else {
-
-                                    }*/
-                                        htmlspecialchars($agent->getFunction());?></td>
+                                    <td data-title="Fonction"><?=htmlspecialchars($agent->getFunction());?></td>
                                     <td data-title="Prénom"><?= htmlspecialchars($agent->getFirstname());?></td>
                                     <td data-title="Nom"><?= htmlspecialchars($agent->getLastname());?></td>
                                     <td data-title="Status"><?= htmlspecialchars($agent->getStatus());?></td>

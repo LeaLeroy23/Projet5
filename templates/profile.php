@@ -17,6 +17,7 @@
                     <div class="col-md-4 profile-text">
                         <h3><?= $this->session->get('lastname'); ?> <?= $this->session->get('firstname'); ?></h3>
                         <h6><?= $this->session->get('function'); ?></h6>
+                        <p><?= $this->session->get('avatar'); ?></p>
                         <p><?= $this->session->get('phone'); ?></p>
                         <p><?= $this->session->get('email'); ?></p>
                         <p><a href=""><button class="btn btn-theme">Voir ma page</button></a></p>
@@ -24,7 +25,7 @@
 
                     <div class="col-md-4 centered">
                         <div class="profile-pic">
-                            <p><img src="../public/img/agent/<?= $this->session->get('avatar'); ?>" class="img-circle"></p>
+                            <p><img src="../public/img/agent/<?=$this->session->get('avatar');?>" class="img-circle"></p>
                             
                         </div>
                     </div>
