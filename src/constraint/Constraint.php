@@ -61,14 +61,4 @@ class Constraint
         }
     }
 
-    public function matchPassword($name, $value)
-    {
-        $agentDAO = new \Hestia\src\DAO\AgentDAO;
-        $agent = $energyDAO->updatePassword($value);
-
-        if ($energy['nb_energy'] && $energy > 0){
-            return '<p class="alert alert-danger" role="alert">La valeur '.$value.' existe déjà</p>';
-        }
-    }
-
 }

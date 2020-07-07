@@ -55,6 +55,21 @@ class EstateDAO extends DAO
         return $result;
     }
 
+    public function getPublishedEstates(){
+        $sql = "SELECT e.id as id, e.title as title, e.excerpt as excerpt, e.status as status, e.price as price, e.rooms as rooms, e.bedrooms as bedrooms, e.area as area, e.city as city, c.name as category, t.type as type, a.firstname as firstname, a.lastname as lastname
+                FROM estate e
+                INNER JOIN category c
+                ON e.category_id = c.id
+                INNER JOIN type t
+                ON e.type_id = t.id
+                INNER JOIN agent a
+                ON e.agent_id = a.id
+                WHERE e.status = '1'
+                ";
+        $result = $this->createQuery($sql)->fetchAll();
+        return $result;
+    }
+
 
     public function getEstate($estateId)
     {
@@ -135,6 +150,13 @@ class EstateDAO extends DAO
             'fees' => $post->get('fees'),
             'status' => $post->get('status'),
             'estateId' => $estateId
+        ]);
+    }
+
+    public function getPublishEstate($estateId, $status){
+        $sql = "UPDATE estate SET status=:status WHERE id=estateId";
+        $this->createQuery($sql, [
+            'status' => $status
         ]);
     }
 

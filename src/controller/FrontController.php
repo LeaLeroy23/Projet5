@@ -19,9 +19,11 @@ class FrontController extends Controller
 
     public function home()
     {
-        $estates = $this->estateDAO->getEstates();
+        $sliderEstates = $this->estateDAO->getSliders();
+        $estates = $this->estateDAO->getPublishedEstates();
         $agents = $this->agentDAO->getAgents();
         return $this->view->render('home', [
+            'sliderEstates' => $sliderEstates,
             'estates' => $estates,
             'agents' => $agents
         ]);

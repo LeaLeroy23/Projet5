@@ -2,7 +2,7 @@
 
 <section id="main-content">
     <section class="wrapper">
-    
+    <?= $this->session->show('wrongPassword'); ?>
     <?= $this->session->show('editAgent'); ?>
 
         <h3><i class="fa fa-angle-right"></i> Modifier un agent</h3>        
@@ -93,29 +93,25 @@
             <div class="col-lg-12">
                 <div class="form-panel">
                     <h4 class="mb"><i class="fa fa-angle-right"></i> Modification du mot de passe</h4>
-                    <?= $this->session->show('wrongPassword'); ?>
 
                     <form class="form-horizontal style-form" method='post' action="../public/index.php?route=updatePassword&agentId=<?=$agent->getId();?>">
                         <div class="form-group">
                             <div class="col-sm-10">
                                 <div class="form-group">
-                                    <label class="col-lg-2 control-label">Nouveau mot de passe</label>
+                                    <label class="col-lg-3 control-label">Nouveau mot de passe</label>
                                     <div class="col-lg-8">
                                         <input type="password" id="addr1" class="form-control" name="newPassword">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-lg-2 control-label">Retaper votre mot de passe</label>
+                                    <label class="col-lg-3 control-label">Retaper votre mot de passe</label>
                                     <div class="col-lg-8">
                                         <input type="password" id="addr2" class="form-control" name="confirmPassword">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-lg-offset-2 col-lg-10">
-                                    <?= $this->session->show('wrongPassword'); ?>
+                                    <div class="col-lg-offset-3 col-lg-10">
                                         <input class="btn btn-theme" type="submit" name="submit" value="Réinitialiser">
                                     </div>
-                                </div>
                             </div>
                         </div>
                     </form>

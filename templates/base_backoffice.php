@@ -35,6 +35,7 @@
         <link href="../public/css/style-responsive.css" rel="stylesheet">
         <link href="../public/css/table-responsive.css" rel="stylesheet">
 
+
     </head>
 
     <body>
@@ -185,19 +186,16 @@
                 <!--footer end-->
         <!-- js placed at the end of the document so the pages load faster -->
         <script src="../public/lib/jquery/jquery.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
         <script src="../public/lib/bootstrap/js/bootstrap.min.js"></script>
-        <script class="include" type="text/javascript" src="../public/lib/jquery.dcjqaccordion.2.7.js"></script>
         <script src="../public/lib/jquery.scrollTo.min.js"></script>
         <script src="../public/lib/jquery.nicescroll.js" type="text/javascript"></script>
+        <script class="include" type="text/javascript" src="../public/lib/jquery.dcjqaccordion.2.7.js"></script>
         <!-- meanmenu js -->
         <script src="../public/js/jquery.meanmenu.js"></script>
         <!--common script for all pages-->
         <script src="../public/lib/common-scripts.js"></script>
         <!--script for this page-->
-        <script src="../public/js/Spec.js" type="text/javascript"></script>
-        <script src="../public/js/updateProfile.js" type="text/javascript"></script>
-        <!--<script src="../public/js/Preview.js" type="text/javascript"></script>-->
-        <script src="../public/js/main.js" type="text/javascript"></script>
   </body>
   
 </html>

@@ -1,7 +1,6 @@
 <?php $this->title = 'Mon profil'; ?>
 <section id="main-content">
     <section class="wrapper site-min-height">
-    <?= $this->session->show('update_profile'); ?>
 
         <div class="row mt">
             <div class="col-lg-12">
@@ -32,6 +31,12 @@
 
 
                 </div>
+            </div>
+
+            <div class="col-lg-12 mt">
+                <?= $this->session->show('updateProfile'); ?>
+                <?= $this->session->show('editProfile'); ?>
+                <?= $this->session->show('wrongPassword'); ?>
             </div>
 
             <div class="col-lg-12 mt">
@@ -192,47 +197,54 @@
                                     <div class="col-lg-1"></div>
                                     <div class="col-lg-10 detailed">
                                         <h4 class="mb">Information Personnel</h4>
-                                        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=editProfile&agentId=<?=$agent->getId();?>">
+                                        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=editProfile&agentId=<?=$this->session->get('id');?>" enctype="multipart/form-data">
                                             
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Prénom</label>
                                                 <div class="col-lg-8">
-                                                <input type="text" class="form-control" name="firstname" value="<?=htmlspecialchars($agent->getFirstname());?>">
+                                                <input type="text" class="form-control" name="firstname" value="<?=$this->session->get('firstname');?>">
+                                                <?= isset($errors['firstname']) ? $errors['firstname'] : ''; ?>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Nom</label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="lastname" value="<?=htmlspecialchars($agent->getLastname());?>">
+                                                    <input type="text" class="form-control" name="lastname" value="<?=$this->session->get('lastname');?>">
+                                                    <?= isset($errors['lastname']) ? $errors['lastname'] : ''; ?>
                                                 </div>
                                             </div>
                                             
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Téléphone</label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="phone" value="<?=htmlspecialchars($agent->getPhone());?>">
+                                                    <input type="text" class="form-control" name="phone" value="<?=$this->session->get('phone');?>">
+                                                    <?= isset($errors['phone']) ? $errors['phone'] : ''; ?>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Email</label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" name="email" value="<?=htmlspecialchars($agent->getEmail());?>">
+                                                    <input type="text" class="form-control" name="email" value="<?=$this->session->get('email');?>">
+                                                    <?= isset($errors['email']) ? $errors['email'] : ''; ?>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Description</label>
                                                 <div class="col-lg-8">
-                                                    <textarea rows="10" cols="30" class="form-control" name="description"><?=htmlspecialchars($agent->getDescription());?></textarea>
+                                                    <textarea rows="10" cols="30" class="form-control" name="description" value="<?=$this->session->get('description');?>"><?=$this->session->get('description');?></textarea>
+                                                    <?= isset($errors['description']) ? $errors['description'] : ''; ?>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <div class="col-lg-8">
                                                 <label class="col-lg-2 control-label">Avatar</label> 
-                                                    <input type="file" id="exampleInputFile" class="file-pos" name="avatar" value="<?=htmlspecialchars($agent->getAvatar());?>">
+                                                    <input type="file" name="avatar" value="<?=$this->session->get('avatar');?>">
                                                 </div>
                                             </div>
+
+                                            <input type="hidden" name="agentId" value="<?=$this->session->get('id');?>">
 
                                             <div class="form-group">
                                                 <br />
@@ -246,14 +258,14 @@
                                     <div class="col-md-1"></div>
 
                                     <!--début modif mdp-->
-                                    <div class="col-lg-10 col-lg-offset-2 detailed mt">
+                                    <div class="col-lg-12 detailed mt">
                                         <h4 class="mb">Modifier mon mot de passe</h4>
 
-                                        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=updatePassword&agentId=<?=$agent->getId();?>">
+                                        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=updatePasswordProfile&agentId=<?=$this->session->get('id');?>">
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Nouveau mot de passe</label>
                                                 <div class="col-lg-8">
-                                                <input type="password" id="addr1" class="form-control" name="newPassword">
+                                                    <input type="password" id="addr1" class="form-control" name="newPassword">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -305,3 +317,5 @@ function validatePassword() {
     
 }
 </script>
+
+<script src="../public/js/updateProfile.js" type="text/javascript"></script>

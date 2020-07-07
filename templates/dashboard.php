@@ -161,29 +161,7 @@
                                 }
                             ?>
                         </div>
-                        <div class="ow">
-                            <h4 class="centered mt cog-title">Support Technique</h4>
-                            <!-- Start contact form -->
-                            <div class="row mt">
-                                <div class="col-lg-12">
-                                    <form class="form-horizontal style-form" method='POST' action="" enctype="multipart/form-data">
-                                        <div class="col-sm-12 dashboard-contact">
-                                            <label class="col-sm-10 col-md-10 control-label">Email</label>
-                                            <input type="text" class="form-control form-landing-sm" name="email" placeholder="email">
-                                        </div>
-                                        <div class="col-sm-12 dashboard-contact">
-                                            <label class="col-sm-10 col-md-10 control-label">Décrivez nous votre problème</label>
-                                            <textarea class="form-control form-landing-sm" placeholder="message"></textarea>
-                                        </div>
-                                        <div class="col-sm-12 form-landing">
-                                            <input type="submit" class="btn btn-theme05" value="Envoyé">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End  contact form -->
-
+                        
                     </div>
 
                 </div>

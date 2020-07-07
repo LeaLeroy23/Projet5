@@ -4,25 +4,25 @@
         <section class="slider-section ">
 
         <?php
-        foreach ($estates as $estate)
+        foreach ($sliderEstates as $sliderEstate)
         {
             ?>
 
                 <div class="item">
-                    <img src="../public/img/upload/<?= ($estate['picture_url']);?>" alt="">
+                    <img src="../public/img/upload/<?= $sliderEstate['picture_url'];?>" alt="slider">
                     <div class="slide-content carousel-caption hidden-xs">
                         <div class="slide-content-top">
-                            <h1><?= htmlspecialchars($estate['type']);?></h1>
-                            <h2><?= htmlspecialchars($estate['title']);?></h2>
-                            <p><?= htmlspecialchars($estate['excerpt']);?></p>
+                            <h1><?= htmlspecialchars($sliderEstate['type']);?></h1>
+                            <h2><?= htmlspecialchars($sliderEstate['title']);?></h2>
+                            <p><?= htmlspecialchars($sliderEstate['excerpt']);?></p>
                         </div>
                         <div class="slide-property-detail">
                             <ul>
-                                <li><?= ($estate['rooms']);?> Pièces</li>
-                                <li><?= htmlspecialchars($estate['bedrooms']);?> Chambres</li>
-                                <li><?= htmlspecialchars($estate['area']);?> m2</li>
-                                <li><?= ($estate['price']);?> €</li>
-                                <li class="slider-btn"><a href="../public/index.php?route=estate&estateId=<?= ($estate['id']);?>"><?= ($estate['category']);?></a></li> 
+                                <li><?= ($sliderEstate['rooms']);?> Pièces</li>
+                                <li><?= htmlspecialchars($sliderEstate['bedrooms']);?> Chambres</li>
+                                <li><?= htmlspecialchars($sliderEstate['area']);?> m2</li>
+                                <li><?= ($sliderEstate['price']);?> €</li>
+                                <li class="slider-btn"><a href="../public/index.php?route=estate&estateId=<?= ($sliderEstate['id']);?>"><?= ($sliderEstate['category']);?></a></li> 
                             </ul>
                         </div>
                     </div>

@@ -56,14 +56,6 @@ class AgentValidation extends Validation
             $error = $this->checkStatus($name, $value);
             $this->addError($name, $error);
         }
-        elseif ($name === 'newPassword') {
-            $error = $this->checkPassword($name, $value);
-            $this->addError($name, $error);
-        }
-        elseif ($name === 'confirmPassword') {
-            $error = $this->checkPassword($name, $value);
-            $this->addError($name, $error);
-        }
     }
 
     private function addError($name, $error) {
@@ -175,29 +167,6 @@ class AgentValidation extends Validation
         }
         if($this->constraint->maxLength($name, $value, 2)) {
             return $this->constraint->maxLength('password', $value, 2);
-        }
-    }
-
-    private function checkNewPassword($name, $value)
-    {
-        if($this->constraint->minLength($name, $value, 2)) {
-            return $this->constraint->minLength('password', $value, 2);
-        }
-        if($this->constraint->maxLength($name, $value, 75)) {
-            return $this->constraint->maxLength('password', $value, 75);
-        }
-    }
-
-    private function checkConfirmPassword($name, $value)
-    {
-        if($this->constraint->notBlank($name, $value)) {
-            return $this->constraint->notBlank('password', $value);
-        }
-        if($this->constraint->minLength($name, $value, 2)) {
-            return $this->constraint->minLength('password', $value, 2);
-        }
-        if($this->constraint->maxLength($name, $value, 75)) {
-            return $this->constraint->maxLength('password', $value, 75);
         }
     }
 }

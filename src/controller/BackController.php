@@ -172,31 +172,62 @@ class BackController extends Controller
             $pictures = $this->pictureDAO->getPicturesByEstateId($estateId);
 
             $folder_name = 'img/upload/';
-
+            
             if (!empty($_FILES)) {
                 $temp_file = $_FILES['file']['tmp_name'];
                 $location = $folder_name . $_FILES['file']['name'];
                 move_uploaded_file($temp_file, $location);
-                
-            }
-            
-            if (isset($_POST["name"])) {
                 $filename = $_FILES['file']['name'];
-                $filename = $folder_name.$filename;
+                //$filename = $folder_name.$filename;
                 unlink($filename);
-                     
                 $this->pictureDAO->addPictures($filename, $estateId);
+                return json_encode("test");
             }
-
-                
 
             return $this->view->renderTemplate('add_pictures', [
                 'estate' => $estate,
                 'pictures' => $pictures,
-                'post' => $_POST
+                'post' => $post
             ]);
         }
     }
+
+    public function uploadPictures(Parameter $post, Parameter $files, $estateId)
+    {
+        if($this->checkLoggedIn()){
+            $estate = $this->estateDAO->getEstate($estateId);
+
+            $result = array();
+            $files = $this->pictureDAO->getPicturesByEstateId($estateId);;
+            $output = '<div class="row">';
+
+            if(false !== $files)
+                {
+                    foreach($files as $file)
+                    {
+                        if('.' !=  $file && '..' != $file)
+                        {
+                            $output .= '
+                            <tr>
+                                <td><img src="../public/img/upload/'.$file->getFile();'" height="150px"></td>
+                                <td>'.$file->getFile();'</td>
+                                <td>
+                                    <a href="../public/index.php?route=deletePicture&pictureId='.$file->getId();'"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i> Supprimer</button></a>
+                                </td>
+                            </tr>
+                            ';
+                        }
+                    }
+                }
+            $output .= '</div>';
+            echo $output;
+
+            $this->session->set('uploadPicture', 'L\'image a bien été ajouter');
+            /*header('Location: ../public/index.php?route=addPictures');
+            exit();*/
+        }
+    }
+
 
     public function deletePicture($pictureId)
     {
@@ -537,14 +568,12 @@ class BackController extends Controller
             if($post->get('submit')){
                 if($post->get('newPassword') == $post->get('confirmPassword')){
                     $password = $post->get('confirmPassword');
-                    var_dump($password);
-                    die();
                     $this->agentDAO->updatePassword($password, $agentId);
-                    $this->session->set('updatePassword', 'Votre mot de passe a été mis à jour');
+                    $this->session->set('updatePassword', 'Votre mot de passe a été mis à jour avec succès');
                     header('Location: ../public/index.php?route=allAgents');
                     exit();
                 } else {
-                    $this->session->set('wrongPassword', 'vos mots de passe ne sont pas identique');
+                    $this->session->set('wrongPassword', 'Erreur: Vos mots de passe ne sont pas identique');
                     header('Location: ../public/index.php?route=editAgent&agentId=' . $agentId);
                     exit();
                 }
@@ -556,19 +585,71 @@ class BackController extends Controller
 
     public function editProfile(Parameter $post, $agentId)
     {
-        if($this->checkLoggedIn()){
-            $agent = $this->agentDAO->getAgent($agentId);
+        $errors = $this->validation->validate($post, 'Agent');
+        $agentId = $this->session->get('id');
+        if ($post->get('submit')) {
+            if (!$errors) {
+                $form=[];
+                $maxsize = 5 * 1024 * 1024;
+                $filename = "";
+                if (isset($_FILES["avatar"]) && $_FILES["avatar"]["error"] == 0) {
+                    $allowed = array("jpg" => "image/jpg", "JPG" => "image/JPG", "jpeg" => "image/jpeg", "png" => "image/png", "PNG" => "image/PNG");
+                    $filename = $_FILES["avatar"]["name"];
+                    $filetype = $_FILES["avatar"]["type"];
+                    $filesize = $_FILES["avatar"]["size"];
 
-            if($post->get('submit')){
-                $agentId = $this->session->get('id');
-                $this->agentDAO->editProfile($post, $agentId);
-                $this->session->set('update_profile', 'Votre profile a été mis à jour');
-                header('Location: ../public/index.php?route=Profile');
+                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                    if (!array_key_exists($ext, $allowed)) {
+                        echo("Erreur : Veuillez sélectionner un format de fichier valide.");
+                    }
+
+                    if ($filesize > $maxsize) {
+                        echo("Erreur: La taille du fichier est supérieure à la limite autorisée.");
+                    }
+
+                    if (in_array($filetype, $allowed)) {
+                        /**verifie si le fichier existe avant de le telecharger*/
+                        if (file_exists("../public/img/agent/" . $_FILES["avatar"]["name"])) {
+                            echo($_FILES["avatar"]["name"] . "existe déjà.");
+                        } else {
+                            $filename = uniqid() . '.' . $ext;
+                            move_uploaded_file($_FILES["avatar"]["tmp_name"], "../public/img/agent/" .  $filename);
+                        }
+                    } else {
+                        echo("Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");
+                    }
+                }
+
+                $this->agentDAO->editProfile($post, $filename, $agentId);
+                
+                $this->session->set('editProfile', 'L\'agent a été mis à jour');
+                header('Location: ../public/index.php?route=profile');
                 exit();
             }
-            return $this->view->renderTemplate('edit_profile', [
-                'agente' => $agent,
+            return $this->view->renderTemplate('profile', [
+                'agent' => $agent,
+                'errors' => $errors
             ]);
+        }
+    }
+
+    public function updatePasswordProfile(Parameter $post, $agentId){
+        if($this->checkLoggedIn()){
+            if($post->get('submit')){
+                if($post->get('newPassword') == $post->get('confirmPassword')){
+                    $password = $post->get('confirmPassword');
+                    $this->agentDAO->updatePassword($password, $agentId);
+                    $this->session->set('updatePassword', 'Votre mot de passe a été mis à jour avec succès');
+                    header('Location: ../public/index.php?route=Profile');
+                    exit();
+                } else {
+                    $this->session->set('wrongPassword', 'Erreur: Vos mots de passe ne sont pas identique');
+                    header('Location: ../public/index.php?route=profile');
+                    exit();
+                }
+               
+            }
+            return $this->view->renderTemplate('profile');
         }
     }
 

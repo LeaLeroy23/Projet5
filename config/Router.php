@@ -58,11 +58,14 @@ class Router
                     $this->backController->allEstates();
                 }
                 elseif ($route === 'addPictures'){
-                $this->backController->addPictures($this->request->getPost(), $this->request->getFiles(), $this->request->getGet()->get('estateId'));
+                    $this->backController->addPictures($this->request->getPost() ,$this->request->getFiles(), $this->request->getGet()->get('estateId'));
+                }
+                elseif ($route === 'uploadPictures'){
+                    $this->backController->uploadPictures($this->request->getPost(), $this->request->getFiles(),$this->request->getGet()->get('estateId'));
                 }
                 elseif ($route === 'deletePicture'){
                     $this->backController->deletePicture($this->request->getGet()->get('pictureId'));
-                    }
+                }
                 elseif ($route === 'addCategory'){
                     $this->backController->addCategory($this->request->getPost());
                 }
@@ -106,7 +109,10 @@ class Router
                     $this->backController->updatePassword($this->request->getPost(), $this->request->getGet()->get('agentId'));
                 }
                 elseif ($route === 'editProfile'){
-                    $this->backController->editProfile($this->request->getPost(), $this->request->getGet()->get('agentId'));
+                    $this->backController->editProfile($this->request->getPost(), $this->request->getSession()->get('id'));
+                }
+                elseif ($route === 'updatePasswordProfile'){
+                    $this->backController->updatePasswordProfile($this->request->getPost(), $this->request->getGet()->get('agentId'));
                 }
                 elseif ($route === 'configuration'){
                     $this->backController->configuration();

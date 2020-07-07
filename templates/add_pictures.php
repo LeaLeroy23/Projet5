@@ -7,6 +7,7 @@
         <section class="wrapper">
             <h3><i class="fa fa-angle-right"></i> Ajout de plusieurs images</h3>
             <?= $this->session->show('deletePicture'); ?>
+            <?= $this->session->show('addPicture'); ?>
             <div class="row mt">
                 <div class="col-lg-12">
                     <div class="form-panel">
@@ -14,18 +15,12 @@
                         <form action="index.php?route=addPictures&estateId=<?= $estate->getId();?>" class="dropzone" id="dropzoneFrom">
                             <input type="hidden" name="estate_id" value="<?=$estate->getId();?>" />
                         </form>
+
                         <div align="center">
-                            <button type="button" class="btn btn-info" id="submit">Upload</button>
+                            <button type="button" name="submit" class="btn btn-info" id="submit">Upload</button>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-12">
-                    <div class="form-panel">
-                        <div id="preview"></div>
-                    </div>
-                </div>
-
 
                 <div class="col-lg-12">
                     <div class="form-panel">
@@ -40,7 +35,7 @@
                                 </tr>
                             </thead>
 
-                            <tbody>
+                            <tbody id="preview">
                             <?php 
                             foreach($pictures as $picture){
                             ?>
@@ -67,21 +62,19 @@
         <!-- /wrapper -->
     </section>
     <!-- /MAIN CONTENT  -->
-
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="../public/lib/jquery/jquery.min.js"></script>
+    <!--<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
+    
 
-    <script>
+<script>
 
 $(document).ready(function(){
-    console.log('je suis là');
-Dropzone.options.dropzoneFrom = {
+    Dropzone.options.dropzoneFrom = {
     autoProcessQueue: false,
     acceptedFiles:".png,.jpg,.gif,.bmp,.jpeg",
     init: function(){
         let submitButton = document.querySelector('#submit');
-        console.log(submitButton);
         myDropzone = this;
         submitButton.addEventListener("click", function(){
             console.log('hello again');
@@ -98,31 +91,36 @@ Dropzone.options.dropzoneFrom = {
     },
 };
 
-//list_image();
+    //list_image();
 
-function list_image()
-{
-$.ajax({
-    url:"index.php?route=addPictures",
-    success:function(data){
-        $('#preview').html(data);
+    function list_image()
+    {
+        $.ajax({
+            url:"index.php?route=uploadPictures&estateId=<?= $estate->getId();?> ",
+            success:function(data){
+                $('#preview').html(data);
+                console.log('success', data);
+            },
+            error: function(resultat, statut, erreur){
+                console.log('fail');
+            }
+            
+        });
     }
-    });
-}
 
-$(document).on('click', '.remove_image', function(){
-    console.log('hello again');
-var name = $(this).attr('id');
-$.ajax({
-url:"index.php?route=addPictures",
-method:"POST",
-data:{name:file},
-success:function(data)
-{
-list_image();
-}
-})
-});
+    $(document).on('click', '.remove_image', function(){
+        console.log('hello again');
+        var name = $(this).attr('id');
+            $.ajax({
+                url:"index.php?route=deletePictures&estateId=<?= $estate->getId();?>",
+                method:"POST",
+                data:{name:file},
+                success:function(data)
+            {
+            list_image();
+            }
+    })
+    });
  
 });
 </script>
