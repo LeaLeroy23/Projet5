@@ -63,7 +63,7 @@
     </section>
     <!-- /MAIN CONTENT  -->
     <script src="../public/lib/jquery/jquery.min.js"></script>
-    <!--<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>-->
+    <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
     
 
@@ -77,7 +77,6 @@ $(document).ready(function(){
         let submitButton = document.querySelector('#submit');
         myDropzone = this;
         submitButton.addEventListener("click", function(){
-            console.log('hello again');
             myDropzone.processQueue();
         });
         this.on("complete", function(){
@@ -99,10 +98,9 @@ $(document).ready(function(){
             url:"index.php?route=uploadPictures&estateId=<?= $estate->getId();?> ",
             success:function(data){
                 $('#preview').html(data);
-                console.log('success', data);
+                console.log(data);
             },
             error: function(resultat, statut, erreur){
-                console.log('fail');
             }
             
         });

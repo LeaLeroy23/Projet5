@@ -39,7 +39,7 @@ class PictureDAO extends DAO
 
     public function getPicturesByEstateId($estateId)
     {
-        $sql= 'SELECT * FROM picture WHERE estate_id = ?';
+        $sql= 'SELECT * FROM picture WHERE estate_id = ? ORDER BY file DESC';
         $result = $this->createQuery($sql, [$estateId]);
         $pictures = [];
         foreach ($result as $row) {

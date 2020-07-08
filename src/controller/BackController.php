@@ -173,15 +173,17 @@ class BackController extends Controller
 
             $folder_name = 'img/upload/';
             
-            if (!empty($_FILES)) {
+            if (!empty($_FILES)) 
+            {
                 $temp_file = $_FILES['file']['tmp_name'];
-                $location = $folder_name . $_FILES['file']['name'];
-                move_uploaded_file($temp_file, $location);
+                //$location = $folder_name . $_FILES['file']['name'];
                 $filename = $_FILES['file']['name'];
-                //$filename = $folder_name.$filename;
-                unlink($filename);
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                $filename = uniqid() . '.' . $ext;
+                $location = $folder_name . $filename;
+                move_uploaded_file($temp_file, $location);
+                
                 $this->pictureDAO->addPictures($filename, $estateId);
-                return json_encode("test");
             }
 
             return $this->view->renderTemplate('add_pictures', [
@@ -196,10 +198,11 @@ class BackController extends Controller
     {
         if($this->checkLoggedIn()){
             $estate = $this->estateDAO->getEstate($estateId);
+            $pictures = $this->pictureDAO->getPicturesByEstateId($estateId);
 
             $result = array();
             $files = $this->pictureDAO->getPicturesByEstateId($estateId);;
-            $output = '<div class="row">';
+            $output = '<div class="col-lg-12">';
 
             if(false !== $files)
                 {
@@ -209,11 +212,9 @@ class BackController extends Controller
                         {
                             $output .= '
                             <tr>
-                                <td><img src="../public/img/upload/'.$file->getFile();'" height="150px"></td>
-                                <td>'.$file->getFile();'</td>
-                                <td>
-                                    <a href="../public/index.php?route=deletePicture&pictureId='.$file->getId();'"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i> Supprimer</button></a>
-                                </td>
+                                <td><img src="../public/img/upload/'.$file->getFile().'" height="150px"></td>
+                                <td><p>'.$file->getFile().'</p></td>
+                                <td><a href="../public/index.php?route=deletePicture&pictureId='.$file->getId().'"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i> Supprimer</button></a></td>
                             </tr>
                             ';
                         }
@@ -227,7 +228,6 @@ class BackController extends Controller
             exit();*/
         }
     }
-
 
     public function deletePicture($pictureId)
     {

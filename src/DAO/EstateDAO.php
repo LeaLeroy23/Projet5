@@ -41,7 +41,7 @@ class EstateDAO extends DAO
     }
 
     public function getEstates(){
-        $sql = "SELECT e.id as id, e.title as title, e.excerpt as excerpt, e.status as status, e.price as price, e.rooms as rooms, e.bedrooms as bedrooms, e.area as area, e.city as city, c.name as category, t.type as type, a.firstname as firstname, a.lastname as lastname
+        $sql = "SELECT e.id as id, e.title as title, e.excerpt as excerpt, e.status as status, e.price as price, e.rooms as rooms, e.bedrooms as bedrooms, e.area as area, e.city as city, c.name as category, t.type as type, a.firstname as firstname, a.lastname as lastname, e.picture_url as picture_url
                 FROM estate e
                 INNER JOIN category c
                 ON e.category_id = c.id
@@ -56,7 +56,7 @@ class EstateDAO extends DAO
     }
 
     public function getPublishedEstates(){
-        $sql = "SELECT e.id as id, e.title as title, e.excerpt as excerpt, e.status as status, e.price as price, e.rooms as rooms, e.bedrooms as bedrooms, e.area as area, e.city as city, c.name as category, t.type as type, a.firstname as firstname, a.lastname as lastname
+        $sql = "SELECT e.id as id, e.title as title, e.excerpt as excerpt, e.status as status, e.price as price, e.rooms as rooms, e.bedrooms as bedrooms, e.area as area, e.city as city, c.name as category, t.type as type, a.firstname as firstname, a.lastname as lastname, e.picture_url as picture_url
                 FROM estate e
                 INNER JOIN category c
                 ON e.category_id = c.id
@@ -65,6 +65,22 @@ class EstateDAO extends DAO
                 INNER JOIN agent a
                 ON e.agent_id = a.id
                 WHERE e.status = '1'
+                ";
+        $result = $this->createQuery($sql)->fetchAll();
+        return $result;
+    }
+
+    public function forSaleEstates(){
+        $sql = "SELECT e.id as id, e.title as title, e.excerpt as excerpt, e.status as status, e.price as price, e.rooms as rooms, e.bedrooms as bedrooms, e.area as area, e.city as city, c.name as category, t.type as type, a.firstname as firstname, a.lastname as lastname, e.picture_url as picture_url
+                FROM estate e
+                INNER JOIN category c
+                ON e.category_id = c.id
+                INNER JOIN type t
+                ON e.type_id = t.id
+                INNER JOIN agent a
+                ON e.agent_id = a.id
+                WHERE e.status = '1'
+                AND c.id = '21'
                 ";
         $result = $this->createQuery($sql)->fetchAll();
         return $result;
@@ -201,5 +217,18 @@ class EstateDAO extends DAO
         $sql = "SELECT COUNT(*) FROM estate WHERE status = 0 AND agent_id = " . $agentId;
         $countEstateByAgentDraft = $this->createQuery($sql);
         return $countEstateByAgentDraft->fetch()[0];
+    }
+
+    public function getSliders(){
+        $sql = "SELECT e.id as id, e.title as title, e.excerpt as excerpt, e.status as status, e.price as price, e.rooms as rooms, e.bedrooms as bedrooms, e.area as area, e.city as city, c.name as category, t.type as type, e.picture_url as picture_url
+                FROM estate e
+                INNER JOIN category c
+                ON e.category_id = c.id
+                INNER JOIN type t
+                ON e.type_id = t.id
+                ORDER BY e.id DESC
+                ";
+        $result = $this->createQuery($sql)->fetchAll();
+        return $result;
     }
 }

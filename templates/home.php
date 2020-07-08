@@ -106,24 +106,24 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="single-featured-properties">
                             <div class="properties-image">
-                                <a href="index.php?route=estate&estateId=<?= ($estate['id']);?>"><img src="../public/img/properties/1.jpg" alt=""></a>
+                                <a href="index.php?route=estate&estateId=<?= ($estate['id']);?>"><img src="../public/img/upload/<?= ($estate['picture_url']);?>" alt="<?= ($estate['picture_url']);?>"></a>
                             </div>
                             <div class="sale-tag">
                                 <p><?=($estate['category']);?></p>
                             </div>
                             <div class="properties-include">
                                 <ul>
-                                    <li><i class="fa fa-home"></i> 50 m2</li>
-                                    <li><i class="fa fa-square"></i>2 Pièce(s)</li>
-                                    <li><i class="fa fa-bed"></i> 1 Chambre(s)</li>
+                                    <li><i class="fa fa-home"></i> <?= ($estate['area']);?> m2</li>
+                                    <li><i class="fa fa-square"></i><?= ($estate['rooms']);?> Pièce(s)</li>
+                                    <li><i class="fa fa-bed"></i> <?= ($estate['bedrooms']);?> Chambre(s)</li>
                                 </ul>
                             </div>
                             <div class="properties-content">
-                                <h3><a href="single-property.php">Titre</a></h3>
-                                <p><i class="fa fa-map-marker"></i> PACA</p>
-                                <p class="detail-text">Description courte</p>
+                                <h3><a href="single-property.php"><?= ($estate['title']);?></a></h3>
+                                <p><i class="fa fa-map-marker"></i> <?= ($estate['city']);?></p>
+                                <p class="detail-text"><?= ($estate['excerpt']);?></p>
                                 <div class="price-detail">
-                                    <p class="price-range pull-left">2350 000€</p>
+                                    <p class="price-range pull-left"><?= ($estate['price']);?> €</p>
                                     <a href="index.php?route=estate&estateId=<?= ($estate['id']);?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
@@ -226,13 +226,7 @@
                             <div class="single-agent wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".3s">
                                 <div class="agentimg-social">
                                     <img src="../public/img/agent/<?= ($agent->getAvatar());?>" alt="">
-                                    <ul class="agent-bookmark">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-envelope"></i></a></li>
-                                    </ul>
+                                    
                                     <div class="overlay"></div>
                                 </div>
                                 <div class="agent-detail text-center">
