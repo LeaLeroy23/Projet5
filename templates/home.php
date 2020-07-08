@@ -99,32 +99,32 @@
                 <div class="row">
 
                 <?php
-               foreach ($estates as $estate)
+               foreach ($estatesForSale as $estateForSale)
                {
                 ?>
 
                     <div class="col-md-4 col-sm-6">
                         <div class="single-featured-properties">
                             <div class="properties-image">
-                                <a href="index.php?route=estate&estateId=<?= ($estate['id']);?>"><img src="../public/img/upload/<?= ($estate['picture_url']);?>" alt="<?= ($estate['picture_url']);?>"></a>
+                                <a href="index.php?route=estate&estateId=<?= ($estateForSale['id']);?>"><img src="../public/img/upload/<?= ($estateForSale['picture_url']);?>" alt="<?= ($estateForSale['picture_url']);?>"></a>
                             </div>
                             <div class="sale-tag">
-                                <p><?=($estate['category']);?></p>
+                                <p><?=($estateForSale['category']);?></p>
                             </div>
                             <div class="properties-include">
                                 <ul>
-                                    <li><i class="fa fa-home"></i> <?= ($estate['area']);?> m2</li>
-                                    <li><i class="fa fa-square"></i><?= ($estate['rooms']);?> Pièce(s)</li>
-                                    <li><i class="fa fa-bed"></i> <?= ($estate['bedrooms']);?> Chambre(s)</li>
+                                    <li><i class="fa fa-home"></i> <?= ($estateForSale['area']);?> m2</li>
+                                    <li><i class="fa fa-square"></i><?= ($estateForSale['rooms']);?> Pièce(s)</li>
+                                    <li><i class="fa fa-bed"></i> <?= ($estateForSale['bedrooms']);?> Chambre(s)</li>
                                 </ul>
                             </div>
                             <div class="properties-content">
-                                <h3><a href="single-property.php"><?= ($estate['title']);?></a></h3>
-                                <p><i class="fa fa-map-marker"></i> <?= ($estate['city']);?></p>
-                                <p class="detail-text"><?= ($estate['excerpt']);?></p>
+                                <h3><a href="single-property.php"><?= ($estateForSale['title']);?></a></h3>
+                                <p><i class="fa fa-map-marker"></i> <?= ($estateForSale['city']);?></p>
+                                <p class="detail-text"><?= ($estateForSale['excerpt']);?></p>
                                 <div class="price-detail">
-                                    <p class="price-range pull-left"><?= ($estate['price']);?> €</p>
-                                    <a href="index.php?route=estate&estateId=<?= ($estate['id']);?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
+                                    <p class="price-range pull-left"><?= ($estateForSale['price']);?> €</p>
+                                    <a href="index.php?route=estate&estateId=<?= ($estateForSale['id']);?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -149,32 +149,32 @@
                 <div class="row">
 
                 <?php
-                foreach ($estates as $estate)
+                foreach ($estatesForRent as $estateForRent)
                 {
                 ?>
 
                     <div class="col-md-4 col-sm-6">
                         <div class="single-featured-properties">
                             <div class="properties-image">
-                                <a href="index.php?route=estate&estateId=<?= ($estate['id']);?>"><img src="../public/img/properties/4.jpg" alt=""></a>
+                                <a href="index.php?route=estate&estateId=<?= ($estateForRent['id']);?>"><img src="../public/img/upload/<?= ($estateForRent['picture_url']);?>" alt="<?= ($estateForRent['id']);?>"></a>
                             </div>
                             <div class="rent-tag">
                                 <p>A louer</p>
                             </div>
                             <div class="properties-include">
                                 <ul>
-                                    <li><i class="fa fa-home"></i><?= ($estate['area']); ?> m2</li>
-                                    <li><i class="fa fa-square"></i><?= ($estate['rooms']); ?> Pièces</li>
-                                    <li><i class="fa fa-bed"></i><?= ($estate['bedrooms']); ?> Chambres</li>
+                                    <li><i class="fa fa-home"></i><?= ($estateForRent['area']); ?> m2</li>
+                                    <li><i class="fa fa-square"></i><?= ($estateForRent['rooms']); ?> Pièces</li>
+                                    <li><i class="fa fa-bed"></i><?= ($estateForRent['bedrooms']); ?> Chambres</li>
                                 </ul>
                             </div>
                             <div class="properties-content">
-                                <h3><a href="index.php?route=estate&estateId=<?= ($estate['id']);?>"><?= ($estate['title']);?></a></h3>
-                                <p><i class="fa fa-map-marker"></i> <?= ($estate['city']);?></p>
-                                <p class="detail-text"><?= ($estate['excerpt']);?></p>
+                                <h3><a href="index.php?route=estate&estateId=<?= ($estateForRent['id']);?>"><?= ($estateForRent['title']);?></a></h3>
+                                <p><i class="fa fa-map-marker"></i> <?= ($estateForRent['city']);?></p>
+                                <p class="detail-text"><?= ($estateForRent['excerpt']);?></p>
                                 <div class="price-detail">
-                                    <p class="price-range pull-left"><?= ($estate['price']);?> €</p>
-                                    <a href="index.php?route=estate&estateId=<?= ($estate['id']);?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
+                                    <p class="price-range pull-left"><?= ($estateForRent['price']);?> €</p>
+                                    <a href="index.php?route=estate&estateId=<?= ($estateForRent['id']);?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -252,21 +252,21 @@
                     <div class="col-md-12 text-center">
                         <div class="testimonial-wrap wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".3s">
                             <div class="single-testimonial">
-                                <p>Ludivine a su trouver le bien parfait pour moi et ma famille. Et ses partenaires ont fait un travail à la hauteur de nos attentes.</p>
+                                <p>Les agents ont su trouver le bien parfait pour moi et ma famille. Et ses partenaires ont fait un travail à la hauteur de nos attentes.</p>
                                 <p class="client-name">- Sandra Martin</p>
-                                <img src="../public/img/testi1.png" alt="">
+                                <img class="img-size" src="../public/img/testimonial/testi1.jpg" alt="testimonial-1">
                             </div>
 
                             <div class="single-testimonial">
                                 <p>Grâce à Hestia j'ai trouvé un appartement totalement Atypique, qui ne ressemble à aucun autre.</p>
                                 <p class="client-name">- Albert Dubervil</p>
-                                <img src="../public/img/testi1.png" alt="">
+                                <img class="img-size" src="../public/img/testimonial/testi2.jpg" alt="testimonial-2">
                             </div>
 
                             <div class="single-testimonial">
-                                <p>Première expérience dans l'immobiler grâce à Donovan j'ai trouver un bien qui correspond à tous mes critères.</p>
+                                <p>Première expérience dans l'immobiler grâce à Jean j'ai trouver un bien qui correspond à tous mes critères.</p>
                                 <p class="client-name">- Emilie Sanders</p>
-                                <img src="../public/img/testi1.png" alt="">
+                                <img class="img-size" src="../public/img/testimonial/testi3.jpg" alt="testimonial-3">
                             </div>
                         </div>
                     </div>
@@ -289,12 +289,12 @@
                     <div class="col-md-12">
                         <div class="partners-logo-area wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".3s">
                             <ul class="partners-logo-carosel">
-                                <li><a href="#"><img src="../public/img/partners/2.png" alt=""></a></li>
-                                <li><a href="#"><img src="../public/img/partners/1.png" alt=""></a></li>
-                                <li><a href="#"><img src="../public/img/partners/3.png" alt=""></a></li>
-                                <li><a href="#"><img src="../public/img/partners/4.png" alt=""></a></li>
-                                <li><a href="#"><img src="../public/img/partners/1.png" alt=""></a></li>
-                                <li><a href="#"><img src="../public/img/partners/2.png" alt=""></a></li>
+                                <li><a href="http://stratos-consulting.fr/"><img src="../public/img/partners/2.png" alt=""></a></li>
+                                <li><a href="http://stratos-consulting.fr/"><img src="../public/img/partners/stratos-consulting.png" alt="stratos-consulting"></a></li>
+                                <li><a href="https://www.vinci-construction.fr/"><img src="../public/img/partners/Vinci-construction.png" alt="Vinci-construction"></a></li>
+                                <li><a href="https://www.edf.fr/"><img src="../public/img/partners/edf.png" alt="edf"></a></li>
+                                <li><a href="https://www.sa.areva.com/"><img src="../public/img/partners/Areva.png" alt="areva"></a></li>
+                                <li><a href="https://www.capgemini.com/fr-fr/"><img src="../public/img/partners/Capgemini.png" alt="Capgemini"></a></li>
                                 <li><a href="#"><img src="../public/img/partners/3.png" alt=""></a></li>
                             </ul>
                         </div> 

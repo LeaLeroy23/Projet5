@@ -129,7 +129,39 @@ class BackController extends Controller
 
             if($post->get('submit')){
                 if (!$errors){
-                    $this->estateDAO->editEstate($post, $estateId);
+                    $form=[];
+                    $maxsize = 5 * 1024 * 1024;
+                    $filename = "";
+                    if (isset($_FILES["picture_url"]) && $_FILES["picture_url"]["error"] == 0) {
+                        $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png", "PNG" => "image/PNG");
+                        $filename = $_FILES["picture_url"]["name"];
+                        $filetype = $_FILES["picture_url"]["type"];
+                        $filesize = $_FILES["picture_url"]["size"];
+
+                        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                        if (!array_key_exists($ext, $allowed)) {
+                            $this->session->set('format', "Erreur : Veuillez sélectionner un format de fichier valide.");
+                        }
+
+                        if ($filesize > $maxsize) {
+                            $this->session->set('size', "Erreur: La taille du fichier est supérieure à la limite autorisée.");
+                        }
+
+                        if (in_array($filetype, $allowed)) {
+                            /**verifie si le fichier existe avant de le telecharger*/
+                            if (file_exists("../public/img/upload/" . $_FILES["picture_url"]["name"])) {
+                                $this->session->set('exist', $_FILES["picture_url"]["name"] . " existe déjà.");
+                            } else {
+                                $filename = uniqid() . '.' . $ext;
+                                move_uploaded_file($_FILES["picture_url"]["tmp_name"], "../public/img/upload/" .  $filename);
+                            }
+                        } else {
+                            $this->session->set('error', "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");
+                        }
+                        
+                    }
+
+                    $this->estateDAO->editEstate($post, $filename, $estateId);
                     $this->session->set('editEstate', 'Le bien a été mis à jour');
                     header('Location: ../public/index.php?route=allEstates');
                     exit();

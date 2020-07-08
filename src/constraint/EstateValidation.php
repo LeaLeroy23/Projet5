@@ -63,6 +63,10 @@ class EstateValidation extends Validation
             $error = $this->checkFees($name, $value);
             $this->addError($name, $error);
         }
+        elseif($name === 'status') {
+            $error = $this->checkStatus($name, $value);
+            $this->addError($name, $error);
+        }
     }
 
     private function addError($name, $error) {
@@ -195,6 +199,14 @@ class EstateValidation extends Validation
         if($this->constraint->maxLength($name, $value, 6)) {
             return $this->constraint->maxLength('fees', $value, 6);
         }
+    }
+
+    private function checkStatus($name, $value)
+    {
+        if($this->constraint->notBlank($name, $value)) {
+            return $this->constraint->notBlank('fees', $value);
+        }
+        
     }
     
 }

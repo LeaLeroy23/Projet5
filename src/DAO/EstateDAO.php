@@ -81,6 +81,26 @@ class EstateDAO extends DAO
                 ON e.agent_id = a.id
                 WHERE e.status = '1'
                 AND c.id = '21'
+                ORDER BY e.id DESC
+                LIMIT 3
+                ";
+        $result = $this->createQuery($sql)->fetchAll();
+        return $result;
+    }
+
+    public function forRentEstates(){
+        $sql = "SELECT e.id as id, e.title as title, e.excerpt as excerpt, e.status as status, e.price as price, e.rooms as rooms, e.bedrooms as bedrooms, e.area as area, e.city as city, c.name as category, t.type as type, a.firstname as firstname, a.lastname as lastname, e.picture_url as picture_url
+                FROM estate e
+                INNER JOIN category c
+                ON e.category_id = c.id
+                INNER JOIN type t
+                ON e.type_id = t.id
+                INNER JOIN agent a
+                ON e.agent_id = a.id
+                WHERE e.status = '1'
+                AND c.id = '24'
+                ORDER BY e.id DESC
+                LIMIT 3
                 ";
         $result = $this->createQuery($sql)->fetchAll();
         return $result;
@@ -133,7 +153,7 @@ class EstateDAO extends DAO
         ]);
     }
 
-    public function editEstate(Parameter $post, $estateId)
+    public function editEstate(Parameter $post, $filename, $estateId)
     {
         $sql = 'UPDATE estate SET
         type_id=:type_id, category_id=:category_id, title=:title, floor=:floor, area=:area, rooms=:rooms, bedrooms=:bedrooms, bathrooms=:bathrooms, convertible_attic=:convertible_attic, outside=:outside, outside_area=:outside_area, parking=:parking, parking_type=:parking_type, energy_id=:energy_id, level_energy_diagnostic=:level_energy_diagnostic, level_climat_diagnostic=:level_climat_diagnostic,city=:city, building_year=:building_year, available=:available, excerpt=:excerpt, description=:description, picture_url=:picture_url, charge_price=:charge_price, charge_frequency_id=:charge_frequency_id, price=:price, fees=:fees, status=:status WHERE id=:estateId';
@@ -227,6 +247,7 @@ class EstateDAO extends DAO
                 INNER JOIN type t
                 ON e.type_id = t.id
                 ORDER BY e.id DESC
+                LIMIT 5
                 ";
         $result = $this->createQuery($sql)->fetchAll();
         return $result;

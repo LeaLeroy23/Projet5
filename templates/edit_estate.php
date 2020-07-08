@@ -221,7 +221,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Localisation</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" name="city" value="<?= htmlspecialchars($estate->getCity());?>" placeholder="Ville">
+                                <input type="text" class="form-control" name="city" value="<?= htmlspecialchars($estate->getCity());?>" placeholder="Ville">
                                 <?= isset($errors['city']) ? $errors['city'] : ''; ?>
                             </div>
                         </div>
@@ -237,7 +237,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Disponible à partir du :</label>
                             <div class="col-sm-10">
-                                <input type="date" value="<?= htmlspecialchars($estate->getAvailable());?>" size="16"><?= htmlspecialchars($estate->getAvailable());?>
+                                <input type="date" value="<?= $estate->getAvailable();?>">
                             </div>
                         </div>
 
@@ -300,6 +300,9 @@
                         <div class="form-group" id="frequency">
                             <label class="col-sm-2 col-sm-2 control-label">Fréquence des Charges</label>
                             <div class="col-sm-9">
+                                
+                                
+                                
                                 <?php
                                     foreach ($frequencies as $frequency)
                                     {
@@ -338,7 +341,9 @@
                         <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Status de la publication</label>
                                 <div class="col-sm-10">
-                                
+                                    <?= $estate->getStatus() ? 'Publié' : 'Non Publié';?>
+                                </div>
+                                <div class="col-sm-10">
                                     <label>
                                         <input type="radio" id="optionsRadios1" name="status" value="1">
                                         Publié
@@ -347,6 +352,7 @@
                                         <input type="radio" id="optionsRadios1" name="status" value="0">
                                         Brouillon
                                     </label>
+                                    <?= isset($errors['status']) ? $errors['status'] : ''; ?>
                                 </div>
                             </div>
 
@@ -368,3 +374,5 @@
             </form>
     </section>
 </section>
+
+<script src="../public/js/Preview.js"></script>
