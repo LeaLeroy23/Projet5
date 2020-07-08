@@ -30,8 +30,14 @@ class Router
                 if($route === 'estate'){
                     $this->frontController->estate($this->request->getGet()->get('estateId'));
                 }
-                elseif($route === 'properties'){
-                    $this->frontController->all_estate();
+                elseif($route === 'allProperties'){
+                    $this->frontController->allProperties();
+                }
+                elseif($route === 'allPropertiesForSale'){
+                    $this->frontController->allPropertiesForSale();
+                }
+                elseif($route === 'allPropertiesForRent'){
+                    $this->frontController->allPropertiesForRent();
                 }
                 elseif($route === 'agent'){
                     $this->frontController->agent($this->request->getGet()->get('agentId'));

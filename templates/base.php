@@ -140,10 +140,10 @@
                                 ?>
                                     <li class="active"><a href="index.php?route=dashboard">Tableau de bord</a></li>
                                     <li class=""><a href="index.php">Accueil</a></li>
-                                    <li><a href="#">Biens</a>
+                                    <li><a href="index.php?route=allProperties">Biens</a>
                                         <ul class="sub-menu">
-                                            <li></li><a href="index.php?route=properties">Biens à la Vente</a></li>
-                                            <li></li><a href="index.php?route=properties">Biens à la location</a></li>
+                                            <li></li><a href="index.php?route=allPropertiesForSale">Biens à la Vente</a></li>
+                                            <li></li><a href="index.php?route=allPropertiesForRent">Biens à la location</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="index.php?route=team">L'équipe</a></li>
@@ -152,10 +152,10 @@
                                     } else {
                                 ?>
                                     <li class="active"><a href="index.php">Accueil</a></li>
-                                    <li><a href="#">Biens</a>
+                                    <li><a href="index.php?route=allProperties">Biens</a>
                                         <ul class="sub-menu">
-                                            <li></li><a href="index.php?route=properties">Biens à la Vente</a></li>
-                                            <li></li><a href="index.php?route=properties">Biens à la location</a></li>
+                                            <li></li><a href="index.php?route=allPropertiesForSale">Biens à la Vente</a></li>
+                                            <li></li><a href="index.php?route=allPropertiesForRent">Biens à la location</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="index.php?route=team">L'équipe</a></li>
@@ -188,10 +188,10 @@
                                 ?>
                                     <li class="active"><a href="index.php?route=dashboard">Tableau de bord</a></li>
                                     <li class=""><a href="index.php">Accueil</a></li>
-                                    <li><a href="#">Biens</a>
+                                    <li><a href="index.php?route=allProperties">Biens</a>
                                         <ul class="sub-menu">
-                                            <li></li><a href="index.php?route=properties">Biens à la Vente</a></li>
-                                            <li></li><a href="index.php?route=properties">Biens à la location</a></li>
+                                            <li></li><a href="index.php?route=allPropertiesForSale">Biens à la Vente</a></li>
+                                            <li></li><a href="index.php?route=allPropertiesForRent">Biens à la location</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="index.php?route=team">L'équipe</a></li>
@@ -199,11 +199,11 @@
                                 <?php
                                     } else {
                                 ?>
-                                    <li><a href="../public/index.php">Accueil</a></li>
-                                    <li><a href="#">Biens</a>
+                                    <li><a href="index.php">Accueil</a></li>
+                                    <li><a href="index.php?route=allProperties">Biens</a>
                                         <ul>
-                                            <li><a href="index.php?route=properties">Biens à la vente</a></li>
-                                            <li><a href="../public/index.php?route=properties">Biens à la location</a></li>
+                                            <li><a href="index.php?route=allPropertiesForSale">Biens à la vente</a></li>
+                                            <li><a href="index.php?route=allPropertiesForRent">Biens à la location</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="index.php?route=team">L'équipe</a></li>

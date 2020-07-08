@@ -20,6 +20,7 @@ class FrontController extends Controller
     public function home()
     {
         $sliderEstates = $this->estateDAO->getSliders();
+        $latestEstates = $this->estateDAO->latestEstates(); 
         $estates = $this->estateDAO->getPublishedEstates();
         $estatesForSale = $this->estateDAO->forSaleEstates();
         $estatesForRent = $this->estateDAO->forRentEstates();
@@ -29,6 +30,7 @@ class FrontController extends Controller
             'estates' => $estates,
             'estatesForSale' => $estatesForSale,
             'estatesForRent' => $estatesForRent,
+            'latestEstates' => $latestEstates,
             'agents' => $agents
         ]);
     }
@@ -40,19 +42,52 @@ class FrontController extends Controller
         ]);
     }
 
-    public function all_estate()
+    public function allProperties()
     {
-        $estates = $this->estateDAO->getEstates();
+        $estates = $this->estateDAO->getPublishedEstates();
+        $latestEstates = $this->estateDAO->latestEstates();
+        $estatesForSale = $this->estateDAO->forSaleEstates();
+        $estatesForRent = $this->estateDAO->forRentEstates();
         return $this->view->render('properties', [
-            'estates' => $estates
+            'estates' => $estates,
+            'estatesForSale' => $estatesForSale,
+            'estatesForRent' => $estatesForRent,
+            'latestEstates' => $latestEstates
+        ]);
+    }
+
+    public function allPropertiesForSale()
+    {
+        $allPropertiesSales = $this->estateDAO->allPropertiesSales();
+        $latestEstates = $this->estateDAO->latestEstates();
+        $estatesForRent = $this->estateDAO->forRentEstates();
+        return $this->view->render('properties_to_sale', [
+            'allPropertiesSales' => $allPropertiesSales,
+            'latestEstates' => $latestEstates,
+            'estatesForRent' => $estatesForRent
+        ]);
+    }
+
+    public function allPropertiesForRent()
+    {
+        $allPropertiesForRents = $this->estateDAO->allPropertiesRents();
+        $latestEstates = $this->estateDAO->latestEstates();
+        $estatesForSales = $this->estateDAO->forSaleEstates();
+        return $this->view->render('properties_to_rent', [
+            'allPropertiesForRents' => $allPropertiesForRents,
+            'latestEstates' => $latestEstates,
+            'estatesForSales' => $estatesForSales
+
         ]);
     }
 
     public function estate($estateId)
     {
         $estate = $this->estateDAO->getEstate($estateId);
+        $pictures = $this->pictureDAO->getPicturesByEstateId($estateId);
         return $this->view->render('single-property', [
-            'estate' => $estate
+            'estate' => $estate,
+            'picture' => $picture
         ]);
     }
 

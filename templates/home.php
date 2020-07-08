@@ -88,11 +88,60 @@
         <!--Start of Properties Area-->
         <section class="properties-area area-pading fix">
             <div class="container">
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="properties-title">
+                            <h2>Les derniers biens ajoutés</h2>
+                            <a href="../public/index.php?route=allProperties" class="view-more">voir tout</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                <?php
+               foreach ($latestEstates as $latestEstate)
+               {
+                ?>
+
+                    <div class="col-md-4 col-sm-6">
+                        <div class="single-featured-properties">
+                            <div class="properties-image">
+                                <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>"><img src="../public/img/upload/<?= ($latestEstate['picture_url']);?>" alt="<?= ($latestEstate['picture_url']);?>"></a>
+                            </div>
+                            <div class="sale-tag">
+                                <p><?=($latestEstate['category']);?></p>
+                            </div>
+                            <div class="properties-include">
+                                <ul>
+                                    <li><i class="fa fa-home"></i> <?= ($latestEstate['area']);?> m2</li>
+                                    <li><i class="fa fa-square"></i><?= ($latestEstate['rooms']);?> Pièce(s)</li>
+                                    <li><i class="fa fa-bed"></i> <?= ($latestEstate['bedrooms']);?> Chambre(s)</li>
+                                </ul>
+                            </div>
+                            <div class="properties-content">
+                                <h3><a href="single-property.php"><?= ($latestEstate['title']);?></a></h3>
+                                <p><i class="fa fa-map-marker"></i> <?= ($latestEstate['city']);?></p>
+                                <p class="detail-text"><?= ($latestEstate['excerpt']);?></p>
+                                <div class="price-detail">
+                                    <p class="price-range pull-left"><?= ($latestEstate['price']);?> €</p>
+                                    <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+
+                <?php
+                }
+                ?>
+
+                </div>
+  
+        <!--Start of Properties Area-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="properties-title margintop100">
                             <h2>Les biens à vendre</h2>
-                            <a href="properties_sale.php" class="view-more">voir tout</a>
+                            <a href="../public/index.php?route=allPropertiesForSale" class="view-more">voir tout</a>
                         </div>
                     </div>
                 </div>
@@ -140,7 +189,7 @@
                     <div class="col-md-12">
                         <div class="properties-title margintop100">
                             <h2>Les biens à la location</h2>
-                            <a href="#" class="view-more">Voir tout</a>
+                            <a href="p" class="view-more">Voir tout</a>
                         </div>
                     </div>
                 </div> 
@@ -289,13 +338,12 @@
                     <div class="col-md-12">
                         <div class="partners-logo-area wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".3s">
                             <ul class="partners-logo-carosel">
-                                <li><a href="http://stratos-consulting.fr/"><img src="../public/img/partners/2.png" alt=""></a></li>
                                 <li><a href="http://stratos-consulting.fr/"><img src="../public/img/partners/stratos-consulting.png" alt="stratos-consulting"></a></li>
                                 <li><a href="https://www.vinci-construction.fr/"><img src="../public/img/partners/Vinci-construction.png" alt="Vinci-construction"></a></li>
                                 <li><a href="https://www.edf.fr/"><img src="../public/img/partners/edf.png" alt="edf"></a></li>
                                 <li><a href="https://www.sa.areva.com/"><img src="../public/img/partners/Areva.png" alt="areva"></a></li>
                                 <li><a href="https://www.capgemini.com/fr-fr/"><img src="../public/img/partners/Capgemini.png" alt="Capgemini"></a></li>
-                                <li><a href="#"><img src="../public/img/partners/3.png" alt=""></a></li>
+                                <li><a href="https://www.allianz.fr/"><img src="../public/img/partners/allianz.png" alt="Allianz"></a></li>
                             </ul>
                         </div> 
                     </div>

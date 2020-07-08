@@ -100,7 +100,7 @@ ul{
   margin-top: 100px;
 }
 .area-pading{
-  padding: 100px 0;
+  padding: 50px 0;
 }
 .padding-zero{
   padding: 0;
@@ -760,7 +760,6 @@ Secondary color
   border-bottom: 7px solid #38a377;
   overflow: hidden;
   padding: 25px 25px 15px;
-  margin-top : 5%;
 }
 .properties-content > h3 {
   margin-bottom: 10px;
@@ -1307,7 +1306,7 @@ footer.footer-area {
 }
 .column-property-img-wrap {
     float: left;
-    width: 50%;
+    width: 100%;
     position: relative;
 }
 .column-single-property {
@@ -1319,7 +1318,7 @@ footer.footer-area {
 }
 .column-property-content-wrap {
   float: left;
-  width: 50%;
+  width: 100%;
 }
 .column-property-content {
   background: #fafafa none repeat scroll 0 0;
@@ -1419,6 +1418,7 @@ footer.footer-area {
 .single-sp-widget h3 {
   font-size: 18px;
   margin: 18px 0;
+  line-height: 22px;
 }
 
 .properties-content-footer.pull-left > h4 {

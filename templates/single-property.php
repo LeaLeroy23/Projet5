@@ -1,5 +1,5 @@
 
-<?php $this->title = "Bien"; ?>
+<?php $this->title = htmlspecialchars($estate->getTitle()); ?>
 
     <!-- Single Property Area Start-->
     <div class="section property-page-content-area area-pading">
@@ -15,7 +15,7 @@
                         <div class="single-property-slider">
                             <ul class="bxslider">
                                 <li>
-                                    <a href="#"><img src="../public/img/slider/3.jpg" alt=""></a>
+                                    <a href="#"><img src="../public/img/slider/<?= htmlspecialchars($estate->getPicture_url());?>" alt=""></a>
                                 </li>
                                 <li>
                                     <a href="#"><img src="../public/img/slider/4.jpg" alt=""></a>
