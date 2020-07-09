@@ -149,6 +149,9 @@ Tablet desktop :768px.
 .header-area {
   display: none;
 }
+.mobile-logo{
+  margin-top: 1%;
+}
 .phone-mail-area li {
   margin-right: 23px;
 }

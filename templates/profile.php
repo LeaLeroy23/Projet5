@@ -25,11 +25,8 @@
                     <div class="col-md-4 centered">
                         <div class="profile-pic">
                             <p><img src="../public/img/agent/<?=$this->session->get('avatar');?>" width="150" height="150" class="img-circle"></p>
-                            
                         </div>
                     </div>
-
-
                 </div>
             </div>
 
@@ -130,8 +127,6 @@
 
                                         </div>
                                          <!--fin stat-->
-
-                                        
 
                                     </div>
 

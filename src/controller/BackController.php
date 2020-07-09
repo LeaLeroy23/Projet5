@@ -79,23 +79,23 @@ class BackController extends Controller
 
                         $ext = pathinfo($filename, PATHINFO_EXTENSION);
                         if (!array_key_exists($ext, $allowed)) {
-                            echo("Erreur : Veuillez sélectionner un format de fichier valide.");
+                            $this->session->set('format', "Erreur : Veuillez sélectionner un format de fichier valide.");
                         }
 
                         if ($filesize > $maxsize) {
-                            echo("Erreur: La taille du fichier est supérieure à la limite autorisée.");
+                            $this->session->set('size', "Erreur: La taille du fichier est supérieure à la limite autorisée.");
                         }
 
                         if (in_array($filetype, $allowed)) {
                             /**verifie si le fichier existe avant de le telecharger*/
                             if (file_exists("../public/img/upload/" . $_FILES["picture_url"]["name"])) {
-                                echo($_FILES["picture_url"]["name"] . "existe déjà.");
+                                $this->session->set('exist', $_FILES["picture_url"]["name"] . " existe déjà.");
                             } else {
                                 $filename = uniqid() . '.' . $ext;
                                 move_uploaded_file($_FILES["picture_url"]["tmp_name"], "../public/img/upload/" .  $filename);
                             }
                         } else {
-                            echo("Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");
+                            $this->session->set('error', "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");
                         }
                         
                     }
@@ -132,7 +132,8 @@ class BackController extends Controller
                     $form=[];
                     $maxsize = 5 * 1024 * 1024;
                     $filename = "";
-                    if (isset($_FILES["picture_url"]) && $_FILES["picture_url"]["error"] == 0) {
+                    if (isset($_FILES["picture_url"])) {
+                        
                         $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png", "PNG" => "image/PNG");
                         $filename = $_FILES["picture_url"]["name"];
                         $filetype = $_FILES["picture_url"]["type"];

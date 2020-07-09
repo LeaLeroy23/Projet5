@@ -185,7 +185,7 @@
                                     <label class="col-sm-3 col-sm-3 control-label">Electrique :</label>
                                         <div class="col-sm-9">
                                             <select name="level_energy_diagnostic" class="form-control">
-                                                <option value="<?= htmlspecialchars($estate->getLevel_energy_diagnostic());?>"><?= htmlspecialchars($estate->getLevel_energy_diagnostic());?></option>
+                                                <option value="<?= htmlspecialchars($estate->getLevel_energy_diagnostic());?>"<?= $estate->getLevel_energy_diagnostic() ? 'selected' : '' ?>><?= htmlspecialchars($estate->getLevel_energy_diagnostic());?></option>
                                                 <option value="aucun">Aucun</option>
                                                 <option value="< 50 A">< 50 A</option>
                                                 <option value="51 à 90 B">51 à 90 B</option>
@@ -202,7 +202,7 @@
                                     <label class="col-sm-3 col-sm-3 control-label">GES :</label>
                                         <div class="col-sm-9">
                                             <select name="level_climat_diagnostic" class="form-control">
-                                            <option value="<?= htmlspecialchars($estate->getLevel_climat_diagnostic());?>"><?= htmlspecialchars($estate->getLevel_climat_diagnostic());?></option>
+                                                <option value="<?= htmlspecialchars($estate->getLevel_climat_diagnostic());?>"<?= $estate->getLevel_climat_diagnostic() ? 'selected' : '' ?>><?= ($estate->getLevel_climat_diagnostic()); ?></option>
                                                 <option value="aucun">Aucun</option>
                                                 <option value="< 50 A">< 50 A</option>
                                                 <option value="51 à 90 B">51 à 90 B</option>
@@ -232,13 +232,6 @@
                                     <input type="number" name="building_year" class="form-control" value="<?= htmlspecialchars($estate->getBuilding_year());?>">
                                     <?= isset($errors['building_year']) ? $errors['building_year'] : ''; ?>
                                 </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-2 col-sm-2 control-label">Disponible à partir du :</label>
-                            <div class="col-sm-10">
-                                <input type="date" value="<?= $estate->getAvailable();?>">
-                            </div>
                         </div>
 
                     </div>
@@ -375,4 +368,7 @@
     </section>
 </section>
 
+<script src="../public/lib/jquery/jquery.min.js"></script>
 <script src="../public/js/Preview.js"></script>
+<script src="../public/js/Spec.js"></script>
+<script src="../public/js/main.js"></script>

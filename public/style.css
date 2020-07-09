@@ -1729,7 +1729,9 @@ p.ag-details {
 /*-------------------------------------------
 18. Single Agent Page Style
 ---------------------------------------------*/
-
+.agent-col{
+  display: flex;
+}
 .agent-img {
     float: left;
 }

@@ -79,8 +79,6 @@ class AgentDAO extends DAO
             'status' => $post->get('status'),
             'agentId' => $agentId
         ]);
-        var_dump($post);
-       die();
     }
 
     public function editProfile($post, $filename, $agentId)
@@ -95,8 +93,6 @@ class AgentDAO extends DAO
             'avatar' => $filename,
             'agentId' => $agentId
         ]);
-       var_dump($post);
-       die();
     }
 
     public function checkEmail(Parameter $post)

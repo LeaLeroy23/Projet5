@@ -227,13 +227,6 @@
                                     </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="col-sm-2 col-sm-2 control-label">Disponible à partir du :</label>
-                                <div class="col-sm-10">
-                                    <input type="date" >
-                                </div>
-                            </div>
-
                         </div>
 
                         <div class="form-panel">

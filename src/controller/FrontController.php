@@ -102,8 +102,14 @@ class FrontController extends Controller
     public function agent($agentId)
     {
         $agent = $this->agentDAO->getAgent($agentId);
+        $agents = $this->agentDAO->getAgents();
+        $estatesByAgent = $this->estateDAO->getEstatesByAgent($agentId);
+        $latestEstates = $this->estateDAO->latestEstates();
         return $this->view->render('single-agent', [
-            'agent' => $agent
+            'agent' => $agent,
+            'agents' => $agents,
+            'estatesByAgent'=> $estatesByAgent,
+            'latestEstates' => $latestEstates
         ]);
     }
 

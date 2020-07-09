@@ -1,3 +1,4 @@
+<?php $this->title = $agent->getLastname(); ?>
 <!--  Single Property Area Start-->
     <div class="section single-agent-content-area area-pading">
         <div class="container">
@@ -7,32 +8,27 @@
                     <div class="single-property-post">
                         <!--  Area Title -->
                         <div class="property-page-title">
-                            <h2>Mickael </h2>
+                            <h2><?= $agent->getFirstname();?> <?= $agent->getLastname();?></h2>
                         </div>
                         <div class="single-agent-profile-wrap">
                             <div class="agents-profile fix">
-                                <div class="agent-img fix">
-                                    <img src="../public/img/agent/5.jpg" alt="">
-                                </div>
-                                <div class="single-agent-bookmark fix">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="agent-name-meta fix">
-                                    <h3>Michael Scott</h3>
-                                    <ul>
-                                        <li><i class="fa fa-home"></i>100 New era park Avenue, US</li>
-                                        <li><i class="fa fa-phone"></i>+ 123 456 789 000</li>
-                                        <li><i class="fa fa-skype"></i>Fonction</li>
-                                        <li><i class="fa fa-envelope-o"></i>michafi@scott.com</li>
-                                        <li><i class="fa fa-laptop"></i>www.michafiscott.com</li>
-                                    </ul>
+                                <div class="row">
+                                    <div class="agent-col col-lg-6 col-md-12">
+                                        <div class="agent-img fix">
+                                            <img class="" src="../public/img/agent/<?= $agent->getAvatar();?>" alt="<?= $agent->getAvatar();?>" >
+                                        </div>
+                                    </div>
+
+                                    <div class="agent-col col-lg-6 col-md-12">
+                                        <div class="agent-name-meta fix">
+                                            <h3><?= $agent->getFirstname();?> <?= $agent->getLastname();?></h3>
+                                            <ul>
+                                                <li><i class="fa fa-phone"></i><?= $agent->getPhone();?></li>
+                                                <li><i class="fa fa-user"></i><?= $agent->getFunction();?></li>
+                                                <li><i class="fa fa-envelope"></i><?= $agent->getEmail();?></li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- End of Agent Profile -->
@@ -41,47 +37,49 @@
                                 <div class="property-page-title">
                                     <h2>Description</h2>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
-                                <p>Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. </p>
-                                <blockquote class="single-agent-quote">
-                                    <p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui.</p>
-                                </blockquote>
-                                <p>Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Maecenas malesuada.</p>
-                            </div>
-                            <div class="agents-contact">
-                                <!--  Area Title -->
-                                <div class="property-page-title">
-                                    <h2>Nous contacter</h2>
-                                </div>
-                                <form action="#">
-                                    <input type="text" name="#" placeholder="Nom">
-                                    <input type="email" name="#" placeholder="Email">
-                                    <input type="text" name="#" placeholder="Téléphone">
-                                    <textarea name="#" id="agent-message-box" cols="30" rows="5" placeholder="Message"></textarea>
-                                    <input type="submit" value="Envoyé !">
-                                </form>
+                                <p><?= $agent->getDescription();?></p>
                             </div>
                         </div>
                         <!-- End of Video Content -->
                         <div class="single-property-similar-cat">
                             <!-- Property Widget Area Title -->
                             <div class="property-page-title">
-                                <h2>Autres biens de <span>Michael</span></h2>
+                                <h2>Autres biens de <span><?= $agent->getLastname();?> <?= $agent->getFirstname();?></span></h2>
                             </div>
                             <div class="row">
-                                <div class="similar-cat-wrap">
-                                    <div class="col-md-3">
-                                         <div class="single-similar-cat">
-                                            <div class="similar-property-img">
-                                                <a href="#"><img src="../public/img/properties/cat1.jpg" alt=""></a>
-                                            </div>
-                                            <div class="similar-property-tag">
-                                                <p>For Sale</p>
-                                            </div>
-                                        </div>                                                                             
+                            <?php 
+                                foreach($estatesByAgent as $estateByAgent){
+                            ?>
+                                <div class="column-single-property">
+                                <div class="column-property-img-wrap">
+                                    <div class="column-property-img">
+                                        <a href="index.php?route=estate&estateId=<?= ($estateByAgent['id']);?>"><img src="../public/img/upload/<?= ($estateByAgent['picture_url']);?>" alt="<?= ($estateByAgent['picture_url']);?>"></a>
                                     </div>
-                                    
+                                    <div class="column-property-tag">
+                                        <p><?= ($estateByAgent['type']);?></p>
+                                    </div>
+                                    <div class="properties-include opicity-bg">
+                                        <ul>
+                                            <li> <i class="fa fa-home"></i><?= ($estateByAgent['area']);?> m2</li>
+                                            <li><i class="fa fa-square"></i> <?= ($estateByAgent['rooms']);?> Pièce(s)</li>
+                                            <li><i class="fa fa-bed"></i><?= ($estateByAgent['bedrooms']);?> Chambre(s)</li>
+                                        </ul>
+                                    </div>
                                 </div>
+                                <div class="column-property-content-wrap">
+                                    <div class="column-property-content">
+                                        <h2><a href="index.php?route=estate&estateId=<?= ($estateByAgent['id']);?>"><?= ($estateByAgent['title']);?></a> </h2>
+                                        <h3><?= ($estateByAgent['city']);?></h3>
+                                        <p><?= ($estateByAgent['excerpt']);?></p>
+                                    </div>
+                                    <div class="column-property-more">
+                                        <a href="index.php?route=estate&estateId=<?= ($estateByAgent['id']);?>">Voir Plus</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                                }
+                            ?>
                             </div>
                         </div>
                         <!-- End of Similar Category Post -->
@@ -96,19 +94,26 @@
                             <div class="property-page-title">
                                 <h2>Nouveautés</h2>
                             </div>
+                            <?php
+                                foreach ($latestEstates as $latestEstate)
+                                {
+                            ?>
                             <div class="single-property-footer-post right-sidebar">
                                 <div class="properties-img pull-left">
-                                    <a href="#"><img src="../public/img/widget/5.jpg" alt=""></a>
+                                    <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>"><img src="../public/img/upload/<?= ($latestEstate['picture_url']);?>" alt="<?= ($latestEstate['picture_url']);?>"></a>
                                 </div>
                                 <div class="properties-content-footer pull-left">
-                                    <h4><a href="#">Titre</a></h4>
-                                    <p>Ville,
-                                        <br> Code postal</p>
+                                    <h4><a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>"><?= ($latestEstate['title']);?></a></h4>
+                                    <p><?= ($latestEstate['type']);?>,
+                                        <br> <?= ($latestEstate['city']);?></p>
                                     <div class="property-price">
-                                        <p>Prix €</p>
+                                        <p><?= ($latestEstate['price']);?> €</p>
                                     </div>
                                 </div>
                             </div>
+                            <?php
+                                }
+                            ?>
                             
                         </div>
                         <!-- Agent Widget Area -->
@@ -116,16 +121,30 @@
                             <div class="property-page-title">
                                 <h2>L'équipe</h2>
                             </div>
+                            <?php
+                                foreach ($agents as $agent)
+                                {
+                            ?>
                             <div class="single-property-footer-post right-sidebar">
-                                <div class="properties-img pull-left">
-                                    <a href="#"><img src="../public/img/agent/5.png" alt=""></a>
-                                </div>
-                                <div class="properties-content-footer pull-left">
-                                    <h3><a href="#">William Brooks</a></h3>
-                                    <p>Land & Apartment</p>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4">
+                                        <div class="pull-left">
+                                            <a href="index.php?route=agent&agentId=<?= ($agent->getId());?>">
+                                                <img src="../public/img/agent/<?= ($agent->getAvatar());?>" alt="<?= ($agent->getAvatar());?>">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8">
+                                        <div class="properties-content-footer pull-left">
+                                            <h3><a href="index.php?route=agent&agentId=<?= ($agent->getId());?>"><?= ($agent->getLastname());?> <?= ($agent->getFirstname());?></a></h3>
+                                            <p><?= ($agent->getFunction());?></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            
+                            <?php
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>

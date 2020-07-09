@@ -130,6 +130,9 @@ class Router
                 elseif ($route === 'logout'){
                     $this->backController->logout();
                 }
+                elseif ($route === 'email'){
+                    $this->frontController->email();
+                }
                 else{
                     $this->errorController->errorNotFound();
                 }
@@ -137,11 +140,11 @@ class Router
             else{
                 $this->frontController->home();
             }
-        }
-        /*catch (Exception $e)
+        /*}
+        catch (Exception $e)
         {
             var_dump($e);
             $this->errorController->errorServer();
-        }
-    }*/
+        }*/
+    }
 }

@@ -17,14 +17,14 @@
                             <div class="column-single-property">
                                 <div class="column-property-img-wrap">
                                     <div class="column-property-img">
-                                        <a href="index.php?route=estate&estateId=<?= ($allPropertiesForRent['id']);?>"><img src="../public/img/upload/<?= ($allPropertiesForRent['picture_url']);?>" alt=""></a>
+                                        <a href="index.php?route=estate&estateId=<?= ($allPropertiesForRent['id']);?>"><img src="../public/img/upload/<?= ($allPropertiesForRent['picture_url']);?>" alt="<?= ($allPropertiesForRent['picture_url']);?>"></a>
                                     </div>
                                     <div class="column-property-tag">
                                         <p><?= ($allPropertiesForRent['type']);?></p>
                                     </div>
                                     <div class="properties-include opicity-bg">
                                         <ul>
-                                            <li> <i class="fa fa-home"></i><?= ($allPropertiesForRent['area']); m2?></li>
+                                            <li> <i class="fa fa-home"></i><?= ($allPropertiesForRent['area']);?> m2</li>
                                             <li><i class="fa fa-square"></i> <?= ($allPropertiesForRent['rooms']);?> Pièce(s)</li>
                                             <li><i class="fa fa-bed"></i><?= ($allPropertiesForRent['bedrooms']);?> Chambre(s)</li>
                                         </ul>

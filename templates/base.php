@@ -126,7 +126,7 @@
                     <div class="col-md-3">
                         <!-- Logo Start -->
                         <div class="logo-wrap">
-                            <a href="index.php"><img src="../public/img/logo.png" alt=""></a>
+                            <a href="index.php"><img src="../public/img/logo.png" alt="Hestia - real estate"></a>
                         </div>
                         <!-- Logo End -->
                     </div>
@@ -178,8 +178,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mobile-menu">
-                            <div class="logo">
-                                <a href="index.php"><img src="../public/img/logo2.jpg" alt="" /></a>
+                            <div class="logo mobile-logo">
+                                <a href="index.php"><img src="../public/img/logo-min.png" alt="Hestia - real estate" /></a>
                             </div>
                             <nav id="mobile-menu">
                                 <ul>
