@@ -41,9 +41,9 @@
                             </div>
                         </div>
                         <!-- End of Video Content -->
-                        <div class="single-property-similar-cat">
+                        <div class="single-property-similar-cat property-2-column-area">
                             <!-- Property Widget Area Title -->
-                            <div class="property-page-title">
+                            <div class="property-page-title ">
                                 <h2>Autres biens de <span><?= $agent->getLastname();?> <?= $agent->getFirstname();?></span></h2>
                             </div>
                             <div class="row">
