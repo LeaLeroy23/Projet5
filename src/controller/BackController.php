@@ -689,6 +689,7 @@ class BackController extends Controller
             $this->session->start();
             $this->session->set('logout', 'À bientôt');
             header('Location: ../public/index.php');
+            exit();
         }
     }
 
