@@ -1,0 +1,1 @@
+let spec = new Spec();

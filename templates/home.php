@@ -1,57 +1,37 @@
-
-<?php
-//Pour nos deux fichiers
-require '../src/DAO/DAO.php';
-require '../src/DAO/EstateDAO.php';
-
-?>
-
-<?php
-require 'header.php';
-?>
+<?php $this->title = "Accueil"; ?>
 
         <!-- Slider area Start -->   
         <section class="slider-section ">
-            <div class="item">
-              <div class="item">
-                    <img src="../public/img/slider/1.jpg" alt="">
+
+        <?php
+        foreach ($sliderEstates as $sliderEstate)
+        {
+            ?>
+
+                <div class="item">
+                    <img src="../public/img/upload/<?= $sliderEstate['picture_url'];?>" alt="slider">
                     <div class="slide-content carousel-caption hidden-xs">
                         <div class="slide-content-top">
-                            <h1>Titre</h1>
-                            <h2>06300, Nice</h2>
-                            <p>Belle appartement refait à neuf dans une résidence de luxe.</p>
+                            <h1><?= htmlspecialchars($sliderEstate['type']);?></h1>
+                            <h2><?= htmlspecialchars($sliderEstate['title']);?></h2>
+                            <p><?= htmlspecialchars($sliderEstate['excerpt']);?></p>
                         </div>
                         <div class="slide-property-detail">
                             <ul>
-                                <li>4 Pièces</li>
-                                <li>3 Chambres</li>
-                                <li> 120 m2</li>
-                                <li> 1 230 000 €</li>
-                                <li class="slider-btn"><a href="single-property.php">A Vendre</a></li> 
+                                <li><?= ($sliderEstate['rooms']);?> Pièces</li>
+                                <li><?= htmlspecialchars($sliderEstate['bedrooms']);?> Chambres</li>
+                                <li><?= htmlspecialchars($sliderEstate['area']);?> m2</li>
+                                <li><?= ($sliderEstate['price']);?> €</li>
+                                <li class="slider-btn"><a href="../public/index.php?route=estate&estateId=<?= ($sliderEstate['id']);?>"><?= ($sliderEstate['category']);?></a></li> 
                             </ul>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="item">
-                <img src="../public/img/slider/2.jpg" alt="">
-                <div class="slide-content carousel-caption hidden-xs">
-                    <div class="slide-content-top">
-                        <h1>Titre</h1>
-                        <h2>06800, Cagnes sur mer</h2>
-                        <p></p>
-                    </div>
-                    <div class="slide-property-detail">
-                        <ul>
-                            <li>3 Pièces</li>
-                            <li>2 Chambres</li>
-                            <li> 75 M2</li>
-                            <li> 1050 €</li>
-                            <li class="slider-btn"><a href="single-property.php">A Louer</a></li> 
-                        </ul>
-                    </div>
-                </div>
-            </div>
+
+                <?php
+                }
+                ?> 
+            
         </section>
         <!-- Slider Area End -->
         
@@ -108,246 +88,206 @@ require 'header.php';
         <!--Start of Properties Area-->
         <section class="properties-area area-pading fix">
             <div class="container">
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="properties-title">
-                            <h2>Les biens à vendre</h2>
-                            <a href="properties_sale.php" class="view-more">voir tout</a>
+                            <h2>Les derniers biens ajoutés</h2>
+                            <a href="../public/index.php?route=allProperties" class="view-more">voir tout</a>
                         </div>
                     </div>
                 </div>
                 <div class="row">
+                <?php
+               foreach ($latestEstates as $latestEstate)
+               {
+                ?>
+
                     <div class="col-md-4 col-sm-6">
                         <div class="single-featured-properties">
                             <div class="properties-image">
-                                <a href="single-property.php"><img src="../public/img/properties/1.jpg" alt=""></a>
+                                <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>"><img src="../public/img/upload/<?= ($latestEstate['picture_url']);?>" alt="<?= ($latestEstate['picture_url']);?>"></a>
                             </div>
                             <div class="sale-tag">
-                                <p>A Vendre</p>
+                                <p><?=($latestEstate['category']);?></p>
                             </div>
                             <div class="properties-include">
                                 <ul>
-                                    <li><i class="fa fa-home"></i> 50 m2</li>
-                                    <li><i class="fa fa-square"></i>2 Pièces</li>
-                                    <li><i class="fa fa-bed"></i> 1 Chambre</li>
+                                    <li><i class="fa fa-home"></i> <?= ($latestEstate['area']);?> m2</li>
+                                    <li><i class="fa fa-square"></i><?= ($latestEstate['rooms']);?> Pièce(s)</li>
+                                    <li><i class="fa fa-bed"></i> <?= ($latestEstate['bedrooms']);?> Chambre(s)</li>
                                 </ul>
                             </div>
                             <div class="properties-content">
-                                <h3><a href="single-property.php">Titre</a></h3>
-                                <p><i class="fa fa-map-marker"></i> PACA</p>
-                                <p class="detail-text">Description courte</p>
+                                <h3><a href="single-property.php"><?= ($latestEstate['title']);?></a></h3>
+                                <p><i class="fa fa-map-marker"></i> <?= ($latestEstate['city']);?></p>
+                                <p class="detail-text"><?= ($latestEstate['excerpt']);?></p>
                                 <div class="price-detail">
-                                    <p class="price-range pull-left">2350 000€</p>
-                                    <a href="single-property.php" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
+                                    <p class="price-range pull-left"><?= ($latestEstate['price']);?> €</p>
+                                    <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div> 
-                    <!-- End of Single properties -->
+
+                <?php
+                }
+                ?>
+
+                </div>
+  
+        <!--Start of Properties Area-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="properties-title margintop100">
+                            <h2>Les biens à vendre</h2>
+                            <a href="../public/index.php?route=allPropertiesForSale" class="view-more">voir tout</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                <?php
+               foreach ($estatesForSale as $estateForSale)
+               {
+                ?>
+
                     <div class="col-md-4 col-sm-6">
                         <div class="single-featured-properties">
                             <div class="properties-image">
-                                <a href="single-property.php"><img src="../public/img/properties/2.jpg" alt=""></a>
+                                <a href="index.php?route=estate&estateId=<?= ($estateForSale['id']);?>"><img src="../public/img/upload/<?= ($estateForSale['picture_url']);?>" alt="<?= ($estateForSale['picture_url']);?>"></a>
                             </div>
                             <div class="sale-tag">
-                                <p>A Vendre</p>
+                                <p><?=($estateForSale['category']);?></p>
                             </div>
                             <div class="properties-include">
                                 <ul>
-                                    <li><i class="fa fa-home"></i> 30 m2</li>
-                                    <li><i class="fa fa-square"></i>4 Pièces</li>
-                                    <li><i class="fa fa-bed"></i> 4 Chambre</li>
+                                    <li><i class="fa fa-home"></i> <?= ($estateForSale['area']);?> m2</li>
+                                    <li><i class="fa fa-square"></i><?= ($estateForSale['rooms']);?> Pièce(s)</li>
+                                    <li><i class="fa fa-bed"></i> <?= ($estateForSale['bedrooms']);?> Chambre(s)</li>
                                 </ul>
                             </div>
                             <div class="properties-content">
-                                <h3><a href="single-property.php">Titre</a></h3>
-                                <p><i class="fa fa-map-marker"></i> Ville, Code postal</p>
-                                <p class="detail-text">Description courte</p>
+                                <h3><a href="single-property.php"><?= ($estateForSale['title']);?></a></h3>
+                                <p><i class="fa fa-map-marker"></i> <?= ($estateForSale['city']);?></p>
+                                <p class="detail-text"><?= ($estateForSale['excerpt']);?></p>
                                 <div class="price-detail">
-                                    <p class="price-range pull-left">Prix €</p>
-                                    <a href="single-property.php" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
+                                    <p class="price-range pull-left"><?= ($estateForSale['price']);?> €</p>
+                                    <a href="index.php?route=estate&estateId=<?= ($estateForSale['id']);?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- End of Single properties -->
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-featured-properties">
-                            <div class="properties-image">
-                                <a href="single-property.php"><img src="../public/img/properties/3.jpg" alt=""></a>
-                            </div>
-                            <div class="sale-tag">
-                                <p>A Vendre</p>
-                            </div>
-                            <div class="properties-include">
-                                <ul>
-                                    <li><i class="fa fa-home"></i> 125 m2</li>
-                                    <li><i class="fa fa-square"></i> 5 Pièces</li>
-                                    <li><i class="fa fa-bed"></i> 4 Chambres</li>
-                                </ul>
-                            </div>
-                            <div class="properties-content">
-                                <h3><a href="single-property.php">Titre</a></h3>
-                                <p><i class="fa fa-map-marker"></i> Vile, Code postal</p>
-                                <p class="detail-text">Description courte</p>
-                                <div class="price-detail">
-                                    <p class="price-range pull-left"> 1 230 000 €</p>
-                                    <a href="single-property.php" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End of Single properties -->
-                    <div class="col-md-4 col-sm-6 hidden-md hidden-lg">
-                        <div class="single-featured-properties">
-                            <div class="properties-image">
-                                <a href="single-property.php"><img src="../public/img/properties/3.jpg" alt=""></a>
-                            </div>
-                            <div class="sale-tag">
-                                <p>A Vendre</p>
-                            </div>
-                            <div class="properties-include">
-                                <ul>
-                                    <li><i class="fa fa-home"></i> 45 m2</li>
-                                    <li><i class="fa fa-square"></i> 2 Pièces</li>
-                                    <li><i class="fa fa-bed"></i> 1 Chambres</li>
-                                </ul>
-                            </div>
-                            <div class="properties-content">
-                                <h3><a href="single-property.php">Titre</a></h3>
-                                <p><i class="fa fa-map-marker"></i> Ville, Code postal</p>
-                                <p class="detail-text">Description courte </p>
-                                <div class="price-detail">
-                                    <p class="price-range pull-left"> 260 000 €</p>
-                                    <a href="single-property.php" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End of Single properties -->
+                    </div> 
+
+                <?php
+                }
+                ?>
+
                 </div>
                 <!-- Start of Recent Properties Title Area-->
                 <div class="row">
                     <div class="col-md-12">
                         <div class="properties-title margintop100">
                             <h2>Les biens à la location</h2>
-                            <a href="properties_rent.php" class="view-more">Voir tout</a>
+                            <a href="index.php?route=allPropertiesForRent" class="view-more">Voir tout</a>
                         </div>
                     </div>
                 </div> 
                 <!-- End of Recent Properties Title Area-->
                 <!--Start of Recent Single Recent Properties  Area -->
                 <div class="row">
+
+                <?php
+                foreach ($estatesForRent as $estateForRent)
+                {
+                ?>
+
                     <div class="col-md-4 col-sm-6">
                         <div class="single-featured-properties">
                             <div class="properties-image">
-                                <a href="single-property.php"><img src="../public/img/properties/4.jpg" alt=""></a>
+                                <a href="index.php?route=estate&estateId=<?= ($estateForRent['id']);?>"><img src="../public/img/upload/<?= ($estateForRent['picture_url']);?>" alt="<?= ($estateForRent['id']);?>"></a>
                             </div>
                             <div class="rent-tag">
-                                <p>A louer</p>
+                                <p><?= ($estateForRent['category']); ?></p>
                             </div>
                             <div class="properties-include">
                                 <ul>
-                                    <li><i class="fa fa-home"></i> 64 m2</li>
-                                    <li><i class="fa fa-square"></i>3 Pièces</li>
-                                    <li><i class="fa fa-bed"></i> 2 Chambres</li>
+                                    <li><i class="fa fa-home"></i><?= ($estateForRent['area']); ?> m2</li>
+                                    <li><i class="fa fa-square"></i><?= ($estateForRent['rooms']); ?> Pièces</li>
+                                    <li><i class="fa fa-bed"></i><?= ($estateForRent['bedrooms']); ?> Chambres</li>
                                 </ul>
                             </div>
                             <div class="properties-content">
-                                <h3><a href="single-property.php">Titre</a></h3>
-                                <p><i class="fa fa-map-marker"></i> ville,code postal</p>
-                                <p class="detail-text">Description courte</p>
+                                <h3><a href="index.php?route=estate&estateId=<?= ($estateForRent['id']);?>"><?= ($estateForRent['title']);?></a></h3>
+                                <p><i class="fa fa-map-marker"></i> <?= ($estateForRent['city']);?></p>
+                                <p class="detail-text"><?= ($estateForRent['excerpt']);?></p>
                                 <div class="price-detail">
-                                    <p class="price-range pull-left">995 €</p>
-                                    <a href="single-property.php" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
+                                    <p class="price-range pull-left"><?= ($estateForRent['price']);?> €</p>
+                                    <a href="index.php?route=estate&estateId=<?= ($estateForRent['id']);?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- End of Single properties -->
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-featured-properties">
-                            <div class="properties-image">
-                                <a href="single-property.php"><img src="../public/img/properties/5.jpg" alt=""></a>
-                            </div>
-                            <div class="rent-tag">
-                                <p>A louer</p>
-                            </div>
-                            <div class="properties-include">
-                                <ul>
-                                    <li><i class="fa fa-home"></i> 85 m2</li>
-                                    <li><i class="fa fa-square"></i>4 Pièces</li>
-                                    <li><i class="fa fa-bed"></i> "" Chambres</li>
-                                </ul>
-                            </div>
-                            <div class="properties-content">
-                                <h3><a href="single-property.php">Titre</a></h3>
-                                <p><i class="fa fa-map-marker"></i> ville, code postal</p>
-                                <p class="detail-text">Description courte</p>
-                                <div class="price-detail">
-                                    <p class="price-range pull-left">prix €</p>
-                                    <a href="single-property.php" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End of Single properties -->
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-featured-properties">
-                            <div class="properties-image">
-                                <a href="single-property.php"><img src="../public/img/properties/6.jpg" alt=""></a>
-                            </div>
-                            <div class="rent-tag">
-                                <p>A louer</p>
-                            </div>
-                            <div class="properties-include">
-                                <ul>
-                                    <li><i class="fa fa-home"></i> 25 m2</li>
-                                    <li><i class="fa fa-bed"></i> 1 Pièece</li>
-                                    <li><i class="fa fa-tty"></i> 0 Chambre</li>
-                                </ul>
-                            </div>
-                            <div class="properties-content">
-                                <h3><a href="single-property.php">Titre</a></h3>
-                                <p><i class="fa fa-map-marker"></i> ville, code postal</p>
-                                <p class="detail-text">Description courte</p>
-                                <div class="price-detail">
-                                    <p class="price-range pull-left">Prix €</p>
-                                    <a href="single-property.php" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End of Single properties -->
-                    <div class="col-md-4 col-sm-6 hidden-md hidden-lg">
-                        <div class="single-featured-properties">
-                            <div class="properties-image">
-                                <a href="single-property.php"><img src="../public/img/properties/6.jpg" alt=""></a>
-                            </div>
-                            <div class="rent-tag">
-                                <p>A louer</p>
-                            </div>
-                            <div class="properties-include">
-                                <ul>
-                                    <li><i class="fa fa-home"></i> 73 m2</li>
-                                    <li><i class="fa fa-bed"></i> 3 Pièces</li>
-                                    <li><i class="fa fa-tty"></i> 2 Chambres</li>
-                                </ul>
-                            </div>
-                            <div class="properties-content">
-                                <h3><a href="single-property.php">Titre</a></h3>
-                                <p><i class="fa fa-map-marker"></i> ville, code postal</p>
-                                <p class="detail-text">Description courte</p>
-                                <div class="price-detail">
-                                    <p class="price-range pull-left">Prix €</p>
-                                    <a href="single-property.php" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End of Single properties -->
+
+                <?php
+                }
+                ?>
+
                 </div> 
                 <!-- End of Recent Single Recent Properties  Area -->
+
+                <!-- Start of Recent Properties Title Area-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="properties-title margintop100">
+                            <h2>Les autres biens</h2>
+                            <a href="index.php?route=allEstates" class="view-more">Voir tout</a>
+                        </div>
+                    </div>
+                </div> 
+                <!-- End of Recent Properties Title Area-->
+                <!--Start of Recent Single Recent Properties  Area -->
+                <div class="row">
+
+                <?php
+                foreach ($otherEstates as $otherEstate)
+                {
+                ?>
+
+                    <div class="col-md-4 col-sm-6">
+                        <div class="single-featured-properties">
+                            <div class="properties-image">
+                                <a href="index.php?route=estate&estateId=<?= ($otherEstate['id']);?>"><img src="../public/img/upload/<?= ($otherEstate['picture_url']);?>" alt="<?= ($otherEstate['id']);?>"></a>
+                            </div>
+                            <div class="rent-tag">
+                                <p><?= ($otherEstate['category']); ?></p>
+                            </div>
+                            <div class="properties-include">
+                                <ul>
+                                    <li><i class="fa fa-home"></i><?= ($otherEstate['area']); ?> m2</li>
+                                    <li><i class="fa fa-square"></i><?= ($otherEstate['rooms']); ?> Pièces</li>
+                                    <li><i class="fa fa-bed"></i><?= ($otherEstate['bedrooms']); ?> Chambres</li>
+                                </ul>
+                            </div>
+                            <div class="properties-content">
+                                <h3><a href="index.php?route=estate&estateId=<?= ($otherEstate['id']);?>"><?= ($otherEstate['title']);?></a></h3>
+                                <p><i class="fa fa-map-marker"></i> <?= ($otherEstate['city']);?></p>
+                                <p class="detail-text"><?= ($otherEstate['excerpt']);?></p>
+                                <div class="price-detail">
+                                    <p class="price-range pull-left"><?= ($otherEstate['price']);?> €</p>
+                                    <a href="index.php?route=estate&estateId=<?= ($otherEstate['id']);?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <?php
+                }
+                ?>
+
+                </div> 
+                <!-- End of Recent Single Recent Properties  Area -->
+
             </div>
         </section>
         <!-- End of Properties Area-->
@@ -378,81 +318,31 @@ require 'header.php';
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="single-agent wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".3s">
-                            <div class="agentimg-social">
-                                <img src="../public/img/agent/1.jpg" alt="">
-                                <ul class="agent-bookmark">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-envelope"></i></a></li>
-                                </ul>
-                                <div class="overlay"></div>
-                            </div>
-                            <div class="agent-detail text-center">
-                                <h3><a href="single-agent.html">Donovan Blumveast</a> </h3>
-                                <p>Gérant</p>
-                            </div>
-                        </div>
-                    </div> 
-                    <!-- End of Single Agent-->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="single-agent wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".5s">
-                            <div class="agentimg-social">
-                                <img src="../public/img/agent/2.jpg" alt="">
-                                <ul class="agent-bookmark">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                </ul>
-                                <div class="overlay"></div>
-                            </div>
-                            <div class="agent-detail text-center">
-                                <h3><a href="single-agent.html">Ludivine Holmes</a> </h3>
-                                <p>Gestionnaire</p>
-                            </div>
-                        </div>
-                    </div> 
-                    <!-- End of Single Agent-->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="single-agent wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".7s">
-                            <div class="agentimg-social">
-                                <img src="../public/img/agent/3.jpg" alt="">
-                                <ul class="agent-bookmark">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
 
-                                </ul>
-                                <div class="overlay"></div>
+                    <?php
+                        foreach ($agents as $agent)
+                        {
+                    ?>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="single-agent wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".3s">
+                                <div class="agentimg-social">
+                                    <img src="../public/img/agent/<?= ($agent->getAvatar());?>" alt="">
+                                    
+                                    <div class="overlay"></div>
+                                </div>
+                                <div class="agent-detail text-center">
+                                    <h3><a href="index.php?route=agent&agentId=<?= ($agent->getId());?>"><?= ($agent->getFirstname());?> <?= ($agent->getLastname());?></a> </h3>
+                                    <p><?= ($agent->getFunction());?></p>
+                                </div>
                             </div>
-                            <div class="agent-detail text-center">
-                                <h3><a href="single-agent.html">Rudy Cagliari</a></h3>
-                                <p>Responsable des ventes</p>
-                            </div>
-                        </div>
-                    </div> 
-                    <!-- End of Single Agent-->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="single-agent wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".9s">
-                            <div class="agentimg-social">
-                                <img src="../public/img/agent/4.jpg" alt="">
-                                <ul class="agent-bookmark">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                </ul>
-                                <div class="overlay"></div>
-                            </div>
-                            <div class="agent-detail text-center">
-                                <h3><a href="single-agent.html">William Dupont</a></h3>
-                                <p>manager</p>
-                            </div>
-                        </div>
-                    </div> 
-                    <!-- End of Single Agent-->
+                        </div> 
+
+                    <?php
+                        }
+                    ?>
+                     
+                   
                 </div>
             </div>
         </section>
@@ -464,21 +354,21 @@ require 'header.php';
                     <div class="col-md-12 text-center">
                         <div class="testimonial-wrap wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".3s">
                             <div class="single-testimonial">
-                                <p>Ludivine a su trouver le bien parfait pour moi et ma famille. Et ses partenaires ont fait un travail à la hauteur de nos attentes.</p>
+                                <p>Les agents ont su trouver le bien parfait pour moi et ma famille. Et ses partenaires ont fait un travail à la hauteur de nos attentes.</p>
                                 <p class="client-name">- Sandra Martin</p>
-                                <img src="../public/img/testi1.png" alt="">
+                                <img class="img-size" src="../public/img/testimonial/testi1.jpg" alt="testimonial-1">
                             </div>
 
                             <div class="single-testimonial">
                                 <p>Grâce à Hestia j'ai trouvé un appartement totalement Atypique, qui ne ressemble à aucun autre.</p>
                                 <p class="client-name">- Albert Dubervil</p>
-                                <img src="../public/img/testi1.png" alt="">
+                                <img class="img-size" src="../public/img/testimonial/testi2.jpg" alt="testimonial-2">
                             </div>
 
                             <div class="single-testimonial">
-                                <p>Première expérience dans l'immobiler grâce à Donovan j'ai trouver un bien qui correspond à tous mes critères.</p>
+                                <p>Première expérience dans l'immobiler grâce à Jean j'ai trouver un bien qui correspond à tous mes critères.</p>
                                 <p class="client-name">- Emilie Sanders</p>
-                                <img src="../public/img/testi1.png" alt="">
+                                <img class="img-size" src="../public/img/testimonial/testi3.jpg" alt="testimonial-3">
                             </div>
                         </div>
                     </div>
@@ -501,13 +391,12 @@ require 'header.php';
                     <div class="col-md-12">
                         <div class="partners-logo-area wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".3s">
                             <ul class="partners-logo-carosel">
-                                <li><a href="#"><img src="../public/img/partners/2.png" alt=""></a></li>
-                                <li><a href="#"><img src="../public/img/partners/1.png" alt=""></a></li>
-                                <li><a href="#"><img src="../public/img/partners/3.png" alt=""></a></li>
-                                <li><a href="#"><img src="../public/img/partners/4.png" alt=""></a></li>
-                                <li><a href="#"><img src="../public/img/partners/1.png" alt=""></a></li>
-                                <li><a href="#"><img src="../public/img/partners/2.png" alt=""></a></li>
-                                <li><a href="#"><img src="../public/img/partners/3.png" alt=""></a></li>
+                                <li><a href="http://stratos-consulting.fr/"><img src="../public/img/partners/stratos-consulting.png" alt="stratos-consulting"></a></li>
+                                <li><a href="https://www.vinci-construction.fr/"><img src="../public/img/partners/Vinci-construction.png" alt="Vinci-construction"></a></li>
+                                <li><a href="https://www.edf.fr/"><img src="../public/img/partners/edf.png" alt="edf"></a></li>
+                                <li><a href="https://www.sa.areva.com/"><img src="../public/img/partners/Areva.png" alt="areva"></a></li>
+                                <li><a href="https://www.capgemini.com/fr-fr/"><img src="../public/img/partners/Capgemini.png" alt="Capgemini"></a></li>
+                                <li><a href="https://www.allianz.fr/"><img src="../public/img/partners/allianz.png" alt="Allianz"></a></li>
                             </ul>
                         </div> 
                     </div>
@@ -515,7 +404,3 @@ require 'header.php';
             </div>
         </section>
         <!-- Partners Area End Hear-->
-
-<?php
-require 'footer.php';
-?>

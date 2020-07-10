@@ -1,5 +1,5 @@
 <?php
-namespace Projet5\config;
+namespace Hestia\config;
 
 class Parameter
 {

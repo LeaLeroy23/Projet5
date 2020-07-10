@@ -1,30 +1,35 @@
 <?php
+//Pour toutes les classes dans DAO
+namespace Hestia\src\DAO;
 
-namespace Projet5\src\DAO;
-
+//Uniquement pour la classe DAO
 use PDO;
 use Exception;
 
-abstract class DAO{
+abstract class DAO
+{
+
     private $connection;
 
-    private function checkConnection()
-    {
+    private function checkConnection(){
         if($this->connection === null){
             return $this->getConnection();
         }
         return $this->connection;
     }
 
-    private function getConnection(){
-        try {
+    private function getConnection()
+    {
+        try{
             $this->connection = new PDO(DB_HOST, DB_USER, DB_PASS);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
             return $this->connection;
         }
-        catch (Exception $errorConnection)
+        //On lève une erreur si la connexion échoue
+        catch(Exception $errorConnection)
         {
-            die ('Erreur de connexion :' .$errorConnection->getMessage());
+            die ('Erreur de connection :'.$errorConnection->getMessage());
         }
     }
 
@@ -32,11 +37,13 @@ abstract class DAO{
     {
         if($parameters)
         {
-            $result = $this->checkConnection()->prepre($sql);
-            $sql->execute($parameters);
+            $result = $this->checkConnection()->prepare($sql);
+            $result->execute($parameters);
             return $result;
         }
         $result = $this->checkConnection()->query($sql);
         return $result;
     }
+
+
 }

@@ -1,22 +1,24 @@
 <?php
 
-namespace Projet5\config;
+namespace Hestia\config;
 
 class Request
 {
     private $get;
     private $post;
+    private $files;
     private $session;
 
     public function __construct()
     {
         $this->get = new Parameter($_GET);
         $this->post = new Parameter($_POST);
+        $this->files = new Parameter($_FILES);
         $this->session = new Session($_SESSION);
     }
 
     /**
-     * @return mixed
+     * @return Parameter
      */
     public function getGet()
     {
@@ -24,7 +26,7 @@ class Request
     }
 
     /**
-     * @return mixed
+     * @return Parameter
      */
     public function getPost()
     {
@@ -32,7 +34,15 @@ class Request
     }
 
     /**
-     * @return mixed
+     * @return Parameter
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    /**
+     * @return Session
      */
     public function getSession()
     {

@@ -1,0 +1,11 @@
+{
+  "autoload": {
+    "psr-4": {
+        "Hestia\\config\\":"config/",
+        "Hestia\\src\\": "src/"
+    }
+  },
+  "require": {
+    "swiftmailer/swiftmailer": "^6.2"
+  }
+}

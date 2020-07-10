@@ -1,8 +1,7 @@
 <?php
 
-require '../config/dev.php';
+require '../config/prod.php';
 require '../vendor/autoload.php';
-
 session_start();
-$router = new \Projet5\config\Router();
+$router = new \Hestia\config\Router();
 $router->run();
