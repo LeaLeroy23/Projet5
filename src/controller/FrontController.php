@@ -24,6 +24,7 @@ class FrontController extends Controller
         $estates = $this->estateDAO->getPublishedEstates();
         $estatesForSale = $this->estateDAO->forSaleEstates();
         $estatesForRent = $this->estateDAO->forRentEstates();
+        $otherEstates = $this->estateDAO->otherEstates();
         $agents = $this->agentDAO->getAgents();
         return $this->view->render('home', [
             'sliderEstates' => $sliderEstates,
@@ -31,6 +32,7 @@ class FrontController extends Controller
             'estatesForSale' => $estatesForSale,
             'estatesForRent' => $estatesForRent,
             'latestEstates' => $latestEstates,
+            'otherEstates' => $otherEstates,
             'agents' => $agents
         ]);
     }

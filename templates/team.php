@@ -16,26 +16,17 @@
                         <div class="column-single-property">
                             <div class="column-property-img-wrap">
                                 <div class="column-property-img">
-                                    <a href="../public/index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>"><img src="../public/img/agent/8.jpg" alt=""></a>
-                                </div>
-                                <div class="properties-include opicity-bg">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    </ul>
+                                    <a href="../public/index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>"><img src="../public/img/agent/<?= htmlspecialchars($agent->getAvatar());?>" alt="<?= htmlspecialchars($agent->getAvatar());?>"></a>
                                 </div>
                             </div>
                             <div class="column-property-content-wrap">
                                 <div class="column-property-content">
-                                    <h4><a href="../public/index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>">Michael Scott</a> </h4>
-                                    <p class="ag-position">Land Agent </p>
-                                    <p class="ag-details">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. </p>
+                                    <h4><a href="../public/index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>"><?= htmlspecialchars($agent->getFirstname());?> <?= htmlspecialchars($agent->getLastname());?></a> </h4>
+                                    <p class="ag-position"><?= htmlspecialchars($agent->getFunction());?> </p>
+                                    <p class="ag-details"><?= htmlspecialchars($agent->getDescription());?></p>
                                 </div>
                                 <div class="column-property-more">
-                                    <a href="../public/index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>">View Details</a>
+                                    <a href="../public/index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>">Details</a>
                                 </div>
                             </div>
                         </div>

@@ -303,4 +303,19 @@ class EstateDAO extends DAO
         $result = $this->createQuery($sql)->fetchAll();
         return $result;
     }
+
+    public function otherEstates(){
+        $sql = "SELECT e.id as id, e.title as title, e.excerpt as excerpt, e.status as status, e.price as price, e.rooms as rooms, e.bedrooms as bedrooms, e.area as area, e.city as city, c.name as category, t.type as type, e.picture_url as picture_url
+                FROM estate e
+                INNER JOIN category c
+                ON e.category_id = c.id
+                INNER JOIN type t
+                ON e.type_id = t.id
+                WHERE e.category_id > 25 
+                ORDER BY e.id DESC
+                LIMIT 3
+                ";
+        $result = $this->createQuery($sql)->fetchAll();
+        return $result;
+    }
 }

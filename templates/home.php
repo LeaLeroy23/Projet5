@@ -189,7 +189,7 @@
                     <div class="col-md-12">
                         <div class="properties-title margintop100">
                             <h2>Les biens à la location</h2>
-                            <a href="p" class="view-more">Voir tout</a>
+                            <a href="index.php?route=allPropertiesForRent" class="view-more">Voir tout</a>
                         </div>
                     </div>
                 </div> 
@@ -208,7 +208,7 @@
                                 <a href="index.php?route=estate&estateId=<?= ($estateForRent['id']);?>"><img src="../public/img/upload/<?= ($estateForRent['picture_url']);?>" alt="<?= ($estateForRent['id']);?>"></a>
                             </div>
                             <div class="rent-tag">
-                                <p>A louer</p>
+                                <p><?= ($estateForRent['category']); ?></p>
                             </div>
                             <div class="properties-include">
                                 <ul>
@@ -235,6 +235,59 @@
 
                 </div> 
                 <!-- End of Recent Single Recent Properties  Area -->
+
+                <!-- Start of Recent Properties Title Area-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="properties-title margintop100">
+                            <h2>Les autres biens</h2>
+                            <a href="index.php?route=allEstates" class="view-more">Voir tout</a>
+                        </div>
+                    </div>
+                </div> 
+                <!-- End of Recent Properties Title Area-->
+                <!--Start of Recent Single Recent Properties  Area -->
+                <div class="row">
+
+                <?php
+                foreach ($otherEstates as $otherEstate)
+                {
+                ?>
+
+                    <div class="col-md-4 col-sm-6">
+                        <div class="single-featured-properties">
+                            <div class="properties-image">
+                                <a href="index.php?route=estate&estateId=<?= ($otherEstate['id']);?>"><img src="../public/img/upload/<?= ($otherEstate['picture_url']);?>" alt="<?= ($otherEstate['id']);?>"></a>
+                            </div>
+                            <div class="rent-tag">
+                                <p><?= ($otherEstate['category']); ?></p>
+                            </div>
+                            <div class="properties-include">
+                                <ul>
+                                    <li><i class="fa fa-home"></i><?= ($otherEstate['area']); ?> m2</li>
+                                    <li><i class="fa fa-square"></i><?= ($otherEstate['rooms']); ?> Pièces</li>
+                                    <li><i class="fa fa-bed"></i><?= ($otherEstate['bedrooms']); ?> Chambres</li>
+                                </ul>
+                            </div>
+                            <div class="properties-content">
+                                <h3><a href="index.php?route=estate&estateId=<?= ($otherEstate['id']);?>"><?= ($otherEstate['title']);?></a></h3>
+                                <p><i class="fa fa-map-marker"></i> <?= ($otherEstate['city']);?></p>
+                                <p class="detail-text"><?= ($otherEstate['excerpt']);?></p>
+                                <div class="price-detail">
+                                    <p class="price-range pull-left"><?= ($otherEstate['price']);?> €</p>
+                                    <a href="index.php?route=estate&estateId=<?= ($otherEstate['id']);?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <?php
+                }
+                ?>
+
+                </div> 
+                <!-- End of Recent Single Recent Properties  Area -->
+
             </div>
         </section>
         <!-- End of Properties Area-->
