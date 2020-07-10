@@ -75,16 +75,15 @@ class Estate
      */
     private $energy_id;
 
-       /**
+    /**
      * @var int
      */
     private $level_energy_diagnostic;
 
-       /**
+    /**
      * @var string
      */
     private $level_climat_diagnostic;
-
 
     /**
      * @var int

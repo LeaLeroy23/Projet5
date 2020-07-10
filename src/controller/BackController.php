@@ -42,7 +42,6 @@ class BackController extends Controller
             $countAgent = $this->agentDAO->getAgentCount();
             $estatesByAgent = $this->estateDAO->getEstatesByAgent($agentId);
             $estateByAgentCount = $this->estateDAO->getEstateByAgentCount($agentId);
-            $countEstateByAgentDraft = $this->estateDAO->getCountEstateByAgentDraft($agentId);
 
             return $this->view->renderTemplate('dashboard', [
                 'estates' => $estates,
@@ -50,14 +49,13 @@ class BackController extends Controller
                 'count' => $count,
                 'countDraft' => $countDraft,
                 'countAgent' => $countAgent,
-                'estatesByAgent' => $estatesByAgent,
                 'estateByAgentCount' => $estateByAgentCount,
                 'countEstateByAgentDraft' => $countEstateByAgentDraft
             ]);
         }
     }
 
-    public function addEstate(Parameter $post, Parameter $files)
+    public function addEstate(Parameter $post)
     {
         if($this->checkLoggedIn()){
             $categories = $this->categoryDAO->getCategories();
@@ -68,7 +66,6 @@ class BackController extends Controller
 
             if($post->get('submit')){
                 if (!$errors){
-                    $form=[];
                     $maxsize = 5 * 1024 * 1024;
                     $filename = "";
                     if (isset($_FILES["picture_url"]) && $_FILES["picture_url"]["error"] == 0) {
@@ -129,7 +126,6 @@ class BackController extends Controller
 
             if($post->get('submit')){
                 if (!$errors){
-                    $form=[];
                     $maxsize = 5 * 1024 * 1024;
                     $filename = "";
                     if (isset($_FILES["picture_url"])) {

@@ -52,7 +52,7 @@ class Router
                     $this->frontController->login($this->request->getPost());
                 }
                 elseif ($route === 'addEstate'){
-                    $this->backController->addEstate($this->request->getPost(), $this->request->getFiles());
+                    $this->backController->addEstate($this->request->getPost());
                 }
                 elseif ($route === 'editEstate'){
                     $this->backController->editEstate($this->request->getPost(), $this->request->getGet()->get('estateId'));

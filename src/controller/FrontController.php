@@ -87,17 +87,23 @@ class FrontController extends Controller
     {
         $estate = $this->estateDAO->getEstate($estateId);
         $pictures = $this->pictureDAO->getPicturesByEstateId($estateId);
+        $latestEstates = $this->estateDAO->latestEstates();
+        $agents = $this->agentDAO->getAgents();
         return $this->view->render('single-property', [
             'estate' => $estate,
-            'picture' => $picture
+            'pictures' => $pictures,
+            'latestEstates' => $latestEstates,
+            'agents' => $agents
         ]);
     }
 
     public function team()
     {
         $agents = $this->agentDAO->getAgents();
+        $latestEstates = $this->estateDAO->latestEstates(); 
         return $this->view->render('team', [
-            'agents' => $agents
+            'agents' => $agents,
+            'latestEstates' => $latestEstates
         ]);
     }
 
