@@ -6,23 +6,22 @@
             <div class="col-lg-12">
                 <div class="row content-panel">
 
-                    <div class="col-sm-4 profile-text mt mb centered">
-                        <div class="right-divider hidden-sm hidden-xs">
-                        <h4>Ma Description</h4>
-                        <h6><?= $this->session->get('description'); ?></h6>
-                        </div>
+                    <div class="col-sm-12 col-md-3 profile-text agent-infos mt mb">
+                            <h3><?= $this->session->get('lastname'); ?> <?= $this->session->get('firstname'); ?></h3>
+                            <h6><?= $this->session->get('function'); ?></h6>
+                            <p><?= $this->session->get('phone'); ?></p>
+                            <p><?= $this->session->get('email'); ?></p>
+                            <p><a href="../public/index.php?route=agent&agentId=<?= $this->session->get('id');?>"><button class="btn btn-theme">Voir ma page</button></a></p>
                     </div>
 
-                    <div class="col-md-4 profile-text">
-                        <h3><?= $this->session->get('lastname'); ?> <?= $this->session->get('firstname'); ?></h3>
-                        <h6><?= $this->session->get('function'); ?></h6>
-                        <p><?= $this->session->get('avatar'); ?></p>
-                        <p><?= $this->session->get('phone'); ?></p>
-                        <p><?= $this->session->get('email'); ?></p>
-                        <p><a href=""><button class="btn btn-theme">Voir ma page</button></a></p>
+                    <div class="col-md-5 col-sm-12 profile-text mt mb centered">
+                        <h4>Description</h4>
+                        <h5><?= $this->session->get('description'); ?></h5>
                     </div>
 
-                    <div class="col-md-4 centered">
+                    <div class="col-lg-1 col-md-1 col-sm-12"></div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-12 centered">
                         <div class="profile-pic">
                             <p><img src="../public/img/agent/<?=$this->session->get('avatar');?>" width="150" height="150" class="img-circle"></p>
                         </div>
@@ -66,12 +65,11 @@
                             <!--debut information-->
                             <div id="infos" class="tab-pane active">
                                 <div class="row">
-                                    <div class="col-md-6">
-
+                                    <div class="col-md-6 col-sm-12">
                                         <div class="detailed mt">
                                             <h4>Ma Description</h4>
                                             <div class="recent-activity">
-                                                <table class="table table-bordered table-striped table-condensed">
+                                                <table class="table table-bordered table-striped table-condensed ">
                                                     <tbody>
                                                         <tr>
                                                             <td>Nom</td>
@@ -102,13 +100,10 @@
                                                 <button type="button" class="btn btn-theme btn-lg btn-block" id="btn-profile">Modifier mon profil</button>
                                             </div>
                                         </div>
-
-                                      
-
                                     </div>
 
                                     <!--debut stat-->
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 col-sm-12">
                                         <div class="detailed mt">
                                         <h4>Mes statistiques</h4>
                                             <div class="row centered mt mb">
@@ -143,49 +138,51 @@
                             <div id="estates" class="tab-pane">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <table class="table table-bordered table-striped table-condensed">
-                                            <thead>
-                                                <tr>
-                                                    <th>Titre</th>
-                                                    <th>Catégorie</th>
-                                                    <th>Type</th>
-                                                    <th class="numeric">Nombre de pièces</th>
-                                                    <th class="numeric">Nombre de chambre</th>
-                                                    <th>Description</th>
-                                                    <th class="numeric">Charge</th>
-                                                    <th class="numeric">Honoraire</th>
-                                                    <th class="numeric">Price</th>
-                                                    <th>Statut</th>
-                                                </tr>
-                                            </thead>
+                                        <section id="no-more-tables">
+                                            <table class="table table-bordered table-striped table-condensed table-advance cf">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Titre</th>
+                                                        <th>Catégorie</th>
+                                                        <th>Type</th>
+                                                        <th class="numeric">Nombre de pièces</th>
+                                                        <th class="numeric">Nombre de chambre</th>
+                                                        <th>Description</th>
+                                                        <th class="numeric">Charge</th>
+                                                        <th class="numeric">Honoraire</th>
+                                                        <th class="numeric">Price</th>
+                                                        <th>Statut</th>
+                                                    </tr>
+                                                </thead>
 
-                                            <tbody>
-                                            <?php 
-                                            foreach($estatesByAgent as $estateByAgent){
-                                            ?>
-                                                <tr>
-                                                    <td><?=$estateByAgent['title'];?></td>
-                                                    <td><?=$estateByAgent['category'];?></td>
-                                                    <td><?=$estateByAgent['type'];?></td>
-                                                    <td class="numeric"><?=$estateByAgent['rooms'];?></td>
-                                                    <td class="numeric"><?=$estateByAgent['bedrooms'];?></td>
-                                                    <td><?=$estateByAgent['excerpt'];?></td>
-                                                    <td class="numeric"><?=$estateByAgent['charge_price'];?> €</td>
-                                                    <td class="numeric"><?=$estateByAgent['fees'];?> €</td>
-                                                    <td class="numeric"><?=$estateByAgent['price'];?> €</td>
-                                                    <td>
-                                                    <a href="../public/index.php?route=addPictures&estateId=<?=  $estateByAgent['id']; ?>"><button class="btn btn-primary btn-xs" title="Ajouter des images"><i class="fa fa-camera "></i></button></a>
-                                                    <a href="../public/index.php?route=editEstate&estateId=<?=  $estateByAgent['id']; ?>"><button class="btn btn-warning btn-xs" title="Modifier"><i class="fa fa-pencil"></i></button></a>
-                                                    <a href="../public/index.php?route=deleteEstate&estateId=<?=  $estateByAgent['id']; ?>"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i></button></a>
-                                                    <button class="btn btn-success btn-xs"><?=$estateByAgent['status'] ? 'Publié' : 'Non Publié';?></button>
-                                                    </td>
-                                                </tr>
-                                            <?php 
-                                            } 
-                                            ?>
-                                            </tbody>
+                                                <tbody>
+                                                <?php 
+                                                foreach($estatesByAgent as $estateByAgent){
+                                                ?>
+                                                    <tr>
+                                                        <td data-title="Titre"><?=$estateByAgent['title'];?></td>
+                                                        <td data-title="Categorie"><?=$estateByAgent['category'];?></td>
+                                                        <td data-title="Type"><?=$estateByAgent['type'];?></td>
+                                                        <td data-title="Pièces" class="numeric"><?=$estateByAgent['rooms'];?></td>
+                                                        <td data-title="Chambres" class="numeric"><?=$estateByAgent['bedrooms'];?></td>
+                                                        <td data-title="Description"><?=$estateByAgent['excerpt'];?></td>
+                                                        <td data-title="Charges" class="numeric"><?=$estateByAgent['charge_price'];?> €</td>
+                                                        <td data-title="Honoraires" class="numeric"><?=$estateByAgent['fees'];?> €</td>
+                                                        <td data-title="Prix" class="numeric"><?=$estateByAgent['price'];?> €</td>
+                                                        <td data-title="Actions">
+                                                        <a href="../public/index.php?route=addPictures&estateId=<?=  $estateByAgent['id']; ?>"><button class="btn btn-primary btn-xs" title="Ajouter des images"><i class="fa fa-camera "></i></button></a>
+                                                        <a href="../public/index.php?route=editEstate&estateId=<?=  $estateByAgent['id']; ?>"><button class="btn btn-warning btn-xs" title="Modifier"><i class="fa fa-pencil"></i></button></a>
+                                                        <a href="../public/index.php?route=deleteEstate&estateId=<?=  $estateByAgent['id']; ?>"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i></button></a>
+                                                        <button class="btn btn-success btn-xs"><?=$estateByAgent['status'] ? 'Publié' : 'Non Publié';?></button>
+                                                        </td>
+                                                    </tr>
+                                                <?php 
+                                                } 
+                                                ?>
+                                                </tbody>
 
-                                        </table>
+                                            </table>
+                                        </section>
                                     </div>
                                 </div>
                             </div>

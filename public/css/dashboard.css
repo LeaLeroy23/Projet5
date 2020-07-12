@@ -2066,7 +2066,7 @@ ul li {
 }
 
 .profile-text h6 {
-	margin-top: -10px;
+	margin-top: 10px;
 	margin-bottom: 20px;
 	color: #d3d3d3;
 }
@@ -3574,4 +3574,8 @@ ul.chat-available-user li a:hover {
 
 #input-estate-id{
     display: none;
+}
+
+.agent-infos{
+    margin-left: 5%;
 }

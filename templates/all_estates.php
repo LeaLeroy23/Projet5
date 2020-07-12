@@ -14,10 +14,10 @@
 
         <!-- row -->
         <div class="row mt">
-                <div class="col-md-12">
-                    <div class="content-panel">
+            <div class="col-md-12">
+                <div class="content-panel">
                     <section id="no-more-tables">
-                        <table class="table table-bordered table-striped table-condensed table-advance cf ">
+                        <table class="table table-bordered table-striped table-condensed table-advance cf">
                             <h4><i class="fa fa-angle-right"></i> Les annonces </h4>
                             <hr>
                             <thead class="cf">

@@ -41,6 +41,15 @@
 
 }
 
+@media (min-width: 768px) and (max-width: 992px) {
+    /*-----*/
+    .agent-infos{
+        text-align: center;
+        margin-bottom; 5%;
+    }
+
+}
+
 @media (min-width: 768px) and (max-width: 979px) {
 
     .mail-box .sm-side {
@@ -295,6 +304,10 @@
         width: 100%;
     }
 
+    .agent-infos{
+        text-align: center;
+        margin-top: 5%;
+    }
 }
 
 
