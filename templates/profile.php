@@ -34,6 +34,11 @@
                 <?= $this->session->show('updateProfile'); ?>
                 <?= $this->session->show('editProfile'); ?>
                 <?= $this->session->show('wrongPassword'); ?>
+                <?= $this->session->show('addPictures'); ?>
+                <?= $this->session->show('exist'); ?>
+                <?= $this->session->show('format'); ?>
+                <?= $this->session->show('size'); ?>
+                <?= $this->session->show('error'); ?>
             </div>
 
             <div class="col-lg-12 mt">

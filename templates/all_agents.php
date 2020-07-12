@@ -7,6 +7,10 @@
         <?= $this->session->show('editAgent'); ?>
         <?= $this->session->show('deleteAgent'); ?>
         <?= $this->session->show('updatePassword'); ?>
+        <?= $this->session->show('exist'); ?>
+        <?= $this->session->show('format'); ?>
+        <?= $this->session->show('size'); ?>
+        <?= $this->session->show('error'); ?>
         
 
         <!--main content start-->

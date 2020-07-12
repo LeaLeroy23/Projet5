@@ -9,7 +9,7 @@
         <?= $this->session->show('deleteEstate'); ?>
         <?= $this->session->show('exist'); ?>
         <?= $this->session->show('format'); ?>
-        <?= $this->session->show('siza'); ?>
+        <?= $this->session->show('size'); ?>
         <?= $this->session->show('error'); ?>
 
         <!-- row -->

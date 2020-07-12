@@ -105,8 +105,7 @@ class AgentDAO extends DAO
             'avatar' => $filename,
             'agentId' => $agentId
         ]);
-        var_dump($post, $filename);
-        die();
+        
     }
 
     public function checkEmail(Parameter $post)
