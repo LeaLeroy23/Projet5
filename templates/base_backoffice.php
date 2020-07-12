@@ -5,16 +5,16 @@
         ======================================-->
         <title>Hestia - <?= $title ?></title>
         <meta charset="utf-8">
-        <meta name="author" content="">
-        <meta name="description" content="">
-        <meta name="keywords" content="">
+        <meta name="author" content="Stratos-Consulting">
+        <meta name="description" content="Hestia - Real Estate website">
+        <meta name="keywords" content="Hestia real-estate real estate immobilier agence-immobilière appartement maison atelier locaux-commerciaux locaux location vente viager saisonnier etudiant nice cagnes-sur-mer lille strasbourg rouen montpellier">
 
         <!-- Mobile specific meat 
         ==============================================-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<!-- Favicon
 		============================================ -->
-		<link rel="shortcut icon" href="../public/img/logo-min.png">		
+		<link rel="shortcut icon" type="image/x-icon" href="../public/img/favicon.png">			
 
         <!-- Template Fonts form google
         =============================================-->

@@ -206,22 +206,24 @@
                             <div class="property-page-title">
                                 <h2>L'équipe</h2>
                             </div>
-                            <?php
-                                foreach ($agents as $agent)
-                                {
-                            ?>
                             <div class="single-property-footer-post right-sidebar">
-                                <div class="properties-img pull-left">
-                                    <a href="../public/index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>"><img src="../public/img/agent/<?= htmlspecialchars($agent['avatar']);?>" alt="<?= htmlspecialchars($agent['avatar']);?>"></a>
+                                <?php
+                                    foreach ($limitAgents as $limitAgent)
+                                    {
+                                ?>
+                                <div class="single-property-footer-post right-sidebar">
+                                    <div class="properties-img pull-left">
+                                        <a href="../public/index.php?route=agent&agentId=<?= htmlspecialchars($limitAgent->getId());?>"><img src="../public/img/agent/<?= htmlspecialchars($limitAgent->getAvatar());?>" alt="<?= htmlspecialchars($limitAgent->getAvatar());?>"></a>
+                                    </div>
+                                    <div class="properties-content-footer pull-left">
+                                        <h3><a href="../public/index.php?route=agent&agentId=<?= htmlspecialchars($limitAgent->getId());?>"><?= htmlspecialchars($limitAgent->getFirstname());?> <?= htmlspecialchars($limitAgent->getLastname());?></a></h3>
+                                        <p><?= htmlspecialchars($limitAgent->getFunction());?></p>
+                                    </div>
                                 </div>
-                                <div class="properties-content-footer pull-left">
-                                    <h3><a href="../public/index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>"><?= htmlspecialchars($agent['firstname']);?> <?= htmlspecialchars($agent['lastname']);?></a></h3>
-                                    <p><?= htmlspecialchars($agent['function']);?></p>
-                                </div>
+                                <?php
+                                    }
+                                ?>
                             </div>
-                            <?php
-                                }
-                            ?>
                             
                         </div>
                     </div>

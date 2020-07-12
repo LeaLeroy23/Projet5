@@ -36,6 +36,18 @@ class AgentDAO extends DAO
         return $agents;
     }
 
+    public function getLimitAgents(){
+        $sql ='SELECT * FROM agent LIMIT 3';
+        $result = $this->createQuery($sql);
+        $agents = [];
+        foreach ($result as $row){
+            $agentId = $row['id'];
+            $agents[$agentId] = $this->buildObject($row);
+        }
+        $result->closeCursor();
+        return $agents;
+    }
+
     public function getAgent($agentId)
     {
         $sql= 'SELECT * FROM agent WHERE id = ?';
@@ -93,6 +105,8 @@ class AgentDAO extends DAO
             'avatar' => $filename,
             'agentId' => $agentId
         ]);
+        var_dump($post, $filename);
+        die();
     }
 
     public function checkEmail(Parameter $post)

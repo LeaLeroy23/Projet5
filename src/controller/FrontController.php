@@ -88,12 +88,12 @@ class FrontController extends Controller
         $estate = $this->estateDAO->getEstate($estateId);
         $pictures = $this->pictureDAO->getPicturesByEstateId($estateId);
         $latestEstates = $this->estateDAO->latestEstates();
-        $agents = $this->agentDAO->getAgents();
+        $limitAgents = $this->agentDAO->getLimitAgents();
         return $this->view->render('single-property', [
             'estate' => $estate,
             'pictures' => $pictures,
             'latestEstates' => $latestEstates,
-            'agents' => $agents
+            'limitAgents' => $limitAgents
         ]);
     }
 

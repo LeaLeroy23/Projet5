@@ -239,7 +239,7 @@
                                                 </div>
                                             </div>
 
-                                            <input type="hidden" name="agentId" value="<?=$this->session->get('id');?>">
+                                            <input type="hidden" name="agent_id" value="<?=$this->session->get('id');?>">
 
                                             <div class="form-group">
                                                 <br />

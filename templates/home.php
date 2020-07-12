@@ -2,13 +2,13 @@
 
         <!-- Slider area Start -->   
         <section class="slider-section ">
-
-        <?php
-        foreach ($sliderEstates as $sliderEstate)
-        {
-            ?>
-
+            <div class="item">
                 <div class="item">
+            <?php
+            foreach ($sliderEstates as $sliderEstate)
+            {
+                ?>
+
                     <img src="../public/img/upload/<?= $sliderEstate['picture_url'];?>" alt="slider">
                     <div class="slide-content carousel-caption hidden-xs">
                         <div class="slide-content-top">
@@ -26,11 +26,11 @@
                             </ul>
                         </div>
                     </div>
-                </div>
 
-                <?php
-                }
-                ?> 
+            <?php
+            }
+            ?> 
+            </div>
             
         </section>
         <!-- Slider Area End -->

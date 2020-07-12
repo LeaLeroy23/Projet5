@@ -5,9 +5,9 @@
         ======================================-->
         <title>Hestia - <?= $title ?></title>
         <meta charset="utf-8">
-        <meta name="author" content="">
-        <meta name="description" content="">
-        <meta name="keywords" content="">
+        <meta name="author" content="Stratos-Consulting">
+        <meta name="description" content="Hestia - Real Estate website">
+        <meta name="keywords" content="Hestia real-estate real estate immobilier agence-immobilière appartement maison atelier locaux-commerciaux locaux location vente viager saisonnier etudiant nice cagnes-sur-mer lille strasbourg rouen montpellier">
 
         <!-- Mobile specific meat 
         ==============================================-->
