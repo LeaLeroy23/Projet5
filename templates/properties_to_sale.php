@@ -17,7 +17,7 @@
                             <div class="column-single-property">
                                 <div class="column-property-img-wrap">
                                     <div class="column-property-img">
-                                        <a href="index.php?route=estate&estateId=<?= ($allPropertiesSale['id']);?>"><img src="../public/img/upload/<?= ($allPropertiesSale['picture_url']);?>" alt=""></a>
+                                        <a href="index.php?route=estate&estateId=<?= ($allPropertiesSale['id']);?>"><img src="img/slider/<?= ($allPropertiesSale['picture_url']);?>" alt=""></a>
                                     </div>
                                     <div class="column-property-tag">
                                         <p><?= ($allPropertiesSale['type']);?></p>
@@ -61,7 +61,7 @@
                             ?>
                             <div class="single-sp-widget">
                                 <div class="widget-property-img">
-                                    <a href="index.php?route=estate&estateId=<?= ($estateForRent['id']);?>"><img src="../public/img/upload/<?= ($estateForRent['picture_url']);?>" alt=""></a>
+                                    <a href="index.php?route=estate&estateId=<?= ($estateForRent['id']);?>"><img src="img/slider/<?= ($estateForRent['picture_url']);?>" alt=""></a>
                                 </div>
                                 <div class="column-property-tag">
                                     <p><?= ($estateForRent['category']);?></p>
@@ -88,7 +88,7 @@
                             <div class="single-property-footer-post right-sidebar">
                                 <div class="properties-img pull-left">
                                     <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>">
-                                        <img src="../public/img/upload/<?= ($latestEstate['picture_url']);?>" alt="<?= ($latestEstate['picture_url']);?>">
+                                        <img src="img/slider/<?= ($latestEstate['picture_url']);?>" alt="<?= ($latestEstate['picture_url']);?>">
                                     </a>
                                 </div>
                                 

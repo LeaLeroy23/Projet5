@@ -15,13 +15,13 @@
                         <div class="single-property-slider">
                             <ul class="bxslider">
                                 <li>
-                                    <a href="#"><img src="../public/img/slider/<?= htmlspecialchars($estate->getPicture_url());?>" alt=""></a>
+                                    <a href="#"><img src="img/slider/<?= htmlspecialchars($estate->getPicture_url());?>" alt=""></a>
                                 </li>
                                 <?php 
                                     foreach($pictures as $picture){
                                 ?>
                                 <li>
-                                    <a href="#"><img src="../public/img/upload/<?=$picture->getFile();?>" alt="<?=$picture->getFile();?>"></a>
+                                    <a href="#"><img src="img/upload/<?=$picture->getFile();?>" alt="<?=$picture->getFile();?>"></a>
                                 </li>
                                 <?php
                                     }
@@ -29,19 +29,19 @@
                             </ul>
                             <!-- Thumbnail Images -->
                             <div id="bx-pager">
-                                <a data-slide-index="0" href="#"><img src="../public/img/upload/<?= htmlspecialchars($estate->getPicture_url());?>"  alt="<?= htmlspecialchars($estate->getPicture_url());?>" /></a>
+                                <a data-slide-index="0" href="#"><img src="img/slider/<?= htmlspecialchars($estate->getPicture_url());?>"  alt="<?= htmlspecialchars($estate->getPicture_url());?>" /></a>
                                 <?php 
                                     foreach($pictures as $picture){
                                 ?>
-                                <a data-slide-index="1" href="#"><img src="../public/img/upload/<?=$picture->getFile();?>"  alt="<?=$picture->getFile();?>" /></a>
+                                <a data-slide-index="1" href="#"><img src="img/upload/<?=$picture->getFile();?>"  alt="<?=$picture->getFile();?>" /></a>
                                 <?php
                                     }
                                 ?>
-                                <a data-slide-index="2" href="#"><img src="../public/img/slider/thumb3.jpg" alt="" /></a>
-                                <a data-slide-index="3" href="#"><img src="../public/img/slider/thumb4.jpg" alt="" /></a>
-                                <a data-slide-index="4" href="#"><img src="../public/img/slider/thumb5.jpg" alt="" /></a>
-                                <a data-slide-index="5" href="#"><img src="../public/img/slider/thumb1.jpg" alt="" /></a>
-                                <a data-slide-index="6" href="#"><img src="../public/img/slider/thumb3.jpg" alt="" /></a>
+                                <a data-slide-index="2" href="#"><img src="img/slider/thumb3.jpg" alt="" /></a>
+                                <a data-slide-index="3" href="#"><img src="img/slider/thumb4.jpg" alt="" /></a>
+                                <a data-slide-index="4" href="#"><img src="img/slider/thumb5.jpg" alt="" /></a>
+                                <a data-slide-index="5" href="#"><img src="img/slider/thumb1.jpg" alt="" /></a>
+                                <a data-slide-index="6" href="#"><img src="img/slider/thumb3.jpg" alt="" /></a>
                             </div>
                         </div>
                         <!-- End of property Slider  -->
@@ -123,12 +123,12 @@
                                     <div class="col-md-6 col-sm-6">
                                         
                                         <div class="single-floor-img">
-                                            <img src="../public/img/properties/fp1.jpg" alt="" class="img-responsive">
+                                            <img src="img/properties/fp1.jpg" alt="" class="img-responsive">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-6">
                                         <div class="single-floor-img">
-                                            <img src="../public/img/properties/fp2.jpg" alt="" class="img-responsive">
+                                            <img src="img/properties/fp2.jpg" alt="" class="img-responsive">
                                         </div>
                                     </div>
                                 </div>
@@ -150,79 +150,82 @@
                                 <h2>Biens récents</h2>
                             </div>
 							<div class="row">
-                                <div class="similar-cat-wrap">
+                                
                                 <?php
                                     foreach ($latestEstates as $latestEstate)
                                     {
                                 ?>
-                                    <div class="col-md-3">
-                                         <div class="single-similar-cat">
-                                            <div class="similar-property-img">
-                                                <a href="#"><img src="../public/img/upload/<?= htmlspecialchars($latestEstates['picture_url']);?>" alt=""></a>
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="single-featured-properties">
+                                            <div class="properties-image">
+                                                <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>"><img src="img/slider/<?= ($latestEstate['picture_url']);?>" alt="<?= ($latestEstate['picture_url']);?>"></a>
                                             </div>
-                                            <div class="similar-property-tag">
-                                                <p><?= htmlspecialchars($latestEstates['category']);?></p>
+                                            <div class="sale-tag">
+                                                <p><?=($latestEstate['category']);?></p>
                                             </div>
-                                        </div>                                                                             
-                                    </div>
+                                            <div class="properties-include">
+                                                <ul>
+                                                    <li><i class="fa fa-home"></i> <?= ($latestEstate['area']);?> m2</li>
+                                                    <li><i class="fa fa-square"></i><?= ($latestEstate['rooms']);?> Pièce(s)</li>
+                                                    <li><i class="fa fa-bed"></i> <?= ($latestEstate['bedrooms']);?> Chambre(s)</li>
+                                                </ul>
+                                            </div>
+                                            <div class="properties-content">
+                                                <h3><a href="single-property.php"><?= ($latestEstate['title']);?></a></h3>
+                                                <p><i class="fa fa-map-marker"></i> <?= ($latestEstate['city']);?></p>
+                                                <p class="detail-text"><?= ($latestEstate['excerpt']);?></p>
+                                                <div class="price-detail">
+                                                    <p class="price-range pull-left"><?= ($latestEstate['price']);?> €</p>
+                                                    <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
                                 <?php
                                     }
                                 ?>
                                     
-                                </div>
+                                
                             </div>
                         </div>
                         <!-- End of Similar Category Post -->
                     </div>
                     <!-- Single Property Post End -->
 
-
                 </div>
-                <div class="col-md-4 padding-left-65">
-                    <div class="column-widget">
-                        <div class="feature-property-widget">
-                            
-                            <!-- Recent properties Widget Title
-                            <div class="property-page-title">
-                                <h2>Nouveauté</h2>
-                            </div>
-                            <div class="single-property-footer-post right-sidebar">
-                                <div class="properties-img pull-left">
-                                    <a href="#"><img src="../public/img/widget/5.jpg" alt=""></a>
-                                </div>
-                                <div class="properties-content-footer pull-left">
-                                    <h4><a href="#">Titre</a></h4>
-                                    <p>Ville,
-                                        <br> Code Postal</p>
-                                    <div class="property-price">
-                                        <p>Prix €</p>
-                                    </div>
-                                </div>
-                            </div>-->
-                         
-                        </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        
                         <!-- Agent Widget Area -->
                         <div class="agent-widget hidden-sm">
                             <div class="property-page-title">
                                 <h2>L'équipe</h2>
                             </div>
-                            <div class="single-property-footer-post right-sidebar">
-                                <?php
-                                    foreach ($limitAgents as $limitAgent)
-                                    {
-                                ?>
-                                <div class="single-property-footer-post right-sidebar">
-                                    <div class="properties-img pull-left">
-                                        <a href="../public/index.php?route=agent&agentId=<?= htmlspecialchars($limitAgent->getId());?>"><img src="../public/img/agent/<?= htmlspecialchars($limitAgent->getAvatar());?>" alt="<?= htmlspecialchars($limitAgent->getAvatar());?>"></a>
+                            <div class="row">
+                                <!--<div class="single-property-footer-post right-sidebar">-->
+                                    <?php
+                                        foreach ($limitAgents as $limitAgent)
+                                        {
+                                    ?>
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="single-property-footer-post">
+                                            <div class="properties-images">
+                                                <a href="index.php?route=agent&agentId=<?= htmlspecialchars($limitAgent->getId());?>"><img src="img/agent/<?= htmlspecialchars($limitAgent->getAvatar());?>" alt="<?= htmlspecialchars($limitAgent->getAvatar());?>"></a>
+                                            </div>
+                                            <div class="properties-content">
+                                                <h3><a href="index.php?route=agent&agentId=<?= htmlspecialchars($limitAgent->getId());?>"><?= htmlspecialchars($limitAgent->getFirstname());?> <?= htmlspecialchars($limitAgent->getLastname());?></a></h3>
+                                                <div class="price-detail">
+                                                    <p><?= htmlspecialchars($limitAgent->getFunction());?></p>
+                                                    <a href="index.php?route=agent&agentId=<?= ($limitAgent->getId());?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="properties-content-footer pull-left">
-                                        <h3><a href="../public/index.php?route=agent&agentId=<?= htmlspecialchars($limitAgent->getId());?>"><?= htmlspecialchars($limitAgent->getFirstname());?> <?= htmlspecialchars($limitAgent->getLastname());?></a></h3>
-                                        <p><?= htmlspecialchars($limitAgent->getFunction());?></p>
-                                    </div>
-                                </div>
-                                <?php
-                                    }
-                                ?>
+                                    <?php
+                                        }
+                                    ?>
+                                <!--</div>-->
                             </div>
                             
                         </div>

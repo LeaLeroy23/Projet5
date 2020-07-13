@@ -11,7 +11,7 @@
                             <h6><?= $this->session->get('function'); ?></h6>
                             <p><?= $this->session->get('phone'); ?></p>
                             <p><?= $this->session->get('email'); ?></p>
-                            <p><a href="../public/index.php?route=agent&agentId=<?= $this->session->get('id');?>"><button class="btn btn-theme">Voir ma page</button></a></p>
+                            <p><a href="index.php?route=agent&agentId=<?= $this->session->get('id');?>"><button class="btn btn-theme">Voir ma page</button></a></p>
                     </div>
 
                     <div class="col-md-5 col-sm-12 profile-text mt mb centered">
@@ -23,7 +23,7 @@
 
                     <div class="col-lg-3 col-md-3 col-sm-12 centered">
                         <div class="profile-pic">
-                            <p><img src="../public/img/agent/<?=$this->session->get('avatar');?>" width="150" height="150" class="img-circle"></p>
+                            <p><img src="img/agent/<?=$this->session->get('avatar');?>" width="150" height="150" class="img-circle"></p>
                         </div>
                     </div>
                 </div>
@@ -170,9 +170,9 @@
                                                         <td data-title="Honoraires" class="numeric"><?=$estateByAgent['fees'];?> €</td>
                                                         <td data-title="Prix" class="numeric"><?=$estateByAgent['price'];?> €</td>
                                                         <td data-title="Actions">
-                                                        <a href="../public/index.php?route=addPictures&estateId=<?=  $estateByAgent['id']; ?>"><button class="btn btn-primary btn-xs" title="Ajouter des images"><i class="fa fa-camera "></i></button></a>
-                                                        <a href="../public/index.php?route=editEstate&estateId=<?=  $estateByAgent['id']; ?>"><button class="btn btn-warning btn-xs" title="Modifier"><i class="fa fa-pencil"></i></button></a>
-                                                        <a href="../public/index.php?route=deleteEstate&estateId=<?=  $estateByAgent['id']; ?>"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i></button></a>
+                                                        <a href="index.php?route=addPictures&estateId=<?=  $estateByAgent['id']; ?>"><button class="btn btn-primary btn-xs" title="Ajouter des images"><i class="fa fa-camera "></i></button></a>
+                                                        <a href="index.php?route=editEstate&estateId=<?=  $estateByAgent['id']; ?>"><button class="btn btn-warning btn-xs" title="Modifier"><i class="fa fa-pencil"></i></button></a>
+                                                        <a href="index.php?route=deleteEstate&estateId=<?=  $estateByAgent['id']; ?>"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i></button></a>
                                                         <button class="btn btn-success btn-xs"><?=$estateByAgent['status'] ? 'Publié' : 'Non Publié';?></button>
                                                         </td>
                                                     </tr>
@@ -194,7 +194,7 @@
                                     <div class="col-lg-1"></div>
                                     <div class="col-lg-10 detailed">
                                         <h4 class="mb">Information Personnel</h4>
-                                        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=editProfile&agentId=<?=$this->session->get('id');?>" enctype="multipart/form-data">
+                                        <form class="form-horizontal style-form" method='post' action="index.php?route=editProfile&agentId=<?=$this->session->get('id');?>" enctype="multipart/form-data">
                                             
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Prénom</label>
@@ -258,7 +258,7 @@
                                     <div class="col-lg-12 detailed mt">
                                         <h4 class="mb">Modifier mon mot de passe</h4>
 
-                                        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=updatePasswordProfile&agentId=<?=$this->session->get('id');?>">
+                                        <form class="form-horizontal style-form" method='post' action="index.php?route=updatePasswordProfile&agentId=<?=$this->session->get('id');?>">
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Nouveau mot de passe</label>
                                                 <div class="col-lg-8">
@@ -297,22 +297,5 @@
     </section>
 </section>
 
-<script>
-function validatePassword() {
-    var newPassword,confirmPassword,output = true;
-    newPassword = document.frmChange.newPassword;
-    confirmPassword = document.frmChange.confirmPassword;
 
-    if(newPassword.value != confirmPassword.value) {
-        newPassword.value="";
-        confirmPassword.value="";
-        newPassword.focus();
-        document.getElementById("confirmPassword").innerHTML = "not same";
-        output = false;
-    } 	
-    return output;
-    
-}
-</script>
-
-<script src="../public/js/updateProfile.js" type="text/javascript"></script>
+<script src="js/updateProfile.js" type="text/javascript"></script>

@@ -83,6 +83,19 @@ class FrontController extends Controller
         ]);
     }
 
+    public function otherProperties()
+    {
+        $latestEstates = $this->estateDAO->latestEstates();
+        $otherProperties = $this->estateDAO->otherProperties();
+        $limitAgents = $this->agentDAO->getLimitAgents();
+        return $this->view->render('other_properties', [
+            'latestEstates' => $latestEstates,
+            'otherProperties' => $otherProperties,
+            'limitAgents' => $limitAgents
+
+        ]);
+    }
+
     public function estate($estateId)
     {
         $estate = $this->estateDAO->getEstate($estateId);

@@ -7,7 +7,7 @@
     <?= $this->session->show('login'); ?>
 
         <h3><i class="fa fa-angle-right"></i> Ajouter un agent</h3>        
-        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addAgent" enctype="multipart/form-data">
+        <form class="form-horizontal style-form" method='post' action="index.php?route=addAgent" enctype="multipart/form-data">
             <div class="row mt">
                 <div class="col-lg-12">
                     <div class="form-panel">

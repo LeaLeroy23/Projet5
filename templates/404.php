@@ -5,13 +5,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-lg-offset-3 p404 centered">
-                    <img src="../public/img/404.png" alt="">
+                    <img src="img/404.png" alt="404">
                     <h1>DON'T PANIC!!</h1>
-                    <h3>The page you are looking for doesn't exist.</h3>
+                    <h3>La page que vous recherchez n'existe pas ...</h3>
                     <br>
                     
-                    <h5 class="mt">Hey, maybe you will be interested in these pages:</h5>
-                    <p><a href="index.php">Index</a> | <a href="#">Sitemap</a> | <a href="contact.html"> Contact</a></p>
+                    <h5 class="mt">Mais, peut être seriez vous intéressez par celle-ci:</h5>
+                    <p><a href="index.php">Accueil</a> | <a href="index.php?route=login">Connexion</a> | <a href="contact.html"> Contact</a></p>
                 </div>
             </div>
         </div>

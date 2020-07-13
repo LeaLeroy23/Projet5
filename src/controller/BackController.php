@@ -87,11 +87,11 @@ class BackController extends Controller
 
                         if (in_array($filetype, $allowed)) {
                             /**verifie si le fichier existe avant de le telecharger*/
-                            if (file_exists("../public/img/upload/" . $_FILES["picture_url"]["name"])) {
+                            if (file_exists("img/slider/" . $_FILES["picture_url"]["name"])) {
                                 $this->session->set('exist', $_FILES["picture_url"]["name"] . " existe déjà.");
                             } else {
                                 $filename = uniqid() . '.' . $ext;
-                                move_uploaded_file($_FILES["picture_url"]["tmp_name"], "../public/img/upload/" .  $filename);
+                                move_uploaded_file($_FILES["picture_url"]["tmp_name"], "img/slider/" .  $filename);
                             }
                         } else {
                             $this->session->set('error', "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");
@@ -101,7 +101,7 @@ class BackController extends Controller
                 
                 $this->estateDAO->addEstate($post, $filename);
                 $this->session->set('addEstate', 'L\'ajout d\'une annonce a été faite');
-                header('Location: ../public/index.php?route=allEstates');
+                header('Location: index.php?route=allEstates');
                 exit();
                 }
             }
@@ -148,11 +148,11 @@ class BackController extends Controller
 
                         if (in_array($filetype, $allowed)) {
                             /**verifie si le fichier existe avant de le telecharger*/
-                            if (file_exists("../public/img/upload/" . $_FILES["picture_url"]["name"])) {
+                            if (file_exists("img/slider/" . $_FILES["picture_url"]["name"])) {
                                 $this->session->set('exist', $_FILES["picture_url"]["name"] . " existe déjà.");
                             } else {
                                 $filename = uniqid() . '.' . $ext;
-                                move_uploaded_file($_FILES["picture_url"]["tmp_name"], "../public/img/upload/" .  $filename);
+                                move_uploaded_file($_FILES["picture_url"]["tmp_name"], "img/slider/" .  $filename);
                             }
                         } else {
                             $this->session->set('error', "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");
@@ -162,7 +162,7 @@ class BackController extends Controller
 
                     $this->estateDAO->editEstate($post, $filename, $estateId);
                     $this->session->set('editEstate', 'Le bien a été mis à jour');
-                    header('Location: ../public/index.php?route=allEstates');
+                    header('Location: index.php?route=allEstates');
                     exit();
                 }
             }
@@ -182,7 +182,7 @@ class BackController extends Controller
         if($this->checkLoggedIn()){
             $this->estateDAO->deleteEstate($estateId);
             $this->session->set('deleteEstate', 'L\'annonce a bien été supprimé');
-            header('Location: ../public/index.php?route=allEstates');
+            header('Location: index.php?route=allEstates');
         }
     }
 
@@ -243,9 +243,9 @@ class BackController extends Controller
                         {
                             $output .= '
                             <tr>
-                                <td><img src="../public/img/upload/'.$file->getFile().'" height="150px"></td>
+                                <td><img src="img/upload/'.$file->getFile().'" height="150px"></td>
                                 <td><p>'.$file->getFile().'</p></td>
-                                <td><a href="../public/index.php?route=deletePicture&pictureId='.$file->getId().'"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i> Supprimer</button></a></td>
+                                <td><a href="index.php?route=deletePicture&pictureId='.$file->getId().'"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i> Supprimer</button></a></td>
                             </tr>
                             ';
                         }
@@ -255,8 +255,7 @@ class BackController extends Controller
             echo $output;
 
             $this->session->set('uploadPicture', 'L\'image a bien été ajouter');
-            /*header('Location: ../public/index.php?route=addPictures');
-            exit();*/
+            
         }
     }
 
@@ -265,7 +264,7 @@ class BackController extends Controller
         if($this->checkLoggedIn()){
             $this->pictureDAO->deletePicture($pictureId);
             $this->session->set('deletePicture', 'L\'image a bien été supprimé');
-            header('Location: ../public/index.php?route=allEstates');
+            header('Location: index.php?route=allEstates');
             exit();
         }
     }
@@ -297,7 +296,7 @@ class BackController extends Controller
                 if (!$errors){
                     $this->categoryDAO->addCategory($post);
                     $this->session->set('addCategory', 'L\'ajout d\'une catégorie a été faite');
-                    header('Location: ../public/index.php?route=configuration');
+                    header('Location: index.php?route=configuration');
                     exit();
                 }
                 return $this->view->renderTemplate('configForm', [
@@ -325,7 +324,7 @@ class BackController extends Controller
                 if (!$errors){
                     $this->typeDAO->addType($post);
                     $this->session->set('addType', 'L\'ajout d\'un type a été fait');
-                    header('Location: ../public/index.php?route=configuration');
+                    header('Location: index.php?route=configuration');
                     exit();
                 }
                 return $this->view->renderTemplate('configForm', [
@@ -353,7 +352,7 @@ class BackController extends Controller
                 if (!$errors){
                     $this->energyDAO->addEnergy($post);
                     $this->session->set('addEnergy', 'L\'ajout d\'un type d\'énergie a été faite');
-                    header('Location: ../public/index.php?route=configuration');
+                    header('Location: index.php?route=configuration');
                     exit();
                 }
                 return $this->view->renderTemplate('configForm', [
@@ -381,7 +380,7 @@ class BackController extends Controller
                 if (!$errors){
                     $this->frequencyDAO->addFrequency($post);
                     $this->session->set('addFrequency', 'L\'ajout d\'une frquence de charge a été faite');
-                    header('Location: ../public/index.php?route=configuration');
+                    header('Location: index.php?route=configuration');
                     exit();
                 }
                 return $this->view->renderTemplate('configForm', [
@@ -402,7 +401,7 @@ class BackController extends Controller
         if($this->checkAdmin()){
             $this->categoryDAO->deleteCategory($categoryId);
             $this->session->set('deleteCategory', 'La catégorie a été supprimer avec succès');
-            header('Location: ../public/index.php?route=configuration');
+            header('Location: index.php?route=configuration');
             exit();
         }
     }
@@ -412,7 +411,7 @@ class BackController extends Controller
         if($this->checkAdmin()){
             $this->typeDAO->deleteType($typeId);
             $this->session->set('deleteType', 'Le type a été supprimer avec succès');
-            header('Location: ../public/index.php?route=configuration');
+            header('Location: index.php?route=configuration');
             exit();
         }
     }
@@ -422,7 +421,7 @@ class BackController extends Controller
         if($this->checkAdmin()){
             $this->energyDAO->deleteEnergy($energyId);
             $this->session->set('deleteEnergy', 'Le type d\'énergie a été supprimer avec succès');
-            header('Location: ../public/index.php?route=configuration');
+            header('Location: index.php?route=configuration');
             exit();
         }
     }
@@ -432,7 +431,7 @@ class BackController extends Controller
         if($this->checkAdmin()){
             $this->frequencyDAO->deleteFrequency($frequencyId);
             $this->session->set('deleteFrequency', 'La fréquence de charge a été supprimer avec succès');
-            header('Location: ../public/index.php?route=configuration');
+            header('Location: index.php?route=configuration');
             exit();
         }
     }
@@ -494,7 +493,7 @@ class BackController extends Controller
 
                     $this->agentDAO->addAgent($post, $password, $filename, $createdAt->format('Y-m-d H:i:s'));
                     $this->session->set('addAgent', 'L\'inscription a bien été prise en compte');
-                    header('Location: ../public/index.php?route=allAgents');
+                    header('Location: index.php?route=allAgents');
                     exit();
                 }
 
@@ -538,11 +537,11 @@ class BackController extends Controller
 
                         if (in_array($filetype, $allowed)) {
                             /**verifie si le fichier existe avant de le telecharger*/
-                            if (file_exists("../public/img/agent/" . $_FILES["avatar"]["name"])) {
+                            if (file_exists("img/agent/" . $_FILES["avatar"]["name"])) {
                                 $this->session->set('exist', $_FILES["picture_url"]["name"] . " existe déjà.");
                             } else {
                                 $filename = uniqid() . '.' . $ext;
-                                move_uploaded_file($_FILES["avatar"]["tmp_name"], "../public/img/agent/" .  $filename);
+                                move_uploaded_file($_FILES["avatar"]["tmp_name"], "img/agent/" .  $filename);
                             }
                         } else {
                             $this->session->set('error', "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");
@@ -552,7 +551,7 @@ class BackController extends Controller
 
                     $this->agentDAO->editAgent($post, $filename, $agentId);
                     $this->session->set('editAgent', 'L\'agent a été mis à jour');
-                    header('Location: ../public/index.php?route=allAgents');
+                    header('Location: index.php?route=allAgents');
                     exit();
                 }
             }
@@ -568,7 +567,7 @@ class BackController extends Controller
         if($this->checkAdmin()){
             $this->agentDAO->deleteAgent($agentId);
             $this->session->set('deleteAgent', "L'\agent' a été supprimer avec succès");
-            header('Location: ../public/index.php?route=allAgents');
+            header('Location: index.php?route=allAgents');
             exit();
         }
     }
@@ -602,11 +601,11 @@ class BackController extends Controller
                     $password = $post->get('confirmPassword');
                     $this->agentDAO->updatePassword($password, $agentId);
                     $this->session->set('updatePassword', 'Votre mot de passe a été mis à jour avec succès');
-                    header('Location: ../public/index.php?route=allAgents');
+                    header('Location: index.php?route=allAgents');
                     exit();
                 } else {
                     $this->session->set('wrongPassword', 'Erreur: Vos mots de passe ne sont pas identique');
-                    header('Location: ../public/index.php?route=editAgent&agentId=' . $agentId);
+                    header('Location: index.php?route=editAgent&agentId=' . $agentId);
                     exit();
                 }
                
@@ -641,11 +640,11 @@ class BackController extends Controller
 
                     if (in_array($filetype, $allowed)) {
                         /**verifie si le fichier existe avant de le telecharger*/
-                        if (file_exists("../public/img/agent/" . $_FILES["avatar"]["name"])) {
+                        if (file_exists("img/agent/" . $_FILES["avatar"]["name"])) {
                             $this->session->set('exist', $_FILES["picture_url"]["name"] . " existe déjà.");
                         } else {
                             $filename = uniqid() . '.' . $ext;
-                            move_uploaded_file($_FILES["avatar"]["tmp_name"], "../public/img/agent/" .  $filename);
+                            move_uploaded_file($_FILES["avatar"]["tmp_name"], "img/agent/" .  $filename);
                         }
                     } else {
                         $this->session->set('error', "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.");
@@ -655,7 +654,7 @@ class BackController extends Controller
                 $this->agentDAO->editProfile($post, $filename, $agentId);
                 
                 $this->session->set('editProfile', 'L\'agent a été mis à jour');
-                header('Location: ../public/index.php?route=profile');
+                header('Location: index.php?route=profile');
                 exit();
             }
             
@@ -674,11 +673,11 @@ class BackController extends Controller
                     $password = $post->get('confirmPassword');
                     $this->agentDAO->updatePassword($password, $agentId);
                     $this->session->set('updatePassword', 'Votre mot de passe a été mis à jour avec succès');
-                    header('Location: ../public/index.php?route=Profile');
+                    header('Location: index.php?route=Profile');
                     exit();
                 } else {
                     $this->session->set('wrongPassword', 'Erreur: Vos mots de passe ne sont pas identique');
-                    header('Location: ../public/index.php?route=profile');
+                    header('Location: index.php?route=profile');
                     exit();
                 }
                
@@ -693,7 +692,7 @@ class BackController extends Controller
             $this->session->stop();
             $this->session->start();
             $this->session->set('logout', 'À bientôt');
-            header('Location: ../public/index.php');
+            header('Location: index.php');
             exit();
         }
     }

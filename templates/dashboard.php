@@ -64,7 +64,7 @@
                                 <!-- REVENUE PANEL -->
                                 <div class="message-p pn conetnt-panel">
                                     <div class="message-header">
-                                        <h5>Vos dernières annonces</h5>
+                                        <h5>Vos dernières annonces en ligne</h5>
                                     </div>
                                     <section id="no-more-tables" class="mb">
                                         <table class="table table-hover table-striped table-condensed cf">
@@ -110,7 +110,7 @@
                                         <ul class="nav top-menu">
                                             <!-- settings start -->
                                             <li class="dropdown">
-                                                <a href="../public/index.php?route=allEstates">
+                                                <a href="index.php?route=allEstates">
                                                     <i class="fa fa-home"></i>
                                                     <span class="badge bg-theme"><?= $count; ?></span>
                                                 </a>
@@ -118,7 +118,7 @@
                                             <!-- settings end -->
                                             <!-- inbox dropdown start-->
                                             <li id="header_inbox_bar" class="dropdown">
-                                                <a href="../public/index.php?route=allAgents">
+                                                <a href="index.php?route=allAgents">
                                                     <i class="fa fa-users"></i>
                                                     <span class="badge bg-theme"><?= $countAgent; ?></span>
                                                 </a>
@@ -126,7 +126,7 @@
                                             <!-- inbox dropdown end -->
                                             <!-- notification dropdown start-->
                                             <li id="header_notification_bar" class="dropdown">
-                                                <a href="../public/index.php?route=allEstates">
+                                                <a href="index.php?route=allEstates">
                                                     <i class="fa fa-edit"></i>
                                                     <span class="badge bg-warning"><?= $countDraft; ?></span>
                                                 </a>
@@ -148,11 +148,11 @@
                                 ?>
                             <div class="desc">
                                 <div class="thumb">
-                                    <img class="img-circle" src="../public/img/agent/<?=$agent->getAvatar();?>" width="35px" height="35px">
+                                    <img class="img-circle" src="img/agent/<?=$agent->getAvatar();?>" width="35px" height="35px">
                                 </div>
                                 <div class="details">
                                     <p>
-                                    <a href="#"><?=$agent->getFirstname();?> <?=$agent->getLastname();?></a><br/>
+                                    <a href="index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>"><?=$agent->getFirstname();?> <?=$agent->getLastname();?></a><br/>
                                     <?=$agent->getEmail();?>
                                     </p>
                                 </div>

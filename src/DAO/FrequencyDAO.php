@@ -38,7 +38,7 @@ class FrequencyDAO extends DAO
 
     public function getFrequencyByName($frequency)
     {
-        $sql= 'SELECT count(id) as nb_frequency FROM frequency WHERE frequency = ?';
+        $sql= 'SELECT count(id) as nb_frequency FROM charge_frequency WHERE frequency = ?';
         $result = $this->createQuery($sql, [$frequency]);
         return $result->fetch();
     }

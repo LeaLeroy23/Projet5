@@ -47,7 +47,7 @@
                             ?>
                                 <tr>
                                     <td data-title="Avatar">
-                                        <img class="img-circle" src="../public/img/agent/<?=$agent->getAvatar();?>" width="35px" height="35px">
+                                        <img class="img-circle" src="img/agent/<?=$agent->getAvatar();?>" width="35px" height="35px">
                                     </td>
                                     <td data-title="Fonction"><?=htmlspecialchars($agent->getFunction());?></td>
                                     <td data-title="Prénom"><?= htmlspecialchars($agent->getFirstname());?></td>
@@ -59,8 +59,8 @@
                                         if ($this->session->get('status') === "99") {
                                     ?>
                                     <td data-title="Action">
-                                    <a href="../public/index.php?route=editAgent&agentId=<?=  $agent->getId(); ?>"><button class="btn btn-warning btn-xs" title="Modifier"><i class="fa fa-pencil"></i></button></a>
-                                    <a href="../public/index.php?route=deleteAgent&agentId=<?= $agent->getId(); ?>"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i></button></a>
+                                    <a href="index.php?route=editAgent&agentId=<?=  $agent->getId(); ?>"><button class="btn btn-warning btn-xs" title="Modifier"><i class="fa fa-pencil"></i></button></a>
+                                    <a href="index.php?route=deleteAgent&agentId=<?= $agent->getId(); ?>"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i></button></a>
                                     </td>
                                     <?php
                                         }

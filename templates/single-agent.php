@@ -15,7 +15,7 @@
                                 <div class="row">
                                     <div class="agent-col col-lg-6 col-md-12">
                                         <div class="agent-img fix">
-                                            <img class="" src="../public/img/agent/<?= $agent->getAvatar();?>" alt="<?= $agent->getAvatar();?>" >
+                                            <img class="" src="img/agent/<?= $agent->getAvatar();?>" alt="<?= $agent->getAvatar();?>" >
                                         </div>
                                     </div>
 
@@ -53,7 +53,7 @@
                                 <div class="column-single-property">
                                 <div class="column-property-img-wrap">
                                     <div class="column-property-img">
-                                        <a href="index.php?route=estate&estateId=<?= ($estateByAgent['id']);?>"><img src="../public/img/upload/<?= ($estateByAgent['picture_url']);?>" alt="<?= ($estateByAgent['picture_url']);?>"></a>
+                                        <a href="index.php?route=estate&estateId=<?= ($estateByAgent['id']);?>"><img src="img/slider/<?= ($estateByAgent['picture_url']);?>" alt="<?= ($estateByAgent['picture_url']);?>"></a>
                                     </div>
                                     <div class="column-property-tag">
                                         <p><?= ($estateByAgent['type']);?></p>
@@ -100,7 +100,7 @@
                             ?>
                             <div class="single-property-footer-post right-sidebar">
                                 <div class="properties-img pull-left">
-                                    <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>"><img src="../public/img/upload/<?= ($latestEstate['picture_url']);?>" alt="<?= ($latestEstate['picture_url']);?>"></a>
+                                    <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>"><img src="img/slider/<?= ($latestEstate['picture_url']);?>" alt="<?= ($latestEstate['picture_url']);?>"></a>
                                 </div>
                                 <div class="properties-content-footer pull-left">
                                     <h4><a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>"><?= ($latestEstate['title']);?></a></h4>
@@ -130,7 +130,7 @@
                                     <div class="col-lg-4 col-md-4">
                                         <div class="pull-left">
                                             <a href="index.php?route=agent&agentId=<?= ($agent->getId());?>">
-                                                <img src="../public/img/agent/<?= ($agent->getAvatar());?>" alt="<?= ($agent->getAvatar());?>">
+                                                <img src="img/agent/<?= ($agent->getAvatar());?>" alt="<?= ($agent->getAvatar());?>">
                                             </a>
                                         </div>
                                     </div>

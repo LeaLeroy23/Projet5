@@ -39,6 +39,9 @@ class Router
                 elseif($route === 'allPropertiesForRent'){
                     $this->frontController->allPropertiesForRent();
                 }
+                elseif($route === 'otherProperties'){
+                    $this->frontController->otherProperties();
+                }
                 elseif($route === 'agent'){
                     $this->frontController->agent($this->request->getGet()->get('agentId'));
                 }

@@ -3,7 +3,7 @@
         <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Ajouter une annonce</h3>
 
-            <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addEstate" enctype="multipart/form-data">
+            <form class="form-horizontal style-form" method='post' action="index.php?route=addEstate" enctype="multipart/form-data">
 
                 <div class="row mt">
                     <div class="col-lg-12">

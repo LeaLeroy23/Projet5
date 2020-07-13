@@ -17,7 +17,7 @@
                             <div class="column-single-property">
                                 <div class="column-property-img-wrap">
                                     <div class="column-property-img">
-                                        <a href="index.php?route=estate&estateId=<?= ($estate['id']);?>"><img src="../public/img/upload/<?= ($estate['picture_url']);?>" alt=""></a>
+                                        <a href="index.php?route=estate&estateId=<?= ($estate['id']);?>"><img src="img/slider/<?= ($estate['picture_url']);?>" alt=""></a>
                                     </div>
                                     <div class="column-property-tag">
                                         <p><?= ($estate['type']);?></p>
@@ -61,7 +61,7 @@
                             ?>
                             <div class="single-sp-widget">
                                 <div class="widget-property-img">
-                                    <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>"><img src="../public/img/upload/<?= ($latestEstate['picture_url']);?>" alt=""></a>
+                                    <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>"><img src="img/slider/<?= ($latestEstate['picture_url']);?>" alt="<?= ($latestEstate['picture_url']);?>"></a>
                                 </div>
                                 <div class="column-property-tag">
                                     <p><?= ($latestEstate['category']);?></p>

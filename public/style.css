@@ -611,7 +611,7 @@ Secondary color
 }
 .single-promotion:hover i {
   background: #38a377 none repeat scroll 0 0;
-  border: 1px solid #38a377;
+  border: 1px solid #359c71;
   color: #fff;
   outline-color: rgba(255, 255, 255, 0);
   outline-offset: 15px;
@@ -2244,7 +2244,7 @@ span.q-text {
 }
 
 .block-container{
-  margin-right: none;
+  margin-right: 0;
 
 }
 

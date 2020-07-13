@@ -35,7 +35,7 @@
                                 <td class="td-id"><?= htmlspecialchars($category->getId());?></td>
                                 <td><?= htmlspecialchars($category->getName());?></td>
                                 <td class="td-btn-right">
-                                    <a href="../public/index.php?route=deleteCategory&categoryId=<?= $category->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>  Supprimer</a>
+                                    <a href="index.php?route=deleteCategory&categoryId=<?= $category->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>  Supprimer</a>
                                 </td>
                             </tr>
                         <?php
@@ -52,9 +52,9 @@
                 <h4 class="mb"><i class="fa fa-angle-right"></i> Ajouter une catégorie</h4>
                 <div class="form-group config-form" id="adding-category">
                 <?= isset($errors['name']) ? $errors['name'] : ''; ?>
-                    <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addCategory">
+                    <form class="form-horizontal style-form" method='post' action="index.php?route=addCategory">
                             <div class="col-sm-10">
-                                 <input type="text" class="form-control" name="name">
+                                 <input type="text" class="form-control" name="name" placeholder="Ajouter une categorie">
                             </div>
                             <div class="col-sm-2">
                                 <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">
@@ -90,7 +90,7 @@
                                 <td class="td-id"><?= htmlspecialchars($type->getId());?></td>
                                 <td><?= htmlspecialchars($type->getType());?></td>
                                 <td class="td-btn-right">
-                                    <a href="../public/index.php?route=deleteType&typeId=<?= $type->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>  Supprimer</a>
+                                    <a href="index.php?route=deleteType&typeId=<?= $type->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>  Supprimer</a>
                                 </td>
                             </tr>
                         <?php
@@ -103,20 +103,20 @@
             </div>
 
             <div class="col-sm-6" id="type">
-            <div class="form-panel">
-                <h4 class="mb"><i class="fa fa-angle-right"></i> Ajouter un Type de bien</h4>
-                <div class="form-group config-form" id="adding-type">
-                <?= isset($errors['type']) ? $errors['type'] : ''; ?>
-                    <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addType">
-                            <div class="col-sm-10">
-                                 <input type="text" class="form-control" name="type" placeholder="Ajouter un type">
-                            </div>
-                            <div class="col-sm-2">
-                                <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">
-                            </div>
-                    </form>
+                <div class="form-panel">
+                    <h4 class="mb"><i class="fa fa-angle-right"></i> Ajouter un Type de bien</h4>
+                    <div class="form-group config-form" id="adding-type">
+                    <?= isset($errors['type']) ? $errors['type'] : ''; ?>
+                        <form class="form-horizontal style-form" method='post' action="index.php?route=addType">
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="type" placeholder="Ajouter un type">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="submit" name="submit" id="submit" class="btn btn-theme05" value="Ajouter">
+                                </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
             </div>
 
         </div>
@@ -145,7 +145,7 @@
                                 <td class="td-id"><?= htmlspecialchars($energy->getId());?></td>
                                 <td><?= htmlspecialchars($energy->getEnergy());?></td>
                                 <td class="td-btn-right">
-                                    <a href="../public/index.php?route=deleteEnergy&energyId=<?= $energy->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>  Supprimer</a>
+                                    <a href="index.php?route=deleteEnergy&energyId=<?= $energy->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>  Supprimer</a>
                                 </td>
                             </tr>
                         <?php
@@ -162,7 +162,7 @@
                 <h4 class="mb"><i class="fa fa-angle-right"></i> Ajouter un type d'énergie</h4>
                 <div class="form-group config-form" id="adding-energy">
                 <?= isset($errors['energy']) ? $errors['energy'] : ''; ?>
-                    <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addEnergy">
+                    <form class="form-horizontal style-form" method='post' action="index.php?route=addEnergy">
                             <div class="col-sm-10">
                                  <input type="text" class="form-control" name="energy" placeholder="Ajouter une energie">
                             </div>
@@ -200,7 +200,7 @@
                                 <td class="td-id"><?= htmlspecialchars($frequency->getId());?></td>
                                 <td><?= htmlspecialchars($frequency->getfrequency());?></td>
                                 <td class="td-btn-right">
-                                    <a href="../public/index.php?route=deleteFrequency&frequencyId=<?= $frequency->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>  Supprimer</a>
+                                    <a href="index.php?route=deleteFrequency&frequencyId=<?= $frequency->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>  Supprimer</a>
                                 </td>
                             </tr>
                         <?php
@@ -217,7 +217,7 @@
                 <h4 class="mb"><i class="fa fa-angle-right"></i> Ajouter une frequence de charge</h4>
                 <div class="form-group config-form" id="adding-frequency">
                 <?= isset($errors['frequency']) ? $errors['frequency'] : ''; ?>
-                    <form class="form-horizontal style-form" method='post' action="../public/index.php?route=addFrequency">
+                    <form class="form-horizontal style-form" method='post' action="index.php?route=addFrequency">
                             <div class="col-sm-10">
                                  <input type="text" class="form-control" name="frequency" placeholder="Ajouter une frequence">
                             </div>

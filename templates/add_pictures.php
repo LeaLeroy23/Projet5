@@ -40,10 +40,10 @@
                             foreach($pictures as $picture){
                             ?>
                                 <tr>
-                                    <td><img src="../public/img/upload/<?=$picture->getFile();?>" height="150px"></td>
+                                    <td><img src="img/upload/<?=$picture->getFile();?>" height="150px"></td>
                                     <td><?=htmlspecialchars($picture->getFile());?></td>
                                     <td>
-                                        <a href="../public/index.php?route=deletePicture&pictureId=<?=$picture->getId();?>"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i> Supprimer</button></a>
+                                        <a href="index.php?route=deletePicture&pictureId=<?=$picture->getId();?>"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i> Supprimer</button></a>
                                     </td>
                                 </tr>
                             <?php 
@@ -62,7 +62,7 @@
         <!-- /wrapper -->
     </section>
     <!-- /MAIN CONTENT  -->
-    <script src="../public/lib/jquery/jquery.min.js"></script>
+    <script src="lib/jquery/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
     

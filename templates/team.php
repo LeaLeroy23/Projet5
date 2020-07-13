@@ -16,17 +16,17 @@
                         <div class="column-single-property">
                             <div class="column-property-img-wrap">
                                 <div class="column-property-img">
-                                    <a href="../public/index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>"><img src="../public/img/agent/<?= htmlspecialchars($agent->getAvatar());?>" alt="<?= htmlspecialchars($agent->getAvatar());?>"></a>
+                                    <a href="index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>"><img src="img/agent/<?= htmlspecialchars($agent->getAvatar());?>" alt="<?= htmlspecialchars($agent->getAvatar());?>"></a>
                                 </div>
                             </div>
                             <div class="column-property-content-wrap">
                                 <div class="column-property-content">
-                                    <h4><a href="../public/index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>"><?= htmlspecialchars($agent->getFirstname());?> <?= htmlspecialchars($agent->getLastname());?></a> </h4>
+                                    <h4><a href="index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>"><?= htmlspecialchars($agent->getFirstname());?> <?= htmlspecialchars($agent->getLastname());?></a> </h4>
                                     <p class="ag-position"><?= htmlspecialchars($agent->getFunction());?> </p>
                                     <p class="ag-details"><?= htmlspecialchars($agent->getDescription());?></p>
                                 </div>
                                 <div class="column-property-more">
-                                    <a href="../public/index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>">Details</a>
+                                    <a href="index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>">Details</a>
                                 </div>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                                 ?>
                                 <div class="single-property-footer-post right-sidebar">
                                     <div class="properties-img pull-left">
-                                        <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>"><img src="../public/img/upload/<?= ($latestEstate['picture_url']);?>" alt="<?= ($latestEstate['picture_url']);?>"></a>
+                                        <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>"><img src="img/slider/<?= ($latestEstate['picture_url']);?>" alt="<?= ($latestEstate['picture_url']);?>"></a>
                                     </div>
                                     <div class="properties-content-footer pull-left">
                                         <h4><a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>"><?= ($latestEstate['title']);?></a></h4>
