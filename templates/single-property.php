@@ -33,15 +33,11 @@
                                 <?php 
                                     foreach($pictures as $picture){
                                 ?>
-                                <a data-slide-index="1" href="#"><img src="img/upload/<?=$picture->getFile();?>"  alt="<?=$picture->getFile();?>" /></a>
+                                <a data-slide-index="<?=$picture->getId();?>" href="#"><img src="img/upload/<?=$picture->getFile();?>"  alt="<?=$picture->getFile();?>" /></a>
                                 <?php
                                     }
                                 ?>
-                                <a data-slide-index="2" href="#"><img src="img/slider/thumb3.jpg" alt="" /></a>
-                                <a data-slide-index="3" href="#"><img src="img/slider/thumb4.jpg" alt="" /></a>
-                                <a data-slide-index="4" href="#"><img src="img/slider/thumb5.jpg" alt="" /></a>
-                                <a data-slide-index="5" href="#"><img src="img/slider/thumb1.jpg" alt="" /></a>
-                                <a data-slide-index="6" href="#"><img src="img/slider/thumb3.jpg" alt="" /></a>
+                                
                             </div>
                         </div>
                         <!-- End of property Slider  -->

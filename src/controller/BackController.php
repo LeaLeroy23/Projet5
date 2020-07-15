@@ -229,8 +229,6 @@ class BackController extends Controller
     public function uploadPictures(Parameter $post, Parameter $files, $estateId)
     {
         if($this->checkLoggedIn()){
-            //$estate = $this->estateDAO->getEstate($estateId);
-            //$pictures = $this->pictureDAO->getPicturesByEstateId($estateId);
 
             $result = array();
             $files = $this->pictureDAO->getPicturesByEstateId($estateId);
