@@ -11,10 +11,9 @@ class EstateDAO extends DAO
 {
     private function buildObject($row){
         $estate = new Estate;
-        $type = new Type;
         $estate->setId($row['id']);
         $estate->setType_id($row['type_id']);
-        //$estate->setCategory_id($row['category_id']);
+        $estate->setCategory_id($row['category_id']);
         $estate->setTitle($row['title']);
         $estate->setExcerpt($row['excerpt']);
         $estate->setDescription($row['description']);
@@ -25,10 +24,10 @@ class EstateDAO extends DAO
         $estate->setConvertible_attic($row['convertible_attic']);
         $estate->setParking($row['parking']);
         $estate->setParking_type($row['parking_type']);
-        //$estate->setEnergy_id($row['energy_id']);
+        $estate->setEnergy_id($row['energy_id']);
         $estate->setLevel_energy_diagnostic($row['level_energy_diagnostic']);
         $estate->setLevel_climat_diagnostic($row['level_climat_diagnostic']);
-        //$estate->setAgent_id($row['agent_id']);
+        $estate->setAgent_id($row['agent_id']);
         $estate->setOutside($row['outside']);
         $estate->setOutside_area($row['outside_area']);
         $estate->setFloor($row['floor']);
@@ -38,13 +37,22 @@ class EstateDAO extends DAO
         $estate->setBuilding_year($row['building_year']);
         $estate->setcity($row['city']);
         $estate->setCreated_at($row['created_at']);
-        //$estate->setCharge_frequency_id($row['charge_frequency_id']);
+        $estate->setCharge_frequency_id($row['charge_frequency_id']);
         $estate->setStatus($row['status']);
         $estate->setPicture_url($row['picture_url']);
         return $estate;
     }
 
     public function getEstate($estateId)
+    {
+        $sql= 'SELECT * FROM estate WHERE id = ?';
+        $result = $this->createQuery($sql, [$estateId]);
+        $estate = $result->fetch();
+        $result->closeCursor();
+        return $this->buildObject($estate);
+    }
+
+    public function getSingleEstate($estateId)
     {
         $sql= 'SELECT e.id as id, e.title as title, e.floor as floor, e.excerpt as excerpt, e.description as description, e.status as status, e.price as price, e.rooms as rooms, e.bedrooms as bedrooms, e.bathrooms as bathrooms, e.convertible_attic as convertible_attic, e.outside as outside, e.outside_area as outside_area, e.area as area, e.parking as parking, e.parking_type as parking_type, e.energy_id as energy, e.level_energy_diagnostic as level_energy_diagnostic, e.level_climat_diagnostic as level_climat_diagnostic, e.city as city, c.name as category, t.type as type, a.firstname as firstname, a.lastname as lastname, e.picture_url as picture_url, e.charge_price as charge_price, e.fees as fees, e.building_year as building_year, e.created_at as created_at, e.charge_frequency_id as charge_frequency
             FROM estate e
@@ -54,7 +62,7 @@ class EstateDAO extends DAO
             ON e.type_id = t.id
             INNER JOIN energy y
             on e.energy_id = y.id
-            INNER JOIN agent a
+            INNER JOIN agent 
             ON e.agent_id = a.id
             INNER JOIN charge_frequency f
             ON e.charge_frequency_id = f.id

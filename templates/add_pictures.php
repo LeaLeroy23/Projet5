@@ -7,7 +7,7 @@
         <section class="wrapper">
             <h3><i class="fa fa-angle-right"></i> Ajout de plusieurs images</h3>
             <?= $this->session->show('deletePicture'); ?>
-            <?= $this->session->show('addPicture'); ?>
+            <?= $this->session->show('addPictures'); ?>
             <div class="row mt">
                 <div class="col-lg-12">
                     <div class="form-panel">
@@ -17,7 +17,7 @@
                         </form>
 
                         <div align="center">
-                            <button type="button" name="submit" class="btn btn-info" id="submit">Upload</button>
+                            <button type="button" name="submit" class="btn btn-info" id="submit">Ajouté</button>
                         </div>
                     </div>
                 </div>
@@ -100,7 +100,7 @@ $(document).ready(function(){
                 $('#preview').html(data);
                 console.log(data);
             },
-            error: function(resultat, statut, erreur){
+            error: function(resultat, status, erreur){
             }
             
         });

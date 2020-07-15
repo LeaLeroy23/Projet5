@@ -23,7 +23,7 @@
 
         <!-- Meanmenu CSS (For mobile menu) 
         ==========================================================-->
-        <link rel="stylesheet" href=".css/meanmenu.min.css">
+        <link rel="stylesheet" href="css/meanmenu.min.css">
 
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">

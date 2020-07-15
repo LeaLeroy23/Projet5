@@ -10,7 +10,7 @@
                     {
                 ?>
                             <div class="item">
-                                <img src="img/slider/<?= $sliderEstate['picture_url'];?>" alt="slider-<?= $sliderEstate['picture_url'];?>">
+                                <img class="slider-height-limit" src="img/slider/<?= $sliderEstate['picture_url'];?>" alt="slider-<?= $sliderEstate['picture_url'];?>">
                                 <div class="slide-content carousel-caption hidden-xs">
                                     <div class="slide-content-top">
                                         <h1><?= htmlspecialchars($sliderEstate['type']);?></h1>

@@ -215,6 +215,9 @@ Tablet desktop :768px.
 .slide-content-top h1{
   margin-bottom: 10px;
 }
+.slider-height-limit{
+  height: 450px;
+}
 .welcome-area {
   padding: 60px 0;
 }
@@ -396,6 +399,9 @@ small mobile :320px.
 }
 .header-area {
   display: none;
+}
+.slider-height-limit{
+  height: 400px;
 }
 .phone-mail-area {
   display: none;

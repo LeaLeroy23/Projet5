@@ -98,7 +98,7 @@ class FrontController extends Controller
 
     public function estate($estateId)
     {
-        $estate = $this->estateDAO->getEstate($estateId);
+        $estate = $this->estateDAO->getSingleEstate($estateId);
         $pictures = $this->pictureDAO->getPicturesByEstateId($estateId);
         $latestEstates = $this->estateDAO->latestEstates();
         $limitAgents = $this->agentDAO->getLimitAgents();

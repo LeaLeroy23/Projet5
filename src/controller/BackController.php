@@ -196,7 +196,7 @@ class BackController extends Controller
         }
     }
 
-    public function addPictures(Parameter $post, Parameter $files, $estateId)
+    public function addPictures(Parameter $post, $estateId)
     {
         if($this->checkLoggedIn()){
             $estate = $this->estateDAO->getEstate($estateId);
@@ -212,11 +212,13 @@ class BackController extends Controller
                 $ext = pathinfo($filename, PATHINFO_EXTENSION);
                 $filename = uniqid() . '.' . $ext;
                 $location = $folder_name . $filename;
-                move_uploaded_file($temp_file, $location);
+                //move_uploaded_file($temp_file, $location);
+                print_r($filename);
                 
-                $this->pictureDAO->addPictures($filename, $estateId);
-            }
 
+                //$this->pictureDAO->addPictures($filename, $estateId);
+                $this->session->set('addPictures', 'Le ou les images ont bien été ajouté');
+            }
             return $this->view->renderTemplate('add_pictures', [
                 'estate' => $estate,
                 'pictures' => $pictures,

@@ -51,7 +51,10 @@ class PictureDAO extends DAO
     }
 
     public function addPictures($filename, $estateId)
-    {       
+    {
+        echo('je suis là');
+        var_dump($filename);
+        die();       
         $sql = 'INSERT INTO picture (file, estate_id) VALUES (:file, :estate_id)';
 
         $this->createQuery($sql, [

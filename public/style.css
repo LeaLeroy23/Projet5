@@ -428,6 +428,9 @@ Secondary color
 .item > img {
   width: 100%;
 }
+.slider-height-limit{
+  height: 900px;
+}
 .slide-content-top {
   background: rgba(65, 163, 119, 0.8) none repeat scroll 0 0;
   padding: 40px;
