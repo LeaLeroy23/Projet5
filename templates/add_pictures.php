@@ -16,7 +16,7 @@
                             <input type="hidden" name="estate_id" value="<?=$estate->getId();?>" />
                         </form>
 
-                        <div align="center">
+                        <div>
                             <button type="button" name="submit" class="btn btn-info" id="submit">Ajouté</button>
                         </div>
                     </div>
@@ -37,6 +37,7 @@
 
                             <tbody id="preview">
                             <?php 
+                            print_r($pictures);
                             foreach($pictures as $picture){
                             ?>
                                 <tr>
@@ -71,21 +72,21 @@
 
 $(document).ready(function(){
     Dropzone.options.dropzoneFrom = {
-    autoProcessQueue: false,
-    acceptedFiles:".png,.jpg,.gif,.bmp,.jpeg",
-    init: function(){
-        let submitButton = document.querySelector('#submit');
-        myDropzone = this;
-        submitButton.addEventListener("click", function(){
-            myDropzone.processQueue();
-        });
-        this.on("complete", function(){
-            if(this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0)
-            {
-                var _this = this;
-                _this.removeAllFiles();
-            }
-        list_image();
+        autoProcessQueue: false,
+        acceptedFiles:".png,.jpg,.gif,.bmp,.jpeg",
+        init: function(){
+            let submitButton = document.querySelector('#submit');
+            myDropzone = this;
+            submitButton.addEventListener("click", function(){
+                myDropzone.processQueue();
+            });
+            this.on("complete", function(){
+                if(this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0)
+                {
+                    var _this = this;
+                    _this.removeAllFiles();
+                }
+            list_image();
         });
     },
 };
@@ -99,6 +100,7 @@ $(document).ready(function(){
             success:function(data){
                 $('#preview').html(data);
                 console.log(data);
+                console.log('upload ok');
             },
             error: function(resultat, status, erreur){
             }

@@ -217,6 +217,7 @@
                                                 <h3><a href="index.php?route=agent&agentId=<?= htmlspecialchars($limitAgent->getId());?>"><?= htmlspecialchars($limitAgent->getFirstname());?> <?= htmlspecialchars($limitAgent->getLastname());?></a></h3>
                                                 <div class="price-detail">
                                                     <p><?= htmlspecialchars($limitAgent->getFunction());?></p>
+                                                    <p><?= htmlspecialchars($limitAgent->getDescription());?></p>
                                                     <a href="index.php?route=agent&agentId=<?= ($limitAgent->getId());?>" class="price-detail pull-right">Detail <i class="fa fa-angle-right"></i></a>
                                                 </div>
                                             </div>

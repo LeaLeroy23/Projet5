@@ -153,7 +153,7 @@ class FrontController extends Controller
                     $this->session->set('phone', $result['phone']);
                     $this->session->set('email', $post->get('email'));
                     
-                    header('Location: ../public/index.php?route=dashboard');
+                    header('Location: index.php?route=dashboard');
                     $this->session->set('login', "Bienvenue");
                     exit();
                 }

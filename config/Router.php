@@ -70,7 +70,7 @@ class Router
                     $this->backController->addPictures($this->request->getPost(),$this->request->getGet()->get('estateId'));
                 }
                 elseif ($route === 'uploadPictures'){
-                    $this->backController->uploadPictures($this->request->getPost(), $this->request->getFiles(),$this->request->getGet()->get('estateId'));
+                    $this->backController->uploadPictures($this->request->getPost(), $this->request->getFiles(), $this->request->getGet()->get('estateId'));
                 }
                 elseif ($route === 'deletePicture'){
                     $this->backController->deletePicture($this->request->getGet()->get('pictureId'));

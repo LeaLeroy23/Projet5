@@ -212,17 +212,16 @@ class BackController extends Controller
                 $ext = pathinfo($filename, PATHINFO_EXTENSION);
                 $filename = uniqid() . '.' . $ext;
                 $location = $folder_name . $filename;
-                //move_uploaded_file($temp_file, $location);
-                print_r($filename);
+                move_uploaded_file($temp_file, $location);
                 
-
-                //$this->pictureDAO->addPictures($filename, $estateId);
+                $this->pictureDAO->addPictures($filename, $estateId);
                 $this->session->set('addPictures', 'Le ou les images ont bien été ajouté');
             }
+            
             return $this->view->renderTemplate('add_pictures', [
+                'post' => $post,
                 'estate' => $estate,
-                'pictures' => $pictures,
-                'post' => $post
+                'pictures' => $pictures
             ]);
         }
     }
@@ -230,15 +229,17 @@ class BackController extends Controller
     public function uploadPictures(Parameter $post, Parameter $files, $estateId)
     {
         if($this->checkLoggedIn()){
-            $estate = $this->estateDAO->getEstate($estateId);
-            $pictures = $this->pictureDAO->getPicturesByEstateId($estateId);
+            //$estate = $this->estateDAO->getEstate($estateId);
+            //$pictures = $this->pictureDAO->getPicturesByEstateId($estateId);
 
             $result = array();
-            $files = $this->pictureDAO->getPicturesByEstateId($estateId);;
-            $output = '<div class="col-lg-12">';
+            $files = $this->pictureDAO->getPicturesByEstateId($estateId);
+            echo $files;
+            die();
+            $output = '';
 
-            if(false !== $files)
-                {
+            /*if(!empty($files))
+                {*/
                     foreach($files as $file)
                     {
                         if('.' !=  $file && '..' != $file)
@@ -246,14 +247,13 @@ class BackController extends Controller
                             $output .= '
                             <tr>
                                 <td><img src="img/upload/'.$file->getFile().'" height="150px"></td>
-                                <td><p>'.$file->getFile().'</p></td>
+                                <td>'.$file->getFile().'</td>
                                 <td><a href="index.php?route=deletePicture&pictureId='.$file->getId().'"><button class="btn btn-danger btn-xs" title="Supprimer"><i class="fa fa-trash-o "></i> Supprimer</button></a></td>
                             </tr>
                             ';
                         }
                     }
-                }
-            $output .= '</div>';
+                /*}*/
             echo $output;
 
             $this->session->set('uploadPicture', 'L\'image a bien été ajouter');
