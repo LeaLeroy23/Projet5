@@ -20,7 +20,6 @@
                     <table class="table table-bordered table-striped table-condensed">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Nom</th>
                                 <th>Gestion</th>
                             </tr>
@@ -32,7 +31,6 @@
                             {
                         ?>
                             <tr>
-                                <td class="td-id"><?= htmlspecialchars($category->getId());?></td>
                                 <td><?= htmlspecialchars($category->getName());?></td>
                                 <td class="td-btn-right">
                                     <a href="index.php?route=deleteCategory&categoryId=<?= $category->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>  Supprimer</a>
@@ -75,7 +73,6 @@
                     <table class="table table-bordered table-striped table-condensed">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Nom</th>
                                 <th>Gestion</th>
                             </tr>
@@ -87,7 +84,6 @@
                             {
                         ?>
                             <tr>
-                                <td class="td-id"><?= htmlspecialchars($type->getId());?></td>
                                 <td><?= htmlspecialchars($type->getType());?></td>
                                 <td class="td-btn-right">
                                     <a href="index.php?route=deleteType&typeId=<?= $type->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>  Supprimer</a>
@@ -130,7 +126,6 @@
                     <table class="table table-bordered table-striped table-condensed">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Nom</th>
                                 <th>Gestion</th>
                             </tr>
@@ -142,7 +137,6 @@
                             {
                         ?>
                             <tr>
-                                <td class="td-id"><?= htmlspecialchars($energy->getId());?></td>
                                 <td><?= htmlspecialchars($energy->getEnergy());?></td>
                                 <td class="td-btn-right">
                                     <a href="index.php?route=deleteEnergy&energyId=<?= $energy->getId(); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>  Supprimer</a>
