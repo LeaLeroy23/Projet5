@@ -232,8 +232,7 @@ class BackController extends Controller
 
             $result = array();
             $files = $this->pictureDAO->getPicturesByEstateId($estateId);
-            echo $files;
-            die();
+    
             $output = '';
 
             /*if(!empty($files))

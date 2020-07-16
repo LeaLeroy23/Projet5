@@ -64,7 +64,7 @@
                             </div>
                             <label class="col-sm-2 col-sm-2 control-label"></label>
                             <div class="col-md-4"> 
-                                <img src="../public/img/agent/<?=$agent->getAvatar();?>" height="150px">
+                                <img src="img/agent/<?=$agent->getAvatar();?>" height="150px">
                             </div>
 
                         </div>

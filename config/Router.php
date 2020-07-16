@@ -133,8 +133,8 @@ class Router
                 elseif ($route === 'logout'){
                     $this->backController->logout();
                 }
-                elseif ($route === 'email'){
-                    $this->frontController->email();
+                elseif ($route === 'contact'){
+                    $this->frontController->contact();
                 }
                 else{
                     $this->errorController->errorNotFound();

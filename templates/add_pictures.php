@@ -17,7 +17,7 @@
                         <input type="hidden" name="estate_id" value="<?=$estate->getId();?>" />
                     </form>
 
-                    <div>
+                    <div class="dropzone-button">
                         <button type="button" name="submit" class="btn btn-info" id="submit">Ajouté</button>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
 
                         <tbody id="preview">
                             <?php 
-                            print_r($pictures);
+                            
                                 foreach($pictures as $picture){
                             ?>
                             <tr>

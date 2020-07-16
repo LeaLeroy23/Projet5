@@ -11,8 +11,9 @@ class EstateDAO extends DAO
 {
     private function buildObject($row){
         $estate = new Estate;
+        $type = new Type;
         $estate->setId($row['id']);
-        $estate->setType_id($row['type_id']);
+        $estate->setType_id($row['type_id'] = $type->getId());
         $estate->setCategory_id($row['category_id']);
         $estate->setTitle($row['title']);
         $estate->setExcerpt($row['excerpt']);
@@ -62,12 +63,13 @@ class EstateDAO extends DAO
             ON e.type_id = t.id
             INNER JOIN energy y
             on e.energy_id = y.id
-            
             INNER JOIN charge_frequency f
             ON e.charge_frequency_id = f.id
             WHERE e.id = ?';
+        
         $result = $this->createQuery($sql, [$estateId]);
         $estate = $result->fetch();
+       
         $result->closeCursor();
         return $this->buildObject($estate);
     }
