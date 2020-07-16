@@ -168,27 +168,23 @@ class FrontController extends Controller
 
     public function sendMail(Parameter $post)
     {
-        if($post->get('submit')){
             $name = $post->get('name');
             $email = $post->get('email');
             $message = $post->get('message');
             $errors = $this->validation->validate($post, 'mail');
+
                 if (!$errors){
-                    $headers = 'lea.leroy@stratos-consulting.fr' . "\r\n" .
-                    'Reply-To: lea.leroy@stratos-consulting.fr' . "\r\n" .
+                    $to      = 'lea.leroy@stratos-consulting.fr';
+                    $subject = 'Message de '.$name;
+                    $message = $post->get('message');
+                    $headers = 'From: '.$email . "\r\n" .
+                    'Reply-To: lea.leroy@hestia.fr' . "\r\n" .
                     'X-Mailer: PHP/' . phpversion();
 
-                    $subject="Message de ".$name." pour Hestia";
-                    $destinataire= "Hestia";
-                    $destinataire= $email;
-
-                    $body="Message de ".$name." pour Hestia \n";
-                    $body.="email: ".$email."\n\n";
-                    $body.="Message: ".$message."\n";
+                    mail($to, $subject, $message, $headers);
+                    $this->session->set('sendEmail', 'Votre mail à bien été envoyé');
                 }
 
-            $this->session->set('sendEamil', 'Votre mail à bien été envoyé');
-        }
         return $this->view->render('contact', [
         ]);
     }
