@@ -37,13 +37,6 @@ class FrontController extends Controller
         ]);
     }
 
-
-    public function contact()
-    {
-        return $this->view->render('contact', [
-        ]);
-    }
-
     public function allProperties()
     {
         $estates = $this->estateDAO->getPublishedEstates();
@@ -134,8 +127,6 @@ class FrontController extends Controller
         ]);
     }
 
-
-
     public function login(Parameter $post)
     {
         if($this->loggedIn()){
@@ -166,6 +157,40 @@ class FrontController extends Controller
             }
             return $this->view->render('login');
         }
+    }
+
+    
+    public function contact()
+    {
+        return $this->view->render('contact', [
+        ]);
+    }
+
+    public function sendMail(Parameter $post)
+    {
+        if($post->get('submit')){
+            $name = $post->get('name');
+            $email = $post->get('email');
+            $message = $post->get('message');
+            $errors = $this->validation->validate($post, 'mail');
+                if (!$errors){
+                    $headers = 'lea.leroy@stratos-consulting.fr' . "\r\n" .
+                    'Reply-To: lea.leroy@stratos-consulting.fr' . "\r\n" .
+                    'X-Mailer: PHP/' . phpversion();
+
+                    $subject="Message de ".$name." pour Hestia";
+                    $destinataire= "Hestia";
+                    $destinataire= $email;
+
+                    $body="Message de ".$name." pour Hestia \n";
+                    $body.="email: ".$email."\n\n";
+                    $body.="Message: ".$message."\n";
+                }
+
+            $this->session->set('sendEamil', 'Votre mail à bien été envoyé');
+        }
+        return $this->view->render('contact', [
+        ]);
     }
 
 }

@@ -48,9 +48,6 @@ class Router
                 elseif ($route === 'team'){
                     $this->frontController->team();
                 }
-                elseif ($route === 'contact'){
-                    $this->frontController->contact();
-                }
                 elseif($route === 'login'){
                     $this->frontController->login($this->request->getPost());
                 }
@@ -127,7 +124,6 @@ class Router
                     $this->backController->configuration();
                 }
                 elseif ($route === 'dashboard'){
-                    
                     $this->backController->dashboard();
                 }
                 elseif ($route === 'logout'){
@@ -135,6 +131,9 @@ class Router
                 }
                 elseif ($route === 'contact'){
                     $this->frontController->contact();
+                }
+                elseif ($route === 'sendMail'){
+                    $this->frontController->sendMail($this->request->getPost());
                 }
                 else{
                     $this->errorController->errorNotFound();

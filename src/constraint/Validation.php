@@ -34,5 +34,10 @@ class Validation
             $errors = $frequencyValidation->check($data);
             return $errors;
         }
+        elseif ($name === "Mail"){
+            $mailValidation = new MailValidation();
+            $errors = $mailValidation->check($data);
+            return $errors;
+        }
     }
 }
