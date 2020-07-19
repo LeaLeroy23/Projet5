@@ -5,15 +5,13 @@ namespace Hestia\src\DAO;
 
 use Hestia\config\Parameter;
 use Hestia\src\model\Estate;
-use Hestia\src\model\Type;
 
 class EstateDAO extends DAO
 {
     private function buildObject($row){
         $estate = new Estate;
-        $type = new Type;
         $estate->setId($row['id']);
-        $estate->setType_id($row['type_id'] = $type->getId());
+        $estate->setType_id($row['type_id']);
         $estate->setCategory_id($row['category_id']);
         $estate->setTitle($row['title']);
         $estate->setExcerpt($row['excerpt']);
@@ -69,7 +67,6 @@ class EstateDAO extends DAO
         
         $result = $this->createQuery($sql, [$estateId]);
         $estate = $result->fetch();
-       
         $result->closeCursor();
         return $this->buildObject($estate);
     }

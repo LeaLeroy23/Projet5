@@ -86,7 +86,6 @@ class BackController extends Controller
                         }
 
                         if (in_array($filetype, $allowed)) {
-                            /**verifie si le fichier existe avant de le telecharger*/
                             if (file_exists("img/slider/" . $_FILES["picture_url"]["name"])) {
                                 $this->session->set('exist', $_FILES["picture_url"]["name"] . " existe déjà.");
                             } else {
@@ -207,7 +206,6 @@ class BackController extends Controller
             if (!empty($_FILES)) 
             {
                 $temp_file = $_FILES['file']['tmp_name'];
-                //$location = $folder_name . $_FILES['file']['name'];
                 $filename = $_FILES['file']['name'];
                 $ext = pathinfo($filename, PATHINFO_EXTENSION);
                 $filename = uniqid() . '.' . $ext;

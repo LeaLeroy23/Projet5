@@ -13,7 +13,7 @@ class Spec {
 
     outsideSpec(){
         this.outside.change(() => {
-            if(spec.outsideName[0].value == "0"){
+            if(spec.outsideName[0].value == "non"){
                 spec.outsideArea.css("display", "none");
             } else {
                 spec.outsideArea.css("display", "block");
@@ -23,7 +23,7 @@ class Spec {
 
     parkingSpec(){
         this.parking.change(() => {
-            if(spec.parkingName[0].value == "1"){
+            if(spec.parkingName[0].value == "oui"){
                 spec.parkingType.css("display", "block");
             } else {
                 spec.parkingType.css("display", "none");

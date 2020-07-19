@@ -6,7 +6,7 @@
     <?= $this->session->show('editAgent'); ?>
 
         <h3><i class="fa fa-angle-right"></i> Modifier un agent</h3>        
-        <form class="form-horizontal style-form" method='post' action="../public/index.php?route=editAgent&agentId=<?=htmlspecialchars($agent->getId());?>" enctype="multipart/form-data">
+        <form class="form-horizontal style-form" method='post' action="index.php?route=editAgent&agentId=<?=htmlspecialchars($agent->getId());?>" enctype="multipart/form-data">
             <div class="row mt">
                 <div class="col-lg-12">
                     <div class="form-panel">
@@ -94,7 +94,7 @@
                 <div class="form-panel">
                     <h4 class="mb"><i class="fa fa-angle-right"></i> Modification du mot de passe</h4>
 
-                    <form class="form-horizontal style-form" method='post' action="../public/index.php?route=updatePassword&agentId=<?=$agent->getId();?>">
+                    <form class="form-horizontal style-form" method='post' action="index.php?route=updatePassword&agentId=<?=$agent->getId();?>">
                         <div class="form-group">
                             <div class="col-sm-10">
                                 <div class="form-group">

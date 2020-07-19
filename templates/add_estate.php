@@ -114,8 +114,8 @@
                                 <label class="col-sm-2 col-sm-2 control-label">Comble aménageable</label>
                                 <div class="col-sm-10">
                                     <select name="convertible_attic" class="form-control">
-                                        <option value="1">oui</option>
-                                        <option value="0" selected>non</option>
+                                        <option value="Oui">oui</option>
+                                        <option value="Non" selected>non</option>
                                     </select>
                                 </div>
                             </div>
@@ -125,9 +125,9 @@
                                     <div class="col-sm-5">
                                         <select name="outside" id="outside" class="form-control">
                                             <option value="Pas d'extérieur">Pas d'extérieur</option>
-                                            <option value="balcon">Balcon</option>
-                                            <option value="terrasse">Terrasse</option>
-                                            <option value="jardin">Jardin</option>
+                                            <option value="Balcon">Balcon</option>
+                                            <option value="Terrasse">Terrasse</option>
+                                            <option value="Jardin">Jardin</option>
                                         </select>
                                 </div>
 
@@ -141,15 +141,15 @@
                                 <label class="col-sm-2 col-sm-2 control-label">Stationnement</label>
                                 <div class="col-sm-5">
                                     <select name="parking" class="form-control" id="parking">
-                                        <option value="0">non</option>
-                                        <option value="1">oui</option>
+                                        <option value="Oui">non</option>
+                                        <option value="Non">oui</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-5" id="parking-type">
                                     <select name="parking_type" class="form-control">
-                                        <option value="parking">Parking</option>
-                                        <option value="garage">Garage</option>
-                                        <option value="box">Box</option>
+                                        <option value="Parking">Parking</option>
+                                        <option value="Garage">Garage</option>
+                                        <option value="Box">Box</option>
                                     </select>
                                 </div>
                             </div>
@@ -327,15 +327,10 @@
                                 <div class="col-sm-4">
                                     <input type="date" name="created_at" value="01-01-2020" size="16">
                                 </div>
-                                
-                                <label class="col-sm-1 col-sm-1 control-label">Agent</label>
-                                <div class="col-sm-5">
-                                    <input type="number" class="form-control" name="agent_id" value="<?= $this->session->get('id'); ?>"><?= $this->session->get('lastname'); ?> <?= $this->session->get('firstname'); ?>
-                                </div>
                             </div>
-
+                   
+                            <h4 class="mb"><i class="fa fa-angle-right"></i> Publication</h4>
                             <div class="form-group">
-                                <h4 class="mb"><i class="fa fa-angle-right"></i> Publication</h4>
                                 <label class="col-sm-2 col-sm-2 control-label">Status de la publication</label>
                                 <div class="col-sm-10">
                                     <label>
@@ -348,8 +343,6 @@
                                     </label>
                                 </div>
                             </div>
-
-
 
                             <div class="form-group">
                                 <div class="col-sm-12">
@@ -369,5 +362,10 @@
 
     </section>
 </secction>
+
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="js/Preview.js"></script>
+<script src=".js/Spec.js"></script>
+<script src="js/main.js"></script>
 
 

@@ -4,7 +4,7 @@
         <h3><i class="fa fa-angle-right"></i> Modifier une annonce</h3>
 
         <form class="form-horizontal style-form" method='post'
-            action="../public/index.php?route=editEstate&estateId=<?=htmlspecialchars($estate->getId());?>"
+            action="index.php?route=editEstate&estateId=<?=htmlspecialchars($estate->getId());?>"
             enctype="multipart/form-data">
 
             <div class="row mt">
@@ -131,8 +131,8 @@
                                 <select name="convertible_attic" class="form-control">
                                     <option value="<?= htmlspecialchars($estate->getConvertible_attic());?>">
                                         <?= htmlspecialchars($estate->getConvertible_attic());?></option>
-                                    <option value="1">oui</option>
-                                    <option value="0" selected>non</option>
+                                    <option value="Oui">oui</option>
+                                    <option value="Non" selected>non</option>
                                 </select>
                             </div>
                         </div>
@@ -143,10 +143,10 @@
                                 <select name="outside" id="outside" class="form-control">
                                     <option value="<?= htmlspecialchars($estate->getOutside());?>">
                                         <?= htmlspecialchars($estate->getOutside());?></option>
-                                    <option value="0">Pas d'extérieur</option>
-                                    <option value="balcon">Balcon</option>
-                                    <option value="terrasse">Terrasse</option>
-                                    <option value="jardin">Jardin</option>
+                                    <option value="Pas d'extérieur">Pas d'extérieur</option>
+                                    <option value="Balcon">Balcon</option>
+                                    <option value="Terrasse">Terrasse</option>
+                                    <option value="Jardin">Jardin</option>
                                 </select>
                             </div>
 
@@ -164,17 +164,17 @@
                                 <select name="parking" class="form-control">
                                     <option value="<?= htmlspecialchars($estate->getParking());?>">
                                         <?= htmlspecialchars($estate->getParking());?></option>
-                                    <option value="1">oui</option>
-                                    <option value="0">non</option>
+                                    <option value="Oui">oui</option>
+                                    <option value="Non">non</option>
                                 </select>
                             </div>
                             <div class="col-sm-5" id="parking-type">
                                 <select name="parking_type" class="form-control">
                                     <option value="<?= htmlspecialchars($estate->getParking_type());?>">
                                         <?= htmlspecialchars($estate->getParking_type());?></option>
-                                    <option value="parking">Parking</option>
-                                    <option value="garage">Garage</option>
-                                    <option value="box">Box</option>
+                                    <option value="Parking">Parking</option>
+                                    <option value="Garage">Garage</option>
+                                    <option value="Box">Box</option>
                                 </select>
                             </div>
                         </div>
@@ -331,7 +331,7 @@
 
                         <div class="form-group" id="frequency">
                             <label class="col-sm-2 col-sm-2 control-label">Fréquence des Charges</label>
-                            <div class="col-sm-9">
+                            <div class="col-sm-10">
 
 
 
@@ -342,7 +342,7 @@
                                 <label>
                                     <input type="radio" id="optionsRadios1" name="charge_frequency_id"
                                         value="<?= $frequency->getId();?>"
-                                        <?= ($frequency->getId() === $estate->getCharge_frequency_id()) ? 'checked' : '' ?>><?= $frequency->getFrequency();?>
+                                        <?= ($frequency->getId() === $estate->getCharge_frequency_id()) ? 'checked' : '' ?>><?= $frequency->getFrequency();?><br>
                                 </label>
                                 <?php
                                     }
@@ -412,7 +412,7 @@
     </section>
 </section>
 
-<script src="../public/lib/jquery/jquery.min.js"></script>
-<script src="../public/js/Preview.js"></script>
-<script src="../public/js/Spec.js"></script>
-<script src="../public/js/main.js"></script>
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="js/Preview.js"></script>
+<script src="js/Spec.js"></script>
+<script src="js/main.js"></script>

@@ -69,7 +69,8 @@
 
                                         <div class="single-pt-list">
                                             <ul>
-                                                <li><strong>Type:</strong><?= htmlspecialchars($estate->getType());?></li>
+                                                <li><strong>Type:</strong><?= htmlspecialchars($estate->getType_id());?>
+                                                </li>
                                                 <li><strong>Catégorie: </strong></li>
                                                 <li><strong>Surface
                                                         carrez</strong><?= htmlspecialchars($estate->getArea());?> m2
@@ -79,14 +80,17 @@
                                                 <li><strong>Chambres
                                                         :</strong><?= htmlspecialchars($estate->getBedrooms());?></li>
                                                 <li><strong>Salle de bain
-                                                        :</strong><?= htmlspecialchars($estate->getBathrooms());?></li>
+                                                        :</strong><?= htmlspecialchars($estate->getBathrooms());?>
+                                                </li>
                                                 <li><strong>Extérieur :
-                                                        <?= htmlspecialchars($estate->getOutside());?></strong></li>
+                                                        <?= htmlspecialchars($estate->getOutside());?></strong>
+                                                </li>
                                                 <li><strong>Garage / Parking
                                                         :</strong><?= htmlspecialchars($estate->getParking_type());?>
                                                 </li>
                                                 <li><strong>Extérieur:</strong><?= htmlspecialchars($estate->getOutside());?>
-                                                    <?= htmlspecialchars($estate->getOutside_area());?></li>
+                                                    <?= htmlspecialchars($estate->getOutside_area());?>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>

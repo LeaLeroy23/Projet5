@@ -2,6 +2,10 @@
 
 namespace Hestia\src\model;
 
+use Hestia\src\DAO\TypeDAO;
+
+use Hestia\src\model\Type;
+
 class Estate
 {
     
@@ -56,12 +60,12 @@ class Estate
     private $bathrooms;
 
     /**
-     * @var int
+     * @var string
      */
     private $convertible_attic;
 
     /**
-     * @var int
+     * @var string
      */
     private $parking;
 
@@ -126,11 +130,6 @@ class Estate
     private $fees;
 
     /**
-     * @var \DateTime
-     */
-    private $available;
-
-    /**
      * @var int
      */
     private $building_year;
@@ -154,9 +153,6 @@ class Estate
      * @var string
      */
     private $status;
-
-
-
 
     /**
      * @return int
@@ -320,7 +316,7 @@ class Estate
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getConvertible_attic()
     {
@@ -328,7 +324,7 @@ class Estate
     }
 
     /**
-     * @param int $convertible_attic
+     * @param string $convertible_attic
      */
     public function setConvertible_attic($convertible_attic)
     {
@@ -336,7 +332,7 @@ class Estate
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getParking()
     {
@@ -344,7 +340,7 @@ class Estate
     }
 
     /**
-     * @param int $parking
+     * @param string $parking
      */
     public function setParking($parking)
     {
@@ -541,22 +537,6 @@ class Estate
     public function setFees($fees)
     {
         $this->fees = $fees;
-    }
-
-    /**
-     * @return \Date
-     */
-    public function getAvailable()
-    {
-        return $this->available;
-    }
-
-    /**
-     * @param \Date $available
-     */
-    public function setAvailable($available)
-    {
-        $this->available = $available;
     }
 
     /**
