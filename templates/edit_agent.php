@@ -60,12 +60,14 @@
                         <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Avatar</label>
                             <div class="col-md-4"> 
-                                <input type="file" name="avatar" value="<?= $agent->getAvatar();?>"class="form-control">
+                                <input type="hidden" name="avatar" value="<?= $agent->getAvatar();?>" class="form-control">
+                                <input type="file" name="avatar" class="form-control">
                             </div>
                             <label class="col-sm-2 col-sm-2 control-label"></label>
                             <div class="col-md-4"> 
                                 <img src="img/agent/<?=$agent->getAvatar();?>" height="150px">
                             </div>
+                            <p>Pour des raisons de sécurité vous devez reselectionnez votre image de profil dans le cas contraire une image par default va vous être assignée</p>
 
                         </div>
 

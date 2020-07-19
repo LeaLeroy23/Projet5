@@ -143,7 +143,7 @@
                                 <select name="outside" id="outside" class="form-control">
                                     <option value="<?= htmlspecialchars($estate->getOutside());?>">
                                         <?= htmlspecialchars($estate->getOutside());?></option>
-                                    <option value="Pas d'extérieur">Pas d'extérieur</option>
+                                    <option value="pas d'extérieur">Pas d'extérieur</option>
                                     <option value="Balcon">Balcon</option>
                                     <option value="Terrasse">Terrasse</option>
                                     <option value="Jardin">Jardin</option>
@@ -164,8 +164,8 @@
                                 <select name="parking" class="form-control">
                                     <option value="<?= htmlspecialchars($estate->getParking());?>">
                                         <?= htmlspecialchars($estate->getParking());?></option>
-                                    <option value="Oui">oui</option>
-                                    <option value="Non">non</option>
+                                    <option value="oui">oui</option>
+                                    <option value="non">non</option>
                                 </select>
                             </div>
                             <div class="col-sm-5" id="parking-type">
@@ -306,8 +306,9 @@
                                     <div>
                                         <span class="btn btn-theme02 btn-file">
                                             <input type="file" name="picture_url" id="file"
-                                                value="<?= htmlspecialchars($estate->getPicture_url());?>" />
+                                                value="<?= htmlspecialchars($estate->getPicture_url());?>" placeholder="<?= htmlspecialchars($estate->getPicture_url());?>"/>
                                         </span>
+                                        <p>Pour des raisons de sécurité vous devez reselectionnez l'image à la une dans le cas contraire une image par default va être mise à la une</p>
                                     </div>
                                 </div>
                             </div>

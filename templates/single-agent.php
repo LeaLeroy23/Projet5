@@ -15,7 +15,11 @@
                                 <div class="row">
                                     <div class="agent-col col-lg-6 col-md-12">
                                         <div class="agent-img fix">
-                                            <img class="" src="img/agent/<?= $agent->getAvatar();?>" alt="<?= $agent->getAvatar();?>" >
+                                            <?php if (empty($agent->getAvatar())){ ?>
+                                                <img src='img/agent/default.jpg'>
+                                            <?php } else { ?>
+                                                <img src="img/agent/<?= ($agent->getAvatar());?>" alt="<?= ($agent->getAvatar());?>">
+                                            <?php } ?>
                                         </div>
                                     </div>
 
@@ -53,7 +57,13 @@
                                 <div class="column-single-property">
                                 <div class="column-property-img-wrap">
                                     <div class="column-property-img">
-                                        <a href="index.php?route=estate&estateId=<?= ($estateByAgent['id']);?>"><img src="img/slider/<?= ($estateByAgent['picture_url']);?>" alt="<?= ($estateByAgent['picture_url']);?>"></a>
+                                        <a href="index.php?route=estate&estateId=<?= ($estateByAgent['id']);?>">
+                                        <?php if (empty($estateByAgent['picture_url'])){ ?>
+                                            <img src='img/slider/default.jpg'>
+                                        <?php } else { ?>
+                                            <img src="img/slider/<?= ($estateByAgent['picture_url']);?>" alt="<?= ($estateByAgent['picture_url']);?>">
+                                        <?php } ?>
+                                        </a>
                                     </div>
                                     <div class="column-property-tag">
                                         <p><?= ($estateByAgent['type']);?></p>
@@ -100,7 +110,13 @@
                             ?>
                             <div class="single-property-footer-post right-sidebar">
                                 <div class="properties-img pull-left">
-                                    <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>"><img src="img/slider/<?= ($latestEstate['picture_url']);?>" alt="<?= ($latestEstate['picture_url']);?>"></a>
+                                    <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>">
+                                        <?php if (empty($latestEstate['picture_url'])){ ?>
+                                            <img src='img/slider/default.jpg'>
+                                        <?php } else { ?>
+                                            <img src="img/slider/<?= ($latestEstate['picture_url']);?>" alt="<?= ($latestEstate['picture_url']);?>">
+                                        <?php } ?>
+                                    </a>
                                 </div>
                                 <div class="properties-content-footer pull-left">
                                     <h4><a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>"><?= ($latestEstate['title']);?></a></h4>
@@ -130,7 +146,11 @@
                                     <div class="col-lg-4 col-md-4">
                                         <div class="pull-left">
                                             <a href="index.php?route=agent&agentId=<?= ($agent->getId());?>">
+                                            <?php if (empty($agent->getAvatar())){ ?>
+                                                <img src='img/agent/default.jpg'>
+                                            <?php } else { ?>
                                                 <img src="img/agent/<?= ($agent->getAvatar());?>" alt="<?= ($agent->getAvatar());?>">
+                                            <?php } ?>
                                             </a>
                                         </div>
                                     </div>

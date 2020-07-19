@@ -95,14 +95,13 @@ class AgentDAO extends DAO
 
     public function editProfile($post, $filename, $agentId)
     {
-        $sql = "UPDATE agent SET firstname=:firstname, lastname=:lastname, phone=:phone, email=:email, description=:description, avatar=:avatar WHERE id=:agentId";
+        $sql = "UPDATE agent SET firstname=:firstname, lastname=:lastname, phone=:phone, email=:email, description=:description WHERE id=:agentId";
         $this->createQuery($sql, [
             'firstname' => $post->get('firstname'),
             'lastname' => $post->get('lastname'),
             'phone' => $post->get('phone'),
             'email' => $post->get('email'),
             'description' => $post->get('description'),
-            'avatar' => $filename,
             'agentId' => $agentId
         ]);
         

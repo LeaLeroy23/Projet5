@@ -124,7 +124,7 @@
                                 <label class="col-sm-2 col-sm-2 control-label">Extérieur(s)</label>
                                     <div class="col-sm-5">
                                         <select name="outside" id="outside" class="form-control">
-                                            <option value="Pas d'extérieur">Pas d'extérieur</option>
+                                            <option value="pas d'extérieur">Pas d'extérieur</option>
                                             <option value="Balcon">Balcon</option>
                                             <option value="Terrasse">Terrasse</option>
                                             <option value="Jardin">Jardin</option>
@@ -141,8 +141,8 @@
                                 <label class="col-sm-2 col-sm-2 control-label">Stationnement</label>
                                 <div class="col-sm-5">
                                     <select name="parking" class="form-control" id="parking">
-                                        <option value="Oui">non</option>
-                                        <option value="Non">oui</option>
+                                        <option value="oui">non</option>
+                                        <option value="non">oui</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-5" id="parking-type">
@@ -365,7 +365,7 @@
 
 <script src="lib/jquery/jquery.min.js"></script>
 <script src="js/Preview.js"></script>
-<script src=".js/Spec.js"></script>
+<script src="js/Spec.js"></script>
 <script src="js/main.js"></script>
 
 

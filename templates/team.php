@@ -16,7 +16,13 @@
                         <div class="column-single-property">
                             <div class="column-property-img-wrap">
                                 <div class="column-property-img">
-                                    <a href="index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>"><img src="img/agent/<?= htmlspecialchars($agent->getAvatar());?>" alt="<?= htmlspecialchars($agent->getAvatar());?>"></a>
+                                    <a href="index.php?route=agent&agentId=<?= htmlspecialchars($agent->getId());?>">
+                                        <?php if (empty($agent->getAvatar())){ ?>
+                                            <img src='img/agent/default.jpg'>
+                                        <?php } else { ?>
+                                            <img src="img/agent/<?= ($agent->getAvatar());?>" alt="<?= ($agent->getAvatar());?>">
+                                        <?php } ?>
+                                    </a>
                                 </div>
                             </div>
                             <div class="column-property-content-wrap">
@@ -49,7 +55,13 @@
                                 ?>
                                 <div class="single-property-footer-post right-sidebar">
                                     <div class="properties-img pull-left">
-                                        <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>"><img src="img/slider/<?= ($latestEstate['picture_url']);?>" alt="<?= ($latestEstate['picture_url']);?>"></a>
+                                        <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>">
+                                        <?php if (empty($latestEstate['picture_url'])){ ?>
+                                            <img src='img/slider/default.jpg'>
+                                        <?php } else { ?>
+                                            <img src="img/slider/<?= ($latestEstate['picture_url']);?>" alt="<?= ($latestEstate['picture_url']);?>">
+                                        <?php } ?>
+                                        </a>
                                     </div>
                                     <div class="properties-content-footer pull-left">
                                         <h4><a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>"><?= ($latestEstate['title']);?></a></h4>

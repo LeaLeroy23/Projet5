@@ -650,7 +650,7 @@ class BackController extends Controller
 
                 $this->agentDAO->editProfile($post, $filename, $agentId);
                 
-                $this->session->set('editProfile', 'L\'agent a été mis à jour');
+                $this->session->set('editProfile', 'L\'agent a été mis à jour. Pour que les modification soit effective vous devez vous déconnecter');
                 header('Location: index.php?route=profile');
                 exit();
             }

@@ -13,9 +13,10 @@ class Spec {
 
     outsideSpec(){
         this.outside.change(() => {
-            if(spec.outsideName[0].value == "non"){
+            if(spec.outsideName[0].value == "pas d'extérieur"){
                 spec.outsideArea.css("display", "none");
             } else {
+                console.log('je suis là')
                 spec.outsideArea.css("display", "block");
             }
         }); 

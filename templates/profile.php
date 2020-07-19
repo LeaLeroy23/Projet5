@@ -234,13 +234,6 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <div class="col-lg-8">
-                                                <label class="col-lg-2 control-label">Avatar</label> 
-                                                    <input type="file" name="avatar" value="<?=$this->session->get('avatar');?>">
-                                                </div>
-                                            </div>
-
                                             <input type="hidden" name="agent_id" value="<?=$this->session->get('id');?>">
 
                                             <div class="form-group">

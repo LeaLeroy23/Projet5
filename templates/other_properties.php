@@ -17,7 +17,13 @@
                             <div class="column-single-property">
                                 <div class="column-property-img-wrap">
                                     <div class="column-property-img">
-                                        <a href="index.php?route=estate&estateId=<?= ($otherPropertie['id']);?>"><img src="img/slider/<?= ($otherPropertie['picture_url']);?>" alt="<?= ($otherPropertie['picture_url']);?>"></a>
+                                        <a href="index.php?route=estate&estateId=<?= ($otherPropertie['id']);?>">
+                                        <?php if (empty($otherPropertie['picture_url'])){ ?>
+                                            <img src='img/slider/default.jpg'>
+                                        <?php } else { ?>
+                                            <img src="img/slider/<?= $otherPropertie['picture_url'];?>" alt="<?= $otherPropertie['picture_url'];?>">
+                                        <?php } ?>
+                                        </a>
                                     </div>
                                     <div class="column-property-tag">
                                         <p><?= ($otherPropertie['type']);?></p>
@@ -62,7 +68,11 @@
                             <div class="single-property-footer-post right-sidebar">
                                 <div class="properties-img pull-left">
                                     <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>">
-                                        <img src="img/slider/<?= ($latestEstate['picture_url']);?>" alt="<?= ($latestEstate['picture_url']);?>">
+                                        <?php if (empty($latestEstate['picture_url'])){ ?>
+                                            <img src='img/slider/default.jpg'>
+                                        <?php } else { ?>
+                                            <img src="img/slider/<?= $latestEstate['picture_url'];?>" alt="<?= $latestEstate['picture_url'];?>">
+                                        <?php } ?>
                                     </a>
                                 </div>
                                 

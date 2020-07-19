@@ -47,7 +47,11 @@
                             ?>
                                 <tr>
                                     <td data-title="Avatar">
-                                        <img class="img-circle" src="img/agent/<?=$agent->getAvatar();?>" width="35px" height="35px">
+                                    <?php if (empty($agent->getAvatar())){ ?>
+                                        <img class="img-circle" src='img/agent/default.jpg' width="35px" height="35px">
+                                    <?php } else { ?>
+                                        <img class="img-circle" src="img/agent/<?= ($agent->getAvatar());?>" alt="<?= ($agent->getAvatar());?>" width="35px" height="35px">
+                                    <?php } ?>
                                     </td>
                                     <td data-title="Fonction"><?=htmlspecialchars($agent->getFunction());?></td>
                                     <td data-title="Prénom"><?= htmlspecialchars($agent->getFirstname());?></td>

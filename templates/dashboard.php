@@ -148,7 +148,11 @@
                                 ?>
                             <div class="desc">
                                 <div class="thumb">
-                                    <img class="img-circle" src="img/agent/<?=$agent->getAvatar();?>" width="35px" height="35px">
+                                    <?php if (empty($agent->getAvatar())){ ?>
+                                        <img class="img-circle" src='img/agent/default.jpg' width="35px" height="35px">
+                                    <?php } else { ?>
+                                        <img class="img-circle" src="img/agent/<?= ($agent->getAvatar());?>" alt="<?= ($agent->getAvatar());?>" width="35px" height="35px">
+                                    <?php } ?>
                                 </div>
                                 <div class="details">
                                     <p>

@@ -17,7 +17,13 @@
                             <div class="column-single-property">
                                 <div class="column-property-img-wrap">
                                     <div class="column-property-img">
-                                        <a href="index.php?route=estate&estateId=<?= ($allPropertiesForRent['id']);?>"><img src="img/slider/<?= ($allPropertiesForRent['picture_url']);?>" alt="<?= ($allPropertiesForRent['picture_url']);?>"></a>
+                                        <a href="index.php?route=estate&estateId=<?= ($allPropertiesForRent['id']);?>">
+                                        <?php if (empty($allPropertiesForRent['picture_url'])){ ?>
+                                            <img src='img/slider/default.jpg'>
+                                        <?php } else { ?>
+                                            <img src="img/slider/<?= ($allPropertiesForRent['picture_url']);?>" alt="<?= ($allPropertiesForRent['picture_url']);?>">
+                                        <?php } ?>
+                                        </a>
                                     </div>
                                     <div class="column-property-tag">
                                         <p><?= ($allPropertiesForRent['type']);?></p>
@@ -61,7 +67,13 @@
                             ?>
                             <div class="single-sp-widget">
                                 <div class="widget-property-img">
-                                    <a href="index.php?route=estate&estateId=<?= ($estateForSale['id']);?>"><img src="img/slider/<?= ($estateForSale['picture_url']);?>" alt="<?= ($allPropertiesForRent['title']);?>"></a>
+                                    <a href="index.php?route=estate&estateId=<?= ($estateForSale['id']);?>">
+                                        <?php if (empty($estateForSale['picture_url'])){ ?>
+                                            <img src='img/slider/default.jpg'>
+                                        <?php } else { ?>
+                                            <img src="img/slider/<?= ($estateForSale['picture_url']);?>" alt="<?= ($estateForSale['picture_url']);?>">
+                                        <?php } ?>
+                                    </a>
                                 </div>
                                 <div class="column-property-tag">
                                     <p><?= ($estateForSale['category']);?></p>
@@ -86,7 +98,11 @@
                             <div class="single-property-footer-post right-sidebar">
                                 <div class="properties-img pull-left">
                                     <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>">
-                                        <img src="img/slider/<?= ($latestEstate['picture_url']);?>" alt="<?= ($latestEstate['picture_url']);?>">
+                                        <?php if (empty($latestEstate['picture_url'])){ ?>
+                                            <img src='img/slider/default.jpg'>
+                                        <?php } else { ?>
+                                            <img src="img/slider/<?= ($latestEstate['picture_url']);?>" alt="<?= ($latestEstate['picture_url']);?>">
+                                        <?php } ?>
                                     </a>
                                 </div>
                                 
