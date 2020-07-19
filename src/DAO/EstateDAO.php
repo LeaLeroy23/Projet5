@@ -53,7 +53,7 @@ class EstateDAO extends DAO
 
     public function getSingleEstate($estateId)
     {
-        $sql= 'SELECT e.id as id, e.title as title, e.floor as floor, e.excerpt as excerpt, e.description as description, e.status as status, e.price as price, e.rooms as rooms, e.bedrooms as bedrooms, e.bathrooms as bathrooms, e.convertible_attic as convertible_attic, e.outside as outside, e.outside_area as outside_area, e.area as area, e.parking as parking, e.parking_type as parking_type, e.energy_id as energy, e.level_energy_diagnostic as level_energy_diagnostic, e.level_climat_diagnostic as level_climat_diagnostic, e.city as city, c.name as category, t.type as type, e.picture_url as picture_url, e.charge_price as charge_price, e.fees as fees, e.building_year as building_year, e.created_at as created_at, e.charge_frequency_id as charge_frequency
+        $sql= 'SELECT e.id as id, e.title as title, e.floor as floor, e.excerpt as excerpt, e.description as description, e.status as status, e.price as price, e.rooms as rooms, e.bedrooms as bedrooms, e.bathrooms as bathrooms, e.convertible_attic as convertible_attic, e.outside as outside, e.outside_area as outside_area, e.area as area, e.parking as parking, e.parking_type as parking_type, y.energy as energy_id, e.level_energy_diagnostic as level_energy_diagnostic, e.level_climat_diagnostic as level_climat_diagnostic, e.city as city, c.name as category_id, t.type as type_id, e.picture_url as picture_url, e.charge_price as charge_price, e.fees as fees, e.building_year as building_year, e.created_at as created_at, f.frequency as charge_frequency_id, a.id as agent_id
             FROM estate e
             INNER JOIN category c
             ON e.category_id = c.id
@@ -63,8 +63,10 @@ class EstateDAO extends DAO
             on e.energy_id = y.id
             INNER JOIN charge_frequency f
             ON e.charge_frequency_id = f.id
+            INNER JOIN agent a
+            ON e.agent_id = a.id
             WHERE e.id = ?';
-        
+
         $result = $this->createQuery($sql, [$estateId]);
         $estate = $result->fetch();
         $result->closeCursor();

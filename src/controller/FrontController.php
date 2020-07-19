@@ -92,16 +92,11 @@ class FrontController extends Controller
     public function estate($estateId)
     {
         $estate = $this->estateDAO->getSingleEstate($estateId);
-        var_dump($estate);
-        var_dump($type_id);
-        die();
-        $type = $this->typeDAO->getType($typeId);
         $pictures = $this->pictureDAO->getPicturesByEstateId($estateId);
         $latestEstates = $this->estateDAO->latestEstates();
         $limitAgents = $this->agentDAO->getLimitAgents();
         return $this->view->render('single-property', [
             'estate' => $estate,
-            'type' => $type,
             'pictures' => $pictures,
             'latestEstates' => $latestEstates,
             'limitAgents' => $limitAgents

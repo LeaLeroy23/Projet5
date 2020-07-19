@@ -51,7 +51,6 @@
                             <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
                             <li><a href="#details" data-toggle="tab">Details</a></li>
                             <li><a href="#diagnostic" data-toggle="tab">Diagnostic</a></li>
-                            <li><a href="#pictures" data-toggle="tab">Photo</a></li>
                         </ul>
                         <!-- Tab panes -->
                         <div class="tab-content">
@@ -71,7 +70,7 @@
                                             <ul>
                                                 <li><strong>Type:</strong><?= htmlspecialchars($estate->getType_id());?>
                                                 </li>
-                                                <li><strong>Catégorie: </strong></li>
+                                                <li><strong>Catégorie:</strong><?= htmlspecialchars($estate->getCategory_id());?></li>
                                                 <li><strong>Surface
                                                         carrez</strong><?= htmlspecialchars($estate->getArea());?> m2
                                                 </li>
@@ -82,14 +81,16 @@
                                                 <li><strong>Salle de bain
                                                         :</strong><?= htmlspecialchars($estate->getBathrooms());?>
                                                 </li>
-                                                <li><strong>Extérieur :
-                                                        <?= htmlspecialchars($estate->getOutside());?></strong>
+                                                <li><strong>Extérieur :</strong>
+                                                        <?= htmlspecialchars($estate->getOutside());?>
                                                 </li>
                                                 <li><strong>Garage / Parking
                                                         :</strong><?= htmlspecialchars($estate->getParking_type());?>
                                                 </li>
                                                 <li><strong>Extérieur:</strong><?= htmlspecialchars($estate->getOutside());?>
-                                                    <?= htmlspecialchars($estate->getOutside_area());?>
+                                                </li>
+                                                <li><strong>Surface Extérieur:</strong> 
+                                                <?= htmlspecialchars($estate->getOutside_area());?> m2
                                                 </li>
                                             </ul>
                                         </div>
@@ -101,7 +102,7 @@
                                                     €</li>
                                                 <li><strong>Charge
                                                         :</strong><?= htmlspecialchars($estate->getCharge_price());?>
-                                                    €/Par an</li>
+                                                    € <?= htmlspecialchars($estate->getCharge_frequency_id());?></li>
                                                 <li><strong>Honoraire
                                                         :</strong><?= htmlspecialchars($estate->getFees());?> €</li>
                                                 <li><strong>Etage :</strong><?= htmlspecialchars($estate->getFloor());?>
@@ -121,6 +122,12 @@
 
                             <div class="tab-pane fade" id="diagnostic">
                                 <div class="diagnostic-content tab-content-padding fix">
+                                    <div class="col-md-12 col-sm-12">
+                                        <ul>
+                                            <li><strong>Energie :</strong>
+                                                <?= htmlspecialchars($estate->getEnergy_id());?></li>
+                                        </ul>   
+                                    </div>
                                     <div class="col-md-6 col-sm-6">
                                         <div class="single-pt-list">
                                             <ul>
@@ -142,19 +149,7 @@
                             </div>
 
                             <!-- End of amenities Tab Content Area -->
-                            <div class="tab-pane fade  tab-content-padding fix" id="pictures">
-                                <div class="col-md-6 col-sm-6">
-
-                                    <div class="single-floor-img">
-                                        <img src="img/properties/fp1.jpg" alt="" class="img-responsive">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="single-floor-img">
-                                        <img src="img/properties/fp2.jpg" alt="" class="img-responsive">
-                                    </div>
-                                </div>
-                            </div>
+                            
 
                             <div class="row">
                                 <div class="col-md-12 col-sm-12">
@@ -181,9 +176,13 @@
                         <div class="col-md-4 col-sm-6">
                             <div class="single-featured-properties">
                                 <div class="properties-image">
-                                    <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>"><img
-                                            src="img/slider/<?= ($latestEstate['picture_url']);?>"
-                                            alt="<?= ($latestEstate['picture_url']);?>"></a>
+                                    <a href="index.php?route=estate&estateId=<?= ($latestEstate['id']);?>">
+                                        <?php if (empty($latestEstate['picture_url'])){ ?>
+                                            <img src='img/slider/default.jpg'>
+                                        <?php } else { ?>
+                                            <img src="img/slider/<?= ($latestEstate['picture_url']);?>" alt="<?= ($latestEstate['picture_url']);?>">
+                                        <?php } ?>
+                                    </a>
                                 </div>
                                 <div class="sale-tag">
                                     <p><?=($latestEstate['category']);?></p>
@@ -237,10 +236,13 @@
                         <div class="col-md-4 col-sm-12">
                             <div class="single-property-footer-post">
                                 <div class="properties-images">
-                                    <a
-                                        href="index.php?route=agent&agentId=<?= htmlspecialchars($limitAgent->getId());?>"><img
-                                            src="img/agent/<?= htmlspecialchars($limitAgent->getAvatar());?>"
-                                            alt="<?= htmlspecialchars($limitAgent->getAvatar());?>"></a>
+                                    <a href="index.php?route=agent&agentId=<?= htmlspecialchars($limitAgent->getId());?>">
+                                        <?php if (empty($limitAgent->getAvatar())){ ?>
+                                            <img src='img/agent/default.jpg'>
+                                        <?php } else { ?>
+                                            <img src="img/agent/<?= ($limitAgent->getAvatar());?>" alt="<?= ($limitAgent->getAvatar());?>">
+                                        <?php } ?>
+                                    </a>
                                 </div>
                                 <div class="properties-content">
                                     <h3><a
