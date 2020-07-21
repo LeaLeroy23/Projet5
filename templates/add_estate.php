@@ -141,8 +141,8 @@
                                 <label class="col-sm-2 col-sm-2 control-label">Stationnement</label>
                                 <div class="col-sm-5">
                                     <select name="parking" class="form-control" id="parking">
-                                        <option value="oui">non</option>
-                                        <option value="non">oui</option>
+                                        <option value="non">non</option>
+                                        <option value="oui">oui</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-5" id="parking-type">
@@ -327,6 +327,7 @@
                                 <div class="col-sm-4">
                                     <input type="date" name="created_at" value="01-01-2020" size="16">
                                 </div>
+                                <input type="hidden" class="form-control" name="agent_id" value="<?= $this->session->get('id'); ?>">
                             </div>
                    
                             <h4 class="mb"><i class="fa fa-angle-right"></i> Publication</h4>

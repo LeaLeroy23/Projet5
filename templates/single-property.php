@@ -15,7 +15,7 @@
                         <ul class="bxslider">
                             <li>
                                 <a href="#"><img src="img/slider/<?= htmlspecialchars($estate->getPicture_url());?>"
-                                        alt=""></a>
+                                        alt="<?= htmlspecialchars($estate->getPicture_url());?>"></a>
                             </li>
                             <?php 
                                     foreach($pictures as $picture){
@@ -30,13 +30,15 @@
                         </ul>
                         <!-- Thumbnail Images -->
                         <div id="bx-pager">
+                            
                             <a data-slide-index="0" href="#"><img
                                     src="img/slider/<?= htmlspecialchars($estate->getPicture_url());?>"
                                     alt="<?= htmlspecialchars($estate->getPicture_url());?>" /></a>
                             <?php 
+                                    $i = 1;
                                     foreach($pictures as $picture){
                                 ?>
-                            <a data-slide-index="<?=$picture->getId();?>" href="#"><img
+                            <a data-slide-index="<?= $i++ ?>" href="#"><img
                                     src="img/upload/<?=$picture->getFile();?>" alt="<?=$picture->getFile();?>" /></a>
                             <?php
                                     }

@@ -1742,11 +1742,17 @@ footer.footer-area {
 }
 
 .single-property-slider .bxslider img {
-  width: 100%;
+  width: 1155px;
+  height: 600px;
 }
 
 .single-property-slider #bx-pager img {
-  width: 100%;
+  width: 100%
+}
+
+.slider-property-img{
+  width: 1155px;
+  height: 600px;
 }
 
 .single-property-slider .owl-theme .owl-controls .owl-buttons div {

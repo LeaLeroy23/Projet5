@@ -305,8 +305,7 @@
                                     </div>
                                     <div>
                                         <span class="btn btn-theme02 btn-file">
-                                            <input type="file" name="picture_url" id="file"
-                                                value="<?= htmlspecialchars($estate->getPicture_url());?>" placeholder="<?= htmlspecialchars($estate->getPicture_url());?>"/>
+                                            <input type="file" name="picture_url" id="file"/>
                                         </span>
                                         <p>Pour des raisons de sécurité vous devez reselectionnez l'image à la une dans le cas contraire une image par default va être mise à la une</p>
                                     </div>

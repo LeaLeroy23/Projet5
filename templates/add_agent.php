@@ -17,6 +17,7 @@
                             <label class="col-sm-2 col-sm-2 control-label">Fonction</label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" name="function" placeholder="Fonction">
+                                <?= isset($errors['function']) ? $errors['function'] : ''; ?>
                             </div>
                             <label class="col-sm-2 col-sm-2 control-label">Autorisation</label>
                             <div class="col-sm-4">

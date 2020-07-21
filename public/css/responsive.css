@@ -21,6 +21,10 @@ Large desktop :1200px.
 .slide-property-detail li {
   padding: 0 17px;
 }
+.single-property-slider .bxslider img {
+  width: 100%;
+  height: 700px;
+}
 
 }
 /* --------------------------------------
@@ -383,6 +387,8 @@ p.ag-position {
   height: 142px;
   line-height: 142px;
 }
+
+
 .padding-left-zero {
   padding-left: 15px;
 }
@@ -663,7 +669,10 @@ small mobile :320px.
   bottom: 110px;
   right: 10px;
 }
-
+.single-property-slider .bxslider img {
+  width: 100%;
+  height: 285px;
+}
 
 }
 /* --------------------------------------
